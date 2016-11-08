@@ -9,15 +9,24 @@ Let those that come after you discover your message!
 ## User Stories
 
 The following **required** functionality is completed:
-- [] Based on the location of the device, user can browse a stream of content pinned by other users at the same location before.
+
+Login:
+- [] User login with social accounts
+
+
+Consume:
+- [] Based on the location of the device, user can browse a stream of content pinned by other users at the same location before.  In a list or a map experience.
+- [] Search for location by name to follow. In a list or a map experience.
+
+Contribute:
 - [] Creating content (picture, text) and pin to the current location of the device.
 - [] Location are labeled by point of interest from Foursquare's API based on user's GPS coordinates. 
-- [] Search for location by name to follow.
 
 The following **optional** features are implemented:
-
-
-
+[] Comments to content
+[] Details page of content with more info: MAP, 
+[] Filter by: Popularity + Distance (within radius)
+[] Video content type
 
 ## License
 
