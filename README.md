@@ -1,10 +1,18 @@
 # Project 4 - *xHere*
 
+*xHere* is the final project by: Dhara Bavishi, Jagdeep Singh, and Michael Ting
+for: CodePath's iOS Bootcamp @ Facebook 2016
+
+xHere let you share a personal memory at a location that inspires you.  
+Let those that come after you discover your message!
+
 ## User Stories
 
 The following **required** functionality is completed:
-
-
+- [] Based on the location of the device, user can browse a stream of content pinned by other users at the same location before.
+- [] Creating content (picture, text) and pin to the current location of the device.
+- [] Location are labeled by point of interest from Foursquare's API based on user's GPS coordinates. 
+- [] Search for location by name to follow.
 
 The following **optional** features are implemented:
 
