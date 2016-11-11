@@ -6,6 +6,7 @@ target 'xHere' do
   use_frameworks!
 
   # Pods for xHere
+   pod 'Parse'
 
   target 'xHereTests' do
     inherit! :search_paths
