@@ -6,6 +6,8 @@ target 'xHere' do
   use_frameworks!
 
   # Pods for xHere
+  pod 'PBJVision'
+  pod 'Fusuma'
 
   target 'xHereTests' do
     inherit! :search_paths

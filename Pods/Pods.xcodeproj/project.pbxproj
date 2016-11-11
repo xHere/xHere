@@ -7,56 +7,175 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0199414999705C8EB369B1538965D96E /* PBJVision-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F8885478DC27A1F474DC2696175E4385 /* PBJVision-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03B216D0EE95359100F614D7A40AACA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */; };
+		0A27EF3FB08BE0805DC3A2608423B087 /* PBJMediaWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = D6445392E0B534B933CFF5D6A462F641 /* PBJMediaWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A4E00C48BB150B268BA3DF229D935F7 /* FSImageCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F277C6C22BE74156D7A793EC01FB076 /* FSImageCropView.swift */; };
+		157F01F41D61FB5E12E07B205F78018A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */; };
+		1B4706C522B3F1F5C946BCE7598B1CE4 /* PBJVision.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B6DCE95848B76A3EBD35419045536EA /* PBJVision.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF41321E01EF232CA3ADE0858D66562 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D65A8B927A3B3DAC5C83A49983A0B040 /* CoreMedia.framework */; };
 		1F2C4135D8B286103E5B70312041A3EE /* Pods-xHereTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E7682AE4FBEFD933552A7727E400450 /* Pods-xHereTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83D4D5C5B687F321D2BCD1502B28B78C /* Pods-xHere-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89951510FB06CF8F3682966F6908A75C /* Pods-xHere-dummy.m */; };
-		A499E34EB9E00AAAD6CD1C63008C8781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		20B9F03D6CB512A896CF681A2D8B5203 /* FSConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24BD50CBA31B5D3E8D6BFC818312AE /* FSConstants.swift */; };
+		2533B351F028F67AA0455E4447B86504 /* PBJVision.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B423AB39C835ACA8C7F812DA1B2D93F /* PBJVision.m */; };
+		28BAC193F99B1C393F1E2C60BB34B61E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E76AA1DF712E600ABDDB4D8ECC11277 /* ImageIO.framework */; };
+		2F59C2D1EF1C6C130A48AFAEE58B1BA4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 194F65618A78D83943011CC6328D0B34 /* MobileCoreServices.framework */; };
+		36D29E2B019A1C799397FA441F29612D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */; };
+		3A2F78316CF8E309322F667644E6197D /* FusumaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E463B213600CB6997059404DD2267F3F /* FusumaViewController.swift */; };
+		3A5D2E073DC2AD156588C20ECF6D6E87 /* FSAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE28DC2300B1A70050DE9BDC7050A563 /* FSAlbumView.xib */; };
+		41125D861C951E721D536EF9358E3549 /* FSAlbumViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B8AF72276F9EBA7E039D02FCF4D1D /* FSAlbumViewCell.swift */; };
+		4425298C494DA38EA21CE37C52EC44E6 /* Fusuma-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3853FA1445A154387D41E730B38229BD /* Fusuma-dummy.m */; };
+		49AD4FAD820CDE27CB9909AB40C38141 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C77471BA8251606C4A18C3586ED46B9 /* UIKit.framework */; };
+		50C22097245F1420172D8F04E5F556B7 /* PBJVision-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F338366D19432A8E0B54B340768B4 /* PBJVision-dummy.m */; };
+		5680ACF4137FDCD1503AE1F6468EE046 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 612A52F9F2743945F12B8755D1B42E88 /* QuartzCore.framework */; };
+		610F6BDD7BA4EE44ABACD0D8728C0245 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22B0554DB70446B1317B004DE46BE39 /* CoreVideo.framework */; };
+		659190A61800FE1C46CEE66882AD240A /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 76C1CFCA103DA60B2FF0D3CDFC8C8BA3 /* Shader.vsh */; };
+		6675F4809C5215D98FAFCBAE8C2EF2D5 /* FusumaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DBEF72E2E8EC8F52B9D9FC5C30D4CF /* FusumaViewController.xib */; };
+		6D4182DB3CDCF53DA35182D855D7C4CE /* Pods-xHere-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89951510FB06CF8F3682966F6908A75C /* Pods-xHere-dummy.m */; };
+		72AA3B7293515BAB836DB888D84B6187 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AD994958BA291D3B8EA77C85B3DE3E /* CoreImage.framework */; };
+		7625DD466CF3049067583B579D1FF1A1 /* FSVideoCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4FB5302D1999372D2F6AE7364744EC3 /* FSVideoCameraView.xib */; };
+		8681BBA9F17474482885383595964319 /* FSCameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A3F9255CEA7900904760CA982415984 /* FSCameraView.xib */; };
+		95F34D0658555D6A034D6390B946B6CB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C502D867A6D14D21A293AE66FEBD2741 /* CoreGraphics.framework */; };
+		9889C3CB27F58FF8E7677F56F637ED21 /* FSCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BF8782328A402FAA8C153372AF9BD /* FSCameraView.swift */; };
+		9E6039187937B59F54618466C1DFCCDE /* FSVideoCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04760E35590B5DAC9733E87671EB6451 /* FSVideoCameraView.swift */; };
+		A1B1D8B188C30B74F16E164EDD8D286A /* PBJGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = D5C81CD5AA7ADD935DA99D548506A55B /* PBJGLProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A779727F7E5647B3D98C5157DFB6F530 /* Pods-xHereUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8FDE63054D18C385CD28EF52BD9558 /* Pods-xHereUITests-dummy.m */; };
-		BACA9A9D7E23344232A55B1F18768857 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		CCC4ACC17B8F0AF7E92A89268950A128 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		AC68615DFB9CDA3638AAEC704CD95DDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26E25D57F9ACA92DE2746F300EDE3864 /* Assets.xcassets */; };
+		B01A5420F84E59C6F3173C0E1F4EB6F6 /* FSAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7EA7452491163D3C40169FCB37E2583 /* FSAlbumViewCell.xib */; };
+		B7D52093D7BF8222BAC6102AEF5A0F15 /* Fusuma-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A214A0193636FEDD4DFBE6427215CD48 /* Fusuma-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BACA9A9D7E23344232A55B1F18768857 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */; };
+		CCC4ACC17B8F0AF7E92A89268950A128 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */; };
+		CEBF291E1A96FEDC2E4D1A76E4AA50B9 /* Pods-xHere-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73135967F4876ADF79BF73EF3D9BD80C /* Pods-xHere-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CF3291D81A7458D574E2DB9DA16E6B23 /* Pods-xHereTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC00487CFA3C7B63A0B256F9A7D20048 /* Pods-xHereTests-dummy.m */; };
+		D117DDE8D46D0B7EE76129B25EC9702F /* PBJVisionUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = EAEAA004EE8AE2F36BECCA651B639AED /* PBJVisionUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7AD09F8254E26C6438694E645A68904 /* PBJVisionUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BD96EF741ED56CFFCD39F812EE78FD9F /* PBJVisionUtilities.m */; };
+		DB4DAD125AB92EA1A3701DA1882F4417 /* PBJMediaWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B60E4FCEC8B10C381FA27D2F2A944090 /* PBJMediaWriter.m */; };
 		E1ED0A3063B4D2908C26CBFCC3977208 /* Pods-xHereUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 85D64FD0A8A84BBA6F155EE92E0818CE /* Pods-xHereUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E623E13F98CA7AE05EDE24EBBB3D69BA /* Pods-xHere-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73135967F4876ADF79BF73EF3D9BD80C /* Pods-xHere-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E94FE07869E7F28CAF4AE9208CA3C3A2 /* FSAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9D8EB05AAA41F28222D1676538D9AC /* FSAlbumView.swift */; };
+		E994C2F45E9E53BACA2A41CEDBA04DBF /* PBJGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A3BF51AD5E139936EC4C1B90F85AB9 /* PBJGLProgram.m */; };
+		ECC58CC37FA78891DC252E199AB10BB8 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E6E6626B4B47EB4358F1520D0C39B7B7 /* Shader.fsh */; };
+		F12070AC6971B396196687258DAA1CCF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9993E1B1488CD6964BCA805C0F8C2FF /* OpenGLES.framework */; };
+		F875CD125A10F7B0F80F76E3F16286A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2B77913EAEBA5F23A52FF1BBC72D11 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C5EE5F2A9513721FE6A3B9488D1069B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15B1561BDE1A1C399883F737CC141A3C;
+			remoteInfo = PBJVision;
+		};
+		D48EDB6C036AD1E21E64708A2A5E1921 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7380ABD049E12DCFEC9B9E1D2D52C627;
+			remoteInfo = Fusuma;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		012801763AB4B634AE199EF146819A13 /* PBJVision-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PBJVision-prefix.pch"; sourceTree = "<group>"; };
+		04760E35590B5DAC9733E87671EB6451 /* FSVideoCameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSVideoCameraView.swift; path = Sources/FSVideoCameraView.swift; sourceTree = "<group>"; };
+		0749965BDAC40262150A5B8CC35D6798 /* Fusuma-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fusuma-prefix.pch"; sourceTree = "<group>"; };
 		0AE4C8EC426BBD0173A6E1A71CDDB572 /* Pods-xHereTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-xHereTests-frameworks.sh"; sourceTree = "<group>"; };
+		0F2B77913EAEBA5F23A52FF1BBC72D11 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		143509034EBDEC8B75975F58965E0A52 /* Pods-xHere-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-xHere-acknowledgements.plist"; sourceTree = "<group>"; };
-		22C048036517EA0A063E0943BFA4D2C9 /* Pods_xHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		194F65618A78D83943011CC6328D0B34 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		1A3B8AF72276F9EBA7E039D02FCF4D1D /* FSAlbumViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSAlbumViewCell.swift; path = Sources/FSAlbumViewCell.swift; sourceTree = "<group>"; };
+		1A3F9255CEA7900904760CA982415984 /* FSCameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSCameraView.xib; path = Sources/FSCameraView.xib; sourceTree = "<group>"; };
+		1E76AA1DF712E600ABDDB4D8ECC11277 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		24791D1DD8C899AC18B53FBDD129CE92 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2696AB5C20854B1533C0D53E579BC83E /* PBJVision.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PBJVision.xcconfig; sourceTree = "<group>"; };
+		26E25D57F9ACA92DE2746F300EDE3864 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
+		2B79B2DC8C550BD6F12AD692BA7444AC /* Pods_xHereTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C77471BA8251606C4A18C3586ED46B9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		2F277C6C22BE74156D7A793EC01FB076 /* FSImageCropView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSImageCropView.swift; path = Sources/FSImageCropView.swift; sourceTree = "<group>"; };
+		33A3BF51AD5E139936EC4C1B90F85AB9 /* PBJGLProgram.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PBJGLProgram.m; path = Source/PBJGLProgram.m; sourceTree = "<group>"; };
+		3853FA1445A154387D41E730B38229BD /* Fusuma-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Fusuma-dummy.m"; sourceTree = "<group>"; };
+		3B423AB39C835ACA8C7F812DA1B2D93F /* PBJVision.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PBJVision.m; path = Source/PBJVision.m; sourceTree = "<group>"; };
+		3B6DCE95848B76A3EBD35419045536EA /* PBJVision.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PBJVision.h; path = Source/PBJVision.h; sourceTree = "<group>"; };
 		3EE4E73FF80099B3AC01A49A6F23B2E1 /* Pods-xHereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xHereTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44DACEBEBA7EA0B34B01D2348423CD32 /* Pods-xHereUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-xHereUITests-resources.sh"; sourceTree = "<group>"; };
 		456E7F26C704F5B6E6AE372D89755248 /* Pods-xHereUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-xHereUITests-frameworks.sh"; sourceTree = "<group>"; };
 		472E3CD2C7444FEC65404FF046A269D4 /* Pods-xHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xHere.release.xcconfig"; sourceTree = "<group>"; };
+		5121A16316E838018FDB9DA257F17BCC /* PBJVision.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PBJVision.modulemap; sourceTree = "<group>"; };
 		51CC3E902DC512522580E00AF0531783 /* Pods-xHereUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-xHereUITests.modulemap"; sourceTree = "<group>"; };
+		5551C041D4EEF30E20A163C76E33BFEB /* Pods_xHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D16520705FBB57E8F8FBA6FA85B2B7A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D24BD50CBA31B5D3E8D6BFC818312AE /* FSConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSConstants.swift; path = Sources/FSConstants.swift; sourceTree = "<group>"; };
 		5E7682AE4FBEFD933552A7727E400450 /* Pods-xHereTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-xHereTests-umbrella.h"; sourceTree = "<group>"; };
+		612A52F9F2743945F12B8755D1B42E88 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		63134823A4ED39A8A1A335A703217C5C /* Pods-xHereTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-xHereTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6BF88519C8351159726393E3CC260E8B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D365C74685BEB07925FA60B177F09BF /* Pods-xHere.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-xHere.modulemap"; sourceTree = "<group>"; };
+		6DA5031F29F593F928B1D0BBFB03B15B /* Pods_xHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73135967F4876ADF79BF73EF3D9BD80C /* Pods-xHere-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-xHere-umbrella.h"; sourceTree = "<group>"; };
+		76C1CFCA103DA60B2FF0D3CDFC8C8BA3 /* Shader.vsh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Source/Shaders/Shader.vsh; sourceTree = "<group>"; };
 		85D64FD0A8A84BBA6F155EE92E0818CE /* Pods-xHereUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-xHereUITests-umbrella.h"; sourceTree = "<group>"; };
 		89951510FB06CF8F3682966F6908A75C /* Pods-xHere-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-xHere-dummy.m"; sourceTree = "<group>"; };
 		89A2503E07E7F4B94C18F1E345CC25D6 /* Pods-xHereUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-xHereUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		8DEDD6713006BEB40A4DD0C581D763D7 /* Pods-xHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xHere.debug.xcconfig"; sourceTree = "<group>"; };
 		90080FC5FE857CD75827D91E787651E2 /* Pods-xHereTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-xHereTests-resources.sh"; sourceTree = "<group>"; };
 		904117FB4402E3EFE15471784F67518B /* Pods-xHere-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-xHere-frameworks.sh"; sourceTree = "<group>"; };
-		906F0CFFEA29D01FFC9FE16EF4417E29 /* Pods_xHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D8CF63A569A0EBD2362273E757F347 /* Pods-xHereTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-xHereTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		96A2ABB73A2DA1661ECB20BA9D9E1BC3 /* Pods_xHereTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A65D6799FBD24B7781734A8388F9DE7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A214A0193636FEDD4DFBE6427215CD48 /* Fusuma-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Fusuma-umbrella.h"; sourceTree = "<group>"; };
+		A62197C1CA19EBA605E8E9A6B896454C /* PBJVision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PBJVision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6BC8881494316C54CA2D64412120F03 /* Fusuma.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Fusuma.xcconfig; sourceTree = "<group>"; };
+		A6FABE6BE7552E37C950D15F148A50E4 /* Fusuma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fusuma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1BF8782328A402FAA8C153372AF9BD /* FSCameraView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSCameraView.swift; path = Sources/FSCameraView.swift; sourceTree = "<group>"; };
+		B22B0554DB70446B1317B004DE46BE39 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		B60E4FCEC8B10C381FA27D2F2A944090 /* PBJMediaWriter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PBJMediaWriter.m; path = Source/PBJMediaWriter.m; sourceTree = "<group>"; };
+		B6DBEF72E2E8EC8F52B9D9FC5C30D4CF /* FusumaViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FusumaViewController.xib; path = Sources/FusumaViewController.xib; sourceTree = "<group>"; };
 		BC8FDE63054D18C385CD28EF52BD9558 /* Pods-xHereUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-xHereUITests-dummy.m"; sourceTree = "<group>"; };
+		BD96EF741ED56CFFCD39F812EE78FD9F /* PBJVisionUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PBJVisionUtilities.m; path = Source/PBJVisionUtilities.m; sourceTree = "<group>"; };
+		C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C4FB5302D1999372D2F6AE7364744EC3 /* FSVideoCameraView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSVideoCameraView.xib; path = Sources/FSVideoCameraView.xib; sourceTree = "<group>"; };
+		C502D867A6D14D21A293AE66FEBD2741 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		C77938954B5710CCCC26224AD12ADC55 /* Pods-xHereUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xHereUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C7EA7452491163D3C40169FCB37E2583 /* FSAlbumViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSAlbumViewCell.xib; path = Sources/FSAlbumViewCell.xib; sourceTree = "<group>"; };
+		C9993E1B1488CD6964BCA805C0F8C2FF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		CBC37D2D5390544B653F6A1E9F8261C6 /* Pods-xHere-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-xHere-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D49F338366D19432A8E0B54B340768B4 /* PBJVision-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PBJVision-dummy.m"; sourceTree = "<group>"; };
+		D5C81CD5AA7ADD935DA99D548506A55B /* PBJGLProgram.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PBJGLProgram.h; path = Source/PBJGLProgram.h; sourceTree = "<group>"; };
+		D6445392E0B534B933CFF5D6A462F641 /* PBJMediaWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PBJMediaWriter.h; path = Source/PBJMediaWriter.h; sourceTree = "<group>"; };
+		D65A8B927A3B3DAC5C83A49983A0B040 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		D8B2195C8A782EF36603AF5514F99FD7 /* Pods-xHereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xHereUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DAC89DDBC8F10D14AED8EE687275B7CD /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
+		DE28DC2300B1A70050DE9BDC7050A563 /* FSAlbumView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FSAlbumView.xib; path = Sources/FSAlbumView.xib; sourceTree = "<group>"; };
 		E3C2F8C608F3F05E78692B5B4CD30D09 /* Pods-xHereUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-xHereUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E463B213600CB6997059404DD2267F3F /* FusumaViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FusumaViewController.swift; path = Sources/FusumaViewController.swift; sourceTree = "<group>"; };
+		E4AD994958BA291D3B8EA77C85B3DE3E /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
+		E525EC4898E0310AE11570C6A7E65024 /* Fusuma.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Fusuma.modulemap; sourceTree = "<group>"; };
+		E6E6626B4B47EB4358F1520D0C39B7B7 /* Shader.fsh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Source/Shaders/Shader.fsh; sourceTree = "<group>"; };
 		E7F1FC40064D0D83E2838254AC5ADABC /* Pods-xHereTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-xHereTests.modulemap"; sourceTree = "<group>"; };
 		EA8FD76D79CCFB9C312B0BB235F8B524 /* Pods-xHere-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-xHere-resources.sh"; sourceTree = "<group>"; };
+		EAEAA004EE8AE2F36BECCA651B639AED /* PBJVisionUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PBJVisionUtilities.h; path = Source/PBJVisionUtilities.h; sourceTree = "<group>"; };
 		EC00487CFA3C7B63A0B256F9A7D20048 /* Pods-xHereTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-xHereTests-dummy.m"; sourceTree = "<group>"; };
+		EE9D8EB05AAA41F28222D1676538D9AC /* FSAlbumView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FSAlbumView.swift; path = Sources/FSAlbumView.swift; sourceTree = "<group>"; };
+		F8885478DC27A1F474DC2696175E4385 /* PBJVision-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PBJVision-umbrella.h"; sourceTree = "<group>"; };
 		FB02874427E211B840557EF8B359845C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		004D49D88B563D6A5150937DADC1E660 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B216D0EE95359100F614D7A40AACA8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2214BD8D4C8902515211785B17B3AC02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36D29E2B019A1C799397FA441F29612D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26C69F2BF56B582DD1B15261F7D45C7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -65,11 +184,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		43520624BBF7F30B9E798F7E947F2061 /* Frameworks */ = {
+		466FD0F9D3E2D8FF54C689D19C1D53B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A499E34EB9E00AAAD6CD1C63008C8781 /* Foundation.framework in Frameworks */,
+				F875CD125A10F7B0F80F76E3F16286A0 /* AVFoundation.framework in Frameworks */,
+				95F34D0658555D6A034D6390B946B6CB /* CoreGraphics.framework in Frameworks */,
+				72AA3B7293515BAB836DB888D84B6187 /* CoreImage.framework in Frameworks */,
+				1DF41321E01EF232CA3ADE0858D66562 /* CoreMedia.framework in Frameworks */,
+				610F6BDD7BA4EE44ABACD0D8728C0245 /* CoreVideo.framework in Frameworks */,
+				157F01F41D61FB5E12E07B205F78018A /* Foundation.framework in Frameworks */,
+				28BAC193F99B1C393F1E2C60BB34B61E /* ImageIO.framework in Frameworks */,
+				2F59C2D1EF1C6C130A48AFAEE58B1BA4 /* MobileCoreServices.framework in Frameworks */,
+				F12070AC6971B396196687258DAA1CCF /* OpenGLES.framework in Frameworks */,
+				5680ACF4137FDCD1503AE1F6468EE046 /* QuartzCore.framework in Frameworks */,
+				49AD4FAD820CDE27CB9909AB40C38141 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,32 +231,128 @@
 			path = "Target Support Files/Pods-xHereUITests";
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+		24FE4E6DD220CB2BF5FD759F5FD4838B /* Fusuma */ = {
 			isa = PBXGroup;
 			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				EE9D8EB05AAA41F28222D1676538D9AC /* FSAlbumView.swift */,
+				1A3B8AF72276F9EBA7E039D02FCF4D1D /* FSAlbumViewCell.swift */,
+				AC1BF8782328A402FAA8C153372AF9BD /* FSCameraView.swift */,
+				5D24BD50CBA31B5D3E8D6BFC818312AE /* FSConstants.swift */,
+				2F277C6C22BE74156D7A793EC01FB076 /* FSImageCropView.swift */,
+				04760E35590B5DAC9733E87671EB6451 /* FSVideoCameraView.swift */,
+				E463B213600CB6997059404DD2267F3F /* FusumaViewController.swift */,
+				88323C22415E290C7EF197C0FB264083 /* Resources */,
+				33F522017595EC78E1DF5CA631CD62D0 /* Support Files */,
 			);
-			name = iOS;
+			path = Fusuma;
 			sourceTree = "<group>";
 		};
-		4328AF75AD87EFEDD06420F837A47A53 /* Products */ = {
+		33F522017595EC78E1DF5CA631CD62D0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				22C048036517EA0A063E0943BFA4D2C9 /* Pods_xHere.framework */,
-				96A2ABB73A2DA1661ECB20BA9D9E1BC3 /* Pods_xHereTests.framework */,
-				906F0CFFEA29D01FFC9FE16EF4417E29 /* Pods_xHereUITests.framework */,
+				E525EC4898E0310AE11570C6A7E65024 /* Fusuma.modulemap */,
+				A6BC8881494316C54CA2D64412120F03 /* Fusuma.xcconfig */,
+				3853FA1445A154387D41E730B38229BD /* Fusuma-dummy.m */,
+				0749965BDAC40262150A5B8CC35D6798 /* Fusuma-prefix.pch */,
+				A214A0193636FEDD4DFBE6427215CD48 /* Fusuma-umbrella.h */,
+				9A65D6799FBD24B7781734A8388F9DE7 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Fusuma";
+			sourceTree = "<group>";
+		};
+		5D1D07139F2147291A389B947B720595 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6FABE6BE7552E37C950D15F148A50E4 /* Fusuma.framework */,
+				A62197C1CA19EBA605E8E9A6B896454C /* PBJVision.framework */,
+				5551C041D4EEF30E20A163C76E33BFEB /* Pods_xHere.framework */,
+				2B79B2DC8C550BD6F12AD692BA7444AC /* Pods_xHereTests.framework */,
+				6DA5031F29F593F928B1D0BBFB03B15B /* Pods_xHereUITests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		620A586DD125261E8C667DE42E9FE019 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				24791D1DD8C899AC18B53FBDD129CE92 /* Info.plist */,
+				5121A16316E838018FDB9DA257F17BCC /* PBJVision.modulemap */,
+				2696AB5C20854B1533C0D53E579BC83E /* PBJVision.xcconfig */,
+				D49F338366D19432A8E0B54B340768B4 /* PBJVision-dummy.m */,
+				012801763AB4B634AE199EF146819A13 /* PBJVision-prefix.pch */,
+				F8885478DC27A1F474DC2696175E4385 /* PBJVision-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PBJVision";
+			sourceTree = "<group>";
+		};
+		766E913B1D7A94DF2FB8A2108FE6C8B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24FE4E6DD220CB2BF5FD759F5FD4838B /* Fusuma */,
+				873720866C817650FE84EF3FF6BE0627 /* PBJVision */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				4328AF75AD87EFEDD06420F837A47A53 /* Products */,
+				EB57DDB3388FBC701046A1E93218737F /* Frameworks */,
+				766E913B1D7A94DF2FB8A2108FE6C8B4 /* Pods */,
+				5D1D07139F2147291A389B947B720595 /* Products */,
 				E7CE775AA0E80334BE335E42FF364AA2 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		7F843CF336A8B7FB1110992B4055F6A3 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0F2B77913EAEBA5F23A52FF1BBC72D11 /* AVFoundation.framework */,
+				C502D867A6D14D21A293AE66FEBD2741 /* CoreGraphics.framework */,
+				E4AD994958BA291D3B8EA77C85B3DE3E /* CoreImage.framework */,
+				D65A8B927A3B3DAC5C83A49983A0B040 /* CoreMedia.framework */,
+				B22B0554DB70446B1317B004DE46BE39 /* CoreVideo.framework */,
+				C0B2A48B0DEDAF8FAEC7061A2DA5C6A4 /* Foundation.framework */,
+				1E76AA1DF712E600ABDDB4D8ECC11277 /* ImageIO.framework */,
+				194F65618A78D83943011CC6328D0B34 /* MobileCoreServices.framework */,
+				C9993E1B1488CD6964BCA805C0F8C2FF /* OpenGLES.framework */,
+				612A52F9F2743945F12B8755D1B42E88 /* QuartzCore.framework */,
+				2C77471BA8251606C4A18C3586ED46B9 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		873720866C817650FE84EF3FF6BE0627 /* PBJVision */ = {
+			isa = PBXGroup;
+			children = (
+				D5C81CD5AA7ADD935DA99D548506A55B /* PBJGLProgram.h */,
+				33A3BF51AD5E139936EC4C1B90F85AB9 /* PBJGLProgram.m */,
+				D6445392E0B534B933CFF5D6A462F641 /* PBJMediaWriter.h */,
+				B60E4FCEC8B10C381FA27D2F2A944090 /* PBJMediaWriter.m */,
+				3B6DCE95848B76A3EBD35419045536EA /* PBJVision.h */,
+				3B423AB39C835ACA8C7F812DA1B2D93F /* PBJVision.m */,
+				EAEAA004EE8AE2F36BECCA651B639AED /* PBJVisionUtilities.h */,
+				BD96EF741ED56CFFCD39F812EE78FD9F /* PBJVisionUtilities.m */,
+				EC1D6C3EF9FC4061644080C6D7BB12D9 /* Resources */,
+				620A586DD125261E8C667DE42E9FE019 /* Support Files */,
+			);
+			path = PBJVision;
+			sourceTree = "<group>";
+		};
+		88323C22415E290C7EF197C0FB264083 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				26E25D57F9ACA92DE2746F300EDE3864 /* Assets.xcassets */,
+				DE28DC2300B1A70050DE9BDC7050A563 /* FSAlbumView.xib */,
+				C7EA7452491163D3C40169FCB37E2583 /* FSAlbumViewCell.xib */,
+				1A3F9255CEA7900904760CA982415984 /* FSCameraView.xib */,
+				C4FB5302D1999372D2F6AE7364744EC3 /* FSVideoCameraView.xib */,
+				B6DBEF72E2E8EC8F52B9D9FC5C30D4CF /* FusumaViewController.xib */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		A1AFC88844FDAE87D58289D10BC58D70 /* Pods-xHereTests */ = {
@@ -148,14 +373,6 @@
 			path = "Target Support Files/Pods-xHereTests";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E7CE775AA0E80334BE335E42FF364AA2 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +381,23 @@
 				16457A79C64C1AAB30E02EDE2FCA2B73 /* Pods-xHereUITests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		EB57DDB3388FBC701046A1E93218737F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F843CF336A8B7FB1110992B4055F6A3 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC1D6C3EF9FC4061644080C6D7BB12D9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E6E6626B4B47EB4358F1520D0C39B7B7 /* Shader.fsh */,
+				76C1CFCA103DA60B2FF0D3CDFC8C8BA3 /* Shader.vsh */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		FCA4B6014C5FE8575B74602CE34AB972 /* Pods-xHere */ = {
@@ -187,19 +421,31 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		09D90704D56C895C2F4C4E7BF7A74CD2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E623E13F98CA7AE05EDE24EBBB3D69BA /* Pods-xHere-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0B791A39A173C464F868247730028641 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E1ED0A3063B4D2908C26CBFCC3977208 /* Pods-xHereUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CFD4A64A719FF1129CCF16FB14C9A7A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B1D8B188C30B74F16E164EDD8D286A /* PBJGLProgram.h in Headers */,
+				0A27EF3FB08BE0805DC3A2608423B087 /* PBJMediaWriter.h in Headers */,
+				0199414999705C8EB369B1538965D96E /* PBJVision-umbrella.h in Headers */,
+				1B4706C522B3F1F5C946BCE7598B1CE4 /* PBJVision.h in Headers */,
+				D117DDE8D46D0B7EE76129B25EC9702F /* PBJVisionUtilities.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C43655C4066B14D01CEA5F49FAC6E06 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEBF291E1A96FEDC2E4D1A76E4AA50B9 /* Pods-xHere-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,9 +457,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC0CA34826A75E81ABAB7ECD048F311F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7D52093D7BF8222BAC6102AEF5A0F15 /* Fusuma-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		15B1561BDE1A1C399883F737CC141A3C /* PBJVision */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E36BC26A102C6BA5E969E87D7050AC64 /* Build configuration list for PBXNativeTarget "PBJVision" */;
+			buildPhases = (
+				A41312F73001E722B91316A186AA5386 /* Sources */,
+				466FD0F9D3E2D8FF54C689D19C1D53B8 /* Frameworks */,
+				0CFD4A64A719FF1129CCF16FB14C9A7A /* Headers */,
+				E0575F427D530FFDC71197BBD1D5F7A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PBJVision;
+			productName = PBJVision;
+			productReference = A62197C1CA19EBA605E8E9A6B896454C /* PBJVision.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		322237050F726E0B0ACBFBEDC1BFD794 /* Pods-xHereTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0E1BB6554CAED9231CA96E33E854151 /* Build configuration list for PBXNativeTarget "Pods-xHereTests" */;
@@ -228,7 +500,7 @@
 			);
 			name = "Pods-xHereTests";
 			productName = "Pods-xHereTests";
-			productReference = 96A2ABB73A2DA1661ECB20BA9D9E1BC3 /* Pods_xHereTests.framework */;
+			productReference = 2B79B2DC8C550BD6F12AD692BA7444AC /* Pods_xHereTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		63396EA333655B2E3DA80B162A319EEF /* Pods-xHereUITests */ = {
@@ -245,24 +517,44 @@
 			);
 			name = "Pods-xHereUITests";
 			productName = "Pods-xHereUITests";
-			productReference = 906F0CFFEA29D01FFC9FE16EF4417E29 /* Pods_xHereUITests.framework */;
+			productReference = 6DA5031F29F593F928B1D0BBFB03B15B /* Pods_xHereUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BC929AA5A4506543019C18E086AB089B /* Pods-xHere */ = {
+		7380ABD049E12DCFEC9B9E1D2D52C627 /* Fusuma */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B4C6FBA4142369D8DC8D721987257DF /* Build configuration list for PBXNativeTarget "Pods-xHere" */;
+			buildConfigurationList = A16F84FE8A33AD2E1D0F3FC56124A9EA /* Build configuration list for PBXNativeTarget "Fusuma" */;
 			buildPhases = (
-				CB9244591A2F39493F1AF0C8ADC0CAC9 /* Sources */,
-				43520624BBF7F30B9E798F7E947F2061 /* Frameworks */,
-				09D90704D56C895C2F4C4E7BF7A74CD2 /* Headers */,
+				E99F9FF0946BB3F7E248B5801BC350D7 /* Sources */,
+				004D49D88B563D6A5150937DADC1E660 /* Frameworks */,
+				0250727F87F46243677C2DC7E626E43F /* Resources */,
+				BC0CA34826A75E81ABAB7ECD048F311F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = Fusuma;
+			productName = Fusuma;
+			productReference = A6FABE6BE7552E37C950D15F148A50E4 /* Fusuma.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F2FCF522187119B7D116A643D6FCB2F1 /* Pods-xHere */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 908C173655D165CEF813C14AB3C2DBB7 /* Build configuration list for PBXNativeTarget "Pods-xHere" */;
+			buildPhases = (
+				ADA63FC1AB30655A9B2877F6938F7AB4 /* Sources */,
+				2214BD8D4C8902515211785B17B3AC02 /* Frameworks */,
+				6C43655C4066B14D01CEA5F49FAC6E06 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9609D179C888CC91427CBCD79A1E606D /* PBXTargetDependency */,
+				EF9175EE281BD2A16150CE6966580B15 /* PBXTargetDependency */,
+			);
 			name = "Pods-xHere";
 			productName = "Pods-xHere";
-			productReference = 22C048036517EA0A063E0943BFA4D2C9 /* Pods_xHere.framework */;
+			productReference = 5551C041D4EEF30E20A163C76E33BFEB /* Pods_xHere.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -273,6 +565,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					7380ABD049E12DCFEC9B9E1D2D52C627 = {
+						LastSwiftMigration = 0810;
+					};
+					F2FCF522187119B7D116A643D6FCB2F1 = {
+						LastSwiftMigration = 0810;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -282,16 +582,43 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 4328AF75AD87EFEDD06420F837A47A53 /* Products */;
+			productRefGroup = 5D1D07139F2147291A389B947B720595 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC929AA5A4506543019C18E086AB089B /* Pods-xHere */,
+				7380ABD049E12DCFEC9B9E1D2D52C627 /* Fusuma */,
+				15B1561BDE1A1C399883F737CC141A3C /* PBJVision */,
+				F2FCF522187119B7D116A643D6FCB2F1 /* Pods-xHere */,
 				322237050F726E0B0ACBFBEDC1BFD794 /* Pods-xHereTests */,
 				63396EA333655B2E3DA80B162A319EEF /* Pods-xHereUITests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0250727F87F46243677C2DC7E626E43F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC68615DFB9CDA3638AAEC704CD95DDB /* Assets.xcassets in Resources */,
+				3A5D2E073DC2AD156588C20ECF6D6E87 /* FSAlbumView.xib in Resources */,
+				B01A5420F84E59C6F3173C0E1F4EB6F6 /* FSAlbumViewCell.xib in Resources */,
+				8681BBA9F17474482885383595964319 /* FSCameraView.xib in Resources */,
+				7625DD466CF3049067583B579D1FF1A1 /* FSVideoCameraView.xib in Resources */,
+				6675F4809C5215D98FAFCBAE8C2EF2D5 /* FusumaViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0575F427D530FFDC71197BBD1D5F7A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECC58CC37FA78891DC252E199AB10BB8 /* Shader.fsh in Resources */,
+				659190A61800FE1C46CEE66882AD240A /* Shader.vsh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		69930FE99F50F97D5F6E8FAB7A9A4490 /* Sources */ = {
@@ -310,15 +637,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB9244591A2F39493F1AF0C8ADC0CAC9 /* Sources */ = {
+		A41312F73001E722B91316A186AA5386 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83D4D5C5B687F321D2BCD1502B28B78C /* Pods-xHere-dummy.m in Sources */,
+				E994C2F45E9E53BACA2A41CEDBA04DBF /* PBJGLProgram.m in Sources */,
+				DB4DAD125AB92EA1A3701DA1882F4417 /* PBJMediaWriter.m in Sources */,
+				50C22097245F1420172D8F04E5F556B7 /* PBJVision-dummy.m in Sources */,
+				2533B351F028F67AA0455E4447B86504 /* PBJVision.m in Sources */,
+				D7AD09F8254E26C6438694E645A68904 /* PBJVisionUtilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADA63FC1AB30655A9B2877F6938F7AB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D4182DB3CDCF53DA35182D855D7C4CE /* Pods-xHere-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E99F9FF0946BB3F7E248B5801BC350D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E94FE07869E7F28CAF4AE9208CA3C3A2 /* FSAlbumView.swift in Sources */,
+				41125D861C951E721D536EF9358E3549 /* FSAlbumViewCell.swift in Sources */,
+				9889C3CB27F58FF8E7677F56F637ED21 /* FSCameraView.swift in Sources */,
+				20B9F03D6CB512A896CF681A2D8B5203 /* FSConstants.swift in Sources */,
+				0A4E00C48BB150B268BA3DF229D935F7 /* FSImageCropView.swift in Sources */,
+				9E6039187937B59F54618466C1DFCCDE /* FSVideoCameraView.swift in Sources */,
+				4425298C494DA38EA21CE37C52EC44E6 /* Fusuma-dummy.m in Sources */,
+				3A2F78316CF8E309322F667644E6197D /* FusumaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9609D179C888CC91427CBCD79A1E606D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Fusuma;
+			target = 7380ABD049E12DCFEC9B9E1D2D52C627 /* Fusuma */;
+			targetProxy = D48EDB6C036AD1E21E64708A2A5E1921 /* PBXContainerItemProxy */;
+		};
+		EF9175EE281BD2A16150CE6966580B15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PBJVision;
+			target = 15B1561BDE1A1C399883F737CC141A3C /* PBJVision */;
+			targetProxy = C5EE5F2A9513721FE6A3B9488D1069B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0AE7D303AC38553D5A6C63B6F3472245 /* Release */ = {
@@ -348,6 +717,70 @@
 				PRODUCT_NAME = Pods_xHereUITests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1E85356521B0EDAFC95E65BF200646E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 472E3CD2C7444FEC65404FF046A269D4 /* Pods-xHere.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-xHere/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-xHere/Pods-xHere.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_xHere;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		31D300E60AF10E11CD193E57722E211E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6BC8881494316C54CA2D64412120F03 /* Fusuma.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Fusuma/Fusuma-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Fusuma/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Fusuma/Fusuma.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Fusuma;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -387,7 +820,96 @@
 			};
 			name = Debug;
 		};
-		A5A0142C689E69D5401B4E671784B758 /* Debug */ = {
+		3AC7178C3849A1F12F8806BC5097AB4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2696AB5C20854B1533C0D53E579BC83E /* PBJVision.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PBJVision/PBJVision-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PBJVision/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PBJVision/PBJVision.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PBJVision;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		70302802D81410BE64655BE944699352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2696AB5C20854B1533C0D53E579BC83E /* PBJVision.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PBJVision/PBJVision-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PBJVision/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PBJVision/PBJVision.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PBJVision;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		849907E8F8D7504150A7BF1046B22037 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6BC8881494316C54CA2D64412120F03 /* Fusuma.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Fusuma/Fusuma-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Fusuma/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Fusuma/Fusuma.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Fusuma;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8607DF6153AF8E0D6FCDF50C4D9806AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DEDD6713006BEB40A4DD0C581D763D7 /* Pods-xHere.debug.xcconfig */;
 			buildSettings = {
@@ -414,6 +936,8 @@
 				PRODUCT_NAME = Pods_xHere;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -483,39 +1007,6 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_xHereTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		ED0CC18AEF90B8265A510CF4E731C367 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 472E3CD2C7444FEC65404FF046A269D4 /* Pods-xHere.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-xHere/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-xHere/Pods-xHere.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_xHere;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -611,11 +1102,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B4C6FBA4142369D8DC8D721987257DF /* Build configuration list for PBXNativeTarget "Pods-xHere" */ = {
+		908C173655D165CEF813C14AB3C2DBB7 /* Build configuration list for PBXNativeTarget "Pods-xHere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5A0142C689E69D5401B4E671784B758 /* Debug */,
-				ED0CC18AEF90B8265A510CF4E731C367 /* Release */,
+				8607DF6153AF8E0D6FCDF50C4D9806AB /* Debug */,
+				1E85356521B0EDAFC95E65BF200646E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A16F84FE8A33AD2E1D0F3FC56124A9EA /* Build configuration list for PBXNativeTarget "Fusuma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				849907E8F8D7504150A7BF1046B22037 /* Debug */,
+				31D300E60AF10E11CD193E57722E211E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -625,6 +1125,15 @@
 			buildConfigurations = (
 				3A8B57CB6B6A0549B991C270FF1587E9 /* Debug */,
 				0AE7D303AC38553D5A6C63B6F3472245 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E36BC26A102C6BA5E969E87D7050AC64 /* Build configuration list for PBXNativeTarget "PBJVision" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AC7178C3849A1F12F8806BC5097AB4D /* Debug */,
+				70302802D81410BE64655BE944699352 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
