@@ -18,13 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         let parseClientConfig = ParseClientConfiguration.init { (config:ParseMutableClientConfiguration) in
-            config.applicationId = "sC851YnALml0J0oaSgXf3dw19xpKrB3mzOTpWzgB"
-            config.clientKey = "1zkvQ49ejrAjYN8MMWmn8xcVe04tbXThkD21iAqu"
+            config.applicationId = "com.xHere"
+            config.server = "https://xHere.herokuapp.com/parse"
         }
         Parse.initialize(with: parseClientConfig)
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
+        
         
         return true
     }
