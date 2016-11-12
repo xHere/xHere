@@ -20,7 +20,8 @@ class User : PFUser {
         
 
     }
-    var username : String? {
+    
+    override var username : String? {
         get {
             if let _username = self["username"] as? String{
                 return _username
@@ -33,6 +34,7 @@ class User : PFUser {
             self["username"] = newValue
         }
     }
+    
     var firstName : String? {
         get {
             if let _firstName = self["firstName"] as? String{
@@ -73,7 +75,8 @@ class User : PFUser {
             self["screenName"] = newValue
         }
     }
-    var email : String?{
+    
+    override var email : String?{
         get {
             if let _email = self["email"] as? String{
                 return _email
@@ -85,6 +88,7 @@ class User : PFUser {
             self["email"] = newValue
         }
     }
+    
     var profileImageUrl : URL?{
         get {
             if let _profileImageUrl = self["profileImageUrl"] as? URL{
@@ -111,7 +115,7 @@ class User : PFUser {
         
     }
     
-    static func parseClassName() -> String {
+    override static func parseClassName() -> String {
         return "User"
     }
     
