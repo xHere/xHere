@@ -8,6 +8,7 @@ target 'xHere' do
   # Pods for xHere
   pod 'PBJVision'
   pod 'Fusuma'
+  pod 'Parse'
 
   target 'xHereTests' do
     inherit! :search_paths
