@@ -19,10 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NwL-x3-Nf4">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="v12-Jq-jdf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hA8-Jz-rQe">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="templogout"/>
+                                <connections>
+                                    <action selector="tempLogout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MWn-zq-j1n"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="634" y="770"/>
+            <point key="canvasLocation" x="1303" y="1647"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="f08-Dn-0Gc">
@@ -135,12 +147,30 @@
                     <connections>
                         <outlet property="emailTextField" destination="Wxt-y3-lNo" id="269-Qz-wnI"/>
                         <outlet property="passwordTextField" destination="RkQ-6O-XiF" id="uu6-kW-hFd"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="segueToTimeLine" id="oaT-A4-pci"/>
+                        <segue destination="RDH-44-Rh8" kind="presentation" identifier="segueToTimeLine" id="oaT-A4-pci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5LM-GU-ToU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148" y="770"/>
+            <point key="canvasLocation" x="-54" y="784"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3tK-5G-Idk">
+            <objects>
+                <navigationController storyboardIdentifier="timeLineNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="RDH-44-Rh8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iwc-gV-ww9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9uM-WP-tHC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ye6-Tx-nnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1303" y="822"/>
         </scene>
     </scenes>
 </document>

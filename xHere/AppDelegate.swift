@@ -27,10 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
         if PFUser.current() != nil {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineViewController")
+            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineNavigationController")
             window?.rootViewController = timeLineVc
         }
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "userDidLogOut"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateInitialViewController()
+            self.window?.rootViewController = vc
+            
+        }
+
         
         return true
     }
