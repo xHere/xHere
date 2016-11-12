@@ -1,15 +1,21 @@
 PODS:
   - Bolts/Tasks (1.8.4)
+  - Fusuma (1.0.0)
   - Parse (1.14.2):
     - Bolts/Tasks (~> 1.8)
+  - PBJVision (0.5.0)
 
 DEPENDENCIES:
+  - Fusuma
   - Parse
+  - PBJVision
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Fusuma: c95c1c999c765f5dc907670be569157372ff33c4
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
+  PBJVision: 368c58b708c89c3c443e5801a08068a316ee50ea
 
-PODFILE CHECKSUM: b358bd9780c8d72bd85571efe8042423809bb093
+PODFILE CHECKSUM: c6a5a6fc2c778ff1327291e11031de9e8c4a70fc
 
 COCOAPODS: 1.0.1

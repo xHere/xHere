@@ -261,12 +261,14 @@
 					8B2B13E71DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = SDHBMW8ZGY;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8B2B13D01DD117F200961683;
 					};
 					8B2B13F21DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = SDHBMW8ZGY;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8B2B13D01DD117F200961683;
 					};
@@ -552,6 +554,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -594,6 +597,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
