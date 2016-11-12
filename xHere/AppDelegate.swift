@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: parseClientConfig)
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
+        if PFUser.current() != nil {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineViewController")
+            window?.rootViewController = timeLineVc
+        }
         
         
         return true

@@ -17,6 +17,9 @@
 		8B2B13ED1DD117F300961683 /* xHereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13EC1DD117F300961683 /* xHereTests.swift */; };
 		8B2B13F81DD117F300961683 /* xHereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13F71DD117F300961683 /* xHereUITests.swift */; };
 		8B6CB3051DD5ABD200D64B49 /* TESTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CB3041DD5ABD200D64B49 /* TESTViewController.m */; };
+		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
+		99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */; };
+		99CEF6B51DD698DD00D36904 /* TimeLineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99CEF6B31DD698DD00D36904 /* TimeLineViewController.xib */; };
 		C1D59EB344C288FBFF399CE8 /* Pods_xHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */; };
 		D3BC9310B228645C468D7888 /* Pods_xHereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475C27B66A9C49557B7F1E9E /* Pods_xHereUITests.framework */; };
 		F193F61CB3C3A2D6CA1104EE /* Pods_xHereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AFD26D5C1F7C83912A3C61 /* Pods_xHereTests.framework */; };
@@ -63,6 +66,10 @@
 		8B6CB3031DD5ABD200D64B49 /* TESTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTViewController.h; sourceTree = "<group>"; };
 		8B6CB3041DD5ABD200D64B49 /* TESTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTViewController.m; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
+		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		99CEF6B11DD686DA00D36904 /* xHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xHere.entitlements; sourceTree = "<group>"; };
+		99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
+		99CEF6B31DD698DD00D36904 /* TimeLineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineViewController.xib; sourceTree = "<group>"; };
 		A5AFD26D5C1F7C83912A3C61 /* Pods_xHereTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B459821A47443B726044EC38 /* Pods-xHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xHere/Pods-xHere.debug.xcconfig"; sourceTree = "<group>"; };
 		D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +153,8 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				99CEF6B11DD686DA00D36904 /* xHere.entitlements */,
+				99CEF6AE1DD6612000D36904 /* ViewControllers */,
 				8B2B13D41DD117F200961683 /* AppDelegate.swift */,
 				8B6CB3031DD5ABD200D64B49 /* TESTViewController.h */,
 				8B6CB3041DD5ABD200D64B49 /* TESTViewController.m */,
@@ -176,6 +185,16 @@
 				8B2B13F91DD117F300961683 /* Info.plist */,
 			);
 			path = xHereUITests;
+			sourceTree = "<group>";
+		};
+		99CEF6AE1DD6612000D36904 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				99CEF6AF1DD661B400D36904 /* LoginViewController.swift */,
+				99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */,
+				99CEF6B31DD698DD00D36904 /* TimeLineViewController.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +273,14 @@
 				TargetAttributes = {
 					8B2B13D01DD117F200961683 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = SDHBMW8ZGY;
+						DevelopmentTeam = 25UQP5NM3X;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					8B2B13E71DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
@@ -301,6 +325,7 @@
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
+				99CEF6B51DD698DD00D36904 /* TimeLineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +476,9 @@
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8B6CB3051DD5ABD200D64B49 /* TESTViewController.m in Sources */,
+				99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
+				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,8 +632,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = SDHBMW8ZGY;
+				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 25UQP5NM3X;
 				INFOPLIST_FILE = xHere/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -622,8 +652,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = SDHBMW8ZGY;
+				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 25UQP5NM3X;
 				INFOPLIST_FILE = xHere/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
