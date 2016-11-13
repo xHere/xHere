@@ -11,10 +11,17 @@ import UIKit
 class HomeTabBarViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
-    
+  
+    var homeFeedNavi:UINavigationController!
     var homeFeedViewController:UIViewController!
+
+    var discoveryNavi:UINavigationController!
     var discoverViewController:UIViewController!
+    
+    var postContentNavi:UINavigationController!
     var postContentViewController:UIViewController?
+    
+    var profileNavi:UINavigationController!
     var profileViewController:UIViewController!
     
     var contentVC:UIViewController! {
@@ -31,10 +38,23 @@ class HomeTabBarViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.contentVC = homeFeedViewController
+        
+        homeFeedViewController = UIViewController()
+        homeFeedViewController.view.backgroundColor = .red
+        homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
+        
+        discoverViewController = UIViewController()
+        discoverViewController.view.backgroundColor = .blue
+        discoveryNavi = UINavigationController(rootViewController: discoverViewController)
+        
+        profileViewController = UIViewController()
+        profileViewController.view.backgroundColor = .green
+        profileNavi = UINavigationController(rootViewController: profileViewController)
+        
+        self.contentVC = homeFeedNavi
         // Do any additional setup after loading the view.
     }
 
@@ -46,20 +66,21 @@ class HomeTabBarViewController: UIViewController {
     
     // MARK: - Tab Bar Button Actions
     @IBAction func touchOnHome(_ sender: UIButton) {
-        self.contentVC = homeFeedViewController
+        self.contentVC = homeFeedNavi
     }
     
     
     @IBAction func touchOnDiscover(_ sender: UIButton) {
-        self.contentVC = discoverViewController
+        self.contentVC = discoveryNavi
     }
     
     @IBAction func touchOnCamera(_ sender: UIButton) {
+        postContentViewController = FusumaCameraViewController()
         self.present(postContentViewController!, animated: true, completion: nil)
     }
     
     @IBAction func touchOnProfile(_ sender: UIButton) {
-        self.contentVC = profileViewController
+        self.contentVC = profileNavi
     }
     
     

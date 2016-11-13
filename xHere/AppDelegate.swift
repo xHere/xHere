@@ -26,9 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: parseClientConfig)
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
         if PFUser.current() != nil {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineNavigationController")
-            window?.rootViewController = timeLineVc
+//            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineNavigationController")
+//            window?.rootViewController = timeLineVc
+            
+            let homeTabBarVC = HomeTabBarViewController(nibName: "HomeTabBarViewController", bundle: nil)
+            window?.rootViewController = homeTabBarVC
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "userDidLogOut"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
