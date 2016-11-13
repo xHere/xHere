@@ -29,7 +29,6 @@ class HomeTabBarViewController: UIViewController {
             contentView.addSubview(contentVC.view)
             contentVC.didMove(toParentViewController: self)
         }
-        
     }
     
     override func viewDidLoad() {
@@ -58,7 +57,6 @@ class HomeTabBarViewController: UIViewController {
     @IBAction func touchOnCamera(_ sender: UIButton) {
         self.present(postContentViewController!, animated: true, completion: nil)
     }
-    
     
     @IBAction func touchOnProfile(_ sender: UIButton) {
         self.contentVC = profileViewController
