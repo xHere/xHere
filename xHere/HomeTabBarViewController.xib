@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeTabBarViewController" customModule="xHere" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="HVO-vX-ZHH" id="xpc-D2-BlU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HVO-vX-ZHH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJY-mi-IcX">
+                    <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qjr-Ad-EFf">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-iC-fn3">
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="80"/>
+                                    <state key="normal" title="HOME"/>
+                                    <connections>
+                                        <action selector="touchOnHome:" destination="-1" eventType="touchUpInside" id="ZJp-VM-ZDq"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Ci-Ls9">
+                                    <rect key="frame" x="94" y="0.0" width="93.5" height="80"/>
+                                    <state key="normal" title="DISCOVER"/>
+                                    <connections>
+                                        <action selector="touchOnDiscover:" destination="-1" eventType="touchUpInside" id="hTg-4y-Dxl"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REZ-qD-JKE">
+                                    <rect key="frame" x="187.5" y="0.0" width="94" height="80"/>
+                                    <state key="normal" title="Camera"/>
+                                    <connections>
+                                        <action selector="touchOnCamera:" destination="-1" eventType="touchUpInside" id="tEh-de-c1x"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-lb-t14">
+                                    <rect key="frame" x="281.5" y="0.0" width="93.5" height="80"/>
+                                    <state key="normal" title="PROFILE"/>
+                                    <connections>
+                                        <action selector="touchOnProfile:" destination="-1" eventType="touchUpInside" id="DFt-Vj-bum"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="HsS-eX-cRD"/>
+                        <constraint firstItem="Qjr-Ad-EFf" firstAttribute="top" secondItem="PJY-mi-IcX" secondAttribute="top" id="MYw-LJ-dHh"/>
+                        <constraint firstItem="Qjr-Ad-EFf" firstAttribute="leading" secondItem="PJY-mi-IcX" secondAttribute="leading" id="Zk1-BW-7kb"/>
+                        <constraint firstAttribute="bottom" secondItem="Qjr-Ad-EFf" secondAttribute="bottom" id="l95-X1-80x"/>
+                        <constraint firstAttribute="trailing" secondItem="Qjr-Ad-EFf" secondAttribute="trailing" id="ls5-mg-IqQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PJY-mi-IcX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5IT-Us-bQG"/>
+                <constraint firstAttribute="bottom" secondItem="HVO-vX-ZHH" secondAttribute="bottom" id="78t-A2-PSV"/>
+                <constraint firstAttribute="bottom" secondItem="PJY-mi-IcX" secondAttribute="bottom" id="7aL-C8-pCM"/>
+                <constraint firstItem="HVO-vX-ZHH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="O6M-Kc-gU7"/>
+                <constraint firstAttribute="trailing" secondItem="PJY-mi-IcX" secondAttribute="trailing" id="XWc-8b-WOg"/>
+                <constraint firstItem="HVO-vX-ZHH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lGd-LZ-kPF"/>
+                <constraint firstAttribute="trailing" secondItem="HVO-vX-ZHH" secondAttribute="trailing" id="rSe-vV-rru"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="59.5"/>
+        </view>
+    </objects>
+</document>

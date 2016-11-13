@@ -16,6 +16,8 @@
 		8B2B13E21DD117F200961683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2B13E01DD117F200961683 /* LaunchScreen.storyboard */; };
 		8B2B13ED1DD117F300961683 /* xHereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13EC1DD117F300961683 /* xHereTests.swift */; };
 		8B2B13F81DD117F300961683 /* xHereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13F71DD117F300961683 /* xHereUITests.swift */; };
+		8B4BCC841DD8FB5200FACD79 /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCC821DD8FB5200FACD79 /* HomeTabBarViewController.swift */; };
+		8B4BCC851DD8FB5200FACD79 /* HomeTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4BCC831DD8FB5200FACD79 /* HomeTabBarViewController.xib */; };
 		8B6CB3051DD5ABD200D64B49 /* TESTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CB3041DD5ABD200D64B49 /* TESTViewController.m */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
 		99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */; };
@@ -61,6 +63,8 @@
 		8B2B13F31DD117F300961683 /* xHereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xHereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2B13F71DD117F300961683 /* xHereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHereUITests.swift; sourceTree = "<group>"; };
 		8B2B13F91DD117F300961683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B4BCC821DD8FB5200FACD79 /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
+		8B4BCC831DD8FB5200FACD79 /* HomeTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTabBarViewController.xib; sourceTree = "<group>"; };
 		8B6CB3021DD5ABD100D64B49 /* xHere-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xHere-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B6CB3031DD5ABD200D64B49 /* TESTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TESTViewController.h; sourceTree = "<group>"; };
 		8B6CB3041DD5ABD200D64B49 /* TESTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TESTViewController.m; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
 				99CEF6B61DD6A10600D36904 /* API */,
 				99CEF6B11DD686DA00D36904 /* xHere.entitlements */,
 				99CEF6AE1DD6612000D36904 /* ViewControllers */,
@@ -184,6 +189,15 @@
 				8B2B13F91DD117F300961683 /* Info.plist */,
 			);
 			path = xHereUITests;
+			sourceTree = "<group>";
+		};
+		8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8B4BCC821DD8FB5200FACD79 /* HomeTabBarViewController.swift */,
+				8B4BCC831DD8FB5200FACD79 /* HomeTabBarViewController.xib */,
+			);
+			name = "Home TabBar ViewController";
 			sourceTree = "<group>";
 		};
 		99CEF6AE1DD6612000D36904 /* ViewControllers */ = {
@@ -330,6 +344,7 @@
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
+				8B4BCC851DD8FB5200FACD79 /* HomeTabBarViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4BCC841DD8FB5200FACD79 /* HomeTabBarViewController.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8B6CB3051DD5ABD200D64B49 /* TESTViewController.m in Sources */,
