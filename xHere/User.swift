@@ -108,16 +108,16 @@ class User : PFUser {
 
     var comment : Comment?
     
-    override class func initialize() {
-
-        
-            self.registerSubclass()
-        
-    }
-    
-    override static func parseClassName() -> String {
-        return "User"
-    }
+//    override class func initialize() {
+//
+//        
+//        self.registerSubclass()
+//        
+//    }
+//    
+//    override static func parseClassName() -> String {
+//        return "User"
+//    }
     
     
 }
