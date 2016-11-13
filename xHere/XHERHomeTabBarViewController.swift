@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Parse
 
-class HomeTabBarViewController: UIViewController {
+class XHERHomeTabBarViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
   
@@ -38,23 +39,10 @@ class HomeTabBarViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeFeedViewController = UIViewController()
-        homeFeedViewController.view.backgroundColor = .red
-        homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
-        
-        discoverViewController = UIViewController()
-        discoverViewController.view.backgroundColor = .blue
-        discoveryNavi = UINavigationController(rootViewController: discoverViewController)
-        
-        profileViewController = UIViewController()
-        profileViewController.view.backgroundColor = .green
-        profileNavi = UINavigationController(rootViewController: profileViewController)
-        
-        self.contentVC = homeFeedNavi
+        self.setupContainedControllers()
         // Do any additional setup after loading the view.
     }
 
@@ -63,6 +51,21 @@ class HomeTabBarViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setupContainedControllers() {
+        homeFeedViewController = UIViewController()
+        homeFeedViewController.view.backgroundColor = .red
+        homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
+        
+        discoverViewController = UIViewController()
+        discoverViewController.view.backgroundColor = .blue
+        discoveryNavi = UINavigationController(rootViewController: discoverViewController)
+        
+        profileViewController = XHERProfileViewController()
+        profileViewController.view.backgroundColor = .green
+        profileNavi = UINavigationController(rootViewController: profileViewController)
+        
+        self.contentVC = homeFeedNavi
+    }
     
     // MARK: - Tab Bar Button Actions
     @IBAction func touchOnHome(_ sender: UIButton) {

@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineNavigationController")
 //            window?.rootViewController = timeLineVc
             
-            let homeTabBarVC = HomeTabBarViewController(nibName: "HomeTabBarViewController", bundle: nil)
+            let homeTabBarVC = XHERHomeTabBarViewController(nibName: "XHERHomeTabBarViewController", bundle: nil)
             window?.rootViewController = homeTabBarVC
         }
         

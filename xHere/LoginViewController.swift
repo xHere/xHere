@@ -64,7 +64,9 @@ class LoginViewController: UIViewController {
             }
             else {
                 print("userLogged In \(user?.username)")
-                self.performSegue(withIdentifier: "segueToTimeLine", sender: nil)
+//                self.performSegue(withIdentifier: "segueToTimeLine", sender: nil)
+                let homeTabBarVC = XHERHomeTabBarViewController()
+                self.present(homeTabBarVC, animated: true, completion: nil)
             }
         }
         

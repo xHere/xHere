@@ -16,12 +16,14 @@
 		8B2B13E21DD117F200961683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2B13E01DD117F200961683 /* LaunchScreen.storyboard */; };
 		8B2B13ED1DD117F300961683 /* xHereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13EC1DD117F300961683 /* xHereTests.swift */; };
 		8B2B13F81DD117F300961683 /* xHereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13F71DD117F300961683 /* xHereUITests.swift */; };
-		8B4BCC841DD8FB5200FACD79 /* HomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCC821DD8FB5200FACD79 /* HomeTabBarViewController.swift */; };
-		8B4BCC851DD8FB5200FACD79 /* HomeTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4BCC831DD8FB5200FACD79 /* HomeTabBarViewController.xib */; };
+		8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCC821DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift */; };
+		8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */; };
 		8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDB1DD90BF500728209 /* FusumaCameraViewController.swift */; };
 		8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDC1DD90BF500728209 /* FusumaCameraViewController.xib */; };
 		8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDD1DD90BF500728209 /* PBJVisionCameraViewController.swift */; };
 		8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDE1DD90BF500728209 /* PBJVisionCameraViewController.xib */; };
+		8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */; };
+		8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
 		99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */; };
 		C1D59EB344C288FBFF399CE8 /* Pods_xHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */; };
@@ -66,13 +68,15 @@
 		8B2B13F31DD117F300961683 /* xHereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xHereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2B13F71DD117F300961683 /* xHereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHereUITests.swift; sourceTree = "<group>"; };
 		8B2B13F91DD117F300961683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B4BCC821DD8FB5200FACD79 /* HomeTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarViewController.swift; sourceTree = "<group>"; };
-		8B4BCC831DD8FB5200FACD79 /* HomeTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTabBarViewController.xib; sourceTree = "<group>"; };
+		8B4BCC821DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeTabBarViewController.swift; sourceTree = "<group>"; };
+		8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERHomeTabBarViewController.xib; sourceTree = "<group>"; };
 		8B6CB3021DD5ABD100D64B49 /* xHere-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xHere-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BA3CBDB1DD90BF500728209 /* FusumaCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FusumaCameraViewController.swift; sourceTree = "<group>"; };
 		8BA3CBDC1DD90BF500728209 /* FusumaCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FusumaCameraViewController.xib; sourceTree = "<group>"; };
 		8BA3CBDD1DD90BF500728209 /* PBJVisionCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBJVisionCameraViewController.swift; sourceTree = "<group>"; };
 		8BA3CBDE1DD90BF500728209 /* PBJVisionCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBJVisionCameraViewController.xib; sourceTree = "<group>"; };
+		8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERProfileViewController.swift; sourceTree = "<group>"; };
+		8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERProfileViewController.xib; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		99CEF6B11DD686DA00D36904 /* xHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xHere.entitlements; sourceTree = "<group>"; };
@@ -162,9 +166,10 @@
 			children = (
 				8BA3CBE31DD90BFB00728209 /* Camera Controllers */,
 				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
+				8BA7D20E1DD922820002C848 /* ProfileViewController */,
 				99CEF6B61DD6A10600D36904 /* API */,
 				99CEF6B11DD686DA00D36904 /* xHere.entitlements */,
-				99CEF6AE1DD6612000D36904 /* ViewControllers */,
+				99CEF6AE1DD6612000D36904 /* Login ViewControllers */,
 				8B2B13D41DD117F200961683 /* AppDelegate.swift */,
 				8B2B13D61DD117F200961683 /* ViewController.swift */,
 				8B2B13D81DD117F200961683 /* Main.storyboard */,
@@ -198,8 +203,8 @@
 		8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8B4BCC821DD8FB5200FACD79 /* HomeTabBarViewController.swift */,
-				8B4BCC831DD8FB5200FACD79 /* HomeTabBarViewController.xib */,
+				8B4BCC821DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift */,
+				8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */,
 			);
 			name = "Home TabBar ViewController";
 			sourceTree = "<group>";
@@ -215,13 +220,22 @@
 			name = "Camera Controllers";
 			sourceTree = "<group>";
 		};
-		99CEF6AE1DD6612000D36904 /* ViewControllers */ = {
+		8BA7D20E1DD922820002C848 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */,
+				8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */,
+			);
+			name = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		99CEF6AE1DD6612000D36904 /* Login ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				99CEF6AF1DD661B400D36904 /* LoginViewController.swift */,
 				99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */,
 			);
-			name = ViewControllers;
+			name = "Login ViewControllers";
 			sourceTree = "<group>";
 		};
 		99CEF6B61DD6A10600D36904 /* API */ = {
@@ -360,8 +374,9 @@
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
+				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
-				8B4BCC851DD8FB5200FACD79 /* HomeTabBarViewController.xib in Resources */,
+				8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,10 +524,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B4BCC841DD8FB5200FACD79 /* HomeTabBarViewController.swift in Sources */,
+				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
+				8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */,
 				99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
 				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
