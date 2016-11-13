@@ -7,17 +7,42 @@
 //
 
 import UIKit
+import Parse
+class Media: PFObject,PFSubclassing {
+    /**
+     The name of the class as seen in the REST API.
+     */
+    
 
-class Media: NSObject {
 
-    enum MediaType {
-        case Photo
-        case Video
-        case Audio
+    var mediaData : PFFile?{
+        get {
+            if let _mediaData = self["mediaData"] as? PFFile{
+                return _mediaData
+            }else{
+                return nil
+            }
+            
+        }
+        set{
+            self["mediaData"] = newValue
+        }
+    }
+    var mediaType : Int?{
+        get{
+            if let _mediaType = self["mediaType"] as? Int{
+               return _mediaType
+            }else{
+                return 0
+            }
+        }
+        set{
+            
+            self["mediaType"] = newValue
+        }
     }
     
-    
-    var mediaUrl : URL?
-    
-    
+    public static func parseClassName() -> String {
+        return "Media"
+    }
 }

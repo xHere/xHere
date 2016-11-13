@@ -7,15 +7,43 @@
 //
 
 import UIKit
+import Parse
 
-class POI: NSObject {
+class POI: PFObject,PFSubclassing {
     
-    var id : NSNumber!
-    var latitude : Double?
-    var longitude : Double?
+   
+
     var user : User?
     var content : Content?
     var comment : Comment?
     
+    var POIId : NSNumber?{
+        get{
+            if let _POIId = self["POIId"] as? NSNumber{
+                return _POIId
+            }else{
+                return 0
+            }
+        }
+        set{
+            self["POIId"] = newValue
+        }
+    }
+    var geoPoint : PFGeoPoint?{
+        get{
+            if let _geoPoint = self["geoPoint"] as? PFGeoPoint{
+                return _geoPoint
+            }else{
+                return nil
+            }
+        }
+        set{
+            self["geoPoint"] = newValue
+        }
+    }
+    
+    public static func parseClassName() -> String {
+        return "POI"
+    }
 
 }

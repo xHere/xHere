@@ -7,12 +7,45 @@
 //
 
 import UIKit
-
-class Comment: NSObject {
+import Parse
+class Comment: PFObject,PFSubclassing {
     
+    
+   
+    
+    
+    var date : NSDate? {
+        get {
+            if let _date = self["date"] as? NSDate{
+                return _date
+            }else{
+                return nil
+            }
+            
+        }
+        set{
+            self["date"] = newValue
+        }
+    }
+    var text : String? {
+        get {
+            if let _date = self["text"] as? String{
+                return _date
+            }else{
+                return ""
+            }
+            
+        }
+        set{
+            self["text"] = newValue
+        }
+    }
     var user : User?
     var content : Content?
-    var date : NSDate?
-    var text : String?
+   
+    public static func parseClassName() -> String {
+        return "Comment"
+    }
+
 
 }

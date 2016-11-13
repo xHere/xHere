@@ -89,9 +89,9 @@ class User : PFUser {
         }
     }
     
-    var profileImageUrl : URL?{
+    var profileImageUrl : PFFile?{
         get {
-            if let _profileImageUrl = self["profileImageUrl"] as? URL{
+            if let _profileImageUrl = self["profileImageUrl"] as? PFFile{
                 return _profileImageUrl
             }else{
                 return nil
