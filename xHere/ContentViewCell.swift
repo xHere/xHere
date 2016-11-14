@@ -16,7 +16,6 @@ class ContentViewCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var contentTextLabel: UILabel!
     
-    
     //DataSource
     var content:Content! {
         didSet {
