@@ -96,7 +96,9 @@ class LoginViewController: UIViewController {
                     user?.setValue(data["last_name"], forKey: "lastName")
                     user?.setValue(data["first_name"], forKey: "firstName")
                     user?.saveInBackground()
-                    self.performSegue(withIdentifier: "segueToTimeLine", sender: nil)
+                    let homeTabBarVC = XHERHomeTabBarViewController()
+                    self.present(homeTabBarVC, animated: true, completion: nil)
+
                     
                 })
             }
