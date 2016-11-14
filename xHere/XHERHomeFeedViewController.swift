@@ -44,9 +44,11 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentViewCell", for: indexPath) as! ContentViewCell
         
-        cell.textLabel?.text = "TEST"
+//        cell.textLabel?.text = "TEST"
+        cell.authorScreenName.text = "@realq86"
+        cell.contentTextLabel.text = "TEST TEST TEST"
         
         return cell
     }

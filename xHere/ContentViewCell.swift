@@ -7,9 +7,19 @@
 //
 
 import UIKit
+import Parse
 
 class ContentViewCell: UITableViewCell {
 
+    @IBOutlet weak var contentImageView: UIImageView!
+    @IBOutlet weak var authorScreenName: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var contentTextLabel: UILabel!
+    
+    
+    //DataSource
+    var content:PFObject!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
