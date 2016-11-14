@@ -18,7 +18,7 @@ class ContentViewCell: UITableViewCell {
     
     
     //DataSource
-    var content:PFObject!
+    var content:Content!
     
     override func awakeFromNib() {
         super.awakeFromNib()

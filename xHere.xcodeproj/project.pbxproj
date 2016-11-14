@@ -32,6 +32,11 @@
 		8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */; };
 		8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */; };
 		8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */; };
+		8BEC43B31DD950B700244F11 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AE1DD950B700244F11 /* Comment.swift */; };
+		8BEC43B41DD950B700244F11 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AF1DD950B700244F11 /* Content.swift */; };
+		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
+		8BEC43B61DD950B700244F11 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B11DD950B700244F11 /* POI.swift */; };
+		8BEC43B71DD950B700244F11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B21DD950B700244F11 /* User.swift */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
 		99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */; };
 		C1D59EB344C288FBFF399CE8 /* Pods_xHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */; };
@@ -93,6 +98,11 @@
 		8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewCell.xib; sourceTree = "<group>"; };
 		8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewCell.swift; sourceTree = "<group>"; };
 		8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POIViewCell.xib; sourceTree = "<group>"; };
+		8BEC43AE1DD950B700244F11 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		8BEC43AF1DD950B700244F11 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		8BEC43B11DD950B700244F11 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
+		8BEC43B21DD950B700244F11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		99CEF6B11DD686DA00D36904 /* xHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xHere.entitlements; sourceTree = "<group>"; };
@@ -180,6 +190,7 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				8BEC43B81DD950BE00244F11 /* Model */,
 				8BA7D2211DD92D750002C848 /* Content ViewCell */,
 				8BA3CBE31DD90BFB00728209 /* Camera Controllers */,
 				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
@@ -283,6 +294,18 @@
 				8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */,
 			);
 			name = "POI ViewCell";
+			sourceTree = "<group>";
+		};
+		8BEC43B81DD950BE00244F11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BEC43AE1DD950B700244F11 /* Comment.swift */,
+				8BEC43AF1DD950B700244F11 /* Content.swift */,
+				8BEC43B01DD950B700244F11 /* Media.swift */,
+				8BEC43B11DD950B700244F11 /* POI.swift */,
+				8BEC43B21DD950B700244F11 /* User.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		99CEF6AE1DD6612000D36904 /* Login ViewControllers */ = {
@@ -587,13 +610,18 @@
 				8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */,
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
 				8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */,
+				8BEC43B31DD950B700244F11 /* Comment.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */,
+				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
+				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
 				8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */,
 				8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */,
 				99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */,
+				8BEC43B61DD950B700244F11 /* POI.swift in Sources */,
+				8BEC43B71DD950B700244F11 /* User.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
 				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
 				8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */,
