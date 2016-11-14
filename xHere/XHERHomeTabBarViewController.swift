@@ -19,7 +19,7 @@ class XHERHomeTabBarViewController: UIViewController {
     var discoveryNavi:UINavigationController!
     var discoverViewController:UIViewController!
     
-    var postContentNavi:UINavigationController!
+    var postContentNavi:UINavigationController?
     var postContentViewController:UIViewController?
     
     var profileNavi:UINavigationController!
@@ -52,16 +52,13 @@ class XHERHomeTabBarViewController: UIViewController {
     }
     
     func setupContainedControllers() {
-        homeFeedViewController = UIViewController()
-        homeFeedViewController.view.backgroundColor = .red
+        homeFeedViewController = XHERHomeFeedViewController()
         homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
         
-        discoverViewController = UIViewController()
-        discoverViewController.view.backgroundColor = .blue
+        discoverViewController = XHERDiscoveryViewController()
         discoveryNavi = UINavigationController(rootViewController: discoverViewController)
         
         profileViewController = XHERProfileViewController()
-        profileViewController.view.backgroundColor = .green
         profileNavi = UINavigationController(rootViewController: profileViewController)
         
         self.contentVC = homeFeedNavi

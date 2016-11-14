@@ -24,6 +24,14 @@
 		8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDE1DD90BF500728209 /* PBJVisionCameraViewController.xib */; };
 		8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */; };
 		8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */; };
+		8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */; };
+		8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */; };
+		8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */; };
+		8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */; };
+		8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D21D1DD92D710002C848 /* ContentViewCell.swift */; };
+		8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */; };
+		8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */; };
+		8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
 		99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */; };
 		C1D59EB344C288FBFF399CE8 /* Pods_xHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */; };
@@ -77,6 +85,14 @@
 		8BA3CBDE1DD90BF500728209 /* PBJVisionCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBJVisionCameraViewController.xib; sourceTree = "<group>"; };
 		8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERProfileViewController.swift; sourceTree = "<group>"; };
 		8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERProfileViewController.xib; sourceTree = "<group>"; };
+		8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERDiscoveryViewController.swift; sourceTree = "<group>"; };
+		8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERDiscoveryViewController.xib; sourceTree = "<group>"; };
+		8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedViewController.swift; sourceTree = "<group>"; };
+		8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERHomeFeedViewController.xib; sourceTree = "<group>"; };
+		8BA7D21D1DD92D710002C848 /* ContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewCell.swift; sourceTree = "<group>"; };
+		8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewCell.xib; sourceTree = "<group>"; };
+		8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewCell.swift; sourceTree = "<group>"; };
+		8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POIViewCell.xib; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		99CEF6B11DD686DA00D36904 /* xHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xHere.entitlements; sourceTree = "<group>"; };
@@ -164,8 +180,11 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				8BA7D2211DD92D750002C848 /* Content ViewCell */,
 				8BA3CBE31DD90BFB00728209 /* Camera Controllers */,
 				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
+				8BA7D21C1DD926D00002C848 /* Home Feed ViewController */,
+				8BA7D2171DD926900002C848 /* Discovery ViewController */,
 				8BA7D20E1DD922820002C848 /* ProfileViewController */,
 				99CEF6B61DD6A10600D36904 /* API */,
 				99CEF6B11DD686DA00D36904 /* xHere.entitlements */,
@@ -227,6 +246,43 @@
 				8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */,
 			);
 			name = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		8BA7D2171DD926900002C848 /* Discovery ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BA7D2261DD92F9E0002C848 /* POI ViewCell */,
+				8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */,
+				8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */,
+			);
+			name = "Discovery ViewController";
+			sourceTree = "<group>";
+		};
+		8BA7D21C1DD926D00002C848 /* Home Feed ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */,
+				8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */,
+			);
+			name = "Home Feed ViewController";
+			sourceTree = "<group>";
+		};
+		8BA7D2211DD92D750002C848 /* Content ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8BA7D21D1DD92D710002C848 /* ContentViewCell.swift */,
+				8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */,
+			);
+			name = "Content ViewCell";
+			sourceTree = "<group>";
+		};
+		8BA7D2261DD92F9E0002C848 /* POI ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */,
+				8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */,
+			);
+			name = "POI ViewCell";
 			sourceTree = "<group>";
 		};
 		99CEF6AE1DD6612000D36904 /* Login ViewControllers */ = {
@@ -370,12 +426,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B2B13E21DD117F200961683 /* LaunchScreen.storyboard in Resources */,
+				8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */,
 				8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */,
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
+				8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */,
+				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
+				8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */,
 				8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,10 +584,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */,
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
+				8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
+				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
+				8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */,
 				8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */,
 				99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
@@ -633,6 +697,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -675,6 +740,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

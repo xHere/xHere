@@ -65,12 +65,12 @@ class PBJVisionCameraViewController: UIViewController, PBJVisionDelegate {
         }
     }
     
-    func vision(_ vision: PBJVision, capturedPhoto photoDict: [AnyHashable : Any]?, error: Error?) {
-        
-        print(error?.localizedDescription)
-        let photo = photoDict?[PBJVisionPhotoImageKey]
-        print(photo.debugDescription)
-    }
+//    func vision(_ vision: PBJVision, capturedPhoto photoDict: [AnyHashable : Any]?, error: Error?) {
+//        
+//        print(error?.localizedDescription)
+//        let photo = photoDict?[PBJVisionPhotoImageKey]
+//        print(photo.debugDescription)
+//    }
     /*
     // MARK: - Navigation
 
