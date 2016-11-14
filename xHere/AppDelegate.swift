@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Parse
+import FacebookSDK
+import ParseFacebookUtils
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: parseClientConfig)
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
+        PFFacebookUtils.initializeFacebook()
         if PFUser.current() != nil {
 //            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
 //            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineNavigationController")
@@ -67,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBAppCall.handleOpen(url, sourceApplication: nil, with: PFFacebookUtils.session())
     }
 
     // MARK: - Core Data stack
