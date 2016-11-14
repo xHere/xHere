@@ -20,9 +20,19 @@ class ContentViewCell: UITableViewCell {
     //DataSource
     var content:Content! {
         didSet {
-         
             authorScreenName.text = content.user?.screenName
             contentTextLabel.text = content.text
+            
+            
+            /* Other properties to map
+            likeButton.isSelected = content.hasLiked
+            
+            if let contentImage = content.mediaObject?.mediaData {
+                contentImageView.image = contentImage
+            }
+            */
+            
+            
         }
     }
     
