@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -46,9 +47,12 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContentViewCell", for: indexPath) as! ContentViewCell
         
-//        cell.textLabel?.text = "TEST"
-        cell.authorScreenName.text = "@realq86"
-        cell.contentTextLabel.text = "TEST TEST TEST"
+        //THIS IS MOCK DATA!!
+        let mockContent = Content()
+        mockContent.user = PFUser.current() as? User
+        mockContent.text = "MOCK CONTENT: The contents of this property always refer to the first bar button item in the leftBarButtonItems"
+        
+        cell.content = mockContent
         
         return cell
     }

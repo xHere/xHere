@@ -18,7 +18,13 @@ class ContentViewCell: UITableViewCell {
     
     
     //DataSource
-    var content:Content!
+    var content:Content! {
+        didSet {
+         
+            authorScreenName.text = content.user?.screenName
+            contentTextLabel.text = content.text
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
