@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import MapKit
 
 class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var mapView: MKMapView!
     var tableViewDataBackArray = [AnyObject]()
+    var currentLocation = CLLocationCoordinate2DMake(37.785771,-122.406165)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "DISCOVER"
         self.setupTableView()
-        // Do any additional setup after loading the view.
+        self.setUpMapView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,6 +41,22 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "POIViewCell")
     }
     
+    func setUpMapView(){
+        
+        
+        let initialLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = currentLocation
+        annotation.title = "You are here!!"
+        self.mapView.addAnnotation(annotation)
+    
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return tableViewDataBackArray.count
         return 10
@@ -46,7 +65,6 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath)
         
-        cell.textLabel?.text = "TEST"
         
         return cell
     }

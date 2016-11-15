@@ -10,8 +10,14 @@ import UIKit
 
 class CommentCell: UITableViewCell {
 
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var commentLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        profileImageView.layer.cornerRadius = 2;
+        profileImageView.clipsToBounds = true
         // Initialization code
     }
 

@@ -56,6 +56,11 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         return cell
     }
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
     
     
     /*
