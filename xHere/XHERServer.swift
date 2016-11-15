@@ -15,6 +15,12 @@ class XHERServer: NSObject {
     static let sharedInstance = XHERServer()
     
     
+    // MARK: - Download Content API
+    func download(content:Content, success:()->(), failure: ()->()) {
+        
+    }
+    
+    
     
     // MARK: - Upload Content API
     func uploadContent(withText text:String, andImage image:UIImage?, andVideo:Data?, success:@escaping ()->(), failure:@escaping ()->()) {
@@ -50,10 +56,11 @@ class XHERServer: NSObject {
                     media.mediaType = .image
                     media.mediaData = imageFile
                     
-                    content.mediaArray = [media]
-                    media.saveInBackground(block: { (saveScuccss:Bool, error:Error?) in
+                    media.content = content
+                    media.saveInBackground(block: { (saveSucess:Bool, error:Error?) in
 
-                        if saveScuccss {
+                        if saveSucess {
+                            content.mediaArray = [media]
                             do {
                                 try content.save()
                                 //Call success Block
@@ -64,7 +71,9 @@ class XHERServer: NSObject {
                                 failure()
                             }
                         }
-                        failure()
+                        else {
+                            failure()
+                        }
                     })
 //
                     //Relation Code

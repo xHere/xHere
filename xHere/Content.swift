@@ -96,15 +96,18 @@ class Content: PFObject,PFSubclassing {
     private var _mediaArray:[PFObject]? {
         
         get {
-            if let returnArray = self["mediaArray"] {
-                return returnArray as? [PFObject]
+            if let returnArray = self["mediaArray"] { //Return an array only if it's not empty
+                if (returnArray as! [PFObject]).count > 0 {
+                    return returnArray as? [PFObject]
+                }
             }
-            else { 
-//                _mediaArray = [Media]()
+//            else { 
+//                let returnArray = [PFObject]()
+//                return returnArray
                 return nil
-            }
+//            }
         }
-        
+    
         set {
             self["mediaArray"] = newValue
         }
@@ -114,18 +117,18 @@ class Content: PFObject,PFSubclassing {
     var mediaArray:[Media]? {
         get {
 
-            if _mediaArrayTyped == nil {
-                _mediaArrayTyped = [Media]()
-                
-                if let _mediaArray = _mediaArray {
-                    for object in _mediaArray {
-                        let media = object as! Media
-                        _mediaArrayTyped?.append(media)
-                    }
-                }
+            if _mediaArrayTyped != nil { //If an array of Media is loaded
+                return _mediaArrayTyped
             }
-            
-            return _mediaArrayTyped!
+            if let _mediaArray = _mediaArray { //If not load an array of PFObject into array of Media
+                _mediaArrayTyped = [Media]()
+                for object in _mediaArray {
+                    let media = object as! Media
+                    _mediaArrayTyped?.append(media)
+                }
+                return _mediaArrayTyped!
+            }
+            return nil
         }
         set {
             _mediaArrayTyped = newValue

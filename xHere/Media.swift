@@ -19,7 +19,51 @@ class Media: PFObject,PFSubclassing {
      The name of the class as seen in the REST API.
      */
     
-
+    var content:Content? {
+        get {
+            if let content = self["content"] {
+                return content as? Content
+            }
+            return nil
+        }
+        set {
+            self["content"] = newValue
+        }
+    }
+//    var _contentArray:[PFObject] {
+//        get {
+//            if let returnArray = self["content"] {
+//                return returnArray as! [PFObject]
+//            }
+//            let returnArray = [PFObject]()
+//            return returnArray
+//        }
+//        set {
+//            self["content"] = newValue
+//        }
+//    }
+//    
+//    var _contentArrayTyped:[Content]?
+//    var content:Content {
+//        
+//        get {
+//            
+//            if _contentArrayTyped == nil {
+//                _contentArrayTyped = [Content]()
+//                
+//                for object in _contentArray {
+//                    let content = object as! Content
+//                    _contentArrayTyped?.append(content)
+//                }
+//            }
+//            return _contentArrayTyped![0]
+//        }
+//        set {
+//            _contentArrayTyped = [Content]()
+//            _contentArrayTyped?.append(newValue)
+//            _contentArray.append(newValue)
+//        }
+//    }
 
     var mediaData : PFFile?{
         get {
