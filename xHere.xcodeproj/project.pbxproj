@@ -32,6 +32,7 @@
 		8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */; };
 		8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */; };
 		8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */; };
+		8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFFAB81DDA57D200A7517E /* XHERServer.swift */; };
 		8BEC43B31DD950B700244F11 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AE1DD950B700244F11 /* Comment.swift */; };
 		8BEC43B41DD950B700244F11 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AF1DD950B700244F11 /* Content.swift */; };
 		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
@@ -98,6 +99,7 @@
 		8BA7D21E1DD92D710002C848 /* ContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewCell.xib; sourceTree = "<group>"; };
 		8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewCell.swift; sourceTree = "<group>"; };
 		8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POIViewCell.xib; sourceTree = "<group>"; };
+		8BAFFAB81DDA57D200A7517E /* XHERServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERServer.swift; sourceTree = "<group>"; };
 		8BEC43AE1DD950B700244F11 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8BEC43AF1DD950B700244F11 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		99CEF6B61DD6A10600D36904 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				8BAFFAB81DDA57D200A7517E /* XHERServer.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
 				8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */,
 				8BEC43B31DD950B700244F11 /* Comment.swift in Sources */,
+				8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */,
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,

@@ -8,9 +8,14 @@
 
 import UIKit
 import Fusuma
+import Parse
 
 class FusumaCameraViewController: UIViewController, FusumaDelegate {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var userCreatedImage:UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +51,8 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
     // Return the image but called after is dismissed.
     func fusumaDismissedWithImage(_ image: UIImage) {
         
+        userCreatedImage = image
+        
         print("Called just after FusumaViewController is dismissed.")
     }
     
@@ -64,6 +71,21 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
         
     }
     
+    @IBAction func touchOnPost(_ sender: UIButton) {
+        
+        let server = XHERServer.sharedInstance
+        
+        if let userCreatedImage = userCreatedImage {        
+            
+            server.uploadContent(withText: "FIRST MESSAGE FROM CAMERAVC",
+                                 andImage: userCreatedImage,
+                                 success: {
+                                    print("POST 1ST CONTENT SUCCESS")
+                                },failure: {
+                                    print("POST 1ST CONTENT FAILTURE")
+                                })
+        }
+    }
 
     
     // MARK: - Navigation
@@ -73,5 +95,25 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
  
+    @IBAction func showPic(_ sender: Any) {
+        
+        let contentQuery = PFQuery(className: "Content")
+        contentQuery.includeKey("mediaArray")
+        do {
+            let content = try contentQuery.getObjectWithId("DOFmwJokci") as! Content
+            
+            let media = content.mediaArray?[0]
+            let mediaFile = media?.mediaData
+            mediaFile?.getDataInBackground(block: { (data:Data?, error:Error?) in
+                
+                self.imageView.image = UIImage(data: data!)
+                
+                
+                })
+        }
+        catch{
+            
+        }
+    }
 
 }
