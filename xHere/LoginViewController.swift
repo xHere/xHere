@@ -89,7 +89,8 @@ class LoginViewController: UIViewController {
                     let pictureData = picture["data"] as! NSDictionary
                     let url = URL(string: pictureData["url"] as! String)
                     let imageData = NSData.init(contentsOf: url!)
-                    let profilePicture = PFFile(data: imageData! as Data)
+                    let profilePicture = PFFile(name: "profileImage.jpg", data: imageData! as Data)
+//                    let profilePicture = PFFile(data: imageData! as Data)
                     user?.setObject(profilePicture!, forKey: "profileImageUrl")
                     user?.setValue(data["email"], forKey: "email")
                     user?.setValue(data["email"], forKey: "username")
