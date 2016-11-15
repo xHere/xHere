@@ -15,7 +15,6 @@ class Content: PFObject,PFSubclassing {
   
 
     
-    var mediaObject : Media?
     var poi : POI?
     var user : User?
     
@@ -93,7 +92,52 @@ class Content: PFObject,PFSubclassing {
             self["geoPoint"] = newValue
         }
     }
-   
+    
+    private var _mediaArray:[PFObject]? {
+        
+        get {
+            if let returnArray = self["mediaArray"] {
+                return returnArray as? [PFObject]
+            }
+            else { 
+//                _mediaArray = [Media]()
+                return nil
+            }
+        }
+        
+        set {
+            self["mediaArray"] = newValue
+        }
+    }
+
+    var _mediaArrayTyped:[Media]?
+    var mediaArray:[Media]? {
+        get {
+
+            if _mediaArrayTyped == nil {
+                _mediaArrayTyped = [Media]()
+                
+                if let _mediaArray = _mediaArray {
+                    for object in _mediaArray {
+                        let media = object as! Media
+                        _mediaArrayTyped?.append(media)
+                    }
+                }
+            }
+            
+            return _mediaArrayTyped!
+        }
+        set {
+            _mediaArrayTyped = newValue
+            _mediaArray = newValue
+        }
+    }
+    
+    var mediaRelations:PFRelation<PFObject> {
+        get {
+            return self.relation(forKey: "mediaRelations")
+        }
+    }
     
     public static func parseClassName() -> String {
         return "Content"
