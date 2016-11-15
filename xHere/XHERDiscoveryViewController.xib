@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHERDiscoveryViewController" customModule="xHere" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="T3E-8H-9Ug" id="ssT-R2-en3"/>
                 <outlet property="tableView" destination="Whs-v7-lwV" id="AZq-im-5Yz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-v7-lwV">
-                    <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="278" width="320" height="290"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="idI-Se-MHG">
@@ -31,16 +32,28 @@
                     </constraints>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-8H-9Ug">
+                    <rect key="frame" x="0.0" y="44" width="320" height="234"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="234" id="9cU-iL-pSI"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="gY1-S9-8Eh"/>
+                    </connections>
+                </mapView>
             </subviews>
             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="T3E-8H-9Ug" secondAttribute="trailing" id="0xf-71-BlY"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1D9-yk-z2C"/>
-                <constraint firstItem="Whs-v7-lwV" firstAttribute="top" secondItem="idI-Se-MHG" secondAttribute="bottom" id="73C-Za-yng"/>
+                <constraint firstAttribute="bottom" secondItem="Whs-v7-lwV" secondAttribute="bottom" id="3ZR-lu-kCs"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L2X-S7-b02"/>
+                <constraint firstAttribute="trailing" secondItem="Whs-v7-lwV" secondAttribute="trailing" id="NGd-CF-wxQ"/>
+                <constraint firstItem="T3E-8H-9Ug" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O2t-Q8-ajY"/>
                 <constraint firstAttribute="trailing" secondItem="idI-Se-MHG" secondAttribute="trailing" id="gi1-qg-EBb"/>
-                <constraint firstAttribute="bottom" secondItem="Whs-v7-lwV" secondAttribute="bottom" id="kei-gf-LRM"/>
-                <constraint firstAttribute="trailing" secondItem="Whs-v7-lwV" secondAttribute="trailing" id="uZf-sL-iid"/>
-                <constraint firstItem="Whs-v7-lwV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wWC-Bh-6mW"/>
+                <constraint firstItem="Whs-v7-lwV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iFw-Fk-pze"/>
+                <constraint firstItem="Whs-v7-lwV" firstAttribute="top" secondItem="T3E-8H-9Ug" secondAttribute="bottom" id="qOq-jA-mc3"/>
+                <constraint firstItem="T3E-8H-9Ug" firstAttribute="top" secondItem="idI-Se-MHG" secondAttribute="bottom" id="yfq-Wy-wJP"/>
             </constraints>
             <point key="canvasLocation" x="5" y="59"/>
         </view>
