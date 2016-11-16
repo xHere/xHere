@@ -14,4 +14,4 @@ let kPFClassUser = "User"
 let kPFKeyUser = "user"
 
 let kPFClassMedia = "Media"
-let kPFKeyMedia = "media"
+let kPFKeyMedia = "mediaArray"

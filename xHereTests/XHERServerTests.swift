@@ -41,6 +41,8 @@ class XHERServerTests: XCTestCase {
                     print("First Content id = \(firstContent.objectId)")
                     
                     print("Media array count = \(firstContent.mediaArray?.count)")
+                    let media = firstContent.mediaArray?[0]
+                    print(media?.objectId)
                     
                     expectation.fulfill()
                 }
