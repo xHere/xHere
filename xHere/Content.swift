@@ -16,8 +16,15 @@ class Content: PFObject,PFSubclassing {
 
     
     var poi : POI?
-    var user : User?
-    
+
+    var user : User {
+        get {
+            return self["user"] as! User
+        }
+        set {
+            self["user"] = newValue
+        }
+    }
     
     var contentID : NSNumber?{
         get{
@@ -101,11 +108,8 @@ class Content: PFObject,PFSubclassing {
                     return returnArray as? [PFObject]
                 }
             }
-//            else { 
-//                let returnArray = [PFObject]()
-//                return returnArray
+
                 return nil
-//            }
         }
     
         set {

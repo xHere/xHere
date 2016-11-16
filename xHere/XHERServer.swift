@@ -45,7 +45,8 @@ class XHERServer: NSObject {
                 content.date = Date.init() as NSDate
                 
                 //Set user
-                content.user = PFUser.current() as! User?
+                let currentUser = PFUser.current() as! User
+                content.user = currentUser
                 
                 //Set Image
                 if let image = image,

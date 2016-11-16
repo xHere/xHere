@@ -20,7 +20,7 @@ class ContentViewCell: UITableViewCell {
     //DataSource
     var content:Content! {
         didSet {
-            authorScreenName.text = content.user?.screenName
+            authorScreenName.text = content.user.screenName
             contentTextLabel.text = content.text
             
             
