@@ -15,9 +15,44 @@ class XHERServer: NSObject {
     static let sharedInstance = XHERServer()
     
     
-    // MARK: - Download Content API
-    func download(content:Content, success:()->(), failure: ()->()) {
+    
+    
+    
+    
+    
+    
+    // MARK: - Download Content API by User
+    func downloadContentBy(user:User, success:@escaping ([Content]?)->(), failure: @escaping (Error)->()) {
         
+        let userQuery = PFQuery(className: kPFClassContent)
+        userQuery.whereKey(kPFKeyUser, equalTo: user)
+        userQuery.includeKey(kPFKeyMedia)
+        userQuery.findObjectsInBackground { (contentsArray:[PFObject]?, error:Error?) in
+            
+            if error == nil {
+                
+                if let contentsArray = contentsArray {
+                    
+                    //Parse array of PFObject into Content
+                    var contentsArrayTyped = [Content]()
+                    for object in contentsArray {
+                        let content = object as! Content
+                        contentsArrayTyped.append(content)
+                    }
+                    
+                    //Return nil if the array is empty
+                    if contentsArrayTyped.count > 0 {
+                        success(contentsArrayTyped)
+                    }
+                    else {
+                        success(nil)
+                    }
+                }
+            }
+            else {
+                failure(error!)
+            }
+        }
     }
     
     
