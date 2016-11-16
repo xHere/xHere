@@ -49,7 +49,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         //THIS IS MOCK DATA!!
         let mockContent = Content()
-        mockContent.user = PFUser.current() as? User
+        mockContent.user = PFUser.current() as! User
         mockContent.text = "MOCK CONTENT: The contents of this property always refer to the first bar button item in the leftBarButtonItems"
         
         cell.content = mockContent

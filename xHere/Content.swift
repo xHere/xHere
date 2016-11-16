@@ -15,10 +15,16 @@ class Content: PFObject,PFSubclassing {
   
 
     
-    var mediaObject : Media?
     var poi : POI?
-    var user : User?
-    
+
+    var user : User {
+        get {
+            return self["user"] as! User
+        }
+        set {
+            self["user"] = newValue
+        }
+    }
     
     var contentID : NSNumber?{
         get{
@@ -93,7 +99,52 @@ class Content: PFObject,PFSubclassing {
             self["geoPoint"] = newValue
         }
     }
-   
+    
+    private var _mediaArray:[PFObject]? {
+        
+        get {
+            if let returnArray = self["mediaArray"] { //Return an array only if it's not empty
+                if (returnArray as! [PFObject]).count > 0 {
+                    return returnArray as? [PFObject]
+                }
+            }
+
+                return nil
+        }
+    
+        set {
+            self["mediaArray"] = newValue
+        }
+    }
+
+    var _mediaArrayTyped:[Media]?
+    var mediaArray:[Media]? {
+        get {
+
+            if _mediaArrayTyped != nil { //If an array of Media is loaded
+                return _mediaArrayTyped
+            }
+            if let _mediaArray = _mediaArray { //If not load an array of PFObject into array of Media
+                _mediaArrayTyped = [Media]()
+                for object in _mediaArray {
+                    let media = object as! Media
+                    _mediaArrayTyped?.append(media)
+                }
+                return _mediaArrayTyped!
+            }
+            return nil
+        }
+        set {
+            _mediaArrayTyped = newValue
+            _mediaArray = newValue
+        }
+    }
+    
+    var mediaRelations:PFRelation<PFObject> {
+        get {
+            return self.relation(forKey: "mediaRelations")
+        }
+    }
     
     public static func parseClassName() -> String {
         return "Content"
