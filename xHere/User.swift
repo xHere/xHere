@@ -103,6 +103,12 @@ class User : PFUser {
         }
     }
     
+//    var contentByUser:[Content]? {
+//        
+//        get {
+//            return self["contentByUser"] as! PFRelation
+//        }
+//    }
     
     var poi : POI?
 
