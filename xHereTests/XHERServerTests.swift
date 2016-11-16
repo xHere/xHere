@@ -42,18 +42,65 @@ class XHERServerTests: XCTestCase {
                     
                     print("Media array count = \(firstContent.mediaArray?.count)")
                     let media = firstContent.mediaArray?[0]
-                    print(media?.objectId)
+                    print(media!.objectId!)
                     
                     expectation.fulfill()
                 }
-                
-                
             },
-            failure: { (error:Error) in
+            failure: { (error:Error?) in
                 
             })
         
         self.waitForExpectations(timeout: 2, handler: nil)
+    }
+    
+    func testPostBountyByUser() {
+        
+        let expectation = self.expectation(description: "PostBountyByUser")
+        
+        let user = PFUser.current() as! User
+
+        let note = "POSTING 5ST BOUNTY!"
+        let poi = POI()
+        server.postBountyBy(user: user, withNote: note, atPOI: poi, withTokenValue: 11,
+            success: {
+                
+                
+                expectation.fulfill()
+        },
+            failure: {
+                print("POST BOUNTY TEST FAILURE")
+        })
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    
+    func testFetchBountyPostedByUser() {
+        
+        let expectation = self.expectation(description: "FetchBountyByUser")
+        
+        let user = PFUser.current() as! User
+        
+        server.fetchBountyPostedBy(user: user,
+           success: { (bountiesArray:[XHERBounty]?) in
+            
+            let numberOfBounties = bountiesArray?.count
+            
+            print("There are \(numberOfBounties)")
+            
+            let fifthBounty = bountiesArray?[4]
+            
+            if fifthBounty?.bountyNote == "POSTING 5ST BOUNTY!" {
+                print("Bounty note = \(fifthBounty?.bountyNote)")
+                expectation.fulfill()
+            }
+        },
+           failure: { (error:Error?) in
+            
+        })
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
     
     

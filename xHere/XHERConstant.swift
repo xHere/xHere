@@ -13,5 +13,27 @@ let kPFClassContent = "Content"
 let kPFClassUser = "User"
 let kPFKeyUser = "user"
 
+// MARK: -Media Class
 let kPFClassMedia = "Media"
-let kPFKeyMedia = "mediaArray"
+let kPFKeyMediaArray = "mediaArray"
+
+
+
+// MARK: -Bounty Class
+let kPFClassBounty = "Bounty"
+
+let kPFKeyPostedByUser = "postedByUser"
+let kPFKeyClaimedByUser = "claimedByUser"
+
+let kPFKeyBountyNote = "bountyNote"
+
+let kPFKeyBountyValue = "bountyValue"
+let kPFKeyBountyIsClaimed = "isClaimed"
+
+// MARK: -POI
+let kPFClassPOI = "POI"
+let kPFKeyPOI = "poi"
+
+
+// MARK: -GeoPoint
+let kPFKeyGeoPoint = "geoPoint"

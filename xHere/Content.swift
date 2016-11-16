@@ -10,11 +10,6 @@ import UIKit
 import Parse
 class Content: PFObject,PFSubclassing {
     
-    
-    
-  
-
-    
     var poi : POI?
 
     var user : User {
