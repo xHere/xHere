@@ -17,12 +17,23 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextFeild: UITextField!
     @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var commentViewBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupView()
         self.setupTableView()
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        commentViewBottomConstraint.constant = 60
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,14 +66,13 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
 
     @IBAction func onCommentClick(_ sender: UIButton) {
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            print(keyboardHeight)
+            commentViewBottomConstraint.constant = keyboardSize.height+commentView.frame.size.height+128
+        }
     }
-    */
-
+   
 }
