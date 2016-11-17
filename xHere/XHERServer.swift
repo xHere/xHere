@@ -15,22 +15,50 @@ class XHERServer: NSObject {
     static let sharedInstance = XHERServer()
     
     
-    // MARK: - Find Bounty by User
+    // MARK: - Bounty API
+    enum PostOrClaimed: String {
+        case postBy = "postedByUser", claimed = "claimedByUser"
+    }
+    
+    // Find Bounty earned by User
+    func fetchBountyEarneddBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        fetchRelatedTo(user: user, byPostEarned: .claimed,
+           success: { (bountiesArray:[XHERBounty]?) in
+            success(bountiesArray)
+        },
+           failure: { (error:Error?) in
+            failure(error)
+        })
+        
+    }
+    
     func fetchBountyPostedBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        fetchRelatedTo(user: user, byPostEarned: .postBy,
+                       success: { (bountiesArray:[XHERBounty]?) in
+                        success(bountiesArray)
+        },
+                       failure: { (error:Error?) in
+                        failure(error)
+        })
+    }
+    
+    // Find Bounty posted by User
+    func fetchRelatedTo(user:User,byPostEarned postOrEarned:PostOrClaimed,  success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
         let bountyQuery = PFQuery(className: kPFClassBounty)
-        bountyQuery.whereKey(kPFKeyPostedByUser, equalTo: user)
-        bountyQuery.findObjectsInBackground { (contentsArray:[PFObject]?, error:Error?) in
+        bountyQuery.whereKey(postOrEarned.rawValue, equalTo: user)
+        bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
             if error == nil {
                 
-                if let contentsArray = contentsArray {
+                if let bountiesArray = bountiesArray {
                     
                     //Parse array of PFObject into Bounty
                     var bountyArrayTyped = [XHERBounty]()
-                    for object in contentsArray {
-                        let content = object as! XHERBounty
-                        bountyArrayTyped.append(content)
+                    for object in bountiesArray {
+                        let bounty = object as! XHERBounty
+                        bountyArrayTyped.append(bounty)
                     }
                     
                     //Return nil if the array is empty
@@ -51,6 +79,8 @@ class XHERServer: NSObject {
     // MARK: - Post Bounty
     func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
         
+        
+        print("BEGIN GETTING LOCATION")
         PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
             if let error = error {
                 print("XHERServer.uploadContent() currentLocation fetch failed = \(error.localizedDescription)")
@@ -77,7 +107,6 @@ class XHERServer: NSObject {
                 
                 //Set this bounty as new
                 newBounty.claimedByUser = nil
-                
                 newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
                     
                     if saveSuccess {
@@ -85,7 +114,7 @@ class XHERServer: NSObject {
                         success()
                     }
                     else {
-                        print("POST BOUNTY FAILURE")
+                        print("POST BOUNTY FAILURE \(error?.localizedDescription)")
                         failure()
                     }
                 })

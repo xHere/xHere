@@ -10,6 +10,7 @@ target 'xHere' do
    pod 'ParseFacebookUtils'
    pod 'Fusuma'
    pod 'PBJVision'
+   pod ''
   
 
   target 'xHereTests' do

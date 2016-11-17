@@ -75,16 +75,35 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
         
         let server = XHERServer.sharedInstance
         
-        if let userCreatedImage = userCreatedImage {        
-            
-            server.uploadContent(withText: "FIRST MESSAGE FROM CAMERAVC",
-                                 andImage: userCreatedImage,
-                                 success: {
-                                    print("POST 1ST CONTENT SUCCESS")
-                                },failure: {
-                                    print("POST 1ST CONTENT FAILTURE")
-                                })
-        }
+//        if let userCreatedImage = userCreatedImage {        
+//            
+//            server.uploadContent(withText: "FIRST MESSAGE FROM CAMERAVC",
+//                                 andImage: userCreatedImage,
+//                                 success: {
+//                                    print("POST 1ST CONTENT SUCCESS")
+//                                },failure: {
+//                                    print("POST 1ST CONTENT FAILTURE")
+//                                })
+//        }
+        
+        let user = PFUser.current() as! User
+        
+        let note = "POSTING 6ST BOUNTY!"
+        let poi = POI()
+        
+        server.postBountyBy(user: user, withNote: note, atPOI: poi, withTokenValue: 11,
+                            success: {
+                                print("POST BOUNTY TEST")
+                                
+//                                XCTAssertFalse(false)
+//                                
+//                                expectation.fulfill()
+        },
+                            failure: {
+                                print("POST BOUNTY TEST FAILURE")
+//                                XCTAssertFalse(true)
+//                                expectation.fulfill()
+        })
     }
 
     

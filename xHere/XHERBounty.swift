@@ -25,7 +25,12 @@ class XHERBounty: PFObject, PFSubclassing {
             return self[kPFKeyClaimedByUser] as? User
         }
         set {
-            self[kPFKeyClaimedByUser] = newValue
+            if let newValue = newValue {
+                self[kPFKeyClaimedByUser] = newValue
+            }
+            else {
+                self[kPFKeyClaimedByUser] = NSNull()
+            }
         }
     }
     
