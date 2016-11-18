@@ -9,14 +9,14 @@
 import UIKit
 import Parse
 
-class POI: PFObject,PFSubclassing {
+class POI: PFObject, PFSubclassing {
     
    
 
     var user : User?
     var content : Content?
     var comment : Comment?
-    
+    var title:String!
     var POIId : NSNumber?{
         get{
             if let _POIId = self["POIId"] as? NSNumber{

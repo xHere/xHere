@@ -21,6 +21,12 @@
 		8B7FE9F31DDBDC3F00FD00E5 /* XHERServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F21DDBDC3F00FD00E5 /* XHERServerTests.swift */; };
 		8B7FE9F71DDBE24800FD00E5 /* XHERConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */; };
 		8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */; };
+		8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */; };
+		8BA0E7231DDE709900CD73E2 /* XHERHomeFeedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */; };
+		8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */; };
+		8BA0E72A1DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */; };
+		8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */; };
+		8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */; };
 		8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDB1DD90BF500728209 /* FusumaCameraViewController.swift */; };
 		8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDC1DD90BF500728209 /* FusumaCameraViewController.xib */; };
 		8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDD1DD90BF500728209 /* PBJVisionCameraViewController.swift */; };
@@ -95,6 +101,12 @@
 		8B7FE9F21DDBDC3F00FD00E5 /* XHERServerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERServerTests.swift; sourceTree = "<group>"; };
 		8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERConstant.swift; sourceTree = "<group>"; };
 		8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERBounty.swift; sourceTree = "<group>"; };
+		8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedViewCell.swift; sourceTree = "<group>"; };
+		8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERHomeFeedViewCell.xib; sourceTree = "<group>"; };
+		8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERNearByClaimedViewCell.swift; sourceTree = "<group>"; };
+		8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERNearByClaimedViewCell.xib; sourceTree = "<group>"; };
+		8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERNearByClaimedCollectionCell.swift; sourceTree = "<group>"; };
+		8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERNearByClaimedCollectionCell.xib; sourceTree = "<group>"; };
 		8BA3CBDB1DD90BF500728209 /* FusumaCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FusumaCameraViewController.swift; sourceTree = "<group>"; };
 		8BA3CBDC1DD90BF500728209 /* FusumaCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FusumaCameraViewController.xib; sourceTree = "<group>"; };
 		8BA3CBDD1DD90BF500728209 /* PBJVisionCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBJVisionCameraViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +270,34 @@
 			name = "Home TabBar ViewController";
 			sourceTree = "<group>";
 		};
+		8BA0E7241DDE709D00CD73E2 /* Home Feed Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */,
+				8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */,
+			);
+			name = "Home Feed Cell";
+			sourceTree = "<group>";
+		};
+		8BA0E72B1DDE8D3000CD73E2 /* NearBy Claimed Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */,
+				8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */,
+				8BA0E7321DDE92DA00CD73E2 /* CollectionViewCell */,
+			);
+			name = "NearBy Claimed Cell";
+			sourceTree = "<group>";
+		};
+		8BA0E7321DDE92DA00CD73E2 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */,
+				8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */,
+			);
+			name = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		8BA3CBE31DD90BFB00728209 /* Camera Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +333,8 @@
 			children = (
 				8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */,
 				8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */,
+				8BA0E7241DDE709D00CD73E2 /* Home Feed Cell */,
+				8BA0E72B1DDE8D3000CD73E2 /* NearBy Claimed Cell */,
 			);
 			name = "Home Feed ViewController";
 			sourceTree = "<group>";
@@ -493,11 +535,14 @@
 				8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */,
 				8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */,
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
+				8BA0E7231DDE709900CD73E2 /* XHERHomeFeedViewCell.xib in Resources */,
+				8BA0E72A1DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib in Resources */,
 				939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
 				8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */,
 				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
+				8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */,
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
 				8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */,
@@ -665,6 +710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */,
 				8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */,
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
 				8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */,
@@ -677,6 +723,7 @@
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
+				8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */,
 				8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */,
 				8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */,
 				99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */,
@@ -685,6 +732,7 @@
 				939DD22C1DDA87550065736C /* CommentCell.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
 				939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */,
+				8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */,
 				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
 				8B7FE9F71DDBE24800FD00E5 /* XHERConstant.swift in Sources */,
 				8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */,
@@ -761,6 +809,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -812,6 +861,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -842,6 +892,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B459821A47443B726044EC38 /* Pods-xHere.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
@@ -862,6 +913,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 395BF3E673E9739924CB37A9 /* Pods-xHere.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
