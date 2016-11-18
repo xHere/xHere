@@ -20,26 +20,36 @@ class XHERServer: NSObject {
         case postBy = "postedByUser", claimed = "claimedByUser"
     }
     
-    // Find Bounty earned by User
+    // Find Bounty Claimed in an area
+//    func fetchBountyNear( location:PFGeoPoint, )
+    
+    
+    // Find Bounty claimed by User
     func fetchBountyEarneddBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
         fetchRelatedTo(user: user, byPostEarned: .claimed,
            success: { (bountiesArray:[XHERBounty]?) in
-            success(bountiesArray)
+            
+                success(bountiesArray)
         },
            failure: { (error:Error?) in
-            failure(error)
+            
+                failure(error)
         })
         
     }
     
+    // Find Bounty posted by user
     func fetchBountyPostedBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
         fetchRelatedTo(user: user, byPostEarned: .postBy,
-                       success: { (bountiesArray:[XHERBounty]?) in
-                        success(bountiesArray)
+           success: { (bountiesArray:[XHERBounty]?) in
+            
+                success(bountiesArray)
         },
-                       failure: { (error:Error?) in
-                        failure(error)
+           failure: { (error:Error?) in
+            
+                failure(error)
         })
     }
     
@@ -48,6 +58,7 @@ class XHERServer: NSObject {
         
         let bountyQuery = PFQuery(className: kPFClassBounty)
         bountyQuery.whereKey(postOrEarned.rawValue, equalTo: user)
+        bountyQuery.includeKey(postOrEarned.rawValue)
         bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
             if error == nil {
@@ -78,7 +89,6 @@ class XHERServer: NSObject {
     
     // MARK: - Post Bounty
     func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
-        
         
         print("BEGIN GETTING LOCATION")
         PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in

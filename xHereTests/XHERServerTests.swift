@@ -60,12 +60,12 @@ class XHERServerTests: XCTestCase {
         
         let user = PFUser.current() as! User
 
-        let note = "POSTING 9th BOUNTY!"
+        let note = "POSTING 1th BOUNTY!"
         let poi = POI()
 
         server.postBountyBy(user: user, withNote: note, atPOI: poi, withTokenValue: 11,
             success: {
-//                print("POST BOUNTY TEST SUCCESS")
+                print("POST BOUNTY TEST SUCCESS")
                 
                 expectation.fulfill()
         },
@@ -78,32 +78,56 @@ class XHERServerTests: XCTestCase {
     }
     
     
-//    func testFetchBountyPostedByUser() {
-//        
-//        let expectation = self.expectation(description: "FetchBountyByUser")
-//        
-//        let user = PFUser.current() as! User
-//        
-//        server.fetchBountyPostedBy(user: user,
-//           success: { (bountiesArray:[XHERBounty]?) in
-//            
-//            let numberOfBounties = bountiesArray?.count
-//            
-//            print("There are \(numberOfBounties)")
-//            
-//            let fifthBounty = bountiesArray?[4]
-//            
-//            if fifthBounty?.bountyNote == "POSTING 7th BOUNTY!" {
-//                print("Bounty note = \(fifthBounty?.bountyNote)")
-//                expectation.fulfill()
-//            }
-//        },
-//           failure: { (error:Error?) in
-//            
-//        })
-//        
-//        self.waitForExpectations(timeout: 10, handler: nil)
-//    }
+    func testFetchBountyPostedByUser() {
+        
+        let expectation = self.expectation(description: "FetchBountyByUser")
+        
+        let user = PFUser.current() as! User
+        
+        server.fetchBountyPostedBy(user: user,
+           success: { (bountiesArray:[XHERBounty]?) in
+            
+                let numberOfBounties = bountiesArray?.count
+                
+                print("There are \(numberOfBounties)")
+                
+                let firstBounty = bountiesArray?[0]
+                
+                if firstBounty?.bountyNote == "POSTING 9th BOUNTY!" {
+                    print("Bounty note = \(firstBounty?.bountyNote)")
+                    expectation.fulfill()
+                }
+        },
+           failure: { (error:Error?) in
+            
+        })
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testFetchBountyPostedByUserValidUser() {
+        
+        let expectation = self.expectation(description: "FetchBountyByUserValidUser")
+        
+        let user = PFUser.current() as! User
+        
+        server.fetchBountyPostedBy(user: user,
+            success: { (bountiesArray:[XHERBounty]?) in
+            
+                let firstBounty = bountiesArray?[0]
+                let user = firstBounty?.postedByUser
+                
+                if let userName = user?.username {
+                    print("USER NAME IS \(userName)")
+                    expectation.fulfill()
+                }
+            },
+               failure: { (error:Error?) in
+            
+        })
+        
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
     
     
     func testExample() {
