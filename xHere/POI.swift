@@ -11,7 +11,13 @@ import Parse
 
 class POI: PFObject,PFSubclassing {
     
-   
+    var placeName : String?
+    var placeImageURL : NSURL?
+    var latitute : Double = 0.0
+    var longitude : Double = 0.0
+    
+    
+    
 
     var user : User?
     var content : Content?
@@ -44,6 +50,12 @@ class POI: PFObject,PFSubclassing {
     
     public static func parseClassName() -> String {
         return "POI"
+    }
+    public func initWithDictionary(dictionary : NSDictionary){
+        
+        placeName = dictionary["name"] as? String
+        //latitute = dictionary["geometry"]["location"]["lat"]
+        
     }
 
 }

@@ -11,7 +11,6 @@ import CoreData
 import Parse
 import FacebookSDK
 import ParseFacebookUtils
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -25,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             config.applicationId = "com.xHere"
             config.server = "https://xHere.herokuapp.com/parse"
         }
+       
+
         Parse.initialize(with: parseClientConfig)
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
         PFFacebookUtils.initializeFacebook()

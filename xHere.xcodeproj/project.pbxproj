@@ -41,6 +41,7 @@
 		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
 		8BEC43B61DD950B700244F11 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B11DD950B700244F11 /* POI.swift */; };
 		8BEC43B71DD950B700244F11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B21DD950B700244F11 /* User.swift */; };
+		937670551DDFA08900576199 /* XHEREGooglePlacesServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937670541DDFA08900576199 /* XHEREGooglePlacesServer.swift */; };
 		939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */; };
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
 		939DD22C1DDA87550065736C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD22A1DDA87550065736C /* CommentCell.swift */; };
@@ -115,6 +116,7 @@
 		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8BEC43B11DD950B700244F11 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		8BEC43B21DD950B700244F11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		937670541DDFA08900576199 /* XHEREGooglePlacesServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREGooglePlacesServer.swift; sourceTree = "<group>"; };
 		939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREDetailViewController.swift; sourceTree = "<group>"; };
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
 		939DD22A1DDA87550065736C /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				8BAFFAB81DDA57D200A7517E /* XHERServer.swift */,
+				937670541DDFA08900576199 /* XHEREGooglePlacesServer.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				8BEC43B31DD950B700244F11 /* Comment.swift in Sources */,
 				8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
+				937670551DDFA08900576199 /* XHEREGooglePlacesServer.swift in Sources */,
 				8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */,
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,

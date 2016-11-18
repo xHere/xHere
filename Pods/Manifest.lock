@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -17,12 +32,14 @@ PODS:
   - PBJVision (0.5.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.0)
   - Fusuma
   - Parse
   - ParseFacebookUtils
   - PBJVision
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Facebook-iOS-SDK: 5a7c414a084708220b72d5fd016f2cf3eb6deda4
   Fusuma: c95c1c999c765f5dc907670be569157372ff33c4
@@ -30,6 +47,6 @@ SPEC CHECKSUMS:
   ParseFacebookUtils: 7030f53c989fda36ad50029d90edec1327424317
   PBJVision: 368c58b708c89c3c443e5801a08068a316ee50ea
 
-PODFILE CHECKSUM: 19065feaaaa705cded72b1a6418c942b548cae6a
+PODFILE CHECKSUM: a86827c74389688a4a2e5f4d2712067f67ec5fdd
 
-COCOAPODS: 1.1.0.rc.3
+COCOAPODS: 1.1.1
