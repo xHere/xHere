@@ -10,6 +10,15 @@ import UIKit
 
 class POIViewCell: UITableViewCell {
 
+    @IBOutlet weak var placeImageView: UIImageView!
+    @IBOutlet weak var placeNameLabel: UILabel!
+    
+    var location : POI!{
+        didSet{
+            placeNameLabel.text = location.placeName
+            //placeImageView.setImageWith(location.placeImageURL as! URL)
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

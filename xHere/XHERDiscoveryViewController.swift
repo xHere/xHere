@@ -8,14 +8,16 @@
 
 import UIKit
 import MapKit
-
+import Parse
 class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var mapView: MKMapView!
-    var tableViewDataBackArray = [AnyObject]()
+    
     var currentLocation = CLLocationCoordinate2DMake(37.785771,-122.406165)
+    var locations : [POI]?
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +25,15 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         self.title = "DISCOVER"
         self.setupTableView()
         self.setUpMapView()
+        self.getNearbyLocations()
+            
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setupTableView() {
-//        self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = []
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -50,24 +52,58 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = currentLocation
-        annotation.title = "You are here!!"
-        self.mapView.addAnnotation(annotation)
+        
+        if self.locations != nil{
+            for location in self.locations!{
+                
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = currentLocation
+                annotation.title = location.placeName
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+       
+        
+       
     
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return tableViewDataBackArray.count
-        return 10
+
+        if locations != nil{
+            return locations!.count
+        }else{
+            return 0
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath) as! POIViewCell
+        cell.location = self.locations?[indexPath.row]
         
         return cell
     }
+    func getNearbyLocations(){
+        
+        let myGeoPoint = PFGeoPoint(latitude: 37.785771, longitude: -122.406165)
+        XHEREGooglePlacesServer.sharedInstance.getLocationBy(
+            coordinates: myGeoPoint,
+            success: { (contentsArray:[POI]?) in
+                
+                if let contentsArray = contentsArray {
+                    
+                    self.locations = contentsArray
+                    self.tableView.reloadData()
+                    self.setUpMapView()
+                }
+        },
+            failure: { (error:Error?) in
+                
+        })
+    }
+    
+   
     
     
     /*
