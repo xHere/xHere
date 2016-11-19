@@ -22,6 +22,9 @@ class TimeLineViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func getPlaces(_ sender: AnyObject) {
+//        XHEREPlaces.sharedInstance.getNearByPlaces()
+    }
     @IBAction func tempLogout(_ sender: UIButton) {
         PFUser.logOutInBackground { (error:Error?) in
             if error == nil {

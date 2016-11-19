@@ -10,7 +10,7 @@ target 'xHere' do
    pod 'ParseFacebookUtils'
    pod 'Fusuma'
    pod 'PBJVision'
-  
+   
 
   target 'xHereTests' do
     inherit! :search_paths

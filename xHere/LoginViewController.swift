@@ -1,4 +1,4 @@
-//
+
 //  LoginViewController.swift
 //  xHere
 //
@@ -11,23 +11,65 @@ import Parse
 import ParseFacebookUtils
 import FacebookSDK
 
-class LoginViewController: UIViewController {
+enum LoginSignupViewMode {
+    case login
+    case signup
+}
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+class LoginViewController: UIViewController {
+    
+    var mode:LoginSignupViewMode = .signup
+    let animateDuration = 0.25
+    
+    @IBOutlet weak var loginPasswordInput: loginInputView!
+    
+    @IBOutlet weak var loginEmailInput: loginInputView!
+    @IBOutlet weak var loginView: UIView!
+    @IBOutlet weak var loginContentView: UIView!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var loginButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginButtonWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginButtonVerticalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var loginWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var signupView: UIView!
+    @IBOutlet weak var signupContentView: UIView!
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var signupButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signupButtonVerticalCenterConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var signupPasswordInput: loginInputView!
+    @IBOutlet weak var signupEmailInput: loginInputView!
+    //MARK: - logo and constrains
+    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoButtomInSingupConstraint: NSLayoutConstraint!
+    @IBOutlet weak var logoCenterConstraint: NSLayoutConstraint!
+    
+    
+    //    @IBOutlet weak var forgotPassTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var socialsView: UIView!
+    
+    //    @IBOutlet weak var emailTextField: UITextField!
+    //    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        toggleView(animated: false)
     }
-
+    
     @IBAction func handleSignup(_ sender: UIButton) {
-        //currently taking input inside an alert only, will eventually move it inside into different view
-        let alert = UIAlertController(title: "SignUp", message: "Please enter an email and password to register", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Register", style:
-        .default) { (action: UIAlertAction) in
-           let newUser = PFUser()
-            newUser.username = alert.textFields?[0].text!
-            newUser.password = alert.textFields?[1].text!
+        if mode == .login {
+            toggleView(animated: true)
+        }
+        else {
+            let newUser = PFUser()
+            newUser.username = signupEmailInput.textFieldView.text!
+            newUser.password = signupPasswordInput.textFieldView.text!
+            newUser.email = signupEmailInput.textFieldView.text!
             
             newUser.signUpInBackground(block: { (success : Bool, error : Error?) in
                 if let error = error {
@@ -39,25 +81,22 @@ class LoginViewController: UIViewController {
                 }
             })
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alert.addTextField { (email :UITextField) in
-            email.placeholder = "Enter Your Email here"
-        }
-        alert.addTextField { (password: UITextField) in
-            password.placeholder = "Enter Password"
-            password.isSecureTextEntry = true
-        }
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func handleLogin(_ sender: UIButton) {
-        let userName = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        login(userName: userName, password: password)
         
     }
+    
+    @IBAction func handleLogin(_ sender: UIButton){
+        if mode == .signup {
+            toggleView(animated:true)
+        }
+        else {
+                    let userName = loginEmailInput.textFieldView.text!
+                    let password = loginPasswordInput.textFieldView.text!
+                    login(userName: userName, password: password)
+        }
+    }
+    
+    
+    
     
     func login(userName: String, password: String){
         PFUser.logInWithUsername(inBackground: userName, password: password) { (user: PFUser?, error:Error?) in
@@ -66,15 +105,52 @@ class LoginViewController: UIViewController {
             }
             else {
                 print("userLogged In \(user?.username)")
-//                self.performSegue(withIdentifier: "segueToTimeLine", sender: nil)
+                //                self.performSegue(withIdentifier: "segueToTimeLine", sender: nil)
                 let homeTabBarVC = XHERHomeTabBarViewController()
                 self.present(homeTabBarVC, animated: true, completion: nil)
             }
         }
         
     }
+    
+    func toggleView(animated: Bool){
+        mode = mode == .login ? .signup:.login
+        loginWidthConstraint.isActive = mode == .signup ? true:false
+        loginButtonVerticalCenterConstraint.priority = mode == .login ? 300:900
+        signupButtonVerticalCenterConstraint.priority = mode == .signup ? 300:900
+        
+        self.view.endEditing(true)
+        
+        UIView.animate(withDuration: animated ? animateDuration : 0) {
+            self.view.layoutIfNeeded()
+            
+            //hide or show views
+            self.loginContentView.alpha = self.mode == .login ? 1:0
+            self.signupContentView.alpha = self.mode == .signup ? 1:0
+            
+            //rotate and scale login button
+            let scaleLogin:CGFloat = self.mode == .login ? 1:0.4
+            let rotateAngleLogin:CGFloat = self.mode == .login ? 0:CGFloat(-M_PI_2)
+            
+            var transformLogin = CGAffineTransform(scaleX: scaleLogin, y: scaleLogin)
+            transformLogin = transformLogin.rotated(by: rotateAngleLogin)
+            self.loginButton.transform = transformLogin
+            
+            
+            // rotate and scale signup button
+            let scaleSignup:CGFloat = self.mode == .signup ? 1:0.4
+            let rotateAngleSignup:CGFloat = self.mode == .signup ? 0:CGFloat(-M_PI_2)
+            
+            var transformSignup = CGAffineTransform(scaleX: scaleSignup, y: scaleSignup)
+            transformSignup = transformSignup.rotated(by: rotateAngleSignup)
+            self.signupButton.transform = transformSignup
+            
+        }
+        
+    }
+    
     @IBAction func loginWithFacebook(_ sender: UIButton) {
-         let permissions = ["public_profile", "email"]
+        let permissions = ["public_profile", "email"]
         PFFacebookUtils.logIn (withPermissions: permissions) { (user: PFUser?, error:Error?) in
             
             if let error = error {
@@ -90,7 +166,7 @@ class LoginViewController: UIViewController {
                     let url = URL(string: pictureData["url"] as! String)
                     let imageData = NSData.init(contentsOf: url!)
                     let profilePicture = PFFile(name: "profileImage.jpg", data: imageData! as Data)
-//                    let profilePicture = PFFile(data: imageData! as Data)
+                    //                    let profilePicture = PFFile(data: imageData! as Data)
                     user?.setObject(profilePicture!, forKey: "profileImageUrl")
                     user?.setValue(data["email"], forKey: "email")
                     user?.setValue(data["email"], forKey: "username")
@@ -99,11 +175,11 @@ class LoginViewController: UIViewController {
                     user?.saveInBackground()
                     let homeTabBarVC = XHERHomeTabBarViewController()
                     self.present(homeTabBarVC, animated: true, completion: nil)
-
+                    
                     
                 })
             }
         }
     }
-
+    
 }
