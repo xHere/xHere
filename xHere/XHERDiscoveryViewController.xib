@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHERDiscoveryViewController" customModule="xHere" customModuleProvider="target">
             <connections>
                 <outlet property="mapView" destination="T3E-8H-9Ug" id="ssT-R2-en3"/>
+                <outlet property="searchBar" destination="idI-Se-MHG" id="fg5-I5-yVU"/>
                 <outlet property="tableView" destination="Whs-v7-lwV" id="AZq-im-5Yz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,12 +26,19 @@
                     <rect key="frame" x="0.0" y="278" width="320" height="290"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="idI-Se-MHG">
+                <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idI-Se-MHG">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="t0D-px-zhB"/>
                     </constraints>
                     <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="BAA-JV-IW8"/>
+                    </connections>
                 </searchBar>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-8H-9Ug">
                     <rect key="frame" x="0.0" y="44" width="320" height="234"/>
@@ -43,6 +51,7 @@
                 </mapView>
             </subviews>
             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="T3E-8H-9Ug" secondAttribute="trailing" id="0xf-71-BlY"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1D9-yk-z2C"/>
@@ -55,7 +64,15 @@
                 <constraint firstItem="Whs-v7-lwV" firstAttribute="top" secondItem="T3E-8H-9Ug" secondAttribute="bottom" id="qOq-jA-mc3"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="top" secondItem="idI-Se-MHG" secondAttribute="bottom" id="yfq-Wy-wJP"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="nvX-hW-TcJ" appends="YES" id="8Xq-OT-G3z"/>
+            </connections>
             <point key="canvasLocation" x="5" y="59"/>
         </view>
+        <tapGestureRecognizer id="nvX-hW-TcJ">
+            <connections>
+                <action selector="onTapingView:" destination="-1" id="2eA-kS-5dN"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

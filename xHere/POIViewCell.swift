@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AFNetworking
 class POIViewCell: UITableViewCell {
 
     @IBOutlet weak var placeImageView: UIImageView!
@@ -16,7 +16,14 @@ class POIViewCell: UITableViewCell {
     var location : POI!{
         didSet{
             placeNameLabel.text = location.placeName
-            //placeImageView.setImageWith(location.placeImageURL as! URL)
+            
+            placeImageView.image = nil
+
+            if location.placeImageURL != nil{
+                //print("Final url us \(location.placeImageURL!)")
+                placeImageView.setImageWith(location.placeImageURL!)
+
+            }
         }
     }
     override func awakeFromNib() {
