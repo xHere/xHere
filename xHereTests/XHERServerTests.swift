@@ -13,6 +13,8 @@ import Parse
 class XHERServerTests: XCTestCase {
     
     let server = XHERServer.sharedInstance
+    let poiServer = XHEREGooglePlacesServer.sharedInstance
+    
     
     override func setUp() {
         super.setUp()
@@ -54,27 +56,81 @@ class XHERServerTests: XCTestCase {
         self.waitForExpectations(timeout: 2, handler: nil)
     }
     
+    func testDownloadPOIAndBounty() {
+        
+        let expectation = self.expectation(description: "DownloadPOIAndBounty")
+        
+        let query = PFQuery(className: kPFClassPOI)
+        query.findObjectsInBackground { (poiArray:[PFObject]?, error:Error?) in
+            
+            let firstPOI = poiArray?[0] as! POI
+            
+            let bountyQuery = PFQuery(className: kPFClassBounty)
+            bountyQuery.whereKey(kPFKeyPOI, equalTo: firstPOI)
+            bountyQuery.findObjectsInBackground(block: { (bountyArray:[PFObject]?, error:Error?) in
+                
+                for bounty in bountyArray! {
+                    let bounty = bounty as! XHERBounty
+                    print("Bounty Note = \(bounty.bountyNote)")
+                    print("POI name\(bounty.postedAtLocation.placeName)")
+                }
+                expectation.fulfill()
+            })
+            
+        }
+        
+        self.waitForExpectations(timeout: 20, handler: nil)
+    }
+    
+    
     func testPostBountyByUser() {
         
         let expectation = self.expectation(description: "PostBountyByUser")
         
-        let user = PFUser.current() as! User
-
-        let note = "POSTING 1th BOUNTY!"
-        let poi = POI()
-
-        server.postBountyBy(user: user, withNote: note, atPOI: poi, withTokenValue: 11,
-            success: {
-                print("POST BOUNTY TEST SUCCESS")
-                
-                expectation.fulfill()
-        },
-            failure: {
-                print("POST BOUNTY TEST FAILURE")
-
-        })
+        PFGeoPoint.geoPointForCurrentLocation { (geoPoint:PFGeoPoint?, error:Error?) in
+            
+            if error != nil {
+                print("Get user location error \(error?.localizedDescription)")
+            }
         
-        self.waitForExpectations(timeout: 20, handler: nil)
+            self.postBountyNearLocation(location: geoPoint!,
+                 success: {
+                    print("POST BOUNTY TEST SUCCESS")
+                    expectation.fulfill()
+            })
+        }
+        
+        self.waitForExpectations(timeout: 60, handler: nil)
+    }
+    func postBountyNearLocation(location:PFGeoPoint, success:@escaping ()->()) {
+        
+        let user = PFUser.current() as! User
+        
+        let note = "POSTING 5rd BOUNTY WITH POI!"
+        
+        poiServer.getLocationBy(coordinates: location,
+            success: { (poiArray:[POI]?) in
+             
+                let firstPOI = poiArray?[3]
+                print("First POI name is \(firstPOI?.placeName)")
+                
+                //Look if we already have this POI
+                //If we do use that POI
+                //else use the new one.
+                
+                self.server.postBountyBy(user: user, withNote: note, atPOI: firstPOI!, withTokenValue: 10,
+                             success: {
+                                success()
+                },
+                             failure: {
+                                print("POST BOUNTY TEST FAILURE")
+                })
+                
+            
+        },
+            failure: { (error:Error?) in
+                
+        })
     }
     
     

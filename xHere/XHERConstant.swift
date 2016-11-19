@@ -33,7 +33,8 @@ let kPFKeyBountyIsClaimed = "isClaimed"
 // MARK: -POI
 let kPFClassPOI = "POI"
 let kPFKeyPOI = "poi"
-
+let kPFKeyPOIName = "poiName"
+let kPFKeyGooglePlaceID = "googlePlaceId"
 
 // MARK: -GeoPoint
 let kPFKeyGeoPoint = "geoPoint"

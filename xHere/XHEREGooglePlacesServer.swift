@@ -27,10 +27,9 @@ class XHEREGooglePlacesServer: NSObject {
             failure: { (error:Error?) in
                 failure(error)
         })
-        
-        
-        
     }
+    
+    
     func getLocationBy(placeName: String, coordinates:PFGeoPoint, success:@escaping ([POI]?)->(), failure: @escaping (Error?)->()) {
         
         

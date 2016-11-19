@@ -11,7 +11,33 @@ import Parse
 
 class POI: PFObject, PFSubclassing {
     
-    var placeName : String?
+    var googlePlaceID:String {
+        get {
+            if let returnString = self[kPFKeyGooglePlaceID] {
+                return returnString as! String
+            }
+            return ""
+        }
+        set {
+            self[kPFKeyGooglePlaceID] = newValue as NSString
+        }
+    }
+    
+    var placeName : String? {
+        get {
+            if let returnStrig = self[kPFKeyPOIName] as? String {
+                return returnStrig
+            }
+            
+            return ""
+            
+        }
+        set {
+            if let newValue = newValue {
+                self[kPFKeyPOIName] = newValue
+            }
+        }
+    }
     var placeImageURL : NSURL?
     var latitute : Double = 0.0
     var longitude : Double = 0.0
@@ -52,6 +78,8 @@ class POI: PFObject, PFSubclassing {
         return "POI"
     }
     public func initWithDictionary(dictionary : NSDictionary){
+        
+        googlePlaceID = dictionary["place_id"] as? String ?? ""
         
         placeName = dictionary["name"] as? String
         //latitute = dictionary["geometry"]["location"]["lat"]

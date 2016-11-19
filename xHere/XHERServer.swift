@@ -103,30 +103,46 @@ class XHERServer: NSObject {
                 //Set byUser
                 newBounty.postedByUser = user
                 
-                //postedAtLocation
-//                newBounty.postedAtLocation = poi
                 
-                //Notes on the bounty
-                newBounty.bountyNote = note
-                
-                newBounty.bountyGeoPoint = currentLocation
-                
-                newBounty.bountyValue = value
-                
-                newBounty.isClaimed = false
-                
-                //Set this bounty as new
-                newBounty.claimedByUser = nil
-                newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+                //Check if the POI submitted is already on the server or not.
+                let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
+                duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
+                duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
                     
-                    if saveSuccess {
-                        print("NEW BOUNTY SAVED!!")
-                        success()
+                    var uniquePOI:POI
+                    if let poiObject = poiObject {
+                        uniquePOI = poiObject as! POI
                     }
                     else {
-                        print("POST BOUNTY FAILURE \(error?.localizedDescription)")
-                        failure()
+                        uniquePOI = poi
                     }
+                    
+                    uniquePOI.saveInBackground()
+                    //postedAtLocation
+                    newBounty.postedAtLocation = uniquePOI
+                    
+                    //Notes on the bounty
+                    newBounty.bountyNote = note
+                    
+                    newBounty.bountyGeoPoint = currentLocation
+                    
+                    newBounty.bountyValue = value
+                    
+                    newBounty.isClaimed = false
+                    
+                    //Set this bounty as new
+                    newBounty.claimedByUser = nil
+                    newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+                        
+                        if saveSuccess {
+                            print("NEW BOUNTY SAVED!!")
+                            success()
+                        }
+                        else {
+                            print("POST BOUNTY FAILURE \(error?.localizedDescription)")
+                            failure()
+                        }
+                    })
                 })
             }
         }
