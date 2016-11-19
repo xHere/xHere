@@ -8,30 +8,44 @@
 
 import UIKit
 import MapKit
-
-class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+import Parse
+class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var mapView: MKMapView!
-    var tableViewDataBackArray = [AnyObject]()
-    var currentLocation = CLLocationCoordinate2DMake(37.785771,-122.406165)
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var currentLocation : PFGeoPoint!
+    var locations : [POI]?
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "DISCOVER"
+        self.title = "Find a Place"
         self.setupTableView()
-        self.setUpMapView()
+        
+
+        
+        PFGeoPoint.geoPointForCurrentLocation { (loc :PFGeoPoint?, error :Error?) in
+            if error == nil{
+                self.currentLocation = loc
+                self.setUpMapView()
+                self.getNearbyLocations()
+            }
+        }
     }
+
+    
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
+    // MARK: - Setup View
     func setupTableView() {
-//        self.automaticallyAdjustsScrollViewInsets = false
         self.edgesForExtendedLayout = []
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -50,26 +64,98 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
         mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = currentLocation
-        annotation.title = "You are here!!"
-        self.mapView.addAnnotation(annotation)
-    
+        
+        if self.locations != nil{
+            for location in self.locations!{
+                
+                let coordinate = CLLocationCoordinate2DMake(location.latitute,location.longitude)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = location.placeName
+                self.mapView.addAnnotation(annotation)
+            }
+        }
     }
+    // MARK: - Table view delegate
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return tableViewDataBackArray.count
-        return 10
+
+        if locations != nil{
+            return locations!.count
+        }else{
+            return 0
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath) as! POIViewCell
+        cell.location = self.locations?[indexPath.row]
         
         return cell
     }
     
     
+    // MARK: - Search Bar delegate
+
+   
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fetchLocationsWithPlace(searchText: searchBar.text!)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
+        
+        self.view.endEditing(true)
+    }
+    // MARK: - API calls
+    func fetchLocationsWithPlace(searchText : String){
+        
+       self.view.endEditing(true)
+        
+        
+        XHEREGooglePlacesServer.sharedInstance.getLocationBy(
+            placeName: searchText,coordinates: currentLocation,
+            success: { (contentsArray:[POI]?) in
+                
+                if let contentsArray = contentsArray {
+                    
+                    self.locations = contentsArray
+                    self.tableView.reloadData()
+                    self.setUpMapView()
+                }else{
+                    print("No result found")
+                }
+        },
+            failure: { (error:Error?) in
+                
+        })
+
+    }
+    func getNearbyLocations(){
+        
+       
+        XHEREGooglePlacesServer.sharedInstance.getLocationBy(
+            coordinates: currentLocation,
+            success: { (contentsArray:[POI]?) in
+                
+                if let contentsArray = contentsArray {
+                    
+                    self.locations = contentsArray
+                    self.tableView.reloadData()
+                    self.setUpMapView()
+                }
+        },
+            failure: { (error:Error?) in
+                
+        })
+    }
+    
+    @IBAction func onTapingView(_ sender: UITapGestureRecognizer) {
+         fetchLocationsWithPlace(searchText: searchBar.text!)
+    }
     /*
      // MARK: - Navigation
      

@@ -11,23 +11,118 @@ import Parse
 
 class XHERBounty: PFObject, PFSubclassing {
 
-    var postedByUser:User {
+    
+    private var _userArray:[PFObject]? {
+        
         get {
-            return self[kPFKeyPostedByUser] as! User
+            if let returnArray = self[kPFKeyPostedByUser] { //Return an array only if it's not empty
+                if (returnArray as! [PFObject]).count > 0 {
+                    return returnArray as? [PFObject]
+                }
+            }
+            
+            return nil
         }
+        
         set {
             self[kPFKeyPostedByUser] = newValue
         }
     }
     
-    var claimedByUser:User? {
+    var _userArrayTyped:[User]?
+    var postedByUser:User? {
         get {
-            return self[kPFKeyClaimedByUser] as? User
+            
+            if _userArrayTyped != nil { //If an array of Media is loaded
+                return _userArrayTyped?[0]
+            }
+            if let _userArray = _userArray { //If not load an array of PFObject into array of Media
+                _userArrayTyped = [User]()
+                for object in _userArray {
+                    let user = object as! User
+                    _userArrayTyped?.append(user)
+                }
+                return _userArrayTyped?[0]
+            }
+            return nil
         }
+        set {
+            
+            var newUserArray = [User]()
+            if let newValue = newValue {
+                newUserArray.append(newValue)
+                _userArrayTyped = newUserArray
+                _userArray = newUserArray
+            }
+        }
+    }
+
+//    var postedByUser:User? {
+//        get {
+//            return self[kPFKeyPostedByUser] as! User
+//        }
+//        set {
+//            self[kPFKeyPostedByUser] = newValue
+//        }
+//    }
+    
+    private var _claimedByUserArray:[PFObject]? {
+        
+        get {
+            if let returnArray = self[kPFKeyClaimedByUser] { //Return an array only if it's not empty
+                if (returnArray as! [PFObject]).count > 0 {
+                    return returnArray as? [PFObject]
+                }
+            }
+            
+            return nil
+        }
+        
         set {
             self[kPFKeyClaimedByUser] = newValue
         }
     }
+    
+    var _claimedByUserArrayTyped:[User]?
+    var claimedByUser:User? {
+        get {
+            
+            if _claimedByUserArrayTyped != nil { //If an array of Media is loaded
+                return _claimedByUserArrayTyped?[0]
+            }
+            if let _claimedByUserArray = _claimedByUserArray { //If not load an array of PFObject into array of Media
+                _claimedByUserArrayTyped = [User]()
+                for object in _claimedByUserArray {
+                    let user = object as! User
+                    _claimedByUserArrayTyped?.append(user)
+                }
+                return _claimedByUserArrayTyped?[0]
+            }
+            return nil
+        }
+        set {
+            
+            var newUserArray = [User]()
+            if let newValue = newValue {
+                newUserArray.append(newValue)
+                _claimedByUserArrayTyped = newUserArray
+                _claimedByUserArray = newUserArray
+            }
+        }
+    }
+//    var claimedByUser:User? {
+//        get {
+//            return self[kPFKeyClaimedByUser] as? User
+//        }
+//        set {
+//            if let newValue = newValue {
+//                self[kPFKeyClaimedByUser] = newValue
+//            }
+//            else {
+//                self[kPFKeyClaimedByUser] = NSNull()
+//            }
+//        }
+//    }
     
     var postedAtLocation:POI {
         

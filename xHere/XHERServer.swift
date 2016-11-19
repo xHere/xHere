@@ -15,22 +15,61 @@ class XHERServer: NSObject {
     static let sharedInstance = XHERServer()
     
     
-    // MARK: - Find Bounty by User
+    // MARK: - Bounty API
+    enum PostOrClaimed: String {
+        case postBy = "postedByUser", claimed = "claimedByUser"
+    }
+    
+    // Find Bounty Claimed in an area
+//    func fetchBountyNear( location:PFGeoPoint, )
+    
+    
+    // Find Bounty claimed by User
+    func fetchBountyEarneddBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        fetchRelatedTo(user: user, byPostEarned: .claimed,
+           success: { (bountiesArray:[XHERBounty]?) in
+            
+                success(bountiesArray)
+        },
+           failure: { (error:Error?) in
+            
+                failure(error)
+        })
+        
+    }
+    
+    // Find Bounty posted by user
     func fetchBountyPostedBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
+        fetchRelatedTo(user: user, byPostEarned: .postBy,
+           success: { (bountiesArray:[XHERBounty]?) in
+            
+                success(bountiesArray)
+        },
+           failure: { (error:Error?) in
+            
+                failure(error)
+        })
+    }
+    
+    // Find Bounty posted by User
+    func fetchRelatedTo(user:User,byPostEarned postOrEarned:PostOrClaimed,  success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
         let bountyQuery = PFQuery(className: kPFClassBounty)
-        bountyQuery.whereKey(kPFKeyPostedByUser, equalTo: user)
-        bountyQuery.findObjectsInBackground { (contentsArray:[PFObject]?, error:Error?) in
+        bountyQuery.whereKey(postOrEarned.rawValue, equalTo: user)
+        bountyQuery.includeKey(postOrEarned.rawValue)
+        bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
             if error == nil {
                 
-                if let contentsArray = contentsArray {
+                if let bountiesArray = bountiesArray {
                     
                     //Parse array of PFObject into Bounty
                     var bountyArrayTyped = [XHERBounty]()
-                    for object in contentsArray {
-                        let content = object as! XHERBounty
-                        bountyArrayTyped.append(content)
+                    for object in bountiesArray {
+                        let bounty = object as! XHERBounty
+                        bountyArrayTyped.append(bounty)
                     }
                     
                     //Return nil if the array is empty
@@ -51,6 +90,7 @@ class XHERServer: NSObject {
     // MARK: - Post Bounty
     func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
         
+        print("BEGIN GETTING LOCATION")
         PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
             if let error = error {
                 print("XHERServer.uploadContent() currentLocation fetch failed = \(error.localizedDescription)")
@@ -63,31 +103,48 @@ class XHERServer: NSObject {
                 //Set byUser
                 newBounty.postedByUser = user
                 
-                //postedAtLocation
-//                newBounty.postedAtLocation = poi
+                //Check if the POI submitted is already on the server or not.
+                let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
+                duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
                 
-                //Notes on the bounty
-                newBounty.bountyNote = note
-                
-                newBounty.bountyGeoPoint = currentLocation
-                
-                newBounty.bountyValue = value
-                
-                newBounty.isClaimed = false
-                
-                //Set this bounty as new
-                newBounty.claimedByUser = nil
-                
-                newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+                duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
                     
-                    if saveSuccess {
-                        print("NEW BOUNTY SAVED!!")
-                        success()
+                    var uniquePOI:POI
+                    if let poiObject = poiObject {
+                        uniquePOI = poiObject as! POI
                     }
                     else {
-                        print("POST BOUNTY FAILURE")
-                        failure()
+                        uniquePOI = poi
                     }
+                    
+                    uniquePOI.saveInBackground()
+                    //postedAtLocation
+                    newBounty.postedAtLocation = uniquePOI
+                    
+                    //Notes on the bounty
+                    newBounty.bountyNote = note
+                    
+                    newBounty.bountyGeoPoint = currentLocation
+                    
+                    newBounty.bountyValue = value
+                    
+                    newBounty.isClaimed = false
+                    
+                    //Set this bounty as new
+                    newBounty.claimedByUser = nil
+                    
+                    newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+                        
+                        if saveSuccess {
+                            print("NEW BOUNTY SAVED!!")
+                            success()
+                        }
+                        else {
+                            print("POST BOUNTY FAILURE \(error?.localizedDescription)")
+                            failure()
+                        }
+                    })
+                    
                 })
             }
         }

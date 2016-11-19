@@ -33,7 +33,15 @@ let kPFKeyBountyIsClaimed = "isClaimed"
 // MARK: -POI
 let kPFClassPOI = "POI"
 let kPFKeyPOI = "poi"
-
+let kPFKeyPOIName = "poiName"
+let kPFKeyGooglePlaceID = "googlePlaceId"
 
 // MARK: -GeoPoint
 let kPFKeyGeoPoint = "geoPoint"
+
+//MARK: -Google Location Api key
+let kPFGoogleApiKey = "AIzaSyDE0hORKRBvcuNe_ivpAMWlFmpduHwCw14"
+let kGoogleWebserviceBasePath = "https://maps.googleapis.com/maps/api/place/"
+
+
+

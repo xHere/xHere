@@ -1,0 +1,62 @@
+//
+//  NearByClaimedViewCell.swift
+//  xHere
+//
+//  Created by Developer on 11/17/16.
+//  Copyright © 2016 Developer. All rights reserved.
+//
+
+import UIKit
+
+class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var nearByClaimedArray:[XHERBounty]?
+    
+    var collectionViewDataBackArray = [XHERBounty]()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        self.setupCollectionView()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    
+    func setupCollectionView() {
+        
+        let nib = UINib(nibName: "XHERNearByClaimedCollectionCell", bundle: nil)
+        self.collectionView.register(nib, forCellWithReuseIdentifier: "XHERNearByClaimedCollectionCell")
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return self.collectionViewDataBackArray.count
+        return 10
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "XHERNearByClaimedCollectionCell", for: indexPath) as! XHERNearByClaimedCollectionCell
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        
+        return collectionView.bounds.size
+        
+    }
+    
+}
