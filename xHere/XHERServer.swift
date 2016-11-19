@@ -103,10 +103,10 @@ class XHERServer: NSObject {
                 //Set byUser
                 newBounty.postedByUser = user
                 
-                
                 //Check if the POI submitted is already on the server or not.
                 let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
                 duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
+                
                 duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
                     
                     var uniquePOI:POI
@@ -132,6 +132,7 @@ class XHERServer: NSObject {
                     
                     //Set this bounty as new
                     newBounty.claimedByUser = nil
+                    
                     newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
                         
                         if saveSuccess {
@@ -143,6 +144,7 @@ class XHERServer: NSObject {
                             failure()
                         }
                     })
+                    
                 })
             }
         }
