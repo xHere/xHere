@@ -38,7 +38,8 @@ class POI: PFObject, PFSubclassing {
             }
         }
     }
-    var placeImageURL : NSURL?
+
+    var placeImageURL : URL?
     var latitute : Double = 0.0
     var longitude : Double = 0.0
     
@@ -82,7 +83,24 @@ class POI: PFObject, PFSubclassing {
         googlePlaceID = dictionary["place_id"] as? String ?? ""
         
         placeName = dictionary["name"] as? String
-        //latitute = dictionary["geometry"]["location"]["lat"]
+        let geometry = dictionary["geometry"] as? NSDictionary
+        let loc = geometry?["location"] as? NSDictionary
+        
+        latitute = (loc?["lat"] as? Double)!
+        longitude = (loc?["lng"] as? Double)!
+        
+        let photos = dictionary["photos"] as? NSArray
+        if let photos = photos{
+            let pics = photos[0] as! NSDictionary
+
+            let width = pics["width"]!
+            let height = pics["height"]!
+            let photReference = pics["photo_reference"]!
+            let strUrl = "\(kGoogleWebserviceBasePath)photo?maxwidth=\(width)&photoreference=\(photReference)&key=\(kPFGoogleApiKey)"
+            placeImageURL = URL(string: strUrl)
+        }
+        
+        
         
     }
 

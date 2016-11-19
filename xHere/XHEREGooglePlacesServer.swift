@@ -36,7 +36,10 @@ class XHEREGooglePlacesServer: NSObject {
         let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&radius=1000.0&rankby=prominence&sensor=true&name=\(placeName)"
         print(urlString)
         
-        let url = URL(string:urlString)
+        let encodedURL  = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+
+        let url = URL(string:encodedURL!)
+        
         let request = URLRequest(url: url!)
         let session = URLSession(
             configuration: URLSessionConfiguration.default,

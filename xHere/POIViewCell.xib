@@ -24,7 +24,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="7Xv-Tu-KXJ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Xv-Tu-KXJ">
                         <rect key="frame" x="8" y="37" width="304" height="110"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="110" id="YVL-ak-MaB"/>
@@ -47,7 +47,4 @@
             <point key="canvasLocation" x="130" y="106"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Tokyo" width="1080" height="1920"/>
-    </resources>
 </document>
