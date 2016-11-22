@@ -49,6 +49,8 @@
 		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
 		8BEC43B61DD950B700244F11 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B11DD950B700244F11 /* POI.swift */; };
 		8BEC43B71DD950B700244F11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B21DD950B700244F11 /* User.swift */; };
+		937670591DE4CCED00576199 /* XHERENeabyBountiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937670571DE4CCED00576199 /* XHERENeabyBountiesViewController.swift */; };
+		9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */; };
 		939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */; };
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
 		939DD22C1DDA87550065736C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD22A1DDA87550065736C /* CommentCell.swift */; };
@@ -134,6 +136,8 @@
 		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8BEC43B11DD950B700244F11 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		8BEC43B21DD950B700244F11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		937670571DE4CCED00576199 /* XHERENeabyBountiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERENeabyBountiesViewController.swift; sourceTree = "<group>"; };
+		937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERENeabyBountiesViewController.xib; sourceTree = "<group>"; };
 		939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREDetailViewController.swift; sourceTree = "<group>"; };
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
 		939DD22A1DDA87550065736C /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				939DD2221DDA82890065736C /* Detail View Controller */,
 				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
 				8BA7D21C1DD926D00002C848 /* Home Feed ViewController */,
+				937670561DE4CCBA00576199 /* NearbyBounties */,
 				8BA7D2171DD926900002C848 /* Discovery ViewController */,
 				8BA7D20E1DD922820002C848 /* ProfileViewController */,
 				99CEF6B11DD686DA00D36904 /* xHere.entitlements */,
@@ -379,6 +384,15 @@
 				8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		937670561DE4CCBA00576199 /* NearbyBounties */ = {
+			isa = PBXGroup;
+			children = (
+				937670571DE4CCED00576199 /* XHERENeabyBountiesViewController.swift */,
+				937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */,
+			);
+			name = NearbyBounties;
 			sourceTree = "<group>";
 		};
 		939DD2221DDA82890065736C /* Detail View Controller */ = {
@@ -568,6 +582,7 @@
 				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
 				8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */,
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
+				9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
 				8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */,
 				8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */,
@@ -736,6 +751,7 @@
 			files = (
 				8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */,
 				8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */,
+				937670591DE4CCED00576199 /* XHERENeabyBountiesViewController.swift in Sources */,
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
 				8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */,
 				8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */,

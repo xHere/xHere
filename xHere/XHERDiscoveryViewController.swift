@@ -93,7 +93,13 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
     }
-    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
+        neabyBountiesViewController.location = self.locations?[indexPath.row]
+        self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
+        
+    }
     
     // MARK: - Search Bar delegate
 
@@ -153,9 +159,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         })
     }
     
-    @IBAction func onTapingView(_ sender: UITapGestureRecognizer) {
-         fetchLocationsWithPlace(searchText: searchBar.text!)
-    }
+    
     /*
      // MARK: - Navigation
      
