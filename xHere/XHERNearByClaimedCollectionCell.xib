@@ -6,33 +6,61 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="XHERNearByClaimedCollectionCell" customModule="xHere" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="292" height="213"/>
+            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="292" height="213"/>
+                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ClaimedBounty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ct9-ua-kUq">
-                        <rect key="frame" x="88" y="96" width="116.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZe-9G-b9f" customClass="CircleClippingView" customModule="xHere" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="HaX-Fx-dYT">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HaX-Fx-dYT" secondAttribute="height" multiplier="1:1" id="ZIp-yK-Zbl"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ClaimedBounty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ct9-ua-kUq">
+                                <rect key="frame" x="21" y="69" width="116.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="HaX-Fx-dYT" firstAttribute="leading" secondItem="fZe-9G-b9f" secondAttribute="leading" id="Eo7-Lb-s45"/>
+                            <constraint firstItem="ct9-ua-kUq" firstAttribute="centerY" secondItem="fZe-9G-b9f" secondAttribute="centerY" id="KT9-Qz-lmc"/>
+                            <constraint firstAttribute="trailing" secondItem="HaX-Fx-dYT" secondAttribute="trailing" id="Koi-cC-x0D"/>
+                            <constraint firstItem="HaX-Fx-dYT" firstAttribute="top" secondItem="fZe-9G-b9f" secondAttribute="top" id="Osz-7f-vKI"/>
+                            <constraint firstAttribute="bottom" secondItem="HaX-Fx-dYT" secondAttribute="bottom" id="a5e-Xz-reb"/>
+                            <constraint firstItem="ct9-ua-kUq" firstAttribute="centerX" secondItem="fZe-9G-b9f" secondAttribute="centerX" id="dpU-fD-jk3"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.41568627450000001" green="0.69803921570000005" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="ct9-ua-kUq" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5vM-bc-tNq"/>
-                <constraint firstItem="ct9-ua-kUq" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="uBY-xL-fgJ"/>
+                <constraint firstAttribute="bottom" secondItem="fZe-9G-b9f" secondAttribute="bottom" id="360-hh-7ZS"/>
+                <constraint firstAttribute="trailing" secondItem="fZe-9G-b9f" secondAttribute="trailing" id="7yj-n7-puB"/>
+                <constraint firstItem="fZe-9G-b9f" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="84p-tg-55w"/>
+                <constraint firstItem="fZe-9G-b9f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8Om-6l-Vd2"/>
             </constraints>
-            <size key="customSize" width="292" height="213"/>
-            <point key="canvasLocation" x="-65" y="-39.5"/>
+            <size key="customSize" width="320" height="348"/>
+            <connections>
+                <outlet property="circleClippingView" destination="fZe-9G-b9f" id="RHB-7b-QiM"/>
+                <outlet property="imageView" destination="HaX-Fx-dYT" id="ljd-xM-lCC"/>
+            </connections>
+            <point key="canvasLocation" x="-51" y="28"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Tokyo" width="1080" height="1920"/>
+    </resources>
 </document>

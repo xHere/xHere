@@ -21,6 +21,9 @@
 		8B7FE9F31DDBDC3F00FD00E5 /* XHERServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F21DDBDC3F00FD00E5 /* XHERServerTests.swift */; };
 		8B7FE9F71DDBE24800FD00E5 /* XHERConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */; };
 		8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */; };
+		8B8CF0CA1DE2B01B00F3290A /* CircleClippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF0C91DE2B01B00F3290A /* CircleClippingView.swift */; };
+		8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF0CB1DE2B63400F3290A /* CollectionViewCell.swift */; };
+		8B8CF0CE1DE2B63400F3290A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8CF0CC1DE2B63400F3290A /* CollectionViewCell.xib */; };
 		8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */; };
 		8BA0E7231DDE709900CD73E2 /* XHERHomeFeedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */; };
 		8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */; };
@@ -106,6 +109,9 @@
 		8B7FE9F21DDBDC3F00FD00E5 /* XHERServerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERServerTests.swift; sourceTree = "<group>"; };
 		8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERConstant.swift; sourceTree = "<group>"; };
 		8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERBounty.swift; sourceTree = "<group>"; };
+		8B8CF0C91DE2B01B00F3290A /* CircleClippingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleClippingView.swift; sourceTree = "<group>"; };
+		8B8CF0CB1DE2B63400F3290A /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		8B8CF0CC1DE2B63400F3290A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedViewCell.swift; sourceTree = "<group>"; };
 		8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERHomeFeedViewCell.xib; sourceTree = "<group>"; };
 		8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERNearByClaimedViewCell.swift; sourceTree = "<group>"; };
@@ -305,6 +311,9 @@
 			children = (
 				8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */,
 				8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */,
+				8B8CF0C91DE2B01B00F3290A /* CircleClippingView.swift */,
+				8B8CF0CB1DE2B63400F3290A /* CollectionViewCell.swift */,
+				8B8CF0CC1DE2B63400F3290A /* CollectionViewCell.xib */,
 			);
 			name = CollectionViewCell;
 			sourceTree = "<group>";
@@ -560,6 +569,7 @@
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				997E28391DDFBDC1004A5105 /* loginInput.xib in Resources */,
 				8BA0E7231DDE709900CD73E2 /* XHERHomeFeedViewCell.xib in Resources */,
+				8B8CF0CE1DE2B63400F3290A /* CollectionViewCell.xib in Resources */,
 				8BA0E72A1DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib in Resources */,
 				939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
@@ -748,6 +758,7 @@
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
+				8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
 				8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */,
 				8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */,
@@ -762,6 +773,7 @@
 				8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */,
 				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
 				8B7FE9F71DDBE24800FD00E5 /* XHERConstant.swift in Sources */,
+				8B8CF0CA1DE2B01B00F3290A /* CircleClippingView.swift in Sources */,
 				8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -52,11 +52,18 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let collectionCell = cell as! XHERNearByClaimedCollectionCell
+            collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
+        
+        print("COLLECTIONCELL HEIGHT = \(collectionCell.bounds.height)")
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        let cellSize = CGSize(width: collectionView.bounds.size.height, height: collectionView.bounds.size.height)
         
-        return collectionView.bounds.size
-        
+        return cellSize
     }
     
 }
