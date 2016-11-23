@@ -62,6 +62,7 @@ class POI: PFObject, PFSubclassing {
             self["POIId"] = newValue
         }
     }
+    
     var geoPoint : PFGeoPoint?{
         get{
             if let _geoPoint = self["geoPoint"] as? PFGeoPoint{

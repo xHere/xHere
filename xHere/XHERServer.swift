@@ -88,67 +88,123 @@ class XHERServer: NSObject {
     }
     
     // MARK: - Post Bounty
+    
     func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
         
-        print("BEGIN GETTING LOCATION")
-        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
-            if let error = error {
-                print("XHERServer.uploadContent() currentLocation fetch failed = \(error.localizedDescription)")
-                failure()
+        let newBounty = XHERBounty()
+        
+        //Set byUser
+        newBounty.postedByUser = user
+        
+        //Check if the POI submitted is already on the server or not.
+        let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
+        duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
+        
+        duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
+            
+            var uniquePOI:POI
+            if let poiObject = poiObject {
+                uniquePOI = poiObject as! POI
             }
             else {
-            
-                let newBounty = XHERBounty()
-                
-                //Set byUser
-                newBounty.postedByUser = user
-                
-                //Check if the POI submitted is already on the server or not.
-                let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
-                duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
-                
-                duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
-                    
-                    var uniquePOI:POI
-                    if let poiObject = poiObject {
-                        uniquePOI = poiObject as! POI
-                    }
-                    else {
-                        uniquePOI = poi
-                    }
-                    
-                    uniquePOI.saveInBackground()
-                    //postedAtLocation
-                    newBounty.postedAtLocation = uniquePOI
-                    
-                    //Notes on the bounty
-                    newBounty.bountyNote = note
-                    
-                    newBounty.bountyGeoPoint = currentLocation
-                    
-                    newBounty.bountyValue = value
-                    
-                    newBounty.isClaimed = false
-                    
-                    //Set this bounty as new
-                    newBounty.claimedByUser = nil
-                    
-                    newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
-                        
-                        if saveSuccess {
-                            print("NEW BOUNTY SAVED!!")
-                            success()
-                        }
-                        else {
-                            print("POST BOUNTY FAILURE \(error?.localizedDescription)")
-                            failure()
-                        }
-                    })
-                    
-                })
+                uniquePOI = poi
             }
-        }
+            
+            uniquePOI.saveInBackground()
+            //postedAtLocation
+            newBounty.postedAtLocation = uniquePOI
+            
+            //Notes on the bounty
+            newBounty.bountyNote = note
+            
+            newBounty.bountyGeoPoint = uniquePOI.geoPoint
+            
+            newBounty.bountyValue = value
+            
+            newBounty.isClaimed = false
+            
+            //Set this bounty as new
+            newBounty.claimedByUser = nil
+            
+            newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+                
+                if saveSuccess {
+                    print("NEW BOUNTY SAVED!!")
+                    success()
+                }
+                else {
+                    print("POST BOUNTY FAILURE \(error?.localizedDescription)")
+                    failure()
+                }
+            })
+            
+        })
+        
+        
     }
+
+    
+//    func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
+//        
+//        print("BEGIN GETTING LOCATION")
+//        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
+//            if let error = error {
+//                print("XHERServer.uploadContent() currentLocation fetch failed = \(error.localizedDescription)")
+//                failure()
+//            }
+//            else {
+//            
+//                let newBounty = XHERBounty()
+//                
+//                //Set byUser
+//                newBounty.postedByUser = user
+//                
+//                //Check if the POI submitted is already on the server or not.
+//                let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
+//                duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
+//                
+//                duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
+//                    
+//                    var uniquePOI:POI
+//                    if let poiObject = poiObject {
+//                        uniquePOI = poiObject as! POI
+//                    }
+//                    else {
+//                        uniquePOI = poi
+//                    }
+//                    
+//                    uniquePOI.saveInBackground()
+//                    //postedAtLocation
+//                    newBounty.postedAtLocation = uniquePOI
+//                    
+//                    //Notes on the bounty
+//                    newBounty.bountyNote = note
+//                    
+//                    newBounty.bountyGeoPoint = currentLocation
+//                    
+//                    newBounty.bountyValue = value
+//                    
+//                    newBounty.isClaimed = false
+//                    
+//                    //Set this bounty as new
+//                    newBounty.claimedByUser = nil
+//                    
+//                    newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+//                        
+//                        if saveSuccess {
+//                            print("NEW BOUNTY SAVED!!")
+//                            success()
+//                        }
+//                        else {
+//                            print("POST BOUNTY FAILURE \(error?.localizedDescription)")
+//                            failure()
+//                        }
+//                    })
+//                    
+//                })
+//            }
+//        }
+//    }
     
     // MARK: - Download Content API by User
     func downloadContentBy(user:User, success:@escaping ([Content]?)->(), failure: @escaping (Error?)->()) {
