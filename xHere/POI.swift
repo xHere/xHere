@@ -72,6 +72,7 @@ class POI: PFObject, PFSubclassing {
         }
         set{
             self["geoPoint"] = newValue
+            
         }
     }
     
@@ -94,11 +95,14 @@ class POI: PFObject, PFSubclassing {
             let pics = photos[0] as! NSDictionary
 
             let width = pics["width"]!
-            let height = pics["height"]!
+            _ = pics["height"]!
             let photReference = pics["photo_reference"]!
             let strUrl = "\(kGoogleWebserviceBasePath)photo?maxwidth=\(width)&photoreference=\(photReference)&key=\(kPFGoogleApiKey)"
             placeImageURL = URL(string: strUrl)
         }
+        
+        geoPoint = PFGeoPoint(latitude:latitute, longitude:longitude)
+      
         
         
         

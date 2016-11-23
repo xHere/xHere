@@ -16,15 +16,32 @@ class XHERENeabyBountiesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeimageView: UIImageView!
     var location : POI?
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        self.setUpView()
+        
+    }
+   
+
+    @IBAction func postABountyClick(_ sender: UIButton) {
+        
+        let postBounty = XHEREPostBountyViewController(nibName: "XHEREPostBountyViewController", bundle: nil)
+        postBounty.location = location
+        self.navigationController?.pushViewController(postBounty, animated: true)
+        
+    }
+    
+    func setUpView(){
+    
         placeNameLabel.text = location?.placeName
         placeimageView.setImageWith((location?.placeImageURL)!)
-    }
+        imageViewHeightConstraint.constant = self.view.frame.height*0.3
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -13,11 +13,15 @@ class XHEREGooglePlacesServer: NSObject {
     
     static let sharedInstance = XHEREGooglePlacesServer()
     
-    func getLocationBy(coordinates:PFGeoPoint, success:@escaping (_ locations :[POI]?)->(), failure: @escaping (Error?)->()) {
+    enum RadiusType: Double {
+        case nearby = 10000.00, farPlaces = 100000.00
+    }
+    
+    func getLocationBy(coordinates:PFGeoPoint,radius:RadiusType, success:@escaping (_ locations :[POI]?)->(), failure: @escaping (Error?)->()) {
         
         
         self.getLocationBy(
-            placeName: "",coordinates: coordinates,
+            placeName: "",radius : radius ,coordinates: coordinates,
             success: { (contentsArray:[POI]?) in
                 
                 success(contentsArray)
@@ -30,10 +34,11 @@ class XHEREGooglePlacesServer: NSObject {
     }
     
     
-    func getLocationBy(placeName: String, coordinates:PFGeoPoint, success:@escaping ([POI]?)->(), failure: @escaping (Error?)->()) {
+    func getLocationBy(placeName: String,radius:RadiusType, coordinates:PFGeoPoint, success:@escaping ([POI]?)->(), failure: @escaping (Error?)->()) {
         
+       
         
-        let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&radius=1000.0&rankby=prominence&sensor=true&name=\(placeName)"
+        let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&radius=\(radius.rawValue)&rankby=prominence&sensor=true&name=\(placeName)"
         print(urlString)
         
         let encodedURL  = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)

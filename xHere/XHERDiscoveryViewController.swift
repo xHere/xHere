@@ -123,7 +123,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         XHEREGooglePlacesServer.sharedInstance.getLocationBy(
-            placeName: searchText,coordinates: currentLocation,
+            placeName: searchText,radius : .farPlaces,coordinates: currentLocation,
             success: { (contentsArray:[POI]?) in
                 
                 if let contentsArray = contentsArray {
@@ -144,7 +144,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
        
         XHEREGooglePlacesServer.sharedInstance.getLocationBy(
-            coordinates: currentLocation,
+            coordinates: currentLocation,radius: .nearby,
             success: { (contentsArray:[POI]?) in
                 
                 if let contentsArray = contentsArray {

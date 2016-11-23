@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHEREPostBountyViewController" customModule="xHere" customModuleProvider="target">
+            <connections>
+                <outlet property="bountyDescTextFeild" destination="WGp-KW-Lky" id="n0X-Im-Sto"/>
+                <outlet property="imageViewHeightConstraint" destination="QWl-ro-cSq" id="b9y-JB-XpE"/>
+                <outlet property="placeNameLabel" destination="i3G-9M-laF" id="kcE-Bz-XHJ"/>
+                <outlet property="placeimageView" destination="Pfk-ny-U8Q" id="M33-XH-af2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3G-9M-laF">
+                    <rect key="frame" x="8" y="106" width="359" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pfk-ny-U8Q">
+                    <rect key="frame" x="8" y="135" width="359" height="145"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="145" id="QWl-ro-cSq"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44b-1z-9lr">
+                    <rect key="frame" x="8" y="68" width="359" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.24125263299999999" blue="0.23721156879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Post for 1 token">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onPostBounty:" destination="-1" eventType="touchUpInside" id="6g3-8d-awi"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bounty Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WGp-KW-Lky">
+                    <rect key="frame" x="8" y="288" width="359" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="jJO-j4-IXD"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WGp-KW-Lky" firstAttribute="top" secondItem="Pfk-ny-U8Q" secondAttribute="bottom" constant="8" id="26U-rX-YHC"/>
+                <constraint firstItem="i3G-9M-laF" firstAttribute="top" secondItem="44b-1z-9lr" secondAttribute="bottom" constant="8" id="CgW-c3-x1F"/>
+                <constraint firstItem="Pfk-ny-U8Q" firstAttribute="top" secondItem="i3G-9M-laF" secondAttribute="bottom" constant="8" id="DJR-XH-RcN"/>
+                <constraint firstItem="44b-1z-9lr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Ddp-Cn-W7D"/>
+                <constraint firstAttribute="trailing" secondItem="44b-1z-9lr" secondAttribute="trailing" constant="8" id="FIp-X6-zPr"/>
+                <constraint firstAttribute="trailing" secondItem="WGp-KW-Lky" secondAttribute="trailing" constant="8" id="Spg-c3-o0T"/>
+                <constraint firstItem="i3G-9M-laF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="T7e-e1-Nun"/>
+                <constraint firstItem="WGp-KW-Lky" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="YSf-4F-wup"/>
+                <constraint firstItem="WGp-KW-Lky" firstAttribute="top" secondItem="Pfk-ny-U8Q" secondAttribute="bottom" constant="8" id="brF-df-ybQ"/>
+                <constraint firstItem="Pfk-ny-U8Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="eYF-bj-cVa"/>
+                <constraint firstItem="44b-1z-9lr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="hXQ-Ck-cuw"/>
+                <constraint firstAttribute="trailing" secondItem="i3G-9M-laF" secondAttribute="trailing" constant="8" id="k66-mO-okO"/>
+                <constraint firstItem="i3G-9M-laF" firstAttribute="top" secondItem="44b-1z-9lr" secondAttribute="bottom" constant="8" id="sUl-qa-lq4"/>
+                <constraint firstAttribute="trailing" secondItem="Pfk-ny-U8Q" secondAttribute="trailing" constant="8" id="vNr-Dc-0DZ"/>
+                <constraint firstItem="Pfk-ny-U8Q" firstAttribute="top" secondItem="i3G-9M-laF" secondAttribute="bottom" constant="8" id="yNK-30-r4a"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>
