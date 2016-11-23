@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-v7-lwV">
-                    <rect key="frame" x="0.0" y="278" width="320" height="290"/>
+                    <rect key="frame" x="0.0" y="244" width="320" height="260"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idI-Se-MHG">
@@ -41,9 +41,9 @@
                     </connections>
                 </searchBar>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="T3E-8H-9Ug">
-                    <rect key="frame" x="0.0" y="44" width="320" height="234"/>
+                    <rect key="frame" x="0.0" y="44" width="320" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="234" id="9cU-iL-pSI"/>
+                        <constraint firstAttribute="height" constant="200" id="9cU-iL-pSI"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="gY1-S9-8Eh"/>
@@ -55,7 +55,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="T3E-8H-9Ug" secondAttribute="trailing" id="0xf-71-BlY"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1D9-yk-z2C"/>
-                <constraint firstAttribute="bottom" secondItem="Whs-v7-lwV" secondAttribute="bottom" id="3ZR-lu-kCs"/>
+                <constraint firstAttribute="bottom" secondItem="Whs-v7-lwV" secondAttribute="bottom" constant="64" id="3ZR-lu-kCs"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L2X-S7-b02"/>
                 <constraint firstAttribute="trailing" secondItem="Whs-v7-lwV" secondAttribute="trailing" id="NGd-CF-wxQ"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O2t-Q8-ajY"/>
@@ -64,15 +64,7 @@
                 <constraint firstItem="Whs-v7-lwV" firstAttribute="top" secondItem="T3E-8H-9Ug" secondAttribute="bottom" id="qOq-jA-mc3"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="top" secondItem="idI-Se-MHG" secondAttribute="bottom" id="yfq-Wy-wJP"/>
             </constraints>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="nvX-hW-TcJ" appends="YES" id="8Xq-OT-G3z"/>
-            </connections>
             <point key="canvasLocation" x="5" y="59"/>
         </view>
-        <tapGestureRecognizer id="nvX-hW-TcJ">
-            <connections>
-                <action selector="onTapingView:" destination="-1" id="2eA-kS-5dN"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
 </document>
