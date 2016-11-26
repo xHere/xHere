@@ -102,35 +102,38 @@ class XHERServerTests: XCTestCase {
         
         self.waitForExpectations(timeout: 60, handler: nil)
     }
+    
+    
     func postBountyNearLocation(location:PFGeoPoint, success:@escaping ()->()) {
         
         let user = PFUser.current() as! User
         
-        let note = "POSTING 5rd BOUNTY WITH POI!"
+        let note = "POSTING 4rd BOUNTY WITH POI!"
+        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
+            self.poiServer.getLocationBy(coordinates: currentLocation!, radius: .nearby,
+                success: { (poiArray:[POI]?) in
+                    let firstPOI = poiArray?[3]
+                    print("First POI name is \(firstPOI?.placeName)")
+                    
+                    //Look if we already have this POI
+                    //If we do use that POI
+                    //else use the new one.
+                    
+                    self.server.postBountyBy(user: user, withNote: note, atPOI: firstPOI!, withTokenValue: 10,
+                         success: {
+                            success()
+                    },
+                         failure: {
+                            print("POST BOUNTY TEST FAILURE")
+                    })
+            },
+                failure: { (error:Error?) in
+                    
+            })
+
+        }
         
-        poiServer.getLocationBy(coordinates: location,
-            success: { (poiArray:[POI]?) in
-             
-                let firstPOI = poiArray?[3]
-                print("First POI name is \(firstPOI?.placeName)")
-                
-                //Look if we already have this POI
-                //If we do use that POI
-                //else use the new one.
-                
-                self.server.postBountyBy(user: user, withNote: note, atPOI: firstPOI!, withTokenValue: 10,
-                             success: {
-                                success()
-                },
-                             failure: {
-                                print("POST BOUNTY TEST FAILURE")
-                })
-                
-            
-        },
-            failure: { (error:Error?) in
-                
-        })
+        
     }
     
     
