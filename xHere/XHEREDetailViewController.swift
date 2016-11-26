@@ -17,6 +17,7 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextFeild: UITextField!
     @IBOutlet weak var commentButton: UIButton!
+    var currentBounty : XHERBounty!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +30,18 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func setupView(){
-        
+        if let currentBounty = currentBounty {
+            placeNameLabel.text = currentBounty.postedAtLocation.placeName
+            detailDesciptionLabel.text = currentBounty.bountyNote
+            usernameLabel.text = currentBounty.postedByUser?.screenName
+        }
     }
+    
     func setupTableView() {
         
-      
+        tableView.isHidden = true;
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
         let contentViewCellNib = UINib(nibName: "CommentCell", bundle: nil)

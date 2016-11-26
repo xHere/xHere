@@ -116,6 +116,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+        let cell = tableView.cellForRow(at: indexPath) as! XHERHomeFeedViewCell
+        detailViewController.currentBounty = cell.bounty
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     

@@ -18,7 +18,10 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        if userCreatedImage != nil {
+//            imageView.image = userCreatedImage
+//        }
         // Do any additional setup after loading the view.
         
     }
@@ -90,6 +93,7 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
         
         let note = "POSTING 6ST BOUNTY!"
         let poi = POI()
+    
         
         server.postBountyBy(user: user, withNote: note, atPOI: poi, withTokenValue: 11,
                             success: {
