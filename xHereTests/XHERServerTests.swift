@@ -26,6 +26,27 @@ class XHERServerTests: XCTestCase {
         super.tearDown()
     }
     
+    func testFetchClaimedBountyAtPOI() {
+        
+        let expectation = self.expectation(description: "fetchClaimedBountyAtPOI")
+
+        let poi = POI()
+        poi.googlePlaceID = "ChIJxdDAgHa2j4ARTl-zct1VP_U"
+        
+        server.fetchClaimedBountyAt(poi: poi,
+                success: { (bountiesArray:[XHERBounty]?) in
+          
+                    
+                    print(bountiesArray?[0].bountyNote)
+                    expectation.fulfill()
+                    
+                },
+                failure: { (error:Error?) in
+                    
+        })
+        self.waitForExpectations(timeout: 2, handler: nil)
+    }
+    
     
     func testDownloadContentByUserCorrectLength() {
         
