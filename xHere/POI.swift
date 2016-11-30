@@ -40,6 +40,28 @@ class POI: PFObject, PFSubclassing {
     }
 
     var placeImageURL : URL?
+    
+    var placeImageURLInParse: String? {
+        
+        get {
+            if let returnStrig = self["placeImageURL"] as? String {
+                return returnStrig
+            }
+            
+            return ""
+            
+        }
+        set {
+            if let newValue = newValue {
+                self["placeImageURL"] = newValue
+            }
+        }
+
+    }
+    
+    
+    
+    
     var latitute : Double = 0.0
     var longitude : Double = 0.0
     var placeDescription : String?
@@ -112,10 +134,13 @@ class POI: PFObject, PFSubclassing {
             let photReference = pics["photo_reference"]!
             let strUrl = "\(kGoogleWebserviceBasePath)photo?maxwidth=\(width)&photoreference=\(photReference)&key=\(kPFGoogleApiKey)"
             placeImageURL = URL(string: strUrl)
+            placeImageURLInParse = strUrl
         }else if ((dictionary["reference"] as? String) != nil){
             let photReference = dictionary["reference"]!
             let strUrl = "\(kGoogleWebserviceBasePath)photo?maxwidth=\(600)&reference=\(photReference)&key=\(kPFGoogleApiKey)"
             placeImageURL = URL(string: strUrl)
+            placeImageURLInParse = strUrl
+
         }
         
         geoPoint = PFGeoPoint(latitude:latitute, longitude:longitude)

@@ -20,6 +20,10 @@ class XHERServer: NSObject {
         case postBy = "postedByUser", claimed = "claimedByUser"
     }
     
+    func fetchClaimedBountyAt(poi:POI, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+    }
+    
     // Find Bounty Claimed in an area
     func fetchUnClaimedBountyNear( location:PFGeoPoint, withInMiles miles:Double, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
