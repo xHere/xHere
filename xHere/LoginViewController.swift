@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
             toggleView(animated: true)
         }
         else {
-            let newUser = PFUser()
+            let newUser = User()
             newUser.username = signupEmailInput.textFieldView.text!
             newUser.password = signupPasswordInput.textFieldView.text!
             newUser.email = signupEmailInput.textFieldView.text!
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController {
     
     
     func login(userName: String, password: String){
-        PFUser.logInWithUsername(inBackground: userName, password: password) { (user: PFUser?, error:Error?) in
+        User.logInWithUsername(inBackground: userName, password: password) { (user: PFUser?, error:Error?) in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -157,8 +157,8 @@ class LoginViewController: UIViewController {
                 print(error.localizedDescription)
             }
             else {
-                FBRequestConnection.start(withGraphPath: "me?fields=birthday,gender,first_name,last_name,picture,email", completionHandler: { (connection :FBRequestConnection?, result: Any?, error: Error?) in
-                    let user = PFUser.current()
+                FBRequestConnection.start(withGraphPath: "me?fields=birthday,gender,first_name,last_name,picture,cover,email", completionHandler: { (connection :FBRequestConnection?, result: Any?, error: Error?) in
+                    let user = User.current()
                     let data = result as! NSDictionary
                     print(data)
                     let picture = data["picture"] as! NSDictionary
@@ -167,15 +167,27 @@ class LoginViewController: UIViewController {
                     let imageData = NSData.init(contentsOf: url!)
                     let profilePicture = PFFile(name: "profileImage.jpg", data: imageData! as Data)
                     //                    let profilePicture = PFFile(data: imageData! as Data)
-                    user?.setObject(profilePicture!, forKey: "profileImageUrl")
-                    user?.setValue(data["email"], forKey: "email")
-                    user?.setValue(data["email"], forKey: "username")
-                    user?.setValue(data["last_name"], forKey: "lastName")
-                    user?.setValue(data["first_name"], forKey: "firstName")
+                    let cover = data["cover"] as! NSDictionary
+                    let coverUrl = URL(string: cover["source"] as! String)
+                    let coverImageData = NSData.init(contentsOf: coverUrl!)
+                    let coverPicture  = PFFile(name: "coverImage.jpg", data: coverImageData! as Data)
+                    user?.setObject(profilePicture!, forKey: "profileImage")
+                    user?.setObject(coverPicture!, forKey: "coverPictrue")
+                    user?.setValue(cover["source"], forKey: "coverPictureUrl")
+                    user?.setValue(pictureData["url"], forKey: "profilePictureUrl")
+                    user?.email = data["email"] as? String
+                    user?.username = data["email"] as? String
+                    user?.lastName = data["last_name"] as? String
+                    user?.firstName = data["first_name"] as? String
+                    user?.coverPictureUrl = cover["source"] as? String
+//                    user?.setValue(data["email"], forKey: "email")
+//                    user?.setValue(data["email"], forKey: "username")
+//                    user?.setValue(data["last_name"], forKey: "lastName")
+//                    user?.setValue(data["first_name"], forKey: "firstName")
                     user?.saveInBackground()
                     let homeTabBarVC = XHERHomeTabBarViewController()
                     self.present(homeTabBarVC, animated: true, completion: nil)
-                    
+                
                     
                 })
             }

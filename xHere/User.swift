@@ -103,6 +103,20 @@ class User : PFUser {
         }
     }
     
+    var coverPictureUrl : String? {
+        get {
+            if let _coverPictureUrl = self["coverPictureUrl"] as? String {
+                return _coverPictureUrl
+            }
+            else {
+                return nil
+            }
+        }
+        set{
+            self["coverPictureUrl"] = newValue
+        }
+    }
+    
 //    var contentByUser:[Content]? {
 //        
 //        get {
