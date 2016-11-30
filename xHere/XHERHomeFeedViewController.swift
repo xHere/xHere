@@ -41,19 +41,29 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         let server = XHERServer.sharedInstance
         
-        let user = PFUser.current() as! User
+        //Get unclaimed bounties nearby
+        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
+            
+            if error == nil {
+                
+                if let currentLocation = currentLocation {
+                    weak var weakSelf = self
+                    server.fetchUnClaimedBountyNear(location: currentLocation,
+                           success: { (bountiesArray:[XHERBounty]?) in
+                            
+                            if let strongSelf = weakSelf {
+                                strongSelf.bountiesArray = bountiesArray
+                                success()
+                            }
+                    },
+                           failure: { (error:Error?) in
+                            
+                    })
+                }
+            }
+        }
         
-        weak var weakSelf = self
-        server.fetchBountyPostedBy(user: user,
-                success: { (bountiesArray:[XHERBounty]?) in
-                    if let strongSelf = weakSelf {
-                        strongSelf.bountiesArray = bountiesArray
-                        success()
-                    }
-        },
-                failure: { (error:Error?) in
-                    
-        })
+        //Get claimed bounties nearby
         
         
     }
