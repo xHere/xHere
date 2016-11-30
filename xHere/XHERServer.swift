@@ -21,7 +21,62 @@ class XHERServer: NSObject {
     }
     
     // Find Bounty Claimed in an area
-//    func fetchBountyNear( location:PFGeoPoint, )
+    func fetchUnClaimedBountyNear( location:PFGeoPoint, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        fetchBountyNear(location: location, thatIsClaimed: false,
+                success: { (bountiesArray:[XHERBounty]?) in
+                    success(bountiesArray)
+        },
+                failure: { (error:Error?) in
+                    failure(error)
+        })
+    }
+    
+    func fetchClaimedBountyNear( location:PFGeoPoint, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        fetchBountyNear(location: location, thatIsClaimed: true,
+                        success: { (bountiesArray:[XHERBounty]?) in
+                            success(bountiesArray)
+        },
+                        failure: { (error:Error?) in
+                            failure(error)
+        })
+    }
+    
+    func fetchBountyNear( location:PFGeoPoint, thatIsClaimed isClaimed:Bool, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        let bountyQuery = PFQuery(className: kPFClassBounty)
+        bountyQuery.whereKey(kPFKeyGeoPoint, nearGeoPoint: location)
+        bountyQuery.includeKey(kPFKeyPOI)
+        bountyQuery.includeKey(kPFKeyPostedByUser)
+        bountyQuery.whereKey(kPFKeyBountyIsClaimed, equalTo: isClaimed)
+        bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
+            
+            if error == nil {
+                
+                if let bountiesArray = bountiesArray {
+                    
+                    //Parse array of PFObject into Bounty
+                    var bountyArrayTyped = [XHERBounty]()
+                    for object in bountiesArray {
+                        let bounty = object as! XHERBounty
+                        bountyArrayTyped.append(bounty)
+                    }
+                    
+                    //Return nil if the array is empty
+                    if bountyArrayTyped.count > 0 {
+                        success(bountyArrayTyped)
+                    }
+                    else {
+                        success(nil)
+                    }
+                }
+            }
+            else {
+                failure(error)
+            }
+        }
+    }
     
     
     // Find Bounty claimed by User
