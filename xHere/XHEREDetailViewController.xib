@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,31 +24,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startbucks Sunnyvale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZq-aP-LXi">
-                    <rect key="frame" x="8" y="30" width="359" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="GTT-9H-mzC">
-                    <rect key="frame" x="8" y="59" width="359" height="150"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="2PH-vM-Mj8"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@realq" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVs-w5-6i8">
-                    <rect key="frame" x="8" y="217" width="359" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.2414799929" green="0.64327496289999997" blue="0.94195991749999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hello long description " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urC-ov-kNz">
-                    <rect key="frame" x="8" y="246" width="359" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0Z-Y2-xt5">
-                    <rect key="frame" x="8" y="275" width="359" height="220"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="8NH-kd-usf"/>
@@ -59,10 +51,8 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxq-AN-RkU">
-                    <rect key="frame" x="0.0" y="495" width="375" height="44"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7j6-3z-6IF">
-                            <rect key="frame" x="8" y="7" width="284" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -71,7 +61,6 @@
                             </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEq-QL-e3I">
-                            <rect key="frame" x="300" y="7" width="67" height="30"/>
                             <state key="normal" title="Comment"/>
                             <connections>
                                 <action selector="onCommentClick:" destination="-1" eventType="touchUpInside" id="cpG-Uh-xKJ"/>
@@ -88,6 +77,12 @@
                         <constraint firstAttribute="trailing" secondItem="hEq-QL-e3I" secondAttribute="trailing" constant="8" id="x37-v8-E1S"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3s-eK-MkD">
+                    <state key="normal" title="Claim IT"/>
+                    <connections>
+                        <action selector="initClaim:" destination="-1" eventType="touchUpInside" id="jAE-UX-7zX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -105,8 +100,10 @@
                 <constraint firstItem="MVs-w5-6i8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="UfL-Hq-UZy"/>
                 <constraint firstItem="urC-ov-kNz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="awT-cW-nSQ"/>
                 <constraint firstAttribute="trailing" secondItem="urC-ov-kNz" secondAttribute="trailing" constant="8" id="bKE-6y-4YX"/>
+                <constraint firstItem="Y3s-eK-MkD" firstAttribute="top" secondItem="GTT-9H-mzC" secondAttribute="bottom" constant="4" id="cHV-Vi-xNZ"/>
                 <constraint firstAttribute="trailing" secondItem="MVs-w5-6i8" secondAttribute="trailing" constant="8" id="cxr-5k-Kzv"/>
                 <constraint firstItem="gxq-AN-RkU" firstAttribute="top" secondItem="i0Z-Y2-xt5" secondAttribute="bottom" id="eKw-XS-XZR"/>
+                <constraint firstAttribute="trailing" secondItem="Y3s-eK-MkD" secondAttribute="trailing" constant="3" id="hRo-bR-Ty6"/>
                 <constraint firstAttribute="trailing" secondItem="GTT-9H-mzC" secondAttribute="trailing" constant="8" id="kOG-Qa-3sJ"/>
                 <constraint firstItem="MVs-w5-6i8" firstAttribute="top" secondItem="GTT-9H-mzC" secondAttribute="bottom" constant="8" id="kao-sr-la8"/>
                 <constraint firstItem="urC-ov-kNz" firstAttribute="top" secondItem="MVs-w5-6i8" secondAttribute="bottom" constant="8" id="mnx-o8-7Yb"/>

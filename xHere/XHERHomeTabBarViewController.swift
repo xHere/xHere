@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class XHERHomeTabBarViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class XHERHomeTabBarViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     
@@ -25,7 +25,7 @@ class XHERHomeTabBarViewController: UIViewController , UIImagePickerControllerDe
     var profileNavi:UINavigationController!
     var profileViewController:UIViewController!
     
-    let debugging = true
+    
     
     var contentVC:UIViewController! {
         didSet {
@@ -60,7 +60,8 @@ class XHERHomeTabBarViewController: UIViewController , UIImagePickerControllerDe
         discoverViewController = XHERDiscoveryViewController()
         discoveryNavi = UINavigationController(rootViewController: discoverViewController)
         
-        profileViewController = XHERProfileViewController()
+//        profileViewController = XHERProfileViewController()
+        profileViewController = XHEREProfileViewController()
         profileNavi = UINavigationController(rootViewController: profileViewController)
         
         self.contentVC = homeFeedNavi
@@ -77,31 +78,9 @@ class XHERHomeTabBarViewController: UIViewController , UIImagePickerControllerDe
     }
     
     @IBAction func touchOnCamera(_ sender: UIButton) {
-//                postContentViewController = FusumaCameraViewController()
-        let picker = UIImagePickerController()
-        picker.delegate = self
-//        picker.mediaTypes = [kUTTypeMovie as NSString as String]
-        if(debugging){
-            picker.sourceType = .photoLibrary
-        }
-        else
-        {
-            picker.sourceType = .camera
-        }
-        present(picker, animated: true, completion: nil)
-        
-      //  postContentViewController = CameraViewController()
-        //self.present(postContentViewController!, animated: true, completion: nil)
+        postContentViewController = FusumaCameraViewController()
+        self.present(postContentViewController!, animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let postContentVc = FusumaCameraViewController()
-        postContentVc.userCreatedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        dismiss(animated: false) {
-            self.present(postContentVc, animated: true, completion: nil)
-        }
-    }
-
     
     @IBAction func touchOnProfile(_ sender: UIButton) {
         self.contentVC = profileNavi

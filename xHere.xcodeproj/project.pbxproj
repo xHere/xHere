@@ -61,6 +61,10 @@
 		939DD22C1DDA87550065736C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD22A1DDA87550065736C /* CommentCell.swift */; };
 		939DD22D1DDA87550065736C /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD22B1DDA87550065736C /* CommentCell.xib */; };
 		9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992234391DDE4B28003C792F /* XHEREPlaces.swift */; };
+		9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992654091DECE05000A10614 /* XHEREProfileViewController.swift */; };
+		9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */; };
+		992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B94831DEA49F80010482D /* ClaimViewController.swift */; };
+		992B94861DEA49F80010482D /* ClaimViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992B94841DEA49F80010482D /* ClaimViewController.xib */; };
 		997E28391DDFBDC1004A5105 /* loginInput.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997E28381DDFBDC1004A5105 /* loginInput.xib */; };
 		997E283B1DDFBE7A004A5105 /* loginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997E283A1DDFBE7A004A5105 /* loginInputView.swift */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
@@ -156,6 +160,10 @@
 		939DD22B1DDA87550065736C /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		992234391DDE4B28003C792F /* XHEREPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPlaces.swift; sourceTree = "<group>"; };
+		992654091DECE05000A10614 /* XHEREProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREProfileViewController.swift; sourceTree = "<group>"; };
+		9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREProfileViewController.xib; sourceTree = "<group>"; };
+		992B94831DEA49F80010482D /* ClaimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimViewController.swift; sourceTree = "<group>"; };
+		992B94841DEA49F80010482D /* ClaimViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClaimViewController.xib; sourceTree = "<group>"; };
 		997E28381DDFBDC1004A5105 /* loginInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginInput.xib; sourceTree = "<group>"; };
 		997E283A1DDFBE7A004A5105 /* loginInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginInputView.swift; sourceTree = "<group>"; };
 		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +254,7 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				992B94821DEA49BE0010482D /* Claim Bounty Controller */,
 				8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */,
 				99CEF6B61DD6A10600D36904 /* API */,
 				8BEC43B81DD950BE00244F11 /* Model */,
@@ -350,6 +359,8 @@
 			children = (
 				8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */,
 				8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */,
+				992654091DECE05000A10614 /* XHEREProfileViewController.swift */,
+				9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */,
 			);
 			name = ProfileViewController;
 			sourceTree = "<group>";
@@ -441,6 +452,15 @@
 				939DD22B1DDA87550065736C /* CommentCell.xib */,
 			);
 			name = "Comment Cell";
+			sourceTree = "<group>";
+		};
+		992B94821DEA49BE0010482D /* Claim Bounty Controller */ = {
+			isa = PBXGroup;
+			children = (
+				992B94831DEA49F80010482D /* ClaimViewController.swift */,
+				992B94841DEA49F80010482D /* ClaimViewController.xib */,
+			);
+			name = "Claim Bounty Controller";
 			sourceTree = "<group>";
 		};
 		997E28331DDFB769004A5105 /* inputView */ = {
@@ -560,7 +580,6 @@
 					};
 					8B2B13E71DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = SDHBMW8ZGY;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8B2B13D01DD117F200961683;
 					};
@@ -616,8 +635,10 @@
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
+				9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */,
 				8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */,
 				8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */,
+				992B94861DEA49F80010482D /* ClaimViewController.xib in Resources */,
 				939DD22D1DDA87550065736C /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -783,6 +804,7 @@
 			files = (
 				9376705E1DE4E60D00576199 /* XHEREPostBountyViewController.swift in Sources */,
 				8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */,
+				9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */,
 				8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */,
 				937670591DE4CCED00576199 /* XHERENeabyBountiesViewController.swift in Sources */,
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
@@ -797,6 +819,7 @@
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
+				992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */,
 				8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
 				99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */,
@@ -1015,10 +1038,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = SDHBMW8ZGY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = xHereTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -1032,10 +1057,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = SDHBMW8ZGY;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = xHereTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

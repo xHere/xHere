@@ -123,7 +123,7 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
         let contentQuery = PFQuery(className: "Content")
         contentQuery.includeKey("mediaArray")
         do {
-            let content = try contentQuery.getObjectWithId("DOFmwJokci") as! Content
+            let content = try contentQuery.getObjectWithId("hPTuh7WTMm") as! Content
             
             let media = content.mediaArray?[0]
             let mediaFile = media?.mediaData
