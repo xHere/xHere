@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 
+var searchDistanceInMiles = 2.0
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -48,7 +49,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                 
                 if let currentLocation = currentLocation {
                     weak var weakSelf = self
-                    server.fetchUnClaimedBountyNear(location: currentLocation,
+                    server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
                            success: { (bountiesArray:[XHERBounty]?) in
                             
                             if let strongSelf = weakSelf {
