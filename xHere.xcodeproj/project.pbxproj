@@ -56,6 +56,8 @@
 		9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */; };
 		9376705E1DE4E60D00576199 /* XHEREPostBountyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376705C1DE4E60D00576199 /* XHEREPostBountyViewController.swift */; };
 		9376705F1DE4E60D00576199 /* XHEREPostBountyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9376705D1DE4E60D00576199 /* XHEREPostBountyViewController.xib */; };
+		939AF8971DEE184E008775F7 /* XHEREAutoCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AF8951DEE184E008775F7 /* XHEREAutoCompleteCell.swift */; };
+		939AF8981DEE184E008775F7 /* XHEREAutoCompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */; };
 		939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */; };
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
 		939DD22C1DDA87550065736C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD22A1DDA87550065736C /* CommentCell.swift */; };
@@ -154,6 +156,8 @@
 		937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERENeabyBountiesViewController.xib; sourceTree = "<group>"; };
 		9376705C1DE4E60D00576199 /* XHEREPostBountyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPostBountyViewController.swift; sourceTree = "<group>"; };
 		9376705D1DE4E60D00576199 /* XHEREPostBountyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREPostBountyViewController.xib; sourceTree = "<group>"; };
+		939AF8951DEE184E008775F7 /* XHEREAutoCompleteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREAutoCompleteCell.swift; sourceTree = "<group>"; };
+		939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREAutoCompleteCell.xib; sourceTree = "<group>"; };
 		939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREDetailViewController.swift; sourceTree = "<group>"; };
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
 		939DD22A1DDA87550065736C /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -368,6 +372,7 @@
 		8BA7D2171DD926900002C848 /* Discovery ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				939AF8941DEE1814008775F7 /* AutocompleteLocationCell */,
 				8BA7D2261DD92F9E0002C848 /* POI ViewCell */,
 				8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */,
 				8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */,
@@ -433,6 +438,15 @@
 				9376705D1DE4E60D00576199 /* XHEREPostBountyViewController.xib */,
 			);
 			name = "Post Bounty";
+			sourceTree = "<group>";
+		};
+		939AF8941DEE1814008775F7 /* AutocompleteLocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				939AF8951DEE184E008775F7 /* XHEREAutoCompleteCell.swift */,
+				939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */,
+			);
+			name = AutocompleteLocationCell;
 			sourceTree = "<group>";
 		};
 		939DD2221DDA82890065736C /* Detail View Controller */ = {
@@ -618,6 +632,7 @@
 			files = (
 				9376705F1DE4E60D00576199 /* XHEREPostBountyViewController.xib in Resources */,
 				8B2B13E21DD117F200961683 /* LaunchScreen.storyboard in Resources */,
+				939AF8981DEE184E008775F7 /* XHEREAutoCompleteCell.xib in Resources */,
 				8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */,
 				8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */,
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
@@ -820,6 +835,7 @@
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
 				992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */,
+				939AF8971DEE184E008775F7 /* XHEREAutoCompleteCell.swift in Sources */,
 				8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
 				99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */,

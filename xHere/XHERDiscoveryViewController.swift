@@ -13,11 +13,13 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var autoCompleteTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var currentLocation : PFGeoPoint!
     var locations : [POI]?
+    var autoComplete : [POI]?
    
     
     override func viewDidLoad() {
@@ -25,14 +27,14 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         self.title = "Find a Place"
         self.setupTableView()
-        
+        autoCompleteTableView.isHidden = true
 
         
         PFGeoPoint.geoPointForCurrentLocation { (loc :PFGeoPoint?, error :Error?) in
             if error == nil{
                 self.currentLocation = loc
                 self.setUpMapView()
-                self.getNearbyLocations()
+                self.getNearbyLocations(geoPoint: self.currentLocation)
             }
         }
     }
@@ -47,24 +49,24 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Setup View
     func setupTableView() {
         self.edgesForExtendedLayout = []
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+       
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
         let contentViewCellNib = UINib(nibName: "POIViewCell", bundle: nil)
         self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "POIViewCell")
+        
+        self.autoCompleteTableView.estimatedRowHeight = 100
+        self.autoCompleteTableView.rowHeight = UITableViewAutomaticDimension
+        let autoCompleteCellNib = UINib(nibName: "XHEREAutoCompleteCell", bundle: nil)
+        self.autoCompleteTableView.register(autoCompleteCellNib, forCellReuseIdentifier: "AutoCompleteCell")
     }
     
     func setUpMapView(){
         
         
-        let initialLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-        let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
+       
         mapView.removeAnnotations(mapView.annotations)
-        
+        mapView.showsUserLocation = true
         if self.locations != nil{
             for location in self.locations!{
                 
@@ -75,76 +77,144 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                 self.mapView.addAnnotation(annotation)
             }
         }
+        
+       
+       
+        let yourAnnotationArray = mapView.annotations
+        mapView.showAnnotations(yourAnnotationArray, animated: true)
+       // mapView.setRegion(coordinateRegion, animated: true)
+
     }
     // MARK: - Table view delegate
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        if locations != nil{
-            return locations!.count
+        if(tableView==self.tableView){
+            if locations != nil{
+                return locations!.count
+            }else{
+                return 0
+            }
         }else{
-            return 0
+            if autoComplete != nil{
+                return autoComplete!.count
+            }else{
+                return 0
+            }
         }
+        
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath) as! POIViewCell
-        cell.location = self.locations?[indexPath.row]
         
-        return cell
+        if tableView == autoCompleteTableView{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AutoCompleteCell", for: indexPath) as! XHEREAutoCompleteCell
+            cell.autoComplete = self.autoComplete?[indexPath.row]
+            return cell
+
+            
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "POIViewCell", for: indexPath) as! POIViewCell
+            cell.location = self.locations?[indexPath.row]
+            return cell
+
+        }
+       
+        
     }
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
-        neabyBountiesViewController.location = self.locations?[indexPath.row]
-        self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
+        if(tableView==self.tableView){
+            let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
+            neabyBountiesViewController.location = self.locations?[indexPath.row]
+            self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
+        }else{
+            
+            let location = autoComplete?[indexPath.row]
+            XHEREGooglePlacesServer.geocodeAddressString((location?.placeDescription)!, completion: { (placemark, error) -> Void in
+                if (placemark?.location?.coordinate) != nil {
+                    
+                    self.autoCompleteTableView.isHidden = true
+                    self.searchBar.text = location?.placeDescription
+                    self.view.endEditing(true)
+                    self.getPlaceDeatils(placeID: (location?.googlePlaceID)!)
+                    
+                }
+            })
+        }
+       
         
     }
     
     // MARK: - Search Bar delegate
 
-   
+    
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
+        autoCompleteTableView.isHidden = false
+         fetchLocationsWithPlace(searchText: searchBar.text!)
         return true
     }
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            
+            //self.getNearbyLocations(geoPoint: currentLocation)
+        }
+    }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchLocationsWithPlace(searchText: searchBar.text!)
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
         
+        self.getNearbyLocations(geoPoint: currentLocation)
+        self.searchBar.text = ""
+        autoCompleteTableView.isHidden = true
         self.view.endEditing(true)
     }
     // MARK: - API calls
     func fetchLocationsWithPlace(searchText : String){
         
-       self.view.endEditing(true)
+      // self.view.endEditing(true)
         
         
-        XHEREGooglePlacesServer.sharedInstance.getLocationBy(
-            placeName: searchText,radius : .farPlaces,coordinates: currentLocation,
-            success: { (contentsArray:[POI]?) in
+//        XHEREGooglePlacesServer.sharedInstance.getLocationBy(
+//            placeName: searchText,radius : .farPlaces,coordinates: currentLocation,
+//            success: { (contentsArray:[POI]?) in
+//                
+//                if let contentsArray = contentsArray {
+//                    
+//                    self.locations = contentsArray
+//                    self.tableView.reloadData()
+//                    self.setUpMapView()
+//                }else{
+//                    print("No result found")
+//                }
+//        },
+//            failure: { (error:Error?) in
+//                
+//        })
+        
+        XHEREGooglePlacesServer.sharedInstance.getSearchPlaces(placeName: searchText, success: { (locations :[POI]?) in
+            if let locations = locations {
                 
-                if let contentsArray = contentsArray {
-                    
-                    self.locations = contentsArray
-                    self.tableView.reloadData()
-                    self.setUpMapView()
-                }else{
-                    print("No result found")
-                }
-        },
-            failure: { (error:Error?) in
+                self.autoComplete = locations
+                self.autoCompleteTableView.reloadData()
                 
-        })
+            }else{
+                print("No result found")
+            }
+            
+        
+        }) { (error : Error?) in
+        
+        }
 
     }
-    func getNearbyLocations(){
+    func getNearbyLocations(geoPoint : PFGeoPoint){
         
        
         XHEREGooglePlacesServer.sharedInstance.getLocationBy(
-            coordinates: currentLocation,radius: .nearby,
+            coordinates: geoPoint,radius: .nearby,
             success: { (contentsArray:[POI]?) in
                 
                 if let contentsArray = contentsArray {
@@ -157,6 +227,32 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
             failure: { (error:Error?) in
                 
         })
+    }
+    func getPlaceDeatils(placeID:String){
+        
+        XHEREGooglePlacesServer.sharedInstance.getPlaceDetails(placeId: placeID, success: { (locationDetail : [POI]?) in
+            
+            
+            if let locationDetail = locationDetail {
+                
+                self.locations = locationDetail
+                self.tableView.reloadData()
+                self.setUpMapView()
+            }
+            
+            
+        }) { (error : Error?) in
+            print(error.debugDescription)
+        }
+    }
+    func isAutoComplete(isAutoComplete :  Bool){
+        if isAutoComplete{
+            self.autoCompleteTableView.isHidden = false
+            
+        }else{
+            self.autoCompleteTableView.isHidden = true
+            self.view.endEditing(true)
+        }
     }
     
     

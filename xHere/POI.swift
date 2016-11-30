@@ -42,7 +42,7 @@ class POI: PFObject, PFSubclassing {
     var placeImageURL : URL?
     var latitute : Double = 0.0
     var longitude : Double = 0.0
-    
+    var placeDescription : String?
     
     
 
@@ -80,6 +80,18 @@ class POI: PFObject, PFSubclassing {
     public static func parseClassName() -> String {
         return "POI"
     }
+    
+    public func initSearchDictionary(dictionary : NSDictionary){
+        
+        googlePlaceID = dictionary["place_id"] as? String ?? ""
+        let structureFormat = dictionary["structured_formatting"] as? NSDictionary
+        placeDescription = dictionary["description"] as? String
+        
+    }
+    public func initWithDetailDictionary(dictionary : NSDictionary){
+        
+        
+    }
     public func initWithDictionary(dictionary : NSDictionary){
         
         googlePlaceID = dictionary["place_id"] as? String ?? ""
@@ -99,6 +111,10 @@ class POI: PFObject, PFSubclassing {
             _ = pics["height"]!
             let photReference = pics["photo_reference"]!
             let strUrl = "\(kGoogleWebserviceBasePath)photo?maxwidth=\(width)&photoreference=\(photReference)&key=\(kPFGoogleApiKey)"
+            placeImageURL = URL(string: strUrl)
+        }else if ((dictionary["reference"] as? String) != nil){
+            let photReference = dictionary["reference"]!
+            let strUrl = "\(kGoogleWebserviceBasePath)photo?maxwidth=\(600)&reference=\(photReference)&key=\(kPFGoogleApiKey)"
             placeImageURL = URL(string: strUrl)
         }
         
