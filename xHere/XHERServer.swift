@@ -22,6 +22,53 @@ class XHERServer: NSObject {
     
     func fetchClaimedBountyAt(poi:POI, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
+        //Check if the POI submitted is already on the server or not.
+        let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
+        duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
+        duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
+            
+            var uniquePOI:POI
+            if let poiObject = poiObject {
+                uniquePOI = poiObject as! POI
+            }
+            else {
+                uniquePOI = poi
+            }
+            
+            uniquePOI.saveInBackground()
+        
+            let bountyQuery = PFQuery(className: kPFClassBounty)
+            bountyQuery.whereKey(kPFKeyPOI, equalTo: uniquePOI)
+            bountyQuery.includeKey(kPFKeyPOI)
+            bountyQuery.includeKey(kPFKeyPostedByUser)
+            bountyQuery.whereKey(kPFKeyBountyIsClaimed, equalTo: true)
+            bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
+                
+                if error == nil {
+                    
+                    if let bountiesArray = bountiesArray {
+                        
+                        //Parse array of PFObject into Bounty
+                        var bountyArrayTyped = [XHERBounty]()
+                        for object in bountiesArray {
+                            let bounty = object as! XHERBounty
+                            bountyArrayTyped.append(bounty)
+                        }
+                        
+                        //Return nil if the array is empty
+                        if bountyArrayTyped.count > 0 {
+                            success(bountyArrayTyped)
+                        }
+                        else {
+                            success(nil)
+                        }
+                    }
+                }
+                else {
+                    failure(error)
+                }
+            }
+        })
     }
     
     // Find Bounty Claimed in an area
