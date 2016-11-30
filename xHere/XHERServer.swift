@@ -44,7 +44,7 @@ class XHERServer: NSObject {
         })
     }
     
-    func fetchBountyNear( location:PFGeoPoint, withInMiles miles:Double, thatIsClaimed isClaimed:Bool, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+    private func fetchBountyNear( location:PFGeoPoint, withInMiles miles:Double, thatIsClaimed isClaimed:Bool, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
         let bountyQuery = PFQuery(className: kPFClassBounty)
         bountyQuery.whereKey(kPFKeyGeoPoint, nearGeoPoint: location, withinMiles: miles)

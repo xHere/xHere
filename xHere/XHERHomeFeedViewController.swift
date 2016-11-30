@@ -15,6 +15,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     
     var bountiesArray:[XHERBounty]?
+    var claimedBountiesArray:[XHERBounty]?
     var tableViewDataBackArray = [XHERBounty]()
     
     override func viewDidLoad() {
@@ -23,13 +24,16 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.title = "HOME"
         
         self.setupTableView()
-        
-        weak var weakSelf = self
-        self.callAPI { 
-            weakSelf?.updateTableView()
-        }
+        self.setupRefreshControl()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        weak var weakSelf = self
+        self.callAPI {
+            weakSelf?.updateTableView()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,23 +54,47 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                 if let currentLocation = currentLocation {
                     weak var weakSelf = self
                     server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
-                           success: { (bountiesArray:[XHERBounty]?) in
+                            success: { (bountiesArray:[XHERBounty]?) in
                             
-                            if let strongSelf = weakSelf {
-                                strongSelf.bountiesArray = bountiesArray
-                                success()
-                            }
+                                if let strongSelf = weakSelf {
+                                    strongSelf.bountiesArray = bountiesArray
+                                    success()
+                                }
                     },
-                           failure: { (error:Error?) in
+                            failure: { (error:Error?) in
                             
                     })
+                    
+                    server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
+                            success: { (claimedBountiesArray:[XHERBounty]?) in
+                                weakSelf?.claimedBountiesArray = claimedBountiesArray
+                                success()
+                    },
+                            failure: { (error:Error?) in
+                                
+                    })
+                    
                 }
             }
         }
         
         //Get claimed bounties nearby
         
+    }
+    
+    func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
         
+        weak var weakSelf = self
+        self.callAPI {
+            refreshControl.endRefreshing()
+            weakSelf?.updateTableView()
+        }
     }
     
     func setupTableView() {
