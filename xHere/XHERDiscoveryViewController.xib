@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHERDiscoveryViewController" customModule="xHere" customModuleProvider="target">
             <connections>
+                <outlet property="autoCompleteTableView" destination="4J4-LJ-VqM" id="lqW-K7-5fI"/>
                 <outlet property="mapView" destination="T3E-8H-9Ug" id="ssT-R2-en3"/>
                 <outlet property="searchBar" destination="idI-Se-MHG" id="fg5-I5-yVU"/>
                 <outlet property="tableView" destination="Whs-v7-lwV" id="AZq-im-5Yz"/>
@@ -25,6 +26,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Whs-v7-lwV">
                     <rect key="frame" x="0.0" y="244" width="320" height="260"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="xoZ-eb-qHs"/>
+                        <outlet property="delegate" destination="-1" id="RUi-sA-Z1E"/>
+                    </connections>
                 </tableView>
                 <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idI-Se-MHG">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -49,17 +54,29 @@
                         <outlet property="delegate" destination="-1" id="gY1-S9-8Eh"/>
                     </connections>
                 </mapView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-LJ-VqM">
+                    <rect key="frame" x="0.0" y="44" width="320" height="460"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="zCr-ou-Qt3"/>
+                        <outlet property="delegate" destination="-1" id="Skk-g4-xz9"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="T3E-8H-9Ug" secondAttribute="trailing" id="0xf-71-BlY"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1D9-yk-z2C"/>
+                <constraint firstItem="4J4-LJ-VqM" firstAttribute="top" secondItem="idI-Se-MHG" secondAttribute="bottom" id="1cd-6f-6r8"/>
                 <constraint firstAttribute="bottom" secondItem="Whs-v7-lwV" secondAttribute="bottom" constant="64" id="3ZR-lu-kCs"/>
                 <constraint firstItem="idI-Se-MHG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="L2X-S7-b02"/>
+                <constraint firstAttribute="bottom" secondItem="4J4-LJ-VqM" secondAttribute="bottom" constant="64" id="Mmc-Yf-fVY"/>
                 <constraint firstAttribute="trailing" secondItem="Whs-v7-lwV" secondAttribute="trailing" id="NGd-CF-wxQ"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O2t-Q8-ajY"/>
+                <constraint firstAttribute="trailing" secondItem="4J4-LJ-VqM" secondAttribute="trailing" id="Yp8-FI-8GC"/>
                 <constraint firstAttribute="trailing" secondItem="idI-Se-MHG" secondAttribute="trailing" id="gi1-qg-EBb"/>
+                <constraint firstItem="4J4-LJ-VqM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hQh-eF-aGM"/>
                 <constraint firstItem="Whs-v7-lwV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iFw-Fk-pze"/>
                 <constraint firstItem="Whs-v7-lwV" firstAttribute="top" secondItem="T3E-8H-9Ug" secondAttribute="bottom" id="qOq-jA-mc3"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="top" secondItem="idI-Se-MHG" secondAttribute="bottom" id="yfq-Wy-wJP"/>
