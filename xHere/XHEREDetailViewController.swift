@@ -8,25 +8,18 @@
 
 import UIKit
 
-class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class XHEREDetailViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var detailDesciptionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var commentView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var commentTextFeild: UITextField!
-    @IBOutlet weak var commentButton: UIButton!
     var cameraViewController : UIViewController?
     var currentBounty : XHERBounty!
     let debugging = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupView()
-        self.setupTableView()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,25 +40,7 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
         }
     }
     
-    func setupTableView() {
-        
-        tableView.isHidden = true;
-        self.tableView.estimatedRowHeight = 100
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        let contentViewCellNib = UINib(nibName: "CommentCell", bundle: nil)
-        self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "CommentCell")
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return tableViewDataBackArray.count
-        return 10
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
-        
-        return cell
-    }
+
     
     
     @IBAction func initClaim(_ sender: UIButton) {
@@ -92,12 +67,7 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
             self.present(claimController, animated: true, completion: nil)
         }
     }
-    
 
-    
-    @IBAction func onCommentClick(_ sender: UIButton) {
-        
-    }
     /*
      // MARK: - Navigation
      

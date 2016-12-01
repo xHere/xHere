@@ -76,7 +76,12 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     func getClaimedBounties(){
         XHERServer.sharedInstance.fetchBountyEarneddBy(user: currentUser!, success: { (bounties : [XHERBounty]?) in
-            self.userBounties = bounties!
+            if (bounties?.count)! > 0 {
+                self.userBounties = bounties!
+            }
+            else {
+                self.userBounties = []
+            }
             self.tableView.reloadData()
             self.claimedButton.isSelected = true
             self.postedButton.isSelected = false

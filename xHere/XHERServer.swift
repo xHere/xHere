@@ -276,26 +276,20 @@ class XHERServer: NSObject {
             if error == nil {
                 let bounty = bountyObject as! XHERBounty
         
-                self.uploadContent(withImage: image,
-                   success: { (media: Media) in
-                        bounty.claimedByUser  = user
-    //                    let relation = bounty.relation(forKey: kPFKeyClaimedByUser)
-    //                    relation.add(user)
-                        bounty.isClaimed  = true
-                        let temp = [media]
-                        bounty.mediaArray = temp
-                    
-                        //Remove token from bounty
-                        let bountyAmount = bounty.bountyValue
-                        bounty.bountyValue = 0
-                    
-                        //Add token to the Claimed User
-                    
-                    
-                        bounty.saveInBackground()
-                        success(bounty, bounty.bountyValue)
-                    },
-                    failure: {
+
+                self.uploadContent(withImage: image, success: { (media: Media) in
+                    bounty.claimedByUser  = user
+//                    let relation = bounty.relation(forKey: kPFKeyClaimedByUser)
+//                    relation.add(user)
+                    bounty.isClaimed  = true
+                    let temp = [media]
+                    bounty.mediaArray = temp
+                    user.tokens = user.tokens + bounty.bountyValue
+                    bounty.bountyValue = 0
+                    bounty.saveInBackground()
+                    user.saveInBackground()
+                    success(bounty, bounty.bountyValue)
+                    }, failure: {
                         
                 })
             }
