@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-var searchDistanceInMiles = 2.0
+var searchDistanceInMiles = 100.0
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -137,6 +137,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHERNearByClaimedViewCell", for: indexPath) as! XHERNearByClaimedViewCell
+            
+            cell.nearByClaimedArray = claimedBountiesArray
             
             return cell
         }

@@ -13,7 +13,15 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var nearByClaimedArray:[XHERBounty]?
+    var nearByClaimedArray:[XHERBounty]? {
+
+        didSet {
+            if let nearByClaimedArray = nearByClaimedArray {
+                collectionViewDataBackArray = nearByClaimedArray
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     var collectionViewDataBackArray = [XHERBounty]()
 
@@ -30,7 +38,6 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         // Configure the view for the selected state
     }
     
-    
     func setupCollectionView() {
         
         let nib = UINib(nibName: "XHERNearByClaimedCollectionCell", bundle: nil)
@@ -40,14 +47,22 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.collectionViewDataBackArray.count
-        return 10
+        return self.collectionViewDataBackArray.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
      
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "XHERNearByClaimedCollectionCell", for: indexPath) as! XHERNearByClaimedCollectionCell
+        
+        
+        if let imageURLString = collectionViewDataBackArray[indexPath.row].mediaArray?[0].mediaData?.url {
+            
+            
+            let imageURL = URL(string: imageURLString)
+            
+            cell.imageView.setImageWith(imageURL!)
+        }
         
         return cell
     }

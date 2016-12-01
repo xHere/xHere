@@ -20,6 +20,10 @@ class XHERServer: NSObject {
         case postBy = "postedByUser", claimed = "claimedByUser"
     }
     
+    
+    // MARK: - Fetch Bounty API by location
+    
+    // Find Claimed Bounty at a particular POI
     func fetchClaimedBountyAt(poi:POI, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
         //Check if the POI submitted is already on the server or not.
@@ -131,6 +135,7 @@ class XHERServer: NSObject {
         }
     }
     
+    // MARK: - Fetch Bounty baseed by User
     
     // Find Bounty claimed by User
     func fetchBountyEarneddBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
