@@ -50,6 +50,7 @@ class XHERServer: NSObject {
         bountyQuery.whereKey(kPFKeyGeoPoint, nearGeoPoint: location, withinMiles: miles)
         bountyQuery.includeKey(kPFKeyPOI)
         bountyQuery.includeKey(kPFKeyPostedByUser)
+        bountyQuery.includeKey(kPFKeyMediaArray)
         bountyQuery.whereKey(kPFKeyBountyIsClaimed, equalTo: isClaimed)
         bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
