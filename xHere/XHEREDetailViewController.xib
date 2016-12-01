@@ -12,6 +12,7 @@
                 <outlet property="commentTextFeild" destination="7j6-3z-6IF" id="9Mr-XL-opP"/>
                 <outlet property="commentView" destination="gxq-AN-RkU" id="4S7-M1-35e"/>
                 <outlet property="detailDesciptionLabel" destination="urC-ov-kNz" id="6u9-j6-qfd"/>
+                <outlet property="placeImageView" destination="GTT-9H-mzC" id="rzz-o2-EAY"/>
                 <outlet property="placeNameLabel" destination="FZq-aP-LXi" id="IYN-30-rcK"/>
                 <outlet property="tableView" destination="i0Z-Y2-xt5" id="GH5-V1-u3u"/>
                 <outlet property="usernameLabel" destination="MVs-w5-6i8" id="tg5-5l-5hr"/>

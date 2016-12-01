@@ -10,6 +10,7 @@ import UIKit
 
 class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var detailDesciptionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -38,6 +39,10 @@ class XHEREDetailViewController: UIViewController,UITableViewDelegate,UITableVie
 //            placeNameLabel.text = currentBounty.postedAtLocation.placeName
             detailDesciptionLabel.text = currentBounty.bountyNote
             usernameLabel.text = currentBounty.postedByUser?.screenName
+            let postedLocation = currentBounty.postedAtLocation
+            if let imageUrl = postedLocation.placeImageURL {
+                placeImageView.setImageWith(imageUrl)
+            }
             
         }
     }

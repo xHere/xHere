@@ -127,7 +127,7 @@ class XHERBounty: PFObject, PFSubclassing {
     var postedAtLocation:POI {
         
         get {
-            return self[kPFClassPOI] as! POI
+            return self[kPFKeyPOI] as! POI
         }
         set {
             self[kPFKeyPOI] = newValue

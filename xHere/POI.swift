@@ -39,7 +39,14 @@ class POI: PFObject, PFSubclassing {
         }
     }
 
-    var placeImageURL : URL?
+    var placeImageURL : URL? {
+        get{
+            return URL(string: placeImageURLInParse!)
+        }
+        set {
+            
+        }
+    }
     
     var placeImageURLInParse: String? {
         
