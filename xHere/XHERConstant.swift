@@ -29,6 +29,7 @@ let kPFKeyBountyNote = "bountyNote"
 
 let kPFKeyBountyValue = "bountyValue"
 let kPFKeyBountyIsClaimed = "isClaimed"
+let kPFKeyTokens = "tokens"
 
 // MARK: -POI
 let kPFClassPOI = "POI"

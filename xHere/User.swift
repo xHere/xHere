@@ -117,6 +117,20 @@ class User : PFUser {
         }
     }
     
+    var tokens : Int? {
+        get {
+            if let tokens = self[kPFKeyTokens] as? Int {
+                return tokens
+            }
+            else {
+                return 0
+            }
+        }
+        set {
+            self[kPFKeyTokens] = newValue
+        }
+    }
+    
 //    var contentByUser:[Content]? {
 //        
 //        get {

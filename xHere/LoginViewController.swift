@@ -70,7 +70,6 @@ class LoginViewController: UIViewController {
             newUser.username = signupEmailInput.textFieldView.text!
             newUser.password = signupPasswordInput.textFieldView.text!
             newUser.email = signupEmailInput.textFieldView.text!
-            
             newUser.signUpInBackground(block: { (success : Bool, error : Error?) in
                 if let error = error {
                     // we probably want to let user know about the error.
@@ -151,14 +150,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginWithFacebook(_ sender: UIButton) {
         let permissions = ["public_profile", "email"]
-        PFFacebookUtils.logIn (withPermissions: permissions) { (user: PFUser?, error:Error?) in
-            
+        PFFacebookUtils.logIn (withPermissions: permissions) { (fbUser: PFUser?, error:Error?) in
             if let error = error {
                 print(error.localizedDescription)
             }
             else {
                 FBRequestConnection.start(withGraphPath: "me?fields=birthday,gender,first_name,last_name,picture,cover,email", completionHandler: { (connection :FBRequestConnection?, result: Any?, error: Error?) in
+                    
                     let user = User.current()
+                    if fbUser?.isNew == true {
+                        user?.tokens = 1000
+                    }
                     let data = result as! NSDictionary
                     print(data)
                     let picture = data["picture"] as! NSDictionary
