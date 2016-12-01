@@ -162,10 +162,10 @@ class XHERBounty: PFObject, PFSubclassing {
 
     var bountyValue:Int {
         get {
-            return (self[kPFKeyBountyValue] as? Int) ?? 0
+            return (self[kPFKeyTokens] as? Int) ?? 0
         }
         set {
-            self[kPFKeyBountyValue] = newValue as NSNumber
+            self[kPFKeyTokens] = newValue as NSNumber
         }
     }
     

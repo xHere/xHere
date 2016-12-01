@@ -117,7 +117,7 @@ class User : PFUser {
         }
     }
     
-    var tokens : Int? {
+    var tokens : Int {
         get {
             if let tokens = self[kPFKeyTokens] as? Int {
                 return tokens

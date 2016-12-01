@@ -233,18 +233,26 @@ class XHERServer: NSObject {
             
             newBounty.bountyGeoPoint = uniquePOI.geoPoint
             
-            newBounty.bountyValue = value
+            
+            
             
             newBounty.isClaimed = false
             
             //Set this bounty as new
             newBounty.claimedByUser = nil
             
+            if user.tokens > 1 {
+                newBounty.bountyValue = value
+                user.tokens = user.tokens - value
+            }
+
             newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
                 
                 if saveSuccess {
                     print("NEW BOUNTY SAVED!!")
-                    success()
+                    user.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+                        success()
+                    })
                 }
                 else {
                     print("POST BOUNTY FAILURE \(error?.localizedDescription)")
@@ -258,7 +266,9 @@ class XHERServer: NSObject {
     }
     
     //MARK claimBounty
-    func claimBounty(user : User, objectId: String, image: UIImage, success : @escaping () -> (), faliure : @escaping (Error) -> ()){
+    func claimBounty(user : User, objectId: String, image: UIImage, success : @escaping (XHERBounty, Int) -> (), faliure : @escaping (Error) -> ()){
+        
+        
         let query = PFQuery(className:kPFClassBounty)
         query.includeKey("mediaArray")
         
@@ -266,16 +276,26 @@ class XHERServer: NSObject {
             if error == nil {
                 let bounty = bountyObject as! XHERBounty
         
-                self.uploadContent(withImage: image, success: { (media: Media) in
-                    bounty.claimedByUser  = user
-//                    let relation = bounty.relation(forKey: kPFKeyClaimedByUser)
-//                    relation.add(user)
-                    bounty.isClaimed  = true
-                    let temp = [media]
-                    bounty.mediaArray = temp
-                    bounty.saveInBackground()
-                    success()
-                    }, failure: {
+                self.uploadContent(withImage: image,
+                   success: { (media: Media) in
+                        bounty.claimedByUser  = user
+    //                    let relation = bounty.relation(forKey: kPFKeyClaimedByUser)
+    //                    relation.add(user)
+                        bounty.isClaimed  = true
+                        let temp = [media]
+                        bounty.mediaArray = temp
+                    
+                        //Remove token from bounty
+                        let bountyAmount = bounty.bountyValue
+                        bounty.bountyValue = 0
+                    
+                        //Add token to the Claimed User
+                    
+                    
+                        bounty.saveInBackground()
+                        success(bounty, bounty.bountyValue)
+                    },
+                    failure: {
                         
                 })
             }
