@@ -8,7 +8,7 @@
 
 import UIKit
 
-class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -69,16 +69,18 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let collectionCell = cell as! XHERNearByClaimedCollectionCell
-            collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
+        collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
+        collectionCell.claimedLabel.layer.cornerRadius = 5
         
         print("COLLECTIONCELL HEIGHT = \(collectionCell.bounds.height)")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let cellSize = CGSize(width: collectionView.bounds.size.height, height: collectionView.bounds.size.height)
+        let width = collectionView.bounds.size.height * 0.75
+        let cellSize = CGSize(width: width, height: width)
         
         return cellSize
     }
+    
     
 }

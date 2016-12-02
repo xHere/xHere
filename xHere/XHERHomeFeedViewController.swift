@@ -167,7 +167,20 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             return self.view.bounds.height * 0.25
         }
         else {
-            return UITableViewAutomaticDimension
+            return self.view.bounds.height * 0.25
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            
+            if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
+                let nearByClaimedViewCell = cell as! XHERNearByClaimedViewCell
+                
+                nearByClaimedViewCell.collectionView.collectionViewLayout.collectionViewContentSize
+                let indexPathOfItemOne = IndexPath(item: 0, section: 0)
+                nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
+            }
         }
     }
     

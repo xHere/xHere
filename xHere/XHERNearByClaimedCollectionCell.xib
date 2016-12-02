@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZe-9G-b9f" customClass="CircleClippingView" customModule="xHere" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZe-9G-b9f">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="HaX-Fx-dYT">
@@ -28,8 +28,9 @@
                                     <constraint firstAttribute="width" secondItem="HaX-Fx-dYT" secondAttribute="height" multiplier="1:1" id="ZIp-yK-Zbl"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ClaimedBounty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ct9-ua-kUq">
-                                <rect key="frame" x="21" y="69" width="116.5" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIMED!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-lW-2XJ">
+                                <rect key="frame" x="82.5" y="139" width="77.5" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,11 +38,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="HaX-Fx-dYT" firstAttribute="leading" secondItem="fZe-9G-b9f" secondAttribute="leading" id="Eo7-Lb-s45"/>
-                            <constraint firstItem="ct9-ua-kUq" firstAttribute="centerY" secondItem="fZe-9G-b9f" secondAttribute="centerY" id="KT9-Qz-lmc"/>
+                            <constraint firstAttribute="bottom" secondItem="oA3-lW-2XJ" secondAttribute="bottom" id="IXo-xz-kXO"/>
                             <constraint firstAttribute="trailing" secondItem="HaX-Fx-dYT" secondAttribute="trailing" id="Koi-cC-x0D"/>
                             <constraint firstItem="HaX-Fx-dYT" firstAttribute="top" secondItem="fZe-9G-b9f" secondAttribute="top" id="Osz-7f-vKI"/>
                             <constraint firstAttribute="bottom" secondItem="HaX-Fx-dYT" secondAttribute="bottom" id="a5e-Xz-reb"/>
-                            <constraint firstItem="ct9-ua-kUq" firstAttribute="centerX" secondItem="fZe-9G-b9f" secondAttribute="centerX" id="dpU-fD-jk3"/>
+                            <constraint firstAttribute="trailing" secondItem="oA3-lW-2XJ" secondAttribute="trailing" id="wdD-Od-Pst"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -54,7 +55,7 @@
             </constraints>
             <size key="customSize" width="320" height="348"/>
             <connections>
-                <outlet property="circleClippingView" destination="fZe-9G-b9f" id="RHB-7b-QiM"/>
+                <outlet property="claimedLabel" destination="oA3-lW-2XJ" id="Dnb-qg-oEW"/>
                 <outlet property="imageView" destination="HaX-Fx-dYT" id="ljd-xM-lCC"/>
             </connections>
             <point key="canvasLocation" x="-51" y="28"/>

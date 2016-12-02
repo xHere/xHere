@@ -12,6 +12,7 @@ class XHERHomeFeedViewCell: UITableViewCell {
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var postedByUserLabel: UILabel!
     @IBOutlet weak var bountyNotesLabel: UILabel!
+    @IBOutlet weak var claimITLabel: UILabel!
 
     @IBOutlet weak var claimedImage: UIImageView!
     var bounty: XHERBounty! {
@@ -21,13 +22,21 @@ class XHERHomeFeedViewCell: UITableViewCell {
             
             self.postedByUserLabel.text = bounty.postedByUser?.username
             self.bountyNotesLabel.text = bounty.bountyNote
-            if bounty.isClaimed == true {
-                print(bounty.mediaArray?[0].mediaData?.url!)
-                let media = bounty.mediaArray?[0]
-                let mData  = media!.mediaData
-                let url = URL(string: (media?.mediaData?.url!)!)
-                self.claimedImage.setImageWith(url!)
+            
+            let poi = bounty.postedAtLocation
+            
+            locationTitleLabel.text = poi.placeName
+            if let poiImage = poi.placeImageURL {
+                claimedImage.setImageWith(poiImage)
             }
+            
+//            if bounty.isClaimed == true {
+//                print(bounty.mediaArray?[0].mediaData?.url!)
+//                let media = bounty.mediaArray?[0]
+//                let mData  = media!.mediaData
+//                let url = URL(string: (media?.mediaData?.url!)!)
+//                self.claimedImage.setImageWith(url!)
+//            }
         }
     }
     
@@ -36,7 +45,7 @@ class XHERHomeFeedViewCell: UITableViewCell {
         // Initialization code
         
 
-        
+        claimITLabel.layer.cornerRadius = 5.0
         
     }
 
@@ -45,6 +54,13 @@ class XHERHomeFeedViewCell: UITableViewCell {
         
         
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        locationTitleLabel.text = ""
+        postedByUserLabel.text = ""
+        bountyNotesLabel.text = ""
+        claimedImage.image = nil
     }
     
 }
