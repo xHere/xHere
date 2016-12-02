@@ -18,6 +18,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     var claimedBountiesArray:[XHERBounty]?
     var tableViewDataBackArray = [XHERBounty]()
     
+    var userCurrentLocation:PFGeoPoint?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +53,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             if error == nil {
                 
                 if let currentLocation = currentLocation {
+                    self.userCurrentLocation = currentLocation
                     weak var weakSelf = self
                     server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
                             success: { (bountiesArray:[XHERBounty]?) in
@@ -114,6 +116,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         if let bountiesArray = bountiesArray {
             self.tableViewDataBackArray = bountiesArray
+            
+            let first = bountiesArray[0].postedAtLocation.geoPoint
+            userCurrentLocation?.distanceInMiles(to: first)
+            
         }
         
         self.tableView.reloadData()
