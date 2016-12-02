@@ -58,13 +58,13 @@
 		939AF8981DEE184E008775F7 /* XHEREAutoCompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */; };
 		939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */; };
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
-		939DD22C1DDA87550065736C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD22A1DDA87550065736C /* CommentCell.swift */; };
-		939DD22D1DDA87550065736C /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD22B1DDA87550065736C /* CommentCell.xib */; };
 		9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992234391DDE4B28003C792F /* XHEREPlaces.swift */; };
 		9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992654091DECE05000A10614 /* XHEREProfileViewController.swift */; };
 		9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */; };
 		992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B94831DEA49F80010482D /* ClaimViewController.swift */; };
 		992B94861DEA49F80010482D /* ClaimViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992B94841DEA49F80010482D /* ClaimViewController.xib */; };
+		993E46391DF1DF2C009D6214 /* ClaimedBountyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993E46371DF1DF2C009D6214 /* ClaimedBountyCell.swift */; };
+		993E463A1DF1DF2C009D6214 /* ClaimedBountyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993E46381DF1DF2C009D6214 /* ClaimedBountyCell.xib */; };
 		997E28391DDFBDC1004A5105 /* loginInput.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997E28381DDFBDC1004A5105 /* loginInput.xib */; };
 		997E283B1DDFBE7A004A5105 /* loginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997E283A1DDFBE7A004A5105 /* loginInputView.swift */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
@@ -156,14 +156,14 @@
 		939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREAutoCompleteCell.xib; sourceTree = "<group>"; };
 		939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREDetailViewController.swift; sourceTree = "<group>"; };
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
-		939DD22A1DDA87550065736C /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		939DD22B1DDA87550065736C /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		992234391DDE4B28003C792F /* XHEREPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPlaces.swift; sourceTree = "<group>"; };
 		992654091DECE05000A10614 /* XHEREProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREProfileViewController.swift; sourceTree = "<group>"; };
 		9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREProfileViewController.xib; sourceTree = "<group>"; };
 		992B94831DEA49F80010482D /* ClaimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimViewController.swift; sourceTree = "<group>"; };
 		992B94841DEA49F80010482D /* ClaimViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClaimViewController.xib; sourceTree = "<group>"; };
+		993E46371DF1DF2C009D6214 /* ClaimedBountyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimedBountyCell.swift; sourceTree = "<group>"; };
+		993E46381DF1DF2C009D6214 /* ClaimedBountyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClaimedBountyCell.xib; sourceTree = "<group>"; };
 		997E28381DDFBDC1004A5105 /* loginInput.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginInput.xib; sourceTree = "<group>"; };
 		997E283A1DDFBE7A004A5105 /* loginInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginInputView.swift; sourceTree = "<group>"; };
 		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -446,20 +446,11 @@
 		939DD2221DDA82890065736C /* Detail View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				939DD2271DDA86CB0065736C /* Comment Cell */,
+				993E46361DF1DEE5009D6214 /* Collection View */,
 				939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */,
 				939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */,
 			);
 			name = "Detail View Controller";
-			sourceTree = "<group>";
-		};
-		939DD2271DDA86CB0065736C /* Comment Cell */ = {
-			isa = PBXGroup;
-			children = (
-				939DD22A1DDA87550065736C /* CommentCell.swift */,
-				939DD22B1DDA87550065736C /* CommentCell.xib */,
-			);
-			name = "Comment Cell";
 			sourceTree = "<group>";
 		};
 		992B94821DEA49BE0010482D /* Claim Bounty Controller */ = {
@@ -469,6 +460,15 @@
 				992B94841DEA49F80010482D /* ClaimViewController.xib */,
 			);
 			name = "Claim Bounty Controller";
+			sourceTree = "<group>";
+		};
+		993E46361DF1DEE5009D6214 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				993E46371DF1DF2C009D6214 /* ClaimedBountyCell.swift */,
+				993E46381DF1DF2C009D6214 /* ClaimedBountyCell.xib */,
+			);
+			name = "Collection View";
 			sourceTree = "<group>";
 		};
 		997E28331DDFB769004A5105 /* inputView */ = {
@@ -638,6 +638,7 @@
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
 				8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */,
+				993E463A1DF1DF2C009D6214 /* ClaimedBountyCell.xib in Resources */,
 				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
 				8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */,
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
@@ -647,7 +648,6 @@
 				8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */,
 				8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */,
 				992B94861DEA49F80010482D /* ClaimViewController.xib in Resources */,
-				939DD22D1DDA87550065736C /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,6 +825,7 @@
 				9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */,
 				8BA0E7341DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift in Sources */,
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
+				993E46391DF1DF2C009D6214 /* ClaimedBountyCell.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
 				8B52B4C21DF1340E0045230A /* CircleCollectionViewLayout.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
@@ -839,7 +840,6 @@
 				8BEC43B61DD950B700244F11 /* POI.swift in Sources */,
 				997E283B1DDFBE7A004A5105 /* loginInputView.swift in Sources */,
 				8BEC43B71DD950B700244F11 /* User.swift in Sources */,
-				939DD22C1DDA87550065736C /* CommentCell.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
 				939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */,
 				8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */,

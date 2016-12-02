@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ClaimedBountyCell" customModule="xHere" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="136"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="140" height="136"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="ClaimedBountCell" translatesAutoresizingMaskIntoConstraints="NO" id="X22-ok-vD1"/>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="X22-ok-vD1" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Nam-pc-siL"/>
+                <constraint firstItem="X22-ok-vD1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VAl-nA-2mA"/>
+                <constraint firstItem="X22-ok-vD1" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="Yzc-En-8pA"/>
+                <constraint firstItem="X22-ok-vD1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ank-ba-TTi"/>
+            </constraints>
+            <size key="customSize" width="140" height="136"/>
+            <connections>
+                <outlet property="claimedImageView" destination="X22-ok-vD1" id="W6m-ZT-II7"/>
+            </connections>
+            <point key="canvasLocation" x="1806" y="139"/>
+        </collectionViewCell>
+    </objects>
+</document>

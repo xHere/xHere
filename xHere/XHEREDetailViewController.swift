@@ -67,8 +67,8 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func setUpCollectionView(){
-        let nib = UINib(nibName: "XHERNearByClaimedCollectionCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "XHERNearByClaimedCollectionCell")
+        let nib = UINib(nibName: "ClaimedBountyCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "ClaimedBountyCell")
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -126,14 +126,12 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
 extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "XHERNearByClaimedCollectionCell", for: indexPath) as! XHERNearByClaimedCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClaimedBountyCell", for: indexPath) as! ClaimedBountyCell
         
         if let imageURLString = nearbyBounties?[indexPath.row].mediaArray?[0].mediaData?.url {
             
-            
             let imageURL = URL(string: imageURLString)
-            
-            cell.imageView.setImageWith(imageURL!)
+            cell.claimedImageView.setImageWith(imageURL!)
         }
         return cell
     }
