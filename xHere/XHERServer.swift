@@ -436,6 +436,11 @@ class XHERServer: NSObject {
                     media.mediaData = imageFile
                     
                     media.content = content
+                    media.mediaData?.saveInBackground({ (success: Bool, error: Error?) in
+                        
+                        }, progressBlock: { (progress: Int32) in
+                            print("Current Progress Right now is : \(progress)")
+                    })
                     media.saveInBackground(block: { (saveSucess:Bool, error:Error?) in
                         
                         if saveSucess {

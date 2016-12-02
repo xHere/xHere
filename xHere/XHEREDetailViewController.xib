@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHEREDetailViewController" customModule="xHere" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="gVQ-Vc-yvP" id="5mu-F6-n9z"/>
                 <outlet property="detailDesciptionLabel" destination="urC-ov-kNz" id="6u9-j6-qfd"/>
                 <outlet property="placeImageView" destination="GTT-9H-mzC" id="rzz-o2-EAY"/>
                 <outlet property="placeNameLabel" destination="FZq-aP-LXi" id="IYN-30-rcK"/>
@@ -46,6 +47,17 @@
                         <action selector="initClaim:" destination="-1" eventType="touchUpInside" id="jAE-UX-7zX"/>
                     </connections>
                 </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gVQ-Vc-yvP">
+                    <frame key="frameInset" minX="16" minY="293" width="236" height="363"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aPK-YY-aZ1">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
