@@ -18,12 +18,10 @@
 		8B2B13F81DD117F300961683 /* xHereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13F71DD117F300961683 /* xHereUITests.swift */; };
 		8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BCC821DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift */; };
 		8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */; };
+		8B52B4C21DF1340E0045230A /* CircleCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52B4C11DF1340E0045230A /* CircleCollectionViewLayout.swift */; };
 		8B7FE9F31DDBDC3F00FD00E5 /* XHERServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F21DDBDC3F00FD00E5 /* XHERServerTests.swift */; };
 		8B7FE9F71DDBE24800FD00E5 /* XHERConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */; };
 		8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */; };
-		8B8CF0CA1DE2B01B00F3290A /* CircleClippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF0C91DE2B01B00F3290A /* CircleClippingView.swift */; };
-		8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8CF0CB1DE2B63400F3290A /* CollectionViewCell.swift */; };
-		8B8CF0CE1DE2B63400F3290A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8CF0CC1DE2B63400F3290A /* CollectionViewCell.xib */; };
 		8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */; };
 		8BA0E7231DDE709900CD73E2 /* XHERHomeFeedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */; };
 		8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */; };
@@ -117,13 +115,11 @@
 		8B2B13F91DD117F300961683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B4BCC821DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeTabBarViewController.swift; sourceTree = "<group>"; };
 		8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERHomeTabBarViewController.xib; sourceTree = "<group>"; };
+		8B52B4C11DF1340E0045230A /* CircleCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCollectionViewLayout.swift; sourceTree = "<group>"; };
 		8B6CB3021DD5ABD100D64B49 /* xHere-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xHere-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B7FE9F21DDBDC3F00FD00E5 /* XHERServerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERServerTests.swift; sourceTree = "<group>"; };
 		8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERConstant.swift; sourceTree = "<group>"; };
 		8B7FE9F81DDD080A00FD00E5 /* XHERBounty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERBounty.swift; sourceTree = "<group>"; };
-		8B8CF0C91DE2B01B00F3290A /* CircleClippingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleClippingView.swift; sourceTree = "<group>"; };
-		8B8CF0CB1DE2B63400F3290A /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		8B8CF0CC1DE2B63400F3290A /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		8BA0E7201DDE709900CD73E2 /* XHERHomeFeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedViewCell.swift; sourceTree = "<group>"; };
 		8BA0E7211DDE709900CD73E2 /* XHERHomeFeedViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERHomeFeedViewCell.xib; sourceTree = "<group>"; };
 		8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERNearByClaimedViewCell.swift; sourceTree = "<group>"; };
@@ -329,6 +325,7 @@
 				8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */,
 				8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */,
 				8BA0E7321DDE92DA00CD73E2 /* CollectionViewCell */,
+				8B52B4C11DF1340E0045230A /* CircleCollectionViewLayout.swift */,
 			);
 			name = "NearBy Claimed Cell";
 			sourceTree = "<group>";
@@ -338,9 +335,6 @@
 			children = (
 				8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */,
 				8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */,
-				8B8CF0C91DE2B01B00F3290A /* CircleClippingView.swift */,
-				8B8CF0CB1DE2B63400F3290A /* CollectionViewCell.swift */,
-				8B8CF0CC1DE2B63400F3290A /* CollectionViewCell.xib */,
 			);
 			name = CollectionViewCell;
 			sourceTree = "<group>";
@@ -638,7 +632,6 @@
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				997E28391DDFBDC1004A5105 /* loginInput.xib in Resources */,
 				8BA0E7231DDE709900CD73E2 /* XHERHomeFeedViewCell.xib in Resources */,
-				8B8CF0CE1DE2B63400F3290A /* CollectionViewCell.xib in Resources */,
 				8BA0E72A1DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib in Resources */,
 				939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */,
 				99F66C761DE4411100F520D1 /* CameraViewController.xib in Resources */,
@@ -833,10 +826,10 @@
 				8BA0E7341DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift in Sources */,
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
 				8B2B13D71DD117F200961683 /* ViewController.swift in Sources */,
+				8B52B4C21DF1340E0045230A /* CircleCollectionViewLayout.swift in Sources */,
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
 				992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */,
 				939AF8971DEE184E008775F7 /* XHEREAutoCompleteCell.swift in Sources */,
-				8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
 				99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */,
 				8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */,
@@ -852,7 +845,6 @@
 				8BA0E7221DDE709900CD73E2 /* XHERHomeFeedViewCell.swift in Sources */,
 				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
 				8B7FE9F71DDBE24800FD00E5 /* XHERConstant.swift in Sources */,
-				8B8CF0CA1DE2B01B00F3290A /* CircleClippingView.swift in Sources */,
 				8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

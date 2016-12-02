@@ -11,18 +11,22 @@ import UIKit
 class XHERNearByClaimedCollectionCell: UICollectionViewCell {
 
 
-    @IBOutlet weak var circleClippingView: CircleClippingView!
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var claimedLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
-////        imageView.layer.borderColor = UIColor.green.cgColor
-////        imageView.layer.borderWidth = 5
-//        imageView.layer.cornerRadius = imageView.bounds.width/2
+    
     }
 
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
+        self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
+        self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5) * self.bounds.height
+    }
+    
 }
