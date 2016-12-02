@@ -15,7 +15,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var detailDesciptionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    var cameraViewController : UIViewController?
+//    var cameraViewController : UIViewController?
     var currentBounty : XHERBounty!
     let debugging = true
     var server = XHERServer.sharedInstance
@@ -86,8 +86,10 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
         else
         {
-            cameraViewController = CameraViewController()
-            self.present(cameraViewController!, animated: true, completion: nil)
+           let cameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
+//            self.navigationController?.pushViewController(cameraViewController!, animated: true)
+            cameraViewController.currentBounty = self.currentBounty
+            self.present(cameraViewController, animated: true, completion: nil)
         }
     }
     
@@ -97,6 +99,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         let size = CGSize(width: 400, height: 400)
         claimController.claimingImage =  resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
         dismiss(animated: false) {
+//            self.navigationController?.pushViewController(claimController, animated: true)
             self.present(claimController, animated: true, completion: nil)
         }
     }

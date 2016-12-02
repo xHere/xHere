@@ -11,19 +11,12 @@ import iCarousel
 
 class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDelegate {
     
-    var items: [Int] = [1,2,3,4,5]
     @IBOutlet weak var carousel: iCarousel!
     var bounties : [XHERBounty]?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        for i in 0 ... 99 {
-            items.append(i)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        carousel.type = .linear
+        carousel.type = .coverFlow2
         carousel.delegate = self
         carousel.dataSource = self
     }
@@ -49,26 +42,26 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
             itemView = view
             label = itemView.viewWithTag(1) as! UILabel
         } else {
-            itemView = UIImageView(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
+            itemView = UIImageView(frame: CGRect(x: 0, y: 0, width:  400, height: 400))
             if let bounty = bounties?[index] {
                 if let media = bounty.mediaArray?[0]{
                     let url = URL(string: (media.mediaData?.url)!)
                     itemView.setImageWith(url!)
                     itemView.clipsToBounds = true
                 }
-                
+                itemView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             }
+            label = UILabel(frame: itemView.bounds)
+            label.backgroundColor = .clear
+            label.textAlignment = .center
+            label.contentMode = .bottom
+            label.font = label.font.withSize(10)
         
-            itemView.contentMode = .center
-//            label = UILabel(frame: itemView.bounds)
-//            label.backgroundColor = .clear
-//            label.textAlignment = .center
-//            label.font = label.font.withSize(10)
-//            label.tag = 1
-//            itemView.addSubview(label)
+            label.tag = 1
+            itemView.addSubview(label)
         }
 
-//        label.text = "@\(bounties?[index].claimedByUser!)"
+//        label.text = "@\()"
         
         return itemView
     }

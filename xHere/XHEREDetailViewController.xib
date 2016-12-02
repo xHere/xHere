@@ -17,10 +17,11 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EPk-jm-nTf"/>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startbucks Sunnyvale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZq-aP-LXi">
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -47,9 +48,7 @@
                         <action selector="initClaim:" destination="-1" eventType="touchUpInside" id="jAE-UX-7zX"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gVQ-Vc-yvP">
-                    <frame key="frameInset" minX="16" minY="293" width="236" height="363"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gVQ-Vc-yvP">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aPK-YY-aZ1">
                         <size key="itemSize" width="50" height="50"/>
@@ -61,13 +60,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="EPk-jm-nTf" secondAttribute="trailing" id="28T-YL-KOj"/>
                 <constraint firstItem="GTT-9H-mzC" firstAttribute="top" secondItem="FZq-aP-LXi" secondAttribute="bottom" constant="8" id="2Ud-HC-Rq0"/>
                 <constraint firstItem="GTT-9H-mzC" firstAttribute="top" secondItem="FZq-aP-LXi" secondAttribute="bottom" constant="8" id="67d-tA-23G"/>
                 <constraint firstItem="urC-ov-kNz" firstAttribute="top" secondItem="MVs-w5-6i8" secondAttribute="bottom" constant="8" id="7Em-gc-TtA"/>
+                <constraint firstItem="gVQ-Vc-yvP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7N5-a9-CX0"/>
+                <constraint firstItem="gVQ-Vc-yvP" firstAttribute="top" secondItem="urC-ov-kNz" secondAttribute="bottom" constant="26" id="7qC-Fe-jHD"/>
                 <constraint firstItem="GTT-9H-mzC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="KcI-LR-dqa"/>
                 <constraint firstAttribute="trailing" secondItem="FZq-aP-LXi" secondAttribute="trailing" constant="8" id="O8n-mG-7nc"/>
                 <constraint firstItem="FZq-aP-LXi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ScF-5P-M0L"/>
                 <constraint firstItem="MVs-w5-6i8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="UfL-Hq-UZy"/>
+                <constraint firstAttribute="trailing" secondItem="gVQ-Vc-yvP" secondAttribute="trailing" id="VZM-rt-hOS"/>
+                <constraint firstAttribute="bottom" secondItem="gVQ-Vc-yvP" secondAttribute="bottom" id="Ylj-GR-rwS"/>
                 <constraint firstItem="urC-ov-kNz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="awT-cW-nSQ"/>
                 <constraint firstAttribute="trailing" secondItem="urC-ov-kNz" secondAttribute="trailing" constant="8" id="bKE-6y-4YX"/>
                 <constraint firstItem="Y3s-eK-MkD" firstAttribute="top" secondItem="GTT-9H-mzC" secondAttribute="bottom" constant="4" id="cHV-Vi-xNZ"/>
@@ -78,6 +82,9 @@
                 <constraint firstItem="urC-ov-kNz" firstAttribute="top" secondItem="MVs-w5-6i8" secondAttribute="bottom" constant="8" id="mnx-o8-7Yb"/>
                 <constraint firstItem="MVs-w5-6i8" firstAttribute="top" secondItem="GTT-9H-mzC" secondAttribute="bottom" constant="8" id="olc-M5-5Uq"/>
                 <constraint firstItem="FZq-aP-LXi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="r9G-wb-6ic"/>
+                <constraint firstAttribute="bottom" secondItem="EPk-jm-nTf" secondAttribute="bottom" id="s1a-dc-Be8"/>
+                <constraint firstItem="EPk-jm-nTf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="u0c-PO-Pow"/>
+                <constraint firstItem="EPk-jm-nTf" firstAttribute="top" secondItem="urC-ov-kNz" secondAttribute="bottom" id="xkm-Uo-rdo"/>
             </constraints>
             <point key="canvasLocation" x="100.5" y="53.5"/>
         </view>

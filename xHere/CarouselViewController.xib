@@ -17,13 +17,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-Tu-cpe" customClass="iCarousel">
-                    <frame key="frameInset" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CarouselBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-Pb-fYS"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-Tu-cpe" customClass="iCarousel">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="FCu-jr-FZV"/>
+                        <constraint firstAttribute="width" constant="400" id="rE7-07-E5Y"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WCy-Pb-fYS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0UH-Am-koM"/>
+                <constraint firstItem="WCy-Pb-fYS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CyW-2z-1YJ"/>
+                <constraint firstAttribute="trailing" secondItem="WCy-Pb-fYS" secondAttribute="trailing" id="Fv1-fd-8eJ"/>
+                <constraint firstItem="MOO-Tu-cpe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-10" id="ahI-Vh-a2Y"/>
+                <constraint firstItem="MOO-Tu-cpe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ouQ-mp-Kpe"/>
+                <constraint firstAttribute="bottom" secondItem="WCy-Pb-fYS" secondAttribute="bottom" id="zhp-dz-qqq"/>
+            </constraints>
+            <point key="canvasLocation" x="35.5" y="103.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="CarouselBackGround" width="50" height="468"/>
+    </resources>
 </document>

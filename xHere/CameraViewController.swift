@@ -11,6 +11,7 @@ import AVFoundation
 
 class CameraViewController: UIViewController {
     
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var previewImage: UIImageView!
@@ -18,6 +19,7 @@ class CameraViewController: UIViewController {
     var stillImageOutput: AVCaptureStillImageOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var captureDevice:AVCaptureDevice?
+    var currentBounty : XHERBounty!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,12 +81,27 @@ class CameraViewController: UIViewController {
                     let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                     let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
                     self.previewImage.image = image
+                    let claimController = ClaimViewController()
+                    claimController.bounty = self.currentBounty
+                    let size = CGSize(width: 400, height: 400)
+                    claimController.claimingImage =  self.resize(image: image, newSize: size)
+                    //                        self.navigationController?.pushViewController(claimController, animated: true)
+                    self.present(claimController, animated: false, completion: nil)
+//                    self.cancelCamera()
+                    
                 }
             })
         }
     }
     
-
+    
+    @IBAction func cancelCamera(_ sender: UIButton) {
+        
+        dismiss(animated: true) {
+            let currentCameraInput: AVCaptureInput = self.session!.inputs[0] as! AVCaptureInput
+            self.session?.removeInput(currentCameraInput)
+        }
+    }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
         let currentCameraInput: AVCaptureInput = session!.inputs[0] as! AVCaptureInput
@@ -116,7 +133,7 @@ class CameraViewController: UIViewController {
             print(error!.localizedDescription)
             
         }
-
+        
     }
     
     func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice {
@@ -128,6 +145,19 @@ class CameraViewController: UIViewController {
         }
         return AVCaptureDevice()
     }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
     /*
      // MARK: - Navigation
      
