@@ -11,6 +11,7 @@ target 'xHere' do
    pod 'Fusuma'
    pod 'PBJVision'
    pod 'AFNetworking', '~> 3.0'
+   pod 'iCarousel'
   
   target 'xHereTests' do
     inherit! :search_paths

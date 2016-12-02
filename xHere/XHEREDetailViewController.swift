@@ -9,7 +9,7 @@
 import UIKit
 
 class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var searchDistanceInMiles = 100.0
+    var searchDistanceInMiles = 0.0
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var detailDesciptionLabel: UILabel!
@@ -29,7 +29,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func setupView(){
         if let currentBounty = currentBounty {
-//            placeNameLabel.text = currentBounty.postedAtLocation.placeName
+            //            placeNameLabel.text = currentBounty.postedAtLocation.placeName
             detailDesciptionLabel.text = currentBounty.bountyNote
             usernameLabel.text = currentBounty.postedByUser?.screenName
             let postedLocation = currentBounty.postedAtLocation
@@ -53,16 +53,18 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func getNearByClaimedBounties(){
         server.fetchClaimedBountyNear(location: currentBounty.postedAtLocation.geoPoint!, withInMiles: searchDistanceInMiles, success: { (bounties : [XHERBounty]?) in
-            if (bounties?.count)! > 0 {
-                self.nearbyBounties = bounties
-                self.setUpCollectionView()
-            }
-            else
-            {
-                self.nearbyBounties = []
+            if let bounties = bounties {
+                if (bounties.count) > 0 {
+                    self.nearbyBounties = bounties
+                    self.setUpCollectionView()
+                }
+                else
+                {
+                    self.nearbyBounties = []
+                }
             }
         }) { (error: Error?) in
-                print(error?.localizedDescription)
+            print(error?.localizedDescription)
         }
     }
     
@@ -92,7 +94,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let claimController = ClaimViewController()
         claimController.bounty = currentBounty
-        let size = CGSize(width: 300, height: 300)
+        let size = CGSize(width: 400, height: 400)
         claimController.claimingImage =  resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
         dismiss(animated: false) {
             self.present(claimController, animated: true, completion: nil)
@@ -110,7 +112,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         UIGraphicsEndImageContext()
         return newImage!
     }
-
+    
     /*
      // MARK: - Navigation
      
@@ -145,7 +147,11 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
         }
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let carouselViewController = CarouselViewController(nibName: "CarouselViewController", bundle: nil)
+        carouselViewController.bounties = nearbyBounties!
+        self.navigationController?.pushViewController(carouselViewController, animated: true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

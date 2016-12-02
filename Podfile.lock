@@ -23,6 +23,7 @@ PODS:
   - Facebook-iOS-SDK (3.24.4):
     - Bolts (~> 1.2)
   - Fusuma (1.0.0)
+  - iCarousel (1.8.3)
   - Parse (1.14.2):
     - Bolts/Tasks (~> 1.8)
   - ParseFacebookUtils (1.10.0):
@@ -34,6 +35,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - Fusuma
+  - iCarousel
   - Parse
   - ParseFacebookUtils
   - PBJVision
@@ -43,10 +45,11 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Facebook-iOS-SDK: 5a7c414a084708220b72d5fd016f2cf3eb6deda4
   Fusuma: c95c1c999c765f5dc907670be569157372ff33c4
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseFacebookUtils: 7030f53c989fda36ad50029d90edec1327424317
   PBJVision: 368c58b708c89c3c443e5801a08068a316ee50ea
 
-PODFILE CHECKSUM: c86080a85d1796c4f56581b8adc79994826e1eda
+PODFILE CHECKSUM: a2e81277bc8713fe7769c701909ba7b904d241ec
 
 COCOAPODS: 1.1.0.rc.3
