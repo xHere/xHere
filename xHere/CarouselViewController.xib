@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarouselViewController" customModule="xHere" customModuleProvider="target">
             <connections>
                 <outlet property="carousel" destination="MOO-Tu-cpe" id="HM6-rY-l0f"/>
+                <outlet property="userNameLabel" destination="maJ-y7-Abh" id="ZN8-nl-Twv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,16 +20,30 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CarouselBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-Pb-fYS"/>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOO-Tu-cpe" customClass="iCarousel">
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="400" id="FCu-jr-FZV"/>
                         <constraint firstAttribute="width" constant="400" id="rE7-07-E5Y"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted By :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00c-RG-jDg">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maJ-y7-Abh">
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WCy-Pb-fYS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0UH-Am-koM"/>
+                <constraint firstItem="maJ-y7-Abh" firstAttribute="leading" secondItem="00c-RG-jDg" secondAttribute="trailing" constant="6" id="0nZ-tC-PKK"/>
+                <constraint firstItem="maJ-y7-Abh" firstAttribute="baseline" secondItem="00c-RG-jDg" secondAttribute="baseline" id="3eG-JY-Xt9"/>
+                <constraint firstItem="00c-RG-jDg" firstAttribute="top" secondItem="MOO-Tu-cpe" secondAttribute="bottom" constant="8" id="484-oo-Ecr"/>
+                <constraint firstItem="00c-RG-jDg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="2" id="4Ar-Xp-b02"/>
                 <constraint firstItem="WCy-Pb-fYS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CyW-2z-1YJ"/>
                 <constraint firstAttribute="trailing" secondItem="WCy-Pb-fYS" secondAttribute="trailing" id="Fv1-fd-8eJ"/>
                 <constraint firstItem="MOO-Tu-cpe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-10" id="ahI-Vh-a2Y"/>

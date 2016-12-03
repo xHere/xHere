@@ -153,6 +153,7 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let carouselViewController = CarouselViewController(nibName: "CarouselViewController", bundle: nil)
         carouselViewController.bounties = nearbyBounties!
+        carouselViewController.currentIndex = indexPath.row
         self.navigationController?.pushViewController(carouselViewController, animated: true)
     }
     

@@ -11,14 +11,17 @@ import iCarousel
 
 class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDelegate {
     
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var carousel: iCarousel!
     var bounties : [XHERBounty]?
+    var currentIndex  = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         carousel.type = .coverFlow2
         carousel.delegate = self
         carousel.dataSource = self
+        carousel.currentItemIndex  = currentIndex
     }
     
     public func numberOfItems(in carousel: iCarousel) -> Int {
@@ -50,20 +53,27 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
                     itemView.clipsToBounds = true
                 }
                 itemView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+                
+                
             }
-            label = UILabel(frame: itemView.bounds)
-            label.backgroundColor = .clear
-            label.textAlignment = .center
-            label.contentMode = .bottom
-            label.font = label.font.withSize(10)
-        
-            label.tag = 1
-            itemView.addSubview(label)
+            
         }
 
 //        label.text = "@\()"
-        
+        print(bounties?[index])
+        if let claimedUserEmail = bounties?[index].claimedByUser?.username {
+            print(claimedUserEmail)
+        }
+    
+        print(bounties?[index].claimedByUser!.email)
+        self.userNameLabel.text = bounties?[index].claimedByUser?.username!
         return itemView
+    }
+    
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        print(carousel.currentItemIndex)
+        var currentIndex = carousel.currentItemIndex
+        userNameLabel.text = bounties?[currentIndex].claimedByUser?.firstName
     }
     
     func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
