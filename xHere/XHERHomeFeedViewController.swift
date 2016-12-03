@@ -105,9 +105,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        let contentViewCellNib = UINib(nibName: "XHERHomeFeedViewCell", bundle: nil)
-        self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "XHERHomeFeedViewCell")
+//        let contentViewCellNib = UINib(nibName: "XHERHomeFeedViewCell", bundle: nil)
+//        self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "XHERHomeFeedViewCell")
         
+        self.tableView.register(XHerHomeFeedUnclaimedBountyCell.self, forCellReuseIdentifier: "XHerHomeFeedUnclaimedBountyCell")
         let collectionViewNib = UINib(nibName: "XHERNearByClaimedViewCell", bundle: nil)
         self.tableView.register(collectionViewNib, forCellReuseIdentifier: "XHERNearByClaimedViewCell")
     }
@@ -150,11 +151,12 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "XHERHomeFeedViewCell", for: indexPath) as! XHERHomeFeedViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
 
             let bounty = self.tableViewDataBackArray[indexPath.row]
             
             cell.bounty = bounty
+            
             return cell
         }
         
@@ -163,7 +165,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-        let cell = tableView.cellForRow(at: indexPath) as! XHERHomeFeedViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! XHerHomeFeedUnclaimedBountyCell
         detailViewController.currentBounty = cell.bounty
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }

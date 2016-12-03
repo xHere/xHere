@@ -42,8 +42,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self;
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
-        let cellNib = UINib(nibName: "XHERHomeFeedViewCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: "XHERHomeFeedViewCell")
+        tableView.register(XHERBountyViewCell.self, forCellReuseIdentifier: "XHERBountyViewCell")
     }
     
     @IBAction func getBounties(_ sender: AnyObject) {
@@ -109,7 +108,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "XHERHomeFeedViewCell", for: indexPath) as! XHERHomeFeedViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "XHERBountyViewCell", for: indexPath) as! XHERBountyViewCell
         let bounty = userBounties[indexPath.row]
         cell.bounty = bounty
         return cell

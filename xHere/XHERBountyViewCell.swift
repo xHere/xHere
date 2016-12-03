@@ -8,7 +8,10 @@
 
 import UIKit
 
-class XHERHomeFeedViewCell: UITableViewCell {
+class XHERBountyViewCell: UITableViewCell {
+    
+
+    @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var postedByUserLabel: UILabel!
     @IBOutlet weak var bountyNotesLabel: UILabel!
@@ -18,36 +21,47 @@ class XHERHomeFeedViewCell: UITableViewCell {
     var bounty: XHERBounty! {
         
         didSet {
-//            self.locationTitleLabel.text = bounty.postedAtLocation.title
+            self.locationTitleLabel.text = bounty.postedAtLocation.title
             
             self.postedByUserLabel.text = bounty.postedByUser?.username
             self.bountyNotesLabel.text = bounty.bountyNote
             
             let poi = bounty.postedAtLocation
-            
             locationTitleLabel.text = poi.placeName
             if let poiImage = poi.placeImageURL {
                 claimedImage.setImageWith(poiImage)
             }
             
-//            if bounty.isClaimed == true {
-//                print(bounty.mediaArray?[0].mediaData?.url!)
-//                let media = bounty.mediaArray?[0]
-//                let mData  = media!.mediaData
-//                let url = URL(string: (media?.mediaData?.url!)!)
-//                self.claimedImage.setImageWith(url!)
-//            }
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-
-        claimITLabel.layer.cornerRadius = 5.0
-        
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//        
+//
+//        claimITLabel.layer.cornerRadius = 5.0
+//        
+//    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.initSubviews()
     }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.initSubviews()
+    }
+    
+    func initSubviews() {
+        let nib = UINib(nibName: "XHERBountyViewCell", bundle: nil)
+        nib.instantiate(withOwner: self, options: nil)
+        cellContentView.frame = bounds
+   
+        contentView.addSubview(cellContentView)
+    }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -61,6 +75,10 @@ class XHERHomeFeedViewCell: UITableViewCell {
         postedByUserLabel.text = ""
         bountyNotesLabel.text = ""
         claimedImage.image = nil
+    }
+    
+    override func layoutSubviews() {
+        cellContentView.frame = bounds
     }
     
 }
