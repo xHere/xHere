@@ -18,20 +18,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="343"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiT-s7-B8Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="343.5"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nKX-yq-5io">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="343.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="Ebm-x1-auR" customClass="CircleCollectionViewLayout" customModule="xHere" customModuleProvider="target"/>
                     </collectionView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="NiT-s7-B8Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="H8o-eA-6ty"/>
                     <constraint firstItem="nKX-yq-5io" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="O5P-Is-KVL"/>
                     <constraint firstAttribute="bottom" secondItem="nKX-yq-5io" secondAttribute="bottom" id="Q5f-I0-les"/>
+                    <constraint firstAttribute="trailing" secondItem="NiT-s7-B8Q" secondAttribute="trailing" id="eFR-1L-ykA"/>
+                    <constraint firstAttribute="bottom" secondItem="NiT-s7-B8Q" secondAttribute="bottom" id="ffX-7s-lEw"/>
                     <constraint firstItem="nKX-yq-5io" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iwP-Zb-x2v"/>
+                    <constraint firstItem="NiT-s7-B8Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rjO-rl-Akf"/>
                     <constraint firstAttribute="trailing" secondItem="nKX-yq-5io" secondAttribute="trailing" id="yHr-JU-kZM"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="backgroundColorView" destination="NiT-s7-B8Q" id="yIQ-xG-RNg"/>
                 <outlet property="collectionView" destination="nKX-yq-5io" id="4hI-Xb-spq"/>
             </connections>
             <point key="canvasLocation" x="92" y="-71"/>

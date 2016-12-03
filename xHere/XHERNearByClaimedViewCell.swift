@@ -12,6 +12,7 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backgroundColorView: UIView!
     
     var nearByClaimedArray:[XHERBounty]? {
 
@@ -82,5 +83,10 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         return cellSize
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offSetPercentIntoSecondPage = scrollView.contentOffset.x / scrollView.bounds.width
+        
+        self.backgroundColorView.alpha = CGFloat(offSetPercentIntoSecondPage * 0.25)
+    }
     
 }
