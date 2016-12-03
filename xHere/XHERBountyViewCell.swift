@@ -12,20 +12,48 @@ class XHERBountyViewCell: UITableViewCell {
     
 
     @IBOutlet weak var cellContentView: UIView!
+    
     @IBOutlet weak var locationTitleLabel: UILabel!
-    @IBOutlet weak var postedByUserLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    
     @IBOutlet weak var bountyNotesLabel: UILabel!
     @IBOutlet weak var claimITLabel: UILabel!
+    
+    //UserInfo
+    @IBOutlet weak var postedByUserLabel: UILabel!
+    @IBOutlet weak var userProfileImage: UIImageView!
+
 
     @IBOutlet weak var claimedImage: UIImageView!
     var bounty: XHERBounty! {
         
         didSet {
-            self.locationTitleLabel.text = bounty.postedAtLocation.title
             
+            //User info
             self.postedByUserLabel.text = bounty.postedByUser?.username
+//            if let userProfileImageURL = bounty.postedByUser?.profileImageUrl {
+//                userProfileImage.setImageWith(userProfileImageURL)
+//            }
+            
+            if let profileData = bounty.postedByUser?.profileImageFile, let profileDataURLString = profileData.url, let profileURL = URL(string: profileDataURLString) {
+                userProfileImage.setImageWith(profileURL)
+            }
+            
+//            if let profileData = bounty.postedByUser?.profileImageData {
+//                userProfileImage.image = UIImage(data: profileData)
+//            }
+
+            
+//            if let profileImage = bounty.postedByUser?.profileImageUrl {
+//                userProfileImage.setImageWith(profileImage)
+//            }
+            
+            //Bounty info
             self.bountyNotesLabel.text = bounty.bountyNote
             
+            //Location info
+            self.locationTitleLabel.text = bounty.postedAtLocation.title
             let poi = bounty.postedAtLocation
             locationTitleLabel.text = poi.placeName
             if let poiImage = poi.placeImageURL {
