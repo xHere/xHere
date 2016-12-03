@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class XHERENeabyBountiesViewController: UIViewController {
+import Parse
+class XHERENeabyBountiesViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
     @IBOutlet weak var placeNameLabel: UILabel!
@@ -16,6 +16,7 @@ class XHERENeabyBountiesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeimageView: UIImageView!
     var location : POI?
+    var bounties : [XHERBounty]?
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,8 @@ class XHERENeabyBountiesViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.setUpView()
-        
+        self.setupTableView()
+        self.getNearbyClaimedBounty()
     }
    
 
@@ -41,6 +43,56 @@ class XHERENeabyBountiesViewController: UIViewController {
         placeimageView.setImageWith((location?.placeImageURL)!)
         imageViewHeightConstraint.constant = self.view.frame.height*0.3
 
+    }
+    func setupTableView() {
+        self.edgesForExtendedLayout = []
+        
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+//        let contentViewCellNib = UINib(nibName: "XHERHomeFeedViewCell", bundle: nil)
+//        self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "XHERHomeFeedViewCell")
+        self.tableView.register(XHERBountyViewCell.self, forCellReuseIdentifier: "XHERBountyViewCell")
+       
+    }
+    func getNearbyClaimedBounty(){
+        
+        PFGeoPoint.geoPointForCurrentLocation { (loc :PFGeoPoint?, error :Error?) in
+            if error == nil{
+//                XHERServer.sharedInstance.fetchBountyNear(location: loc!, withInMiles: 2000.0, thatIsClaimed: true, success: { (bounty : [XHERBounty]?) in
+//                    
+//                    self.bounties = bounty
+//                    self.tableView.reloadData()
+//                    
+//                }) { (error : Error?) in
+//                    
+//                }
+                
+            }
+        }
+        
+    }
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        if bounties != nil{
+            return bounties!.count
+        }else{
+            return 0
+        }
+        
+        
+    }
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "XHERBountyViewCell", for: indexPath) as! XHERBountyViewCell
+        
+        let bounty = self.bounties?[indexPath.row]
+        
+        cell.bounty = bounty
+        return cell
+
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
