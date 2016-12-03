@@ -22,11 +22,16 @@ class XHERHomeFeedViewCell: UITableViewCell {
             self.postedByUserLabel.text = bounty.postedByUser?.username
             self.bountyNotesLabel.text = bounty.bountyNote
             if bounty.isClaimed == true {
-                print(bounty.mediaArray?[0].mediaData?.url!)
+                //print(bounty.mediaArray?[0].mediaData?.url!)
                 let media = bounty.mediaArray?[0]
-                let mData  = media!.mediaData
-                let url = URL(string: (media?.mediaData?.url!)!)
-                self.claimedImage.setImageWith(url!)
+                //let mData  = media!.mediaData
+                if media?.mediaData?.url != nil{
+                    let url = URL(string: (media?.mediaData?.url!)!)
+                    self.claimedImage.setImageWith(url!)
+                }else{
+                    self.claimedImage.image = nil
+                }
+                
             }
         }
     }

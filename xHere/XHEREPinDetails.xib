@@ -1,10 +1,79 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Eoa-Yb-0X6" customClass="XHEREPinDetails" customModule="xHere" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iV7-nn-pef">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Adventure in Food &amp; Wine" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZD-oC-SqN">
+                            <rect key="frame" x="60" y="8" width="172" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3331 24th St, Mission" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNH-IS-QSp">
+                            <rect key="frame" x="61" y="24.5" width="171" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6.3 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRA-DI-Zxs">
+                            <rect key="frame" x="202" y="10.5" width="30" height="12"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="443-fQ-GZf">
+                            <rect key="frame" x="8" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="hkO-iE-wH8"/>
+                                <constraint firstAttribute="width" constant="44" id="ltE-qX-Vvj"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="mNH-IS-QSp" secondAttribute="trailing" constant="8" id="98d-AN-lbf"/>
+                        <constraint firstAttribute="trailing" secondItem="8ZD-oC-SqN" secondAttribute="trailing" constant="8" id="Chr-kg-QVd"/>
+                        <constraint firstItem="443-fQ-GZf" firstAttribute="top" secondItem="iV7-nn-pef" secondAttribute="top" constant="8" id="JlM-PV-wHB"/>
+                        <constraint firstItem="8ZD-oC-SqN" firstAttribute="top" secondItem="443-fQ-GZf" secondAttribute="top" id="Ntb-j5-xK1"/>
+                        <constraint firstItem="mNH-IS-QSp" firstAttribute="top" secondItem="8ZD-oC-SqN" secondAttribute="bottom" constant="2" id="PQe-RZ-J4Q"/>
+                        <constraint firstItem="8ZD-oC-SqN" firstAttribute="leading" secondItem="443-fQ-GZf" secondAttribute="trailing" constant="8" id="PWc-Gp-kDP"/>
+                        <constraint firstItem="8ZD-oC-SqN" firstAttribute="leading" secondItem="443-fQ-GZf" secondAttribute="trailing" constant="8" id="eah-dx-ulq"/>
+                        <constraint firstItem="443-fQ-GZf" firstAttribute="leading" secondItem="iV7-nn-pef" secondAttribute="leading" constant="8" id="seG-Ut-HTf"/>
+                        <constraint firstItem="mNH-IS-QSp" firstAttribute="leading" secondItem="443-fQ-GZf" secondAttribute="trailing" constant="9" id="x8f-XE-lfb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <accessibility key="accessibilityConfiguration" identifier="pinDetails"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="iV7-nn-pef" secondAttribute="trailing" id="7Yt-nU-Cq7"/>
+                <constraint firstItem="iV7-nn-pef" firstAttribute="leading" secondItem="Eoa-Yb-0X6" secondAttribute="leading" id="KjW-mE-gD3"/>
+                <constraint firstItem="iV7-nn-pef" firstAttribute="top" secondItem="Eoa-Yb-0X6" secondAttribute="top" id="kYV-wY-sju"/>
+                <constraint firstAttribute="bottom" secondItem="iV7-nn-pef" secondAttribute="bottom" id="rMJ-vk-AJa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressLabel" destination="mNH-IS-QSp" id="7Fb-iL-fi1"/>
+                <outlet property="imageView" destination="443-fQ-GZf" id="Rh9-Aq-BJs"/>
+                <outlet property="mainView" destination="iV7-nn-pef" id="QxG-cq-1Kd"/>
+                <outlet property="placeNameLabel" destination="8ZD-oC-SqN" id="4o2-ss-YbK"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="-115"/>
+        </view>
     </objects>
 </document>

@@ -119,6 +119,7 @@ class POI: PFObject, PFSubclassing {
         }
         
         geoPoint = PFGeoPoint(latitude:latitute, longitude:longitude)
+        placeDescription = dictionary["vicinity"] as? String
       
         
         

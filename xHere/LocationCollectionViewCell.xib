@@ -1,19 +1,64 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="LocationCollectionViewCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCollectionViewCell" id="gTV-IL-0wX" customClass="LocationCollectionViewCell" customModule="xHere" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="108"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                <rect key="frame" x="0.0" y="0.0" width="307" height="108"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tokyo" translatesAutoresizingMaskIntoConstraints="NO" id="LcF-mv-Ena">
+                        <rect key="frame" x="4" y="4" width="299" height="100"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfkjhjfd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drJ-fW-sPw">
+                        <rect key="frame" x="8" y="8" width="291" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pe-UI-QhB">
+                        <rect key="frame" x="8" y="32.5" width="291" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="4Pe-UI-QhB" firstAttribute="top" secondItem="drJ-fW-sPw" secondAttribute="bottom" constant="4" id="4zA-0e-u6H"/>
+                <constraint firstItem="LcF-mv-Ena" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="5Hg-RJ-Eky"/>
+                <constraint firstAttribute="trailing" secondItem="4Pe-UI-QhB" secondAttribute="trailing" constant="8" id="CEM-zd-RHs"/>
+                <constraint firstAttribute="bottom" secondItem="LcF-mv-Ena" secondAttribute="bottom" constant="4" id="ES5-aW-Ddx"/>
+                <constraint firstAttribute="trailing" secondItem="drJ-fW-sPw" secondAttribute="trailing" constant="8" id="KSV-Sg-wHR"/>
+                <constraint firstItem="4Pe-UI-QhB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="KZg-37-pRI"/>
+                <constraint firstItem="drJ-fW-sPw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Vc8-Tb-qp3"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4Pe-UI-QhB" secondAttribute="bottom" constant="6" id="Y1o-4T-24w"/>
+                <constraint firstItem="LcF-mv-Ena" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="qXS-D0-ZXz"/>
+                <constraint firstItem="drJ-fW-sPw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="qse-GH-zgG"/>
+                <constraint firstAttribute="trailing" secondItem="LcF-mv-Ena" secondAttribute="trailing" constant="4" id="wjH-y1-gss"/>
+            </constraints>
+            <size key="customSize" width="307" height="108"/>
+            <connections>
+                <outlet property="placeDescription" destination="4Pe-UI-QhB" id="Tmi-gN-QuV"/>
+                <outlet property="placeImageView" destination="LcF-mv-Ena" id="LGF-0s-IqN"/>
+                <outlet property="placeNameLabel" destination="drJ-fW-sPw" id="WpI-sc-GWV"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="83"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="Tokyo" width="1080" height="1920"/>
+    </resources>
 </document>

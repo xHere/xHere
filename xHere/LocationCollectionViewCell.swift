@@ -9,6 +9,26 @@
 import UIKit
 
 class LocationCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var placeImageView: UIImageView!
+    @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var placeDescription : UILabel!
+    
+    var location : POI!{
+        didSet{
+            placeNameLabel.text = location.placeName
+            
+           // placeImageView.image = nil
+            
+            if location.placeImageURL != nil{
+                //print("Final url us \(location.placeImageURL!)")
+                placeImageView.setImageWith(location.placeImageURL!)
+                
+            }
+            placeDescription.text = location.placeDescription
+            
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

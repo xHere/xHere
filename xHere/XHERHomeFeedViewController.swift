@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-var searchDistanceInMiles = 2.0
+var searchDistanceInMiles = 10.0
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
