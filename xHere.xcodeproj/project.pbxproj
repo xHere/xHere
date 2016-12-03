@@ -51,14 +51,21 @@
 		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
 		8BEC43B61DD950B700244F11 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B11DD950B700244F11 /* POI.swift */; };
 		8BEC43B71DD950B700244F11 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B21DD950B700244F11 /* User.swift */; };
+		934A75CF1DF2030700525331 /* XHEREPinDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A75CE1DF2030700525331 /* XHEREPinDetails.swift */; };
+		934A75D11DF2031200525331 /* XHEREPinDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934A75D01DF2031200525331 /* XHEREPinDetails.xib */; };
 		937670591DE4CCED00576199 /* XHERENeabyBountiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937670571DE4CCED00576199 /* XHERENeabyBountiesViewController.swift */; };
 		9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */; };
 		9376705E1DE4E60D00576199 /* XHEREPostBountyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376705C1DE4E60D00576199 /* XHEREPostBountyViewController.swift */; };
 		9376705F1DE4E60D00576199 /* XHEREPostBountyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9376705D1DE4E60D00576199 /* XHEREPostBountyViewController.xib */; };
 		939AF8971DEE184E008775F7 /* XHEREAutoCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AF8951DEE184E008775F7 /* XHEREAutoCompleteCell.swift */; };
 		939AF8981DEE184E008775F7 /* XHEREAutoCompleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */; };
+		939AF89C1DEFFF88008775F7 /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AF89A1DEFFF88008775F7 /* LocationCollectionViewCell.swift */; };
+		939AF89D1DEFFF88008775F7 /* LocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939AF89B1DEFFF88008775F7 /* LocationCollectionViewCell.xib */; };
 		939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */; };
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
+		939DD22C1DDA87550065736C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD22A1DDA87550065736C /* CommentCell.swift */; };
+		939DD22D1DDA87550065736C /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD22B1DDA87550065736C /* CommentCell.xib */; };
+		93C399AB1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */; };
 		9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992234391DDE4B28003C792F /* XHEREPlaces.swift */; };
 		9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992654091DECE05000A10614 /* XHEREProfileViewController.swift */; };
 		9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */; };
@@ -152,14 +159,21 @@
 		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8BEC43B11DD950B700244F11 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 		8BEC43B21DD950B700244F11 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		934A75CE1DF2030700525331 /* XHEREPinDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPinDetails.swift; sourceTree = "<group>"; };
+		934A75D01DF2031200525331 /* XHEREPinDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREPinDetails.xib; sourceTree = "<group>"; };
 		937670571DE4CCED00576199 /* XHERENeabyBountiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERENeabyBountiesViewController.swift; sourceTree = "<group>"; };
 		937670581DE4CCED00576199 /* XHERENeabyBountiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERENeabyBountiesViewController.xib; sourceTree = "<group>"; };
 		9376705C1DE4E60D00576199 /* XHEREPostBountyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPostBountyViewController.swift; sourceTree = "<group>"; };
 		9376705D1DE4E60D00576199 /* XHEREPostBountyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREPostBountyViewController.xib; sourceTree = "<group>"; };
 		939AF8951DEE184E008775F7 /* XHEREAutoCompleteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREAutoCompleteCell.swift; sourceTree = "<group>"; };
 		939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREAutoCompleteCell.xib; sourceTree = "<group>"; };
+		939AF89A1DEFFF88008775F7 /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		939AF89B1DEFFF88008775F7 /* LocationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCollectionViewCell.xib; sourceTree = "<group>"; };
 		939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREDetailViewController.swift; sourceTree = "<group>"; };
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
+		939DD22A1DDA87550065736C /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		939DD22B1DDA87550065736C /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		992234391DDE4B28003C792F /* XHEREPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPlaces.swift; sourceTree = "<group>"; };
 		992654091DECE05000A10614 /* XHEREProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREProfileViewController.swift; sourceTree = "<group>"; };
@@ -374,10 +388,13 @@
 		8BA7D2171DD926900002C848 /* Discovery ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				934A75CB1DF202D200525331 /* Pin Details */,
+				939AF8991DEFFF36008775F7 /* LocationCollectionViewCell */,
 				939AF8941DEE1814008775F7 /* AutocompleteLocationCell */,
 				8BA7D2261DD92F9E0002C848 /* POI ViewCell */,
 				8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */,
 				8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */,
+				93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */,
 			);
 			name = "Discovery ViewController";
 			sourceTree = "<group>";
@@ -424,6 +441,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		934A75CB1DF202D200525331 /* Pin Details */ = {
+			isa = PBXGroup;
+			children = (
+				934A75CE1DF2030700525331 /* XHEREPinDetails.swift */,
+				934A75D01DF2031200525331 /* XHEREPinDetails.xib */,
+			);
+			name = "Pin Details";
+			sourceTree = "<group>";
+		};
 		937670561DE4CCBA00576199 /* NearbyBounties */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +475,15 @@
 				939AF8961DEE184E008775F7 /* XHEREAutoCompleteCell.xib */,
 			);
 			name = AutocompleteLocationCell;
+			sourceTree = "<group>";
+		};
+		939AF8991DEFFF36008775F7 /* LocationCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				939AF89A1DEFFF88008775F7 /* LocationCollectionViewCell.swift */,
+				939AF89B1DEFFF88008775F7 /* LocationCollectionViewCell.xib */,
+			);
+			name = LocationCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		939DD2221DDA82890065736C /* Detail View Controller */ = {
@@ -486,6 +521,15 @@
 				993E46381DF1DF2C009D6214 /* ClaimedBountyCell.xib */,
 			);
 			name = "Collection View";
+			sourceTree = "<group>";
+		};
+		992B94821DEA49BE0010482D /* Claim Bounty Controller */ = {
+			isa = PBXGroup;
+			children = (
+				992B94831DEA49F80010482D /* ClaimViewController.swift */,
+				992B94841DEA49F80010482D /* ClaimViewController.xib */,
+			);
+			name = "Claim Bounty Controller";
 			sourceTree = "<group>";
 		};
 		997E28331DDFB769004A5105 /* inputView */ = {
@@ -594,7 +638,7 @@
 				TargetAttributes = {
 					8B2B13D01DD117F200961683 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 25UQP5NM3X;
+						DevelopmentTeam = 76BC6YJE4F;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -642,8 +686,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9376705F1DE4E60D00576199 /* XHEREPostBountyViewController.xib in Resources */,
+				934A75D11DF2031200525331 /* XHEREPinDetails.xib in Resources */,
 				8B2B13E21DD117F200961683 /* LaunchScreen.storyboard in Resources */,
 				939AF8981DEE184E008775F7 /* XHEREAutoCompleteCell.xib in Resources */,
+				939AF89D1DEFFF88008775F7 /* LocationCollectionViewCell.xib in Resources */,
 				8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */,
 				8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */,
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
@@ -666,6 +712,7 @@
 				8BA7D21B1DD926CC0002C848 /* XHERHomeFeedViewController.xib in Resources */,
 				8B4BCC851DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib in Resources */,
 				992B94861DEA49F80010482D /* ClaimViewController.xib in Resources */,
+				939DD22D1DDA87550065736C /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +882,7 @@
 				937670591DE4CCED00576199 /* XHERENeabyBountiesViewController.swift in Sources */,
 				8B4BCC841DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift in Sources */,
 				993E46341DF150A0009D6214 /* CarouselViewController.swift in Sources */,
+				939AF89C1DEFFF88008775F7 /* LocationCollectionViewCell.swift in Sources */,
 				8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */,
 				8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */,
 				8BEC43B31DD950B700244F11 /* Comment.swift in Sources */,
@@ -851,6 +899,9 @@
 				8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */,
 				992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */,
 				939AF8971DEE184E008775F7 /* XHEREAutoCompleteCell.swift in Sources */,
+				992B94851DEA49F80010482D /* ClaimViewController.swift in Sources */,
+				8B8CF0CD1DE2B63400F3290A /* CollectionViewCell.swift in Sources */,
+				934A75CF1DF2030700525331 /* XHEREPinDetails.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
 				99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */,
 				8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */,
@@ -861,6 +912,7 @@
 				997E283B1DDFBE7A004A5105 /* loginInputView.swift in Sources */,
 				8BEC43B71DD950B700244F11 /* User.swift in Sources */,
 				8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */,
+				93C399AB1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */,
 				8BA0E7221DDE709900CD73E2 /* XHERBountyViewCell.swift in Sources */,
 				99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */,
@@ -1027,12 +1079,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 25UQP5NM3X;
+				DEVELOPMENT_TEAM = 76BC6YJE4F;
 				INFOPLIST_FILE = xHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
+				PRODUCT_BUNDLE_IDENTIFIER = Dhara.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xHere/xHere-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1048,12 +1101,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 25UQP5NM3X;
+				DEVELOPMENT_TEAM = 76BC6YJE4F;
 				INFOPLIST_FILE = xHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
+				PRODUCT_BUNDLE_IDENTIFIER = Dhara.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xHere/xHere-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1071,6 +1125,7 @@
 				INFOPLIST_FILE = xHereTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereTests;
@@ -1090,6 +1145,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = xHereTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereTests;
