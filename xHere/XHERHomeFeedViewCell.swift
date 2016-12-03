@@ -13,13 +13,21 @@ class XHERHomeFeedViewCell: UITableViewCell {
     @IBOutlet weak var postedByUserLabel: UILabel!
     @IBOutlet weak var bountyNotesLabel: UILabel!
 
-    var bounty:XHERBounty! {
+    @IBOutlet weak var claimedImage: UIImageView!
+    var bounty: XHERBounty! {
         
         didSet {
 //            self.locationTitleLabel.text = bounty.postedAtLocation.title
             
             self.postedByUserLabel.text = bounty.postedByUser?.username
             self.bountyNotesLabel.text = bounty.bountyNote
+            if bounty.isClaimed == true {
+                print(bounty.mediaArray?[0].mediaData?.url!)
+                let media = bounty.mediaArray?[0]
+                let mData  = media!.mediaData
+                let url = URL(string: (media?.mediaData?.url!)!)
+                self.claimedImage.setImageWith(url!)
+            }
         }
     }
     
@@ -34,7 +42,8 @@ class XHERHomeFeedViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        let test = "testing"
+        
         // Configure the view for the selected state
     }
     

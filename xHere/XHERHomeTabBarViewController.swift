@@ -10,12 +10,12 @@ import UIKit
 import Parse
 
 class XHERHomeTabBarViewController: UIViewController {
-
+    
     @IBOutlet weak var contentView: UIView!
-  
+    
     var homeFeedNavi:UINavigationController!
     var homeFeedViewController:UIViewController!
-
+    
     var discoveryNavi:UINavigationController!
     var discoverViewController:UIViewController!
     
@@ -24,6 +24,8 @@ class XHERHomeTabBarViewController: UIViewController {
     
     var profileNavi:UINavigationController!
     var profileViewController:UIViewController!
+    
+    
     
     var contentVC:UIViewController! {
         didSet {
@@ -45,7 +47,7 @@ class XHERHomeTabBarViewController: UIViewController {
         self.setupContainedControllers()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,7 +60,8 @@ class XHERHomeTabBarViewController: UIViewController {
         discoverViewController = XHERDiscoveryViewController()
         discoveryNavi = UINavigationController(rootViewController: discoverViewController)
         
-        profileViewController = XHERProfileViewController()
+//        profileViewController = XHERProfileViewController()
+        profileViewController = XHEREProfileViewController()
         profileNavi = UINavigationController(rootViewController: profileViewController)
         
         self.contentVC = homeFeedNavi
@@ -85,15 +88,15 @@ class XHERHomeTabBarViewController: UIViewController {
     
     
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClaimViewController" customModule="xHere" customModuleProvider="target">
+            <connections>
+                <outlet property="postItbutton" destination="EXk-TF-SWw" id="viU-Rx-qQn"/>
+                <outlet property="preiviewImage" destination="RTU-vS-CW5" id="r33-pe-8qk"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RTU-vS-CW5">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="396" id="Ow9-ml-2wd"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXk-TF-SWw">
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="5TP-nO-SFf"/>
+                        <constraint firstAttribute="width" constant="145" id="OBL-hJ-dCP"/>
+                    </constraints>
+                    <state key="normal" title="Post It">
+                        <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="claimBounty:" destination="-1" eventType="touchUpInside" id="xbi-D4-CfV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EXk-TF-SWw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3dy-Ca-GTa"/>
+                <constraint firstItem="RTU-vS-CW5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Nxr-9h-X10"/>
+                <constraint firstItem="EXk-TF-SWw" firstAttribute="top" secondItem="RTU-vS-CW5" secondAttribute="bottom" constant="76" id="TZc-Co-9fZ"/>
+                <constraint firstItem="RTU-vS-CW5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yk5-Go-49B"/>
+                <constraint firstAttribute="trailing" secondItem="RTU-vS-CW5" secondAttribute="trailing" id="jkb-Nk-7Jy"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="73.5"/>
+        </view>
+    </objects>
+</document>

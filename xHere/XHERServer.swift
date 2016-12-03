@@ -21,20 +21,76 @@ class XHERServer: NSObject {
     }
     
     // Find Bounty Claimed in an area
-//    func fetchBountyNear( location:PFGeoPoint, )
+    func fetchUnClaimedBountyNear( location:PFGeoPoint, withInMiles miles:Double, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        fetchBountyNear(location: location, withInMiles: miles, thatIsClaimed: false,
+                        
+                        success: { (bountiesArray:[XHERBounty]?) in
+                            success(bountiesArray)
+        },
+                        failure: { (error:Error?) in
+                            failure(error)
+        })
+    }
+    
+    func fetchClaimedBountyNear( location:PFGeoPoint,withInMiles miles:Double, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        fetchBountyNear(location: location, withInMiles: miles, thatIsClaimed: true,
+                        success: { (bountiesArray:[XHERBounty]?) in
+                            success(bountiesArray)
+        },
+                        failure: { (error:Error?) in
+                            failure(error)
+        })
+    }
+    
+    func fetchBountyNear( location:PFGeoPoint, withInMiles miles:Double, thatIsClaimed isClaimed:Bool, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
+        
+        let bountyQuery = PFQuery(className: kPFClassBounty)
+        bountyQuery.whereKey(kPFKeyGeoPoint, nearGeoPoint: location, withinMiles: miles)
+        bountyQuery.includeKey(kPFKeyPOI)
+        bountyQuery.includeKey(kPFKeyPostedByUser)
+        bountyQuery.whereKey(kPFKeyBountyIsClaimed, equalTo: isClaimed)
+        bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
+            
+            if error == nil {
+                
+                if let bountiesArray = bountiesArray {
+                    
+                    //Parse array of PFObject into Bounty
+                    var bountyArrayTyped = [XHERBounty]()
+                    for object in bountiesArray {
+                        let bounty = object as! XHERBounty
+                        bountyArrayTyped.append(bounty)
+                    }
+                    
+                    //Return nil if the array is empty
+                    if bountyArrayTyped.count > 0 {
+                        success(bountyArrayTyped)
+                    }
+                    else {
+                        success(nil)
+                    }
+                }
+            }
+            else {
+                failure(error)
+            }
+        }
+    }
     
     
     // Find Bounty claimed by User
     func fetchBountyEarneddBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
         fetchRelatedTo(user: user, byPostEarned: .claimed,
-           success: { (bountiesArray:[XHERBounty]?) in
-            
-                success(bountiesArray)
-        },
-           failure: { (error:Error?) in
-            
-                failure(error)
+                       success: { (bountiesArray:[XHERBounty]?) in
+                        
+                        success(bountiesArray)
+            },
+                       failure: { (error:Error?) in
+                        
+                        failure(error)
         })
         
     }
@@ -43,13 +99,13 @@ class XHERServer: NSObject {
     func fetchBountyPostedBy(user:User, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
         fetchRelatedTo(user: user, byPostEarned: .postBy,
-           success: { (bountiesArray:[XHERBounty]?) in
-            
-                success(bountiesArray)
-        },
-           failure: { (error:Error?) in
-            
-                failure(error)
+                       success: { (bountiesArray:[XHERBounty]?) in
+                        
+                        success(bountiesArray)
+            },
+                       failure: { (error:Error?) in
+                        
+                        failure(error)
         })
     }
     
@@ -59,6 +115,7 @@ class XHERServer: NSObject {
         let bountyQuery = PFQuery(className: kPFClassBounty)
         bountyQuery.whereKey(postOrEarned.rawValue, equalTo: user)
         bountyQuery.includeKey(postOrEarned.rawValue)
+        bountyQuery.includeKeys([kPFKeyMediaArray, kPFKeyPostedByUser])
         bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
             if error == nil {
@@ -142,69 +199,98 @@ class XHERServer: NSObject {
         
         
     }
-
     
-//    func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
-//        
-//        print("BEGIN GETTING LOCATION")
-//        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
-//            if let error = error {
-//                print("XHERServer.uploadContent() currentLocation fetch failed = \(error.localizedDescription)")
-//                failure()
-//            }
-//            else {
-//            
-//                let newBounty = XHERBounty()
-//                
-//                //Set byUser
-//                newBounty.postedByUser = user
-//                
-//                //Check if the POI submitted is already on the server or not.
-//                let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
-//                duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
-//                
-//                duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
-//                    
-//                    var uniquePOI:POI
-//                    if let poiObject = poiObject {
-//                        uniquePOI = poiObject as! POI
-//                    }
-//                    else {
-//                        uniquePOI = poi
-//                    }
-//                    
-//                    uniquePOI.saveInBackground()
-//                    //postedAtLocation
-//                    newBounty.postedAtLocation = uniquePOI
-//                    
-//                    //Notes on the bounty
-//                    newBounty.bountyNote = note
-//                    
-//                    newBounty.bountyGeoPoint = currentLocation
-//                    
-//                    newBounty.bountyValue = value
-//                    
-//                    newBounty.isClaimed = false
-//                    
-//                    //Set this bounty as new
-//                    newBounty.claimedByUser = nil
-//                    
-//                    newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
-//                        
-//                        if saveSuccess {
-//                            print("NEW BOUNTY SAVED!!")
-//                            success()
-//                        }
-//                        else {
-//                            print("POST BOUNTY FAILURE \(error?.localizedDescription)")
-//                            failure()
-//                        }
-//                    })
-//                    
-//                })
-//            }
-//        }
-//    }
+    //MARK claimBounty
+    func claimBounty(user : User, objectId: String, image: UIImage, success : @escaping () -> (), faliure : @escaping (Error) -> ()){
+        let query = PFQuery(className:kPFClassBounty)
+        query.includeKey("mediaArray")
+        
+        query.getObjectInBackground(withId: objectId) { (bountyObject : PFObject?, error: Error?) in
+            if error == nil {
+                let bounty = bountyObject as! XHERBounty
+        
+                self.uploadContent(withImage: image, success: { (media: Media) in
+                    bounty.claimedByUser  = user
+//                    let relation = bounty.relation(forKey: kPFKeyClaimedByUser)
+//                    relation.add(user)
+                    bounty.isClaimed  = true
+                    let temp = [media]
+                    bounty.mediaArray = temp
+                    bounty.saveInBackground()
+                    success()
+                    }, failure: {
+                        
+                })
+            }
+            else {
+                faliure(error!)
+            }
+            
+        }
+    }
+    
+    
+    //    func postBountyBy(user:User, withNote note:String, atPOI poi:POI, withTokenValue value:Int, success:@escaping ()->(), failure:@escaping ()->()) {
+    //
+    //        print("BEGIN GETTING LOCATION")
+    //        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
+    //            if let error = error {
+    //                print("XHERServer.uploadContent() currentLocation fetch failed = \(error.localizedDescription)")
+    //                failure()
+    //            }
+    //            else {
+    //
+    //                let newBounty = XHERBounty()
+    //
+    //                //Set byUser
+    //                newBounty.postedByUser = user
+    //
+    //                //Check if the POI submitted is already on the server or not.
+    //                let duplicatePOIQuery = PFQuery(className: kPFClassPOI)
+    //                duplicatePOIQuery.whereKey(kPFKeyGooglePlaceID, equalTo: poi.googlePlaceID)
+    //
+    //                duplicatePOIQuery.getFirstObjectInBackground(block: { (poiObject:PFObject?, error:Error?) in
+    //
+    //                    var uniquePOI:POI
+    //                    if let poiObject = poiObject {
+    //                        uniquePOI = poiObject as! POI
+    //                    }
+    //                    else {
+    //                        uniquePOI = poi
+    //                    }
+    //
+    //                    uniquePOI.saveInBackground()
+    //                    //postedAtLocation
+    //                    newBounty.postedAtLocation = uniquePOI
+    //
+    //                    //Notes on the bounty
+    //                    newBounty.bountyNote = note
+    //
+    //                    newBounty.bountyGeoPoint = currentLocation
+    //
+    //                    newBounty.bountyValue = value
+    //
+    //                    newBounty.isClaimed = false
+    //
+    //                    //Set this bounty as new
+    //                    newBounty.claimedByUser = nil
+    //
+    //                    newBounty.saveInBackground(block: { (saveSuccess:Bool, error:Error?) in
+    //
+    //                        if saveSuccess {
+    //                            print("NEW BOUNTY SAVED!!")
+    //                            success()
+    //                        }
+    //                        else {
+    //                            print("POST BOUNTY FAILURE \(error?.localizedDescription)")
+    //                            failure()
+    //                        }
+    //                    })
+    //
+    //                })
+    //            }
+    //        }
+    //    }
     
     // MARK: - Download Content API by User
     func downloadContentBy(user:User, success:@escaping ([Content]?)->(), failure: @escaping (Error?)->()) {
@@ -243,7 +329,7 @@ class XHERServer: NSObject {
     
     
     // MARK: - Upload Content API
-    func uploadContent(withText text:String, andImage image:UIImage?, andVideo:Data?, success:@escaping ()->(), failure:@escaping ()->()) {
+    func uploadContent(withText text:String, andImage image:UIImage?, andVideo:Data?, success:@escaping (Media)->(), failure:@escaping ()->()) {
         
         //Set GeoPoint to current location
         PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
@@ -254,6 +340,7 @@ class XHERServer: NSObject {
             }
             else {
                 let content = Content()
+                let media = Media()
                 
                 //Set current location
                 content.geoPoint = currentLocation
@@ -271,21 +358,21 @@ class XHERServer: NSObject {
                 //Set Image
                 if let image = image,
                     let imageData = UIImagePNGRepresentation(image),
-                    let imageFile = PFFile(name:"image.png", data:imageData) {
+                    let imageFile = PFFile(name:"newimage.png", data:imageData) {
                     
-                    let media = Media()
+                    //  let media = Media()
                     media.mediaType = .image
                     media.mediaData = imageFile
                     
                     media.content = content
                     media.saveInBackground(block: { (saveSucess:Bool, error:Error?) in
-
+                        
                         if saveSucess {
                             content.mediaArray = [media]
                             do {
                                 try content.save()
                                 //Call success Block
-                                success()
+                                success(media)
                             }
                             catch {
                                 print("Saving to media table failure")
@@ -296,71 +383,71 @@ class XHERServer: NSObject {
                             failure()
                         }
                     })
-//
+                    //
                     //Relation Code
-//                    content.mediaArray.append(media)
-//                    content.mediaRelations.add(media)
-//                    
-//                    media.saveInBackground(block: { (saveScuccss:Bool, error:Error?) in
-//                        
-//                        if saveScuccss {
-//                            do {
-//                                try content.save()
-//                                //Call success Block
-//                                success()
-//                            }
-//                            catch {
-//                                print("Saving to media table failure")
-//                                failure()
-//                            }
-//                        }
-//                        failure()
-//                    })
+                    //                    content.mediaArray.append(media)
+                    //                    content.mediaRelations.add(media)
+                    //
+                    //                    media.saveInBackground(block: { (saveScuccss:Bool, error:Error?) in
+                    //
+                    //                        if saveScuccss {
+                    //                            do {
+                    //                                try content.save()
+                    //                                //Call success Block
+                    //                                success()
+                    //                            }
+                    //                            catch {
+                    //                                print("Saving to media table failure")
+                    //                                failure()
+                    //                            }
+                    //                        }
+                    //                        failure()
+                    //                    })
                 }
                 else {
                     //Call success Block
-                    success()
+                    success(media)
                 }
             }
         }
     }
     
-    func uploadContent(withText text:String, andImage image:UIImage, success:@escaping ()->(), failure:@escaping ()->() ) {
+    func uploadContent(withText text:String, andImage image:UIImage, success:@escaping (Media)->(), failure:@escaping ()->() ) {
         uploadContent(withText: text, andImage: image, andVideo: nil,
-            success: {
-            
-                success()
-            },
-            failure: {
-                
-                failure()
-            })
-    }
-    
-    func uploadContent(withText text:String, success:@escaping ()->(), failure:@escaping ()->()) {
-        uploadContent(withText: text, andImage: nil, andVideo: nil,
-            success: {
-                
-                success()
-            },
-            failure: {
+                      success: { (media : Media) in
                         
-                failure()
-            })
+                        success(media)
+            },
+                      failure: {
+                        
+                        failure()
+        })
     }
     
-    func uploadContent(withImage image:UIImage, success:@escaping ()->(), failure:@escaping ()->()) {
-        uploadContent(withText: "", andImage: image, andVideo: nil,
-            success: {
-                
-                success()
+    func uploadContent(withText text:String, success:@escaping (Media)->(), failure:@escaping ()->()) {
+        uploadContent(withText: text, andImage: nil, andVideo: nil,
+                      success: { (media: Media) in
+                        
+                        success(media)
             },
-            failure: {
-                
-                failure()
-            })
+                      failure: {
+                        
+                        failure()
+        })
     }
-
+    
+    func uploadContent(withImage image:UIImage, success:@escaping (Media)->(), failure:@escaping ()->()) {
+        uploadContent(withText: "", andImage: image, andVideo: nil,
+                      success: { (media: Media) in
+                        
+                        success(media)
+            },
+                      failure: {
+                        
+                        failure()
+        })
+    }
+    
     
     
 }

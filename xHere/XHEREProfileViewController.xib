@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHEREProfileViewController" customModule="xHere" customModuleProvider="target">
+            <connections>
+                <outlet property="claimedButton" destination="vQK-CU-37p" id="Lxe-aC-SUM"/>
+                <outlet property="coverImage" destination="Doe-B7-Kf7" id="bgn-rk-4Vm"/>
+                <outlet property="postedButton" destination="cbd-8b-POC" id="a0m-3h-SYz"/>
+                <outlet property="tableView" destination="QkB-a3-Diy" id="MtG-1q-seX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Doe-B7-Kf7">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="55P-yS-fkX"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QkB-a3-Diy">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQK-CU-37p">
+                    <state key="normal" title="Claimed"/>
+                    <connections>
+                        <action selector="getBounties:" destination="-1" eventType="touchUpInside" id="3r9-ai-P9b"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbd-8b-POC">
+                    <state key="normal" title="Posted"/>
+                    <connections>
+                        <action selector="getBounties:" destination="-1" eventType="touchUpInside" id="1xB-Fx-ab9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vQK-CU-37p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="11" id="C4r-BE-L0c"/>
+                <constraint firstItem="Doe-B7-Kf7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="39" id="EBK-ck-bsz"/>
+                <constraint firstItem="QkB-a3-Diy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fe0-Tq-CbA"/>
+                <constraint firstItem="QkB-a3-Diy" firstAttribute="top" secondItem="Doe-B7-Kf7" secondAttribute="bottom" constant="41" id="LkB-zb-YiM"/>
+                <constraint firstAttribute="trailing" secondItem="QkB-a3-Diy" secondAttribute="trailing" id="QNX-9o-0fK"/>
+                <constraint firstItem="cbd-8b-POC" firstAttribute="top" secondItem="Doe-B7-Kf7" secondAttribute="bottom" constant="8" id="UB1-wo-ZKq"/>
+                <constraint firstItem="cbd-8b-POC" firstAttribute="leading" secondItem="vQK-CU-37p" secondAttribute="trailing" constant="47" id="ciq-lE-bYb"/>
+                <constraint firstItem="Doe-B7-Kf7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="l9C-MO-xpQ"/>
+                <constraint firstItem="Doe-B7-Kf7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pc4-I2-VWz"/>
+                <constraint firstItem="vQK-CU-37p" firstAttribute="top" secondItem="Doe-B7-Kf7" secondAttribute="bottom" constant="8" id="vGI-r9-T3X"/>
+                <constraint firstAttribute="bottom" secondItem="QkB-a3-Diy" secondAttribute="bottom" id="wtm-ft-d1b"/>
+            </constraints>
+            <point key="canvasLocation" x="-142" y="52"/>
+        </view>
+    </objects>
+</document>
