@@ -31,13 +31,13 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQK-CU-37p">
                     <state key="normal" title="Claimed"/>
                     <connections>
-                        <action selector="getBounties:" destination="-1" eventType="touchUpInside" id="3r9-ai-P9b"/>
+                        <action selector="getClaimedBounties:" destination="-1" eventType="touchUpInside" id="AH7-Xl-iv1"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbd-8b-POC">
                     <state key="normal" title="Posted"/>
                     <connections>
-                        <action selector="getBounties:" destination="-1" eventType="touchUpInside" id="1xB-Fx-ab9"/>
+                        <action selector="getPostedBounties:" destination="-1" eventType="touchUpInside" id="Xgy-to-ZXB"/>
                     </connections>
                 </button>
             </subviews>

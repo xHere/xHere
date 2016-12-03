@@ -23,7 +23,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         setUpView()
         setUpTableView()
-        getClaimedBounties()
+        getClaimedBounties(claimedButton)
         
     }
     
@@ -41,21 +41,14 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     func setUpTableView(){
         tableView.dataSource = self;
         tableView.delegate = self
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 400
+//        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(XHERBountyViewCell.self, forCellReuseIdentifier: "XHERBountyViewCell")
     }
     
-    @IBAction func getBounties(_ sender: AnyObject) {
-        if claimedSelected == true {
-                getPostedBounties()
-        } else {
-            getClaimedBounties()
-        }
-        claimedSelected = !claimedSelected
-        postedSelected = !postedSelected
-    }
+  
     
-    func getPostedBounties(){
+  @IBAction func getPostedBounties(_ sender: AnyObject){
         XHERServer.sharedInstance.fetchBountyPostedBy(user: currentUser!, success: { (bounties: [XHERBounty]?) in
             if (bounties?.count)! > 0 {
                 self.userBounties = bounties!
@@ -73,10 +66,11 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func getClaimedBounties(){
+    @IBAction func getClaimedBounties(_ sender: AnyObject){
         XHERServer.sharedInstance.fetchBountyEarneddBy(user: currentUser!, success: { (bounties : [XHERBounty]?) in
-            if (bounties?.count)! > 0 {
-                self.userBounties = bounties!
+            if let bounties = bounties {
+        
+                self.userBounties = bounties
             }
             else {
                 self.userBounties = []
@@ -105,6 +99,26 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         else{
             return 0
         }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return self.view.bounds.height * 0.30
+        }
+        else {
+            return self.view.bounds.height * 0.30
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+        let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
+        detailViewController.currentBounty = cell.bounty
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
