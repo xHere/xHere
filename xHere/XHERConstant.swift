@@ -10,8 +10,11 @@ import Foundation
 
 let kPFClassContent = "Content"
 
+// Mark: - User Class
 let kPFClassUser = "User"
 let kPFKeyUser = "user"
+let kPFKeyProfileImageFile = "profileImage"
+let kPFKeyProfileImageURL = "profilePictureUrl"
 
 // MARK: -Media Class
 let kPFClassMedia = "Media"

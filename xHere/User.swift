@@ -89,9 +89,10 @@ class User : PFUser {
         }
     }
     
-    var profileImageUrl : PFFile?{
+    var profileImageData:Data?
+    var profileImageFile : PFFile?{
         get {
-            if let _profileImageUrl = self["profileImageUrl"] as? PFFile{
+            if let _profileImageUrl = self[kPFKeyProfileImageFile] as? PFFile{
                 return _profileImageUrl
             }else{
                 return nil
@@ -99,7 +100,18 @@ class User : PFUser {
            
         }
         set{
-            self["profileImageUrl"] = newValue
+            self[kPFKeyProfileImageFile] = newValue
+        }
+    }
+    
+    var profileImageUrl:URL? {
+        get {
+            if let profileImageURL = self[kPFKeyProfileImageURL] as? String {
+                return URL(string: profileImageURL)
+            }
+            else {
+                return nil
+            }
         }
     }
     
