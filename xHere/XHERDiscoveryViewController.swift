@@ -121,6 +121,9 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         let indexPath : IndexPath = NSIndexPath(row: bIndex, section: 0) as IndexPath
         self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         self.mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+//        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -226,7 +229,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Search Bar delegate
 
     @IBAction func seachTextChanged(_ sender: UITextField) {
-        autoCompleteTableView.isHidden = false
+        
         fetchLocationsWithPlace(searchText: sender.text!)
     }
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -265,9 +268,17 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         XHEREGooglePlacesServer.sharedInstance.getSearchPlaces(placeName: searchText, success: { (locations :[POI]?) in
             if let locations = locations {
-                self.autoCompleteTableView.isHidden = false
-                self.autoComplete = locations
-                self.autoCompleteTableView.reloadData()
+                
+                if locations.count>0{
+                    self.autoCompleteTableView.isHidden = false
+                    self.autoComplete = locations
+                    self.autoCompleteTableView.reloadData()
+                }else{
+                    self.autoCompleteTableView.isHidden = true
+
+                }
+
+                
                 
             }else{
                 print("No result found")
@@ -295,6 +306,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                         self.collectionView.scrollToItem(at: indexpath, at: .centeredHorizontally, animated: false)
                     }
                     self.setUpMapView()
+                    
                 }
         },
             failure: { (error:Error?) in
