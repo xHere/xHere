@@ -36,6 +36,7 @@ class XHERHomeTabBarViewController: UIViewController {
             }
             self.addChildViewController(contentVC)
             contentVC.willMove(toParentViewController: self)
+            contentVC.view.frame = contentView.bounds
             contentView.addSubview(contentVC.view)
             contentVC.didMove(toParentViewController: self)
         }

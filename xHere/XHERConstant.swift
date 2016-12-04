@@ -10,8 +10,11 @@ import Foundation
 
 let kPFClassContent = "Content"
 
+// Mark: - User Class
 let kPFClassUser = "User"
 let kPFKeyUser = "user"
+let kPFKeyProfileImageFile = "profileImage"
+let kPFKeyProfileImageURL = "profilePictureUrl"
 
 // MARK: -Media Class
 let kPFClassMedia = "Media"
@@ -43,6 +46,7 @@ let kPFKeyGeoPoint = "geoPoint"
 //MARK: -Google Location Api key
 let kPFGoogleApiKey = "AIzaSyDE0hORKRBvcuNe_ivpAMWlFmpduHwCw14"
 let kGoogleWebserviceBasePath = "https://maps.googleapis.com/maps/api/place/"
+
 
 
 

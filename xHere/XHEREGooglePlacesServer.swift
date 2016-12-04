@@ -79,7 +79,7 @@ class XHEREGooglePlacesServer: NSObject {
     }
      func getSearchPlaces(placeName: String, success:@escaping ([POI]?)->(), failure: @escaping (Error?)->()) {
         
-        let urlString = "\(kGoogleWebserviceBasePath)autocomplete/json?key=\(kPFGoogleApiKey)&location=\(37.41294),\(-121.938853)&radius=\(200000)&input=\(placeName)"
+        let urlString = "\(kGoogleWebserviceBasePath)autocomplete/json?key=\(kPFGoogleApiKey)&location=\(0),\(0)&radius=\(200000)&input=\(placeName)"
         print(urlString)
         let encodedURL  = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
@@ -133,7 +133,7 @@ class XHEREGooglePlacesServer: NSObject {
         
        
         
-        let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&radius=\(radius.rawValue)&name=\(placeName)"
+        let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&rankby=distance&name=\(placeName)"
         print(urlString)
         
         let encodedURL  = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)

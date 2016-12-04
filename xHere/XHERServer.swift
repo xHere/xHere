@@ -115,20 +115,41 @@ class XHERServer: NSObject {
                 
                 if let bountiesArray = bountiesArray {
                     
-                    //Parse array of PFObject into Bounty
-                    var bountyArrayTyped = [XHERBounty]()
-                    for object in bountiesArray {
-                        let bounty = object as! XHERBounty
-                        bountyArrayTyped.append(bounty)
-                    }
+//                    DispatchQueue.global(qos: .background).async {
                     
-                    //Return nil if the array is empty
-                    if bountyArrayTyped.count > 0 {
-                        success(bountyArrayTyped)
-                    }
-                    else {
-                        success(nil)
-                    }
+                        //Parse array of PFObject into Bounty
+                        var bountyArrayTyped = [XHERBounty]()
+                        for object in bountiesArray {
+                            let bounty = object as! XHERBounty
+                            
+//                            do {
+//                                if let user = bounty.postedByUser {
+//                                    if let file = user[kPFKeyProfileImageFile] as? PFFile {
+//                                        print("getting user profile from bounty \(bounty.objectId)")
+//                                        let data = try file.getData()
+//                                        user.profileImageData = data
+//                                    }
+//                                }
+//                                
+//                                
+//
+//                            }
+//                            catch{
+//                                
+//                            }
+                            bountyArrayTyped.append(bounty)
+                        }
+                        
+//                        DispatchQueue.main.async {
+                            //Return nil if the array is empty
+                            if bountyArrayTyped.count > 0 {
+                                success(bountyArrayTyped)
+                            }
+                            else {
+                                success(nil)
+                            }
+//                        }
+//                    }
                 }
             }
             else {
