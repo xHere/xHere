@@ -636,6 +636,7 @@
 					};
 					8B2B13E71DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = SDHBMW8ZGY;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8B2B13D01DD117F200961683;
 					};
@@ -1105,7 +1106,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SDHBMW8ZGY;
 				INFOPLIST_FILE = xHereTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[arch=*]" = 10.0;
@@ -1125,7 +1126,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = SDHBMW8ZGY;
 				INFOPLIST_FILE = xHereTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

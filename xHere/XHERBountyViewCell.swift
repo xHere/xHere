@@ -31,7 +31,7 @@ class XHERBountyViewCell: UITableViewCell {
         didSet {
             
             //User info
-            self.postedByUserLabel.text = bounty.postedByUser?.username
+            self.postedByUserLabel.text = bounty.postedByUser?.firstName
 //            if let userProfileImageURL = bounty.postedByUser?.profileImageUrl {
 //                userProfileImage.setImageWith(userProfileImageURL)
 //            }
@@ -107,6 +107,9 @@ class XHERBountyViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         cellContentView.frame = bounds
+        userProfileImage.layer.cornerRadius = userProfileImage.bounds.size.height/2
+        userProfileImage.layer.borderWidth = 2.0
+        userProfileImage.layer.borderColor = UIColor.yellow.cgColor
     }
     
 }
