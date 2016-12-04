@@ -16,6 +16,7 @@
                 <outlet property="collectionViewBottomConstraint" destination="NKC-5U-4Tk" id="hfp-dQ-CpN"/>
                 <outlet property="collectionViewHeightConstraint" destination="09m-NS-FzO" id="h8Q-n7-e7R"/>
                 <outlet property="mapView" destination="T3E-8H-9Ug" id="ssT-R2-en3"/>
+                <outlet property="searchTextField" destination="ph7-Df-FlD" id="h7X-cz-fpc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,14 +48,18 @@
                         <outlet property="delegate" destination="-1" id="djM-Q5-R3a"/>
                     </connections>
                 </collectionView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ph7-Df-FlD">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ph7-Df-FlD">
                     <rect key="frame" x="20" y="26" width="374" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                    <connections>
+                        <action selector="seachTextChanged:" destination="-1" eventType="editingChanged" id="N5o-rV-NJg"/>
+                        <outlet property="delegate" destination="-1" id="DLo-53-Xz7"/>
+                    </connections>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-LJ-VqM">
-                    <rect key="frame" x="0.0" y="56" width="414" height="616"/>
+                    <rect key="frame" x="0.0" y="57" width="414" height="615"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="zCr-ou-Qt3"/>
@@ -66,7 +71,6 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="ph7-Df-FlD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="DM8-7z-RSH"/>
-                <constraint firstItem="Ynb-yz-oDn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ExM-cw-2YC"/>
                 <constraint firstItem="Ynb-yz-oDn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JHE-op-tKA"/>
                 <constraint firstAttribute="bottom" secondItem="4J4-LJ-VqM" secondAttribute="bottom" constant="64" id="Mmc-Yf-fVY"/>
                 <constraint firstAttribute="bottom" secondItem="Ynb-yz-oDn" secondAttribute="bottom" constant="68" id="NKC-5U-4Tk"/>
@@ -79,7 +83,7 @@
                 <constraint firstAttribute="trailing" secondItem="ph7-Df-FlD" secondAttribute="trailing" constant="20" id="j5X-7A-5Ld"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jdO-9A-HRU"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wWu-ih-So9"/>
-                <constraint firstItem="4J4-LJ-VqM" firstAttribute="top" secondItem="ph7-Df-FlD" secondAttribute="bottom" id="zK7-mG-aAx"/>
+                <constraint firstItem="4J4-LJ-VqM" firstAttribute="top" secondItem="ph7-Df-FlD" secondAttribute="bottom" constant="1" id="zK7-mG-aAx"/>
             </constraints>
             <point key="canvasLocation" x="5" y="59"/>
         </view>

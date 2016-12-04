@@ -10,12 +10,13 @@ import UIKit
 import MapKit
 import Parse
 
-let kTabbarHeight:Int = 64
+let kTabbarHeight:Int = 0
 let selectedPinImage = UIImage(named: "pinselected")
 let pinImage = UIImage(named: "pin")
 
-class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,MKMapViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate,UICollectionViewDelegateFlowLayout {
+class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,MKMapViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate {
 
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var autoCompleteTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
@@ -73,7 +74,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         mapView.removeAnnotations(mapView.annotations)
         mapView.showsUserLocation = true
         if self.locations != nil{
-                        var index = 0
+            var index = 0
             for  location in self.locations!{
                 index += 1
                 
@@ -96,8 +97,8 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         let nib = UINib(nibName: "LocationCollectionViewCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: "LocationCollectionViewCell")
-        self.collectionViewHeightConstraint.constant = self.view.frame.size.height*0.2
-        self.collectionViewBottomConstraint.constant = 64
+        self.collectionViewHeightConstraint.constant = self.view.frame.size.height*0.25
+        self.collectionViewBottomConstraint.constant = CGFloat(kTabbarHeight)
        
         
     }
@@ -156,7 +157,13 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         else {
             annotationView!.annotation = annotation
         }
-        annotationView!.image = pinImage
+        if annotationView?.annotation is MKUserLocation
+        {
+            print("uerewjew fjksd fkldsjf d*********'")
+        }else{
+            annotationView!.image = pinImage
+        }
+        
         
         return annotationView
     }
@@ -205,7 +212,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                 if (placemark?.location?.coordinate) != nil {
                     
                     self.autoCompleteTableView.isHidden = true
-                    self.searchBar.text = location?.placeDescription
+                    self.searchTextField.text = location?.placeDescription
                     self.view.endEditing(true)
                     self.getPlaceDeatils(placeID: (location?.googlePlaceID)!)
                     
@@ -218,6 +225,17 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     
     // MARK: - Search Bar delegate
 
+    @IBAction func seachTextChanged(_ sender: UITextField) {
+        autoCompleteTableView.isHidden = false
+        fetchLocationsWithPlace(searchText: sender.text!)
+    }
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        self.view.endEditing(true)
+    
+        fetchLocationsWithPlace(searchText: textField.text!)
+        return true
+    }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         autoCompleteTableView.isHidden = false
@@ -272,6 +290,10 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                     
                     self.locations = contentsArray
                     self.collectionView.reloadData()
+                    if((self.locations?.count)!>0){
+                        let indexpath = IndexPath(row: 0, section: 0)
+                        self.collectionView.scrollToItem(at: indexpath, at: .centeredHorizontally, animated: false)
+                    }
                     self.setUpMapView()
                 }
         },
@@ -286,9 +308,9 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
             
             if let locationDetail = locationDetail {
                 
-                self.locations = locationDetail
-                self.collectionView.reloadData()
-                self.setUpMapView()
+
+            
+                self.getNearbyLocations(geoPoint: locationDetail[0].geoPoint!)
             }
             
             
@@ -307,7 +329,14 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
+        neabyBountiesViewController.location = self.locations?[indexPath.row]
+        self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
+        
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "LocationCollectionViewCell", for: indexPath) as! LocationCollectionViewCell
@@ -317,7 +346,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let collectionCell = cell as! LocationCollectionViewCell
+        _ = cell as! LocationCollectionViewCell
         //collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
         
         

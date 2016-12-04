@@ -18,7 +18,7 @@ class LocationCollectionViewCell: UICollectionViewCell {
         didSet{
             placeNameLabel.text = location.placeName
             
-           // placeImageView.image = nil
+           placeImageView.image = nil
             
             if location.placeImageURL != nil{
                 //print("Final url us \(location.placeImageURL!)")

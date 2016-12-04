@@ -133,7 +133,7 @@ class XHEREGooglePlacesServer: NSObject {
         
        
         
-        let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&radius=\(radius.rawValue)&name=\(placeName)"
+        let urlString = "\(kGoogleWebserviceBasePath)nearbysearch/json?key=\(kPFGoogleApiKey)&location=\(coordinates.latitude),\(coordinates.longitude)&rankby=distance&name=\(placeName)"
         print(urlString)
         
         let encodedURL  = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
