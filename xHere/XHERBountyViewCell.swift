@@ -44,6 +44,8 @@ class XHERBountyViewCell: UITableViewCell {
             self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
             
             //Location info
+            let distance = self.roundToPlaces(value: bounty.postedAtLocation.distanceFromCurrentInMiles, decimalPlaces: 2)
+            self.distanceLabel.text = "\(distance)"
             self.locationTitleLabel.text = bounty.postedAtLocation.title
             let poi = bounty.postedAtLocation
             locationTitleLabel.text = poi.placeName
@@ -51,6 +53,11 @@ class XHERBountyViewCell: UITableViewCell {
                 claimedImage.setImageWith(poiImage)
             }
         }
+    }
+    
+    func roundToPlaces(value: Double, decimalPlaces: Int) -> Double {
+        let divisor = pow(10.0, Double(decimalPlaces))
+        return round(value * divisor) / divisor
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -114,6 +121,7 @@ class XHERBountyViewCell: UITableViewCell {
         postedByUserLabel.text = ""
         bountyNotesLabel.text = ""
         claimedImage.image = nil
+        claimedImage.cancelImageDownloadTask()
     }
     
     override func layoutSubviews() {
