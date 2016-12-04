@@ -80,29 +80,32 @@ class XHERBountyViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func startSelectedAnimation(completion:@escaping ()->()) {
-        
+    func startSelectedAnimation(completion:@escaping (XHERBountyViewCell)->()) {
+        weak var weakSelf = self
         UIView.animateKeyframes(withDuration: 1, delay: 0, options: [],
                                 animations: {
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25,
                                                        animations: {
-                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(3 * (M_PI/180)))
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(3 * (M_PI/180)))
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25,
                                                        animations: {
-                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25,
                                                        animations: {
-                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: -CGFloat(3 * (M_PI/180)))
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: -CGFloat(3 * (M_PI/180)))
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25,
                                                        animations: {
-                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
                                     })
         },
                                 completion: { (didComplete:Bool) in
-                                    completion()
+                                    if let strongSelf = weakSelf {
+                                        print("Run COMPLETION")
+                                        completion(strongSelf)
+                                    }
         })
     }
     

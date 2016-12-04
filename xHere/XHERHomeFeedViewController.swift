@@ -181,11 +181,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.section == 1 {
             
             let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
-            cell.startSelectedAnimation(completion: {
+            cell.startSelectedAnimation(completion: { (selectedCell:XHERBountyViewCell) in
                 let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-                let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
-                detailViewController.currentBounty = cell.bounty
-                self.navigationController?.pushViewController(detailViewController, animated: true)
+                    detailViewController.currentBounty = selectedCell.bounty
+                    self.navigationController?.pushViewController(detailViewController, animated: true)
             })
         }
     }
