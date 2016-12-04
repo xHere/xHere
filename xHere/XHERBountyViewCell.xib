@@ -30,17 +30,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ot-zZ-jA0" userLabel="CustomContentView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="360.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59z-qz-bHs" userLabel="BlurMask">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="360.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aRS-W0-JRf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="360.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLB-ap-JzH">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="310.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="NoImagePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="DbL-DH-etn">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="310.5"/>
@@ -64,7 +60,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ETD-2C-HPZ">
-                                        <rect key="frame" x="0.0" y="310.5" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="311" width="320" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agg-V7-kvy">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
@@ -101,8 +97,12 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59z-qz-bHs" userLabel="BlurMask">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzy-oB-hNm">
-                                <rect key="frame" x="270" y="310.5" width="50" height="50"/>
+                                <rect key="frame" x="270" y="311" width="50" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gw-7T-YYj">
                                         <rect key="frame" x="0.0" y="38" width="50" height="12"/>
@@ -110,11 +110,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImagePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="WeF-bb-07L">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImagePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="WeF-bb-07L">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="WeF-bb-07L" firstAttribute="top" secondItem="uzy-oB-hNm" secondAttribute="top" id="ELW-l4-yN9"/>
                                     <constraint firstAttribute="trailing" secondItem="WeF-bb-07L" secondAttribute="trailing" id="G1I-ZT-ADW"/>
@@ -128,7 +128,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim IT!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-le-yK5">
-                                <rect key="frame" x="124.5" y="169.5" width="72" height="20.5"/>
+                                <rect key="frame" x="124" y="170.5" width="72" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
