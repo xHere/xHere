@@ -28,21 +28,33 @@
                                     <constraint firstAttribute="width" secondItem="HaX-Fx-dYT" secondAttribute="height" multiplier="1:1" id="ZIp-yK-Zbl"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIMED!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-lW-2XJ">
-                                <rect key="frame" x="82.5" y="139" width="77.5" height="21"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwf-42-0on">
+                                <rect key="frame" x="51.5" y="143.5" width="57.5" height="16.5"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIMED!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-lW-2XJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="16.5"/>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.88235294119999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="oA3-lW-2XJ" secondAttribute="bottom" id="FJZ-GR-Mmf"/>
+                                    <constraint firstItem="oA3-lW-2XJ" firstAttribute="top" secondItem="xwf-42-0on" secondAttribute="top" id="OxW-92-LVm"/>
+                                    <constraint firstItem="oA3-lW-2XJ" firstAttribute="leading" secondItem="xwf-42-0on" secondAttribute="leading" id="ebk-DU-r7D"/>
+                                    <constraint firstAttribute="trailing" secondItem="oA3-lW-2XJ" secondAttribute="trailing" id="fsN-Fz-gM2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="HaX-Fx-dYT" firstAttribute="leading" secondItem="fZe-9G-b9f" secondAttribute="leading" id="Eo7-Lb-s45"/>
-                            <constraint firstAttribute="bottom" secondItem="oA3-lW-2XJ" secondAttribute="bottom" id="IXo-xz-kXO"/>
                             <constraint firstAttribute="trailing" secondItem="HaX-Fx-dYT" secondAttribute="trailing" id="Koi-cC-x0D"/>
                             <constraint firstItem="HaX-Fx-dYT" firstAttribute="top" secondItem="fZe-9G-b9f" secondAttribute="top" id="Osz-7f-vKI"/>
+                            <constraint firstAttribute="bottom" secondItem="xwf-42-0on" secondAttribute="bottom" id="SHh-lo-qSV"/>
                             <constraint firstAttribute="bottom" secondItem="HaX-Fx-dYT" secondAttribute="bottom" id="a5e-Xz-reb"/>
-                            <constraint firstAttribute="trailing" secondItem="oA3-lW-2XJ" secondAttribute="trailing" id="wdD-Od-Pst"/>
+                            <constraint firstItem="xwf-42-0on" firstAttribute="centerX" secondItem="fZe-9G-b9f" secondAttribute="centerX" id="yNi-ke-YVw"/>
                         </constraints>
                     </view>
                 </subviews>

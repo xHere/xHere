@@ -9,16 +9,18 @@
 import UIKit
 import Parse
 
-var searchDistanceInMiles = 100.0
-class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+var searchDistanceInMiles = 200.0
+class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundColorMask: UIView!
     
     var bountiesArray:[XHERBounty]?
     var claimedBountiesArray:[XHERBounty]?
     var tableViewDataBackArray = [XHERBounty]()
     
     var userCurrentLocation:PFGeoPoint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,15 +28,25 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         self.setupTableView()
         self.setupRefreshControl()
-        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.barStyle       = UIBarStyle.black // I then set the color using:
+        
+        print("NavigationBar Title \(self.navigationController?.title)")
+
         weak var weakSelf = self
         self.callAPI {
             weakSelf?.updateTableView()
         }
+
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
+        print("Top layout guide is \(self.topLayoutGuide.length)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -147,6 +159,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             
             cell.nearByClaimedArray = claimedBountiesArray
             
+            cell.delegate = self
+            
             return cell
         }
         
@@ -156,7 +170,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             let bounty = self.tableViewDataBackArray[indexPath.row]
             
             cell.bounty = bounty
-            
             return cell
         }
         
@@ -164,10 +177,16 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-        let cell = tableView.cellForRow(at: indexPath) as! XHerHomeFeedUnclaimedBountyCell
-        detailViewController.currentBounty = cell.bounty
-        self.navigationController?.pushViewController(detailViewController, animated: true)
+        //If selected is a XHERBountyViewCell run it's builtin selected animation before pushing
+        if indexPath.section == 1 {
+            
+            let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
+            cell.startSelectedAnimation(completion: { (selectedCell:XHERBountyViewCell) in
+                let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+                    detailViewController.currentBounty = selectedCell.bounty
+                    self.navigationController?.pushViewController(detailViewController, animated: true)
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -180,16 +199,26 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            
-            if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
-                let nearByClaimedViewCell = cell as! XHERNearByClaimedViewCell
-                
-                nearByClaimedViewCell.collectionView.collectionViewLayout.collectionViewContentSize
-                let indexPathOfItemOne = IndexPath(item: 0, section: 0)
-                nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
-            }
-        }
+        
+        //Make all cell transparent for backgroundMask to show through
+        cell.backgroundColor = UIColor.clear
+        
+//        if indexPath.section == 0 {
+//            
+//            if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
+//                let nearByClaimedViewCell = cell as! XHERNearByClaimedViewCell
+//                
+//                nearByClaimedViewCell.collectionView.collectionViewLayout.collectionViewContentSize
+//                let indexPathOfItemOne = IndexPath(item: 0, section: 0)
+//                nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
+//            }
+//        }
+    }
+    
+    
+    // MARK: - XHERBountyViewCell Delegate Methods
+    func userDidSwipeCollectionViewTo(offset: CGFloat) {
+        self.backgroundColorMask.alpha = offset * 0.25
     }
     
     /*

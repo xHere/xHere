@@ -12,7 +12,8 @@ class XHERBountyViewCell: UITableViewCell {
     
 
     @IBOutlet weak var cellContentView: UIView!
-    
+    @IBOutlet weak var customContentView: UIView!
+
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
@@ -32,25 +33,15 @@ class XHERBountyViewCell: UITableViewCell {
             
             //User info
             self.postedByUserLabel.text = bounty.postedByUser?.username
-//            if let userProfileImageURL = bounty.postedByUser?.profileImageUrl {
-//                userProfileImage.setImageWith(userProfileImageURL)
-//            }
-            
-            if let profileData = bounty.postedByUser?.profileImageFile, let profileDataURLString = profileData.url, let profileURL = URL(string: profileDataURLString) {
-                userProfileImage.setImageWith(profileURL)
+            if let profileImage = bounty.postedByUser?.profileImageUrl {
+                userProfileImage.setImageWith(profileImage)
+            }
+            else {
+                userProfileImage.isHidden = true
             }
             
-//            if let profileData = bounty.postedByUser?.profileImageData {
-//                userProfileImage.image = UIImage(data: profileData)
-//            }
-
-            
-//            if let profileImage = bounty.postedByUser?.profileImageUrl {
-//                userProfileImage.setImageWith(profileImage)
-//            }
-            
             //Bounty info
-            self.bountyNotesLabel.text = bounty.bountyNote
+            self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
             
             //Location info
             self.locationTitleLabel.text = bounty.postedAtLocation.title
@@ -59,18 +50,8 @@ class XHERBountyViewCell: UITableViewCell {
             if let poiImage = poi.placeImageURL {
                 claimedImage.setImageWith(poiImage)
             }
-            
         }
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//        
-//
-//        claimITLabel.layer.cornerRadius = 5.0
-//        
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -88,14 +69,44 @@ class XHERBountyViewCell: UITableViewCell {
         cellContentView.frame = bounds
    
         contentView.addSubview(cellContentView)
+        
+        self.selectionStyle = .none
     }
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        
         // Configure the view for the selected state
+    }
+    
+    func startSelectedAnimation(completion:@escaping (XHERBountyViewCell)->()) {
+        weak var weakSelf = self
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [],
+                                animations: {
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25,
+                                                       animations: {
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(3 * (M_PI/180)))
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25,
+                                                       animations: {
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25,
+                                                       animations: {
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: -CGFloat(3 * (M_PI/180)))
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25,
+                                                       animations: {
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
+                                    })
+        },
+                                completion: { (didComplete:Bool) in
+                                    if let strongSelf = weakSelf {
+                                        print("Run COMPLETION")
+                                        completion(strongSelf)
+                                    }
+        })
     }
     
     override func prepareForReuse() {
@@ -107,6 +118,9 @@ class XHERBountyViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         cellContentView.frame = bounds
+        userProfileImage.layer.cornerRadius = userProfileImage.bounds.size.height/2
+        userProfileImage.layer.borderWidth = 2.0
+        userProfileImage.layer.borderColor = UIColor.yellow.cgColor
     }
     
 }

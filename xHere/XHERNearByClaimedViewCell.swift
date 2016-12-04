@@ -8,8 +8,13 @@
 
 import UIKit
 
+@objc protocol XHERNearByClaimedViewCellDelegate {
+    func userDidSwipeCollectionViewTo(offset:CGFloat)
+}
+
 class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
+    weak var delegate:XHERNearByClaimedViewCellDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var backgroundColorView: UIView!
@@ -71,7 +76,7 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let collectionCell = cell as! XHERNearByClaimedCollectionCell
         collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
-        collectionCell.claimedLabel.layer.cornerRadius = 5
+//        collectionCell.claimedLabel.layer.cornerRadius = 5
         
         print("COLLECTIONCELL HEIGHT = \(collectionCell.bounds.height)")
     }
@@ -86,7 +91,9 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetPercentIntoSecondPage = scrollView.contentOffset.x / scrollView.bounds.width
         
-        self.backgroundColorView.alpha = CGFloat(offSetPercentIntoSecondPage * 0.25)
+//        self.backgroundColorView.alpha = CGFloat(offSetPercentIntoSecondPage * 0.25)
+        
+        delegate?.userDidSwipeCollectionViewTo(offset: offSetPercentIntoSecondPage)
     }
     
 }
