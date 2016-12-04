@@ -54,9 +54,7 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         var itemView: UIImageView
-        if let view = view as? UIImageView {
-            itemView = view
-        } else {
+
             itemView = UIImageView(frame: CGRect(x: 0, y: 0, width:  400, height: 400))
             if let bounty = bounties?[index] {
                 if let media = bounty.mediaArray?[0]{
@@ -66,7 +64,7 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
                     itemView.backgroundColor = UIColor.clear
                 }
             }
-        }
+        
         print(bounties?[index].claimedByUser!.email)
 //        self.userNameLabel.text = bounties?[index].claimedByUser?.username!
         return itemView
