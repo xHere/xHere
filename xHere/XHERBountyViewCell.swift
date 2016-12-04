@@ -34,6 +34,7 @@ class XHERBountyViewCell: UITableViewCell {
             //User info
             self.postedByUserLabel.text = bounty.postedByUser?.username
             if let profileImage = bounty.postedByUser?.profileImageUrl {
+                userProfileImage.isHidden = false
                 userProfileImage.setImageWith(profileImage)
             }
             else {
@@ -121,7 +122,7 @@ class XHERBountyViewCell: UITableViewCell {
         postedByUserLabel.text = ""
         bountyNotesLabel.text = ""
         claimedImage.image = nil
-        claimedImage.cancelImageDownloadTask()
+//        claimedImage.cancelImageDownloadTask()
     }
     
     override func layoutSubviews() {
