@@ -170,7 +170,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             let bounty = self.tableViewDataBackArray[indexPath.row]
             
             cell.bounty = bounty
-            
             return cell
         }
         
@@ -178,10 +177,17 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-        let cell = tableView.cellForRow(at: indexPath) as! XHerHomeFeedUnclaimedBountyCell
-        detailViewController.currentBounty = cell.bounty
-        self.navigationController?.pushViewController(detailViewController, animated: true)
+        //If selected is a XHERBountyViewCell run it's builtin selected animation before pushing
+        if indexPath.section == 1 {
+            
+            let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
+            cell.startSelectedAnimation(completion: {
+                let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+                let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
+                detailViewController.currentBounty = cell.bounty
+                self.navigationController?.pushViewController(detailViewController, animated: true)
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -196,20 +202,22 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         //Make all cell transparent for backgroundMask to show through
-        cell.backgroundColor = UIColor.clear
+//        cell.backgroundColor = UIColor.clear
         
-        if indexPath.section == 0 {
-            
-            if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
-                let nearByClaimedViewCell = cell as! XHERNearByClaimedViewCell
-                
-                nearByClaimedViewCell.collectionView.collectionViewLayout.collectionViewContentSize
-                let indexPathOfItemOne = IndexPath(item: 0, section: 0)
-                nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
-            }
-        }
+//        if indexPath.section == 0 {
+//            
+//            if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
+//                let nearByClaimedViewCell = cell as! XHERNearByClaimedViewCell
+//                
+//                nearByClaimedViewCell.collectionView.collectionViewLayout.collectionViewContentSize
+//                let indexPathOfItemOne = IndexPath(item: 0, section: 0)
+//                nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
+//            }
+//        }
     }
     
+    
+    // MARK: - XHERBountyViewCell Delegate Methods
     func userDidSwipeCollectionViewTo(offset: CGFloat) {
         self.backgroundColorMask.alpha = offset * 0.25
     }

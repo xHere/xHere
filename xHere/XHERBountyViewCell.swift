@@ -12,7 +12,8 @@ class XHERBountyViewCell: UITableViewCell {
     
 
     @IBOutlet weak var cellContentView: UIView!
-    
+    @IBOutlet weak var customContentView: UIView!
+
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
@@ -49,19 +50,8 @@ class XHERBountyViewCell: UITableViewCell {
             if let poiImage = poi.placeImageURL {
                 claimedImage.setImageWith(poiImage)
             }
-            
-            
         }
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//        
-//
-//        claimITLabel.layer.cornerRadius = 5.0
-//        
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -79,14 +69,41 @@ class XHERBountyViewCell: UITableViewCell {
         cellContentView.frame = bounds
    
         contentView.addSubview(cellContentView)
+        
+        self.selectionStyle = .none
     }
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        
         // Configure the view for the selected state
+    }
+    
+    func startSelectedAnimation(completion:@escaping ()->()) {
+        
+        UIView.animateKeyframes(withDuration: 1, delay: 0, options: [],
+                                animations: {
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.25,
+                                                       animations: {
+                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(3 * (M_PI/180)))
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25,
+                                                       animations: {
+                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.25,
+                                                       animations: {
+                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: -CGFloat(3 * (M_PI/180)))
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 0.25,
+                                                       animations: {
+                                                        self.customContentView.transform = CGAffineTransform(rotationAngle: CGFloat(0 * (M_PI/180)))
+                                    })
+        },
+                                completion: { (didComplete:Bool) in
+                                    completion()
+        })
     }
     
     override func prepareForReuse() {
@@ -101,7 +118,6 @@ class XHERBountyViewCell: UITableViewCell {
         userProfileImage.layer.cornerRadius = userProfileImage.bounds.size.height/2
         userProfileImage.layer.borderWidth = 2.0
         userProfileImage.layer.borderColor = UIColor.yellow.cgColor
-
     }
     
 }
