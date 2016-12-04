@@ -10,9 +10,10 @@ import UIKit
 import Parse
 
 var searchDistanceInMiles = 200.0
-class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundColorMask: UIView!
     
     var bountiesArray:[XHERBounty]?
     var claimedBountiesArray:[XHERBounty]?
@@ -27,8 +28,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         self.setupTableView()
         self.setupRefreshControl()
-        
-
         // Do any additional setup after loading the view.
     }
     
@@ -41,6 +40,13 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.callAPI {
             weakSelf?.updateTableView()
         }
+
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
+        print("Top layout guide is \(self.topLayoutGuide.length)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -153,6 +159,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             
             cell.nearByClaimedArray = claimedBountiesArray
             
+            cell.delegate = self
+            
             return cell
         }
         
@@ -186,6 +194,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        //Make all cell transparent for backgroundMask to show through
+        cell.backgroundColor = UIColor.clear
+        
         if indexPath.section == 0 {
             
             if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
@@ -196,6 +208,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                 nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
             }
         }
+    }
+    
+    func userDidSwipeCollectionViewTo(offset: CGFloat) {
+        self.backgroundColorMask.alpha = offset * 0.25
     }
     
     /*
