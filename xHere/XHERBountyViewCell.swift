@@ -32,25 +32,15 @@ class XHERBountyViewCell: UITableViewCell {
             
             //User info
             self.postedByUserLabel.text = bounty.postedByUser?.username
-//            if let userProfileImageURL = bounty.postedByUser?.profileImageUrl {
-//                userProfileImage.setImageWith(userProfileImageURL)
-//            }
-            
-            if let profileData = bounty.postedByUser?.profileImageFile, let profileDataURLString = profileData.url, let profileURL = URL(string: profileDataURLString) {
-                userProfileImage.setImageWith(profileURL)
+            if let profileImage = bounty.postedByUser?.profileImageUrl {
+                userProfileImage.setImageWith(profileImage)
+            }
+            else {
+                userProfileImage.isHidden = true
             }
             
-//            if let profileData = bounty.postedByUser?.profileImageData {
-//                userProfileImage.image = UIImage(data: profileData)
-//            }
-
-            
-//            if let profileImage = bounty.postedByUser?.profileImageUrl {
-//                userProfileImage.setImageWith(profileImage)
-//            }
-            
             //Bounty info
-            self.bountyNotesLabel.text = bounty.bountyNote
+            self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
             
             //Location info
             self.locationTitleLabel.text = bounty.postedAtLocation.title
@@ -59,6 +49,7 @@ class XHERBountyViewCell: UITableViewCell {
             if let poiImage = poi.placeImageURL {
                 claimedImage.setImageWith(poiImage)
             }
+            
             
         }
     }

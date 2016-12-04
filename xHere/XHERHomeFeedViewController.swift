@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-var searchDistanceInMiles = 100.0
+var searchDistanceInMiles = 200.0
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +19,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     var tableViewDataBackArray = [XHERBounty]()
     
     var userCurrentLocation:PFGeoPoint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,10 +28,15 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.setupTableView()
         self.setupRefreshControl()
         
+
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.barStyle       = UIBarStyle.black // I then set the color using:
+        
+        print("NavigationBar Title \(self.navigationController?.title)")
+
         weak var weakSelf = self
         self.callAPI {
             weakSelf?.updateTableView()
