@@ -202,7 +202,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         //Make all cell transparent for backgroundMask to show through
-//        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear
         
 //        if indexPath.section == 0 {
 //            
