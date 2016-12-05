@@ -33,12 +33,12 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         
         self.title = "Find a Place"
-        self.navigationController?.navigationBar.isHidden = true
+        
         self.setupCollectionView()
         self.setupTableView()
         autoCompleteTableView.isHidden = true
 
-        
+        self.navigationController?.isNavigationBarHidden = false
         PFGeoPoint.geoPointForCurrentLocation { (loc :PFGeoPoint?, error :Error?) in
             if error == nil{
                 self.currentLocation = loc
@@ -48,6 +48,13 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+    
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    
+    
     
     
 
@@ -97,7 +104,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         let nib = UINib(nibName: "LocationCollectionViewCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: "LocationCollectionViewCell")
-        self.collectionViewHeightConstraint.constant = self.view.frame.size.height*0.25
+        self.collectionViewHeightConstraint.constant = self.view.frame.size.height*0.22
         self.collectionViewBottomConstraint.constant = CGFloat(kTabbarHeight)
        
         
