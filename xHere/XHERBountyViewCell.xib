@@ -114,20 +114,14 @@
                             </stackView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59z-qz-bHs" userLabel="BlurMask">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim IT!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-le-yK5">
-                                        <rect key="frame" x="232.5" y="10" width="57.5" height="22"/>
-                                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="16"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="chN-le-yK5" firstAttribute="top" secondItem="59z-qz-bHs" secondAttribute="top" constant="10" id="Hbc-rh-2Gd"/>
-                                    <constraint firstAttribute="trailing" secondItem="chN-le-yK5" secondAttribute="trailing" constant="10" id="j0j-gY-bmJ"/>
-                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claim IT!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-le-yK5">
+                                <rect key="frame" x="232.5" y="10" width="57.5" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzy-oB-hNm">
                                 <rect key="frame" x="250" y="300" width="50" height="50"/>
                                 <subviews>
@@ -166,9 +160,11 @@
                             <constraint firstAttribute="trailing" secondItem="uzy-oB-hNm" secondAttribute="trailing" id="ITM-3D-3uB"/>
                             <constraint firstItem="aRS-W0-JRf" firstAttribute="top" secondItem="6Ot-zZ-jA0" secondAttribute="top" id="Jn4-ge-Ivl"/>
                             <constraint firstItem="59z-qz-bHs" firstAttribute="top" secondItem="6Ot-zZ-jA0" secondAttribute="top" id="NK4-1R-VxW"/>
+                            <constraint firstAttribute="trailing" secondItem="chN-le-yK5" secondAttribute="trailing" constant="10" id="Ycz-Hq-Gur"/>
                             <constraint firstItem="uzy-oB-hNm" firstAttribute="leading" secondItem="YgO-wG-tNs" secondAttribute="trailing" id="byv-JN-4kv"/>
                             <constraint firstAttribute="trailing" secondItem="59z-qz-bHs" secondAttribute="trailing" id="n7j-Q4-4Dp"/>
                             <constraint firstAttribute="bottom" secondItem="aRS-W0-JRf" secondAttribute="bottom" id="rs2-88-E7o"/>
+                            <constraint firstItem="chN-le-yK5" firstAttribute="top" secondItem="6Ot-zZ-jA0" secondAttribute="top" constant="10" id="sjq-yD-SHM"/>
                             <constraint firstItem="aRS-W0-JRf" firstAttribute="leading" secondItem="6Ot-zZ-jA0" secondAttribute="leading" id="tjl-dr-Cfe"/>
                             <constraint firstAttribute="bottom" secondItem="59z-qz-bHs" secondAttribute="bottom" id="vfF-Mx-rLQ"/>
                         </constraints>
