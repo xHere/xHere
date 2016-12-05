@@ -77,6 +77,8 @@
 		997E283B1DDFBE7A004A5105 /* loginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997E283A1DDFBE7A004A5105 /* loginInputView.swift */; };
 		99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6AF1DD661B400D36904 /* LoginViewController.swift */; };
 		99CEF6B41DD698DD00D36904 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */; };
+		99F0F7A51DF4E2810019288D /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F0F7A31DF4E2810019288D /* AnimationViewController.swift */; };
+		99F0F7A61DF4E2810019288D /* AnimationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F0F7A41DF4E2810019288D /* AnimationViewController.xib */; };
 		99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F66C731DE4411100F520D1 /* CameraViewController.swift */; };
 		99F66C761DE4411100F520D1 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F66C741DE4411100F520D1 /* CameraViewController.xib */; };
 		C1D59EB344C288FBFF399CE8 /* Pods_xHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */; };
@@ -185,6 +187,8 @@
 		99CEF6AF1DD661B400D36904 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		99CEF6B11DD686DA00D36904 /* xHere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xHere.entitlements; sourceTree = "<group>"; };
 		99CEF6B21DD698DD00D36904 /* TimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineViewController.swift; sourceTree = "<group>"; };
+		99F0F7A31DF4E2810019288D /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		99F0F7A41DF4E2810019288D /* AnimationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimationViewController.xib; sourceTree = "<group>"; };
 		99F66C731DE4411100F520D1 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		99F66C741DE4411100F520D1 /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		A5AFD26D5C1F7C83912A3C61 /* Pods_xHereTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +274,7 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				99F0F7A21DF4E22B0019288D /* Claimed Animation */,
 				993E46311DF15060009D6214 /* Carousel View Controller */,
 				992B94821DEA49BE0010482D /* Claim Bounty Controller */,
 				8B7FE9F61DDBE24800FD00E5 /* XHERConstant.swift */,
@@ -548,6 +553,15 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		99F0F7A21DF4E22B0019288D /* Claimed Animation */ = {
+			isa = PBXGroup;
+			children = (
+				99F0F7A31DF4E2810019288D /* AnimationViewController.swift */,
+				99F0F7A41DF4E2810019288D /* AnimationViewController.xib */,
+			);
+			name = "Claimed Animation";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -691,6 +705,7 @@
 				8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */,
 				993E463A1DF1DF2C009D6214 /* ClaimedBountyCell.xib in Resources */,
 				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
+				99F0F7A61DF4E2810019288D /* AnimationViewController.xib in Resources */,
 				8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */,
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */,
@@ -870,6 +885,7 @@
 				993E46341DF150A0009D6214 /* CarouselViewController.swift in Sources */,
 				939AF89C1DEFFF88008775F7 /* LocationCollectionViewCell.swift in Sources */,
 				8B7FE9F91DDD080A00FD00E5 /* XHERBounty.swift in Sources */,
+				99F0F7A51DF4E2810019288D /* AnimationViewController.swift in Sources */,
 				8BA7D21F1DD92D710002C848 /* ContentViewCell.swift in Sources */,
 				8BEC43B31DD950B700244F11 /* Comment.swift in Sources */,
 				8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */,

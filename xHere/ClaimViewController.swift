@@ -32,15 +32,18 @@ class ClaimViewController: UIViewController {
 //            
 //        }
         
-        XHERServer.sharedInstance.claimBounty(user: PFUser.current() as! User, objectId: (bounty?.objectId!)!, image: preiviewImage.image!,
-              success: { (bounty:XHERBounty, tokentAmount:Int) in
-                print("Bounty claimed Successfully")
-                let homeTabBarVC = XHERHomeTabBarViewController()
-                self.present(homeTabBarVC, animated: true, completion: nil)
-        },
-              faliure: { (error:Error) in
-                
-        })
+        let animationView = AnimationViewController()
+        self.present(animationView, animated: true, completion: nil)
+        
+//        XHERServer.sharedInstance.claimBounty(user: PFUser.current() as! User, objectId: (bounty?.objectId!)!, image: preiviewImage.image!,
+//              success: { (bounty:XHERBounty, tokentAmount:Int) in
+//                print("Bounty claimed Successfully")
+//                let homeTabBarVC = XHERHomeTabBarViewController()
+//                self.present(homeTabBarVC, animated: true, completion: nil)
+//        },
+//              faliure: { (error:Error) in
+//                
+//        })
         
     }
 
