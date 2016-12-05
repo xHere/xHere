@@ -214,6 +214,12 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                     self.navigationController?.pushViewController(detailViewController, animated: true)
             })
         }
+        if indexPath.section == 2 {
+            let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
+            cell.startDeniedSelectionAnimation(completion: { (selectedCell:XHERBountyViewCell) in
+                
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
