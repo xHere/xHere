@@ -56,6 +56,11 @@ class XHERServer: NSObject {
                         var bountyArrayTyped = [XHERBounty]()
                         for object in bountiesArray {
                             let bounty = object as! XHERBounty
+                            
+                            if let distanceFromCurrentInMiles = bounty.postedAtLocation.geoPoint?.distanceInMiles(to: poi.geoPoint) {
+                                bounty.postedAtLocation.distanceFromCurrentInMiles = distanceFromCurrentInMiles
+                            }
+                            
                             bountyArrayTyped.append(bounty)
                         }
                         
@@ -189,6 +194,7 @@ class XHERServer: NSObject {
                     var bountyArrayTyped = [XHERBounty]()
                     for object in bountiesArray {
                         let bounty = object as! XHERBounty
+                        
                         bountyArrayTyped.append(bounty)
                     }
                     

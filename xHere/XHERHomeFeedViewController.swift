@@ -18,6 +18,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     var bountiesArray:[XHERBounty]?
     var claimedBountiesArray:[XHERBounty]?
     var tableViewDataBackArray = [XHERBounty]()
+    var tableViewDataBackArrayFar = [XHERBounty]()
     
     var userCurrentLocation:PFGeoPoint?
     
@@ -127,11 +128,25 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     func updateTableView() {
         
+        self.tableViewDataBackArray.removeAll()
+        self.tableViewDataBackArrayFar.removeAll()
+        
         if let bountiesArray = bountiesArray {
-            self.tableViewDataBackArray = bountiesArray
             
-            let first = bountiesArray[0].postedAtLocation.geoPoint
-            userCurrentLocation?.distanceInMiles(to: first)
+            for bounty in bountiesArray {
+                
+                if bounty.distanceFromCurrentInMiles < 0.1 {  //If bounty is close
+                    self.tableViewDataBackArray.append(bounty)
+                }
+                else {
+                    let indexOfFirstFar = bountiesArray.index(of: bounty)
+                    let restOfBounties = Array(bountiesArray.suffix(from: indexOfFirstFar!))
+                    self.tableViewDataBackArrayFar.append(contentsOf: restOfBounties)
+                    break
+                }
+            }
+            
+//            self.tableViewDataBackArray = bountiesArray
             
         }
         
@@ -139,7 +154,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,8 +162,11 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         if section == 0 {
             return 1
         }
-        else {
+        else if section == 1{
             return tableViewDataBackArray.count
+        }
+        else {
+            return tableViewDataBackArrayFar.count
         }
     }
     
@@ -164,12 +182,21 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             return cell
         }
         
-        else {
+        else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
 
             let bounty = self.tableViewDataBackArray[indexPath.row]
             
             cell.bounty = bounty
+            cell.claimITLabel.isHidden = false
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
+            
+            let bounty = self.tableViewDataBackArrayFar[indexPath.row]
+            cell.bounty = bounty
+            cell.claimITLabel.isHidden = true
             return cell
         }
         
