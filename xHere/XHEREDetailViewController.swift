@@ -15,7 +15,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var detailDesciptionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-//    var cameraViewController : UIViewController?
     var currentBounty : XHERBounty!
     let debugging = true
     var server = XHERServer.sharedInstance
@@ -39,18 +38,74 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func setupView(){
         if let currentBounty = currentBounty {
-            //            placeNameLabel.text = currentBounty.postedAtLocation.placeName
             detailDesciptionLabel.text = currentBounty.bountyNote
             usernameLabel.text = currentBounty.postedByUser?.screenName
             let postedLocation = currentBounty.postedAtLocation
             if let imageUrl = postedLocation.placeImageURL {
                 placeImageView.setImageWith(imageUrl)
             }
-            
         }
     }
     
+
     
+
+    
+
+    
+    
+    
+    
+    
+    
+    // MARK: - ImagePicker Activate & Delegates
+    @IBAction func initClaim(_ sender: UIButton) {
+        
+        if(debugging){
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            present(picker, animated: true, completion: nil)
+        }
+        else
+        {
+            let cameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
+            cameraViewController.currentBounty = self.currentBounty
+            self.present(cameraViewController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let claimController = ClaimViewController()
+        claimController.bounty = currentBounty
+        let size = CGSize(width: 400, height: 400)
+        claimController.claimingImage =  resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
+        dismiss(animated: false) {
+            self.present(claimController, animated: true, completion: nil)
+        }
+    }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+}
+
+
+
+
+extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    
+    // MARK: - API call and delegates methods for NearByClaimedBounties CollectionView
     func getNearByClaimedBounties(){
         server.fetchClaimedBountyNear(location: currentBounty.postedAtLocation.geoPoint!, withInMiles: searchDistanceInMiles, success: { (bounties : [XHERBounty]?) in
             if let bounties = bounties {
@@ -74,61 +129,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
-    @IBAction func initClaim(_ sender: UIButton) {
-        
-        if(debugging){
-            let picker = UIImagePickerController()
-            picker.delegate = self
-            picker.sourceType = .photoLibrary
-            present(picker, animated: true, completion: nil)
-            
-        }
-        else
-        {
-           let cameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
-//            self.navigationController?.pushViewController(cameraViewController!, animated: true)
-            cameraViewController.currentBounty = self.currentBounty
-            self.present(cameraViewController, animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let claimController = ClaimViewController()
-        claimController.bounty = currentBounty
-        let size = CGSize(width: 400, height: 400)
-        claimController.claimingImage =  resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
-        dismiss(animated: false) {
-//            self.navigationController?.pushViewController(claimController, animated: true)
-            self.present(claimController, animated: true, completion: nil)
-        }
-    }
-    
-    func resize(image: UIImage, newSize: CGSize) -> UIImage {
-        let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
-        resizeImageView.image = image
-        
-        UIGraphicsBeginImageContext(resizeImageView.frame.size)
-        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
-
-extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClaimedBountyCell", for: indexPath) as! ClaimedBountyCell

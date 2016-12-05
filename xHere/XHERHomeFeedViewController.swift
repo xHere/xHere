@@ -30,14 +30,15 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.setupTableView()
         self.setupRefreshControl()
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-
         weak var weakSelf = self
         self.callAPI {
             weakSelf?.updateTableView()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+ 
     }
     
     override func viewDidLayoutSubviews() {
