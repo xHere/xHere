@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+let placeholderImage = UIImage(named: "NoImagePlaceHolder")
 class LocationCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var placeImageView: UIImageView!
@@ -21,8 +21,8 @@ class LocationCollectionViewCell: UICollectionViewCell {
            placeImageView.image = nil
             
             if location.placeImageURL != nil{
-                //print("Final url us \(location.placeImageURL!)")
-                placeImageView.setImageWith(location.placeImageURL!)
+                
+                placeImageView.setImageWith(location.placeImageURL!, placeholderImage: placeholderImage)
                 
             }
             placeDescription.text = location.placeDescription
