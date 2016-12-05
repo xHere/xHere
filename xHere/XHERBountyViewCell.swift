@@ -179,7 +179,7 @@ class XHERBountyViewCell: UITableViewCell {
         locationTitleLabel.text = ""
         postedByUserLabel.text = ""
         bountyNotesLabel.text = ""
-        claimedImage.image = nil
+        claimedImage.image = UIImage(named: "NoImagePlaceHolder")
 //        claimedImage.cancelImageDownloadTask()
     }
     
