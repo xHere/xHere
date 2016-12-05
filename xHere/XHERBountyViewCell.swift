@@ -25,8 +25,10 @@ class XHERBountyViewCell: UITableViewCell {
     @IBOutlet weak var postedByUserLabel: UILabel!
     @IBOutlet weak var userProfileImage: UIImageView!
 
-
+    //Main Container Image
     @IBOutlet weak var claimedImage: UIImageView!
+    
+    
     var bounty: XHERBounty! {
         
         didSet {
@@ -48,10 +50,18 @@ class XHERBountyViewCell: UITableViewCell {
             let distance = self.roundToPlaces(value: bounty.postedAtLocation.distanceFromCurrentInMiles, decimalPlaces: 2)
             self.distanceLabel.text = "\(distance) mi"
             self.locationTitleLabel.text = bounty.postedAtLocation.title
-            let poi = bounty.postedAtLocation
-            locationTitleLabel.text = poi.placeName
-            if let poiImage = poi.placeImageURL {
-                claimedImage.setImageWith(poiImage)
+            
+            if let bountyClaimedImageURLStr = bounty.mediaArray?[0].mediaData?.url,
+                let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
+            {
+                claimedImage.setImageWith(bountyClaimedImageURL)
+            }
+            else {
+                let poi = bounty.postedAtLocation
+                locationTitleLabel.text = poi.placeName
+                if let poiImage = poi.placeImageURL {
+                    claimedImage.setImageWith(poiImage)
+                }
             }
         }
     }
