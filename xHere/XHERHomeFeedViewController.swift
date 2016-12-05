@@ -33,16 +33,11 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.barStyle       = UIBarStyle.black // I then set the color using:
-        
-        print("NavigationBar Title \(self.navigationController?.title)")
 
         weak var weakSelf = self
         self.callAPI {
             weakSelf?.updateTableView()
         }
-
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,7 +49,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func callAPI(success:@escaping ()->()) {
         
@@ -73,28 +67,22 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                             
                                 if let strongSelf = weakSelf {
                                     strongSelf.bountiesArray = bountiesArray
-                                    success()
+                                    
+                                    server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
+                                          success: { (claimedBountiesArray:[XHERBounty]?) in
+                                                weakSelf?.claimedBountiesArray = claimedBountiesArray
+                                                success()
+                                    },
+                                          failure: { (error:Error?) in
+                                    })
+  
                                 }
                     },
                             failure: { (error:Error?) in
-                            
                     })
-                    
-                    server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
-                            success: { (claimedBountiesArray:[XHERBounty]?) in
-                                weakSelf?.claimedBountiesArray = claimedBountiesArray
-                                success()
-                    },
-                            failure: { (error:Error?) in
-                                
-                    })
-                    
                 }
             }
         }
-        
-        //Get claimed bounties nearby
-        
     }
     
     func setupRefreshControl() {
@@ -112,45 +100,76 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    // MARK: - TableView Methods
     func setupTableView() {
-//        self.automaticallyAdjustsScrollViewInsets = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
-//        let contentViewCellNib = UINib(nibName: "XHERHomeFeedViewCell", bundle: nil)
-//        self.tableView.register(contentViewCellNib, forCellReuseIdentifier: "XHERHomeFeedViewCell")
-        
         self.tableView.register(XHerHomeFeedUnclaimedBountyCell.self, forCellReuseIdentifier: "XHerHomeFeedUnclaimedBountyCell")
         let collectionViewNib = UINib(nibName: "XHERNearByClaimedViewCell", bundle: nil)
         self.tableView.register(collectionViewNib, forCellReuseIdentifier: "XHERNearByClaimedViewCell")
+        
+        self.tableView.isHidden = true
     }
     
     func updateTableView() {
         
+        self.tableView.isHidden = false
+        
         self.tableViewDataBackArray.removeAll()
         self.tableViewDataBackArrayFar.removeAll()
+        self.tableView.reloadData()
         
         if let bountiesArray = bountiesArray {
             
             for bounty in bountiesArray {
                 
                 if bounty.distanceFromCurrentInMiles < 0.1 {  //If bounty is close
+
                     self.tableViewDataBackArray.append(bounty)
+
+                    let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
+                    print("SectionRowCountBefore \(tableView.numberOfRows(inSection: 1))")
+                    
+                    UIView.animate(withDuration: 2, animations: {
+                        self.tableView.beginUpdates()
+                        self.tableView.insertRows(at: [newIndexPath], with:.fade)
+                        self.tableView.endUpdates()
+                        print("SectionRowCountAfter \(self.tableView.numberOfRows(inSection: 1))")
+                    })
                 }
                 else {
-                    let indexOfFirstFar = bountiesArray.index(of: bounty)
-                    let restOfBounties = Array(bountiesArray.suffix(from: indexOfFirstFar!))
-                    self.tableViewDataBackArrayFar.append(contentsOf: restOfBounties)
-                    break
+                   
+                    self.tableViewDataBackArrayFar.append(bounty)
+
+                    let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
+                    print("Section2RowCountBefore \(tableView.numberOfRows(inSection: 2))")
+                    
+                    UIView.animate(withDuration: 2, animations: {
+                        self.tableView.beginUpdates()
+                        self.tableView.insertRows(at: [newIndexPath], with:.left)
+                        self.tableView.endUpdates()
+                        print("Section2RowCountAfter \(self.tableView.numberOfRows(inSection: 2))")
+//                        self.tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: false)
+                    })
+
+//                    self.tableView.reloadRows(at: [newIndexPath], with: .left)
+
+                    
+//                    let indexOfFirstFar = bountiesArray.index(of: bounty)
+//                    let restOfBounties = Array(bountiesArray.suffix(from: indexOfFirstFar!))
+//                    self.tableViewDataBackArrayFar.append(contentsOf: restOfBounties)
+//                    break
                 }
             }
             
-//            self.tableViewDataBackArray = bountiesArray
-            
+            UIView.animate(withDuration: 1, animations: {
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            })
         }
         
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -199,7 +218,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             cell.claimITLabel.isHidden = true
             return cell
         }
-        
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -248,20 +266,38 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
 //        }
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        if section == 2 {
+            if let headerView = view as? XHERHomeFeedHeaderView {
+                let backgroundView = UIView()
+                backgroundView.backgroundColor = UIColor.clear
+                headerView.backgroundView = backgroundView
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if section == 2 {
+            let headerView = XHERHomeFeedHeaderView()
+            headerView.headerLabel.text = "Go There!"
+            return headerView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if section == 2 {
+            return 30.0
+        }
+        return 0
+    }
     
     // MARK: - XHERBountyViewCell Delegate Methods
     func userDidSwipeCollectionViewTo(offset: CGFloat) {
         self.backgroundColorMask.alpha = offset * 0.25
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
