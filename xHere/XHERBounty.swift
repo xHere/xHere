@@ -159,7 +159,9 @@ class XHERBounty: PFObject, PFSubclassing {
             self[kPFKeyGeoPoint] = newValue
         }
     }
-
+    
+    var distanceFromCurrentInMiles:Double = Double(MAXFLOAT)
+    
     var bountyValue:Int {
         get {
             return (self[kPFKeyTokens] as? Int) ?? 0

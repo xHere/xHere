@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHERHomeFeedViewController" customModule="xHere" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundColorMask" destination="PAT-71-8LD" id="fZt-v4-vld"/>
                 <outlet property="tableView" destination="hlX-aK-bls" id="43p-nD-eqY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,18 +21,27 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAT-71-8LD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hlX-aK-bls">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="WUs-xB-L27"/>
                         <outlet property="delegate" destination="-1" id="tC8-DO-DuT"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="PAT-71-8LD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5dX-xR-0pn"/>
+                <constraint firstAttribute="bottom" secondItem="PAT-71-8LD" secondAttribute="bottom" id="BmH-vn-TcC"/>
+                <constraint firstAttribute="trailing" secondItem="PAT-71-8LD" secondAttribute="trailing" id="CrG-G2-dYG"/>
                 <constraint firstAttribute="trailing" secondItem="hlX-aK-bls" secondAttribute="trailing" id="Nw1-3c-OCt"/>
+                <constraint firstItem="PAT-71-8LD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Zcx-WE-dhf"/>
                 <constraint firstItem="hlX-aK-bls" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kRH-wE-OOu"/>
                 <constraint firstAttribute="bottom" secondItem="hlX-aK-bls" secondAttribute="bottom" id="m5d-8L-OW9"/>
                 <constraint firstItem="hlX-aK-bls" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="shF-gJ-HR1"/>

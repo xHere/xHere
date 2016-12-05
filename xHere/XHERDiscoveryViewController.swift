@@ -32,8 +32,8 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Find a Place"
-        self.navigationController?.navigationBar.isHidden = true
+        self.title = ""
+        
         self.setupCollectionView()
         self.setupTableView()
         autoCompleteTableView.isHidden = true
@@ -49,7 +49,12 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
+
 
     
     override func didReceiveMemoryWarning() {
@@ -72,7 +77,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
        
         mapView.removeAnnotations(mapView.annotations)
-        mapView.showsUserLocation = true
+        //mapView.showsUserLocation = true
         if self.locations != nil{
             var index = 0
             for  location in self.locations!{
@@ -84,12 +89,17 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                 annotation.title = location.placeName
                 annotation.subtitle = "\(index)"
                 self.mapView.addAnnotation(annotation)
+                let viewI = mapView.view(for: annotation)
+                viewI?.image = selectedPinImage
                 
             }
         }
         
         let yourAnnotationArray = mapView.annotations
         mapView.showAnnotations(yourAnnotationArray, animated: true)
+        
+        
+        
        
 
     }
@@ -127,6 +137,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
        
         self.deselectAllPins()
     }
+    
     func deselectAllPins(){
         
         
@@ -265,12 +276,19 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         XHEREGooglePlacesServer.sharedInstance.getSearchPlaces(placeName: searchText, success: { (locations :[POI]?) in
             if let locations = locations {
-                self.autoCompleteTableView.isHidden = false
-                self.autoComplete = locations
-                self.autoCompleteTableView.reloadData()
+                
+                if locations.count > 0{
+                    self.autoCompleteTableView.isHidden = false
+                    self.autoComplete = locations
+                    self.autoCompleteTableView.reloadData()
+                }else{
+                    self.autoCompleteTableView.isHidden = true
+                }
+                
                 
             }else{
                 print("No result found")
+                self.autoCompleteTableView.isHidden = true
             }
             
         

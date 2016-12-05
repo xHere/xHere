@@ -18,6 +18,8 @@ class XHERENeabyBountiesViewController: UIViewController,UITableViewDataSource,U
     var location : POI?
     var bounties : [XHERBounty]?
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,14 +40,16 @@ class XHERENeabyBountiesViewController: UIViewController,UITableViewDataSource,U
     }
     
     func setUpView(){
-    
+        
+        self.navigationController?.navigationBar.isHidden = false
+        
         placeNameLabel.text = location?.placeName
         placeimageView.setImageWith((location?.placeImageURL)!)
         imageViewHeightConstraint.constant = self.view.frame.height*0.3
 
     }
     func setupTableView() {
-        self.edgesForExtendedLayout = []
+//        self.edgesForExtendedLayout = []
         
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
