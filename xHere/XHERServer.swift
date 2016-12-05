@@ -57,6 +57,11 @@ class XHERServer: NSObject {
                         var bountyArrayTyped = [XHERBounty]()
                         for object in bountiesArray {
                             let bounty = object as! XHERBounty
+                            
+                            if let distanceFromCurrentInMiles = bounty.postedAtLocation.geoPoint?.distanceInMiles(to: poi.geoPoint) {
+                                bounty.postedAtLocation.distanceFromCurrentInMiles = distanceFromCurrentInMiles
+                            }
+                            
                             bountyArrayTyped.append(bounty)
                         }
                         
@@ -114,42 +119,27 @@ class XHERServer: NSObject {
             if error == nil {
                 
                 if let bountiesArray = bountiesArray {
-                    
-//                    DispatchQueue.global(qos: .background).async {
-                    
-                        //Parse array of PFObject into Bounty
-                        var bountyArrayTyped = [XHERBounty]()
-                        for object in bountiesArray {
-                            let bounty = object as! XHERBounty
-                            
-//                            do {
-//                                if let user = bounty.postedByUser {
-//                                    if let file = user[kPFKeyProfileImageFile] as? PFFile {
-//                                        print("getting user profile from bounty \(bounty.objectId)")
-//                                        let data = try file.getData()
-//                                        user.profileImageData = data
-//                                    }
-//                                }
-//                                
-//                                
-//
-//                            }
-//                            catch{
-//                                
-//                            }
-                            bountyArrayTyped.append(bounty)
+                    var bountyArrayTyped = [XHERBounty]()
+                    for object in bountiesArray {
+                        let bounty = object as! XHERBounty
+                        
+                        if let distanceFromCurrentInMiles = bounty.bountyGeoPoint?.distanceInMiles(to: location) {
+                            bounty.distanceFromCurrentInMiles = distanceFromCurrentInMiles
                         }
                         
-//                        DispatchQueue.main.async {
-                            //Return nil if the array is empty
-                            if bountyArrayTyped.count > 0 {
-                                success(bountyArrayTyped)
-                            }
-                            else {
-                                success(nil)
-                            }
-//                        }
-//                    }
+                        if let distanceFromCurrentInMiles = bounty.postedAtLocation.geoPoint?.distanceInMiles(to: location) {
+                            bounty.postedAtLocation.distanceFromCurrentInMiles = distanceFromCurrentInMiles
+                        }
+                        
+                        bountyArrayTyped.append(bounty)
+                    }
+                    
+                    if bountyArrayTyped.count > 0 {
+                        success(bountyArrayTyped)
+                    }
+                    else {
+                        success(nil)
+                    }
                 }
             }
             else {
@@ -206,6 +196,7 @@ class XHERServer: NSObject {
                     var bountyArrayTyped = [XHERBounty]()
                     for object in bountiesArray {
                         let bounty = object as! XHERBounty
+                        
                         bountyArrayTyped.append(bounty)
                     }
                     

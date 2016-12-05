@@ -71,6 +71,10 @@ class POI: PFObject, PFSubclassing {
     
     var latitute : Double = 0.0
     var longitude : Double = 0.0
+    
+    var distanceFromCurrentInMiles:Double = Double(MAXFLOAT)
+
+    
     var placeDescription : String?
     
     
