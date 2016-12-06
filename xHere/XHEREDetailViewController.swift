@@ -16,7 +16,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     var currentBounty : XHERBounty!
-    let debugging = true
+    let debugging = false
     var server = XHERServer.sharedInstance
     var nearbyBounties : [XHERBounty]?
     

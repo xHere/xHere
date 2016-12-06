@@ -29,7 +29,7 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         piggyImageView.image = UIImage(named: "piggy")
-        addCoin(location: CGRect(x: 150, y: 100, width: view.frame.width * 0.16, height: view.frame.height * 0.16))
+        addCoin(location: CGRect(x: 150, y: -30, width: view.frame.width * 0.16, height: view.frame.height * 0.16))
          createAnimatorStuff()
     }
     
@@ -41,7 +41,7 @@ class AnimationViewController: UIViewController {
         coin?.layer.masksToBounds = true
         coin?.clipsToBounds = true
         coin?.backgroundColor = UIColor.clear
-        coin?.layer.cornerRadius = (coin?.frame.height)!/2
+//        coin?.layer.cornerRadius = (coin?.frame.height)!/2
         view.insertSubview(coin!, at: 0)
         initAnimation()
     }
@@ -81,13 +81,13 @@ class AnimationViewController: UIViewController {
     var collided = false
     var green = true
     func startFlipping(){
-        UIView.transition(with: self.coin!, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromBottom, animations: {
+        UIView.transition(with: self.coin!, duration: 0.2, options: UIViewAnimationOptions.transitionFlipFromBottom, animations: {
             if self.green {
-                self.coin?.backgroundColor = UIColor.green
+                
                 self.coin?.image = UIImage(named: "coinBack")
             }
             else {
-                self.coin?.backgroundColor = UIColor.red
+                
                 self.coin?.image = UIImage(named: "coinFront")
             }
             self.green = !self.green
@@ -101,10 +101,11 @@ class AnimationViewController: UIViewController {
         
         let stopFlippingAt = self.view.frame.height - self.view.frame.height/2
         let stopGravityAt = self.piggyImageView.frame.origin.y
+      
         gravity.action = {
 //  
             
-            if (self.coin?.frame.origin.y)! <= CGFloat(2.0) {
+            if (self.coin?.frame.origin.y)! <= CGFloat(3.0) {
                 self.gravity.gravityDirection = CGVector(dx: 0, dy: 1.0)
                 self.gravity.magnitude = 0.3
             }
@@ -186,6 +187,37 @@ class AnimationViewController: UIViewController {
     func createGestureRecognizer() {
         let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector(("handlePan:")))
         view.addGestureRecognizer(panGestureRecognizer)
+    }
+    
+    func handlePan(sender: UIPanGestureRecognizer) {
+        
+        if (alertView != nil) {
+            let panLocationInView = sender.location(in: view)
+            let panLocationInAlertView = sender.location(in: alertView)
+            
+            if sender.state == UIGestureRecognizerState.began {
+                animator?.removeAllBehaviors()
+                
+                let offset = UIOffsetMake(panLocationInAlertView.x - alertView.bounds.midX, panLocationInAlertView.y - alertView.bounds.midY);
+                attachmentBehavior = UIAttachmentBehavior(item: alertView, offsetFromCenter: offset, attachedToAnchor: panLocationInView)
+                
+                animator?.addBehavior(attachmentBehavior)
+            }
+            else if sender.state == UIGestureRecognizerState.changed {
+                attachmentBehavior.anchorPoint = panLocationInView
+            }
+            else if sender.state == UIGestureRecognizerState.ended {
+                animator?.removeAllBehaviors()
+                
+                snapBehavior = UISnapBehavior(item: alertView, snapTo: view.center)
+                animator?.addBehavior(snapBehavior)
+                
+                if sender.translation(in: view).y > 100 {
+                    dismissAlert()
+                }
+            }
+        }
+        
     }
     
     
