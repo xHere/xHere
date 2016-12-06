@@ -10,6 +10,7 @@ import UIKit
 
 class XHERBountyViewCell: UITableViewCell {
     
+    let dateFormatter = DateFormatter()
 
     @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var customContentView: UIView!
@@ -20,7 +21,7 @@ class XHERBountyViewCell: UITableViewCell {
     
     @IBOutlet weak var bountyNotesLabel: UILabel!
     @IBOutlet weak var claimITLabel: UILabel!
-    
+    @IBOutlet weak var dateUpdatedAtLabel: UILabel!
     //UserInfo
     @IBOutlet weak var postedByUserLabel: UILabel!
     @IBOutlet weak var userProfileImage: UIImageView!
@@ -54,6 +55,12 @@ class XHERBountyViewCell: UITableViewCell {
             //Bounty info
             self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
             
+          
+            //Updated date info
+            self.dateUpdatedAtLabel.text = self.getCurrentDate(updatedDate: bounty.createdAt!)
+            
+           
+            
             //Check if this bounty has an image aka claimed
             if let bountyClaimedImageURLStr = bounty.mediaArray?[0].mediaData?.url,
                 let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
@@ -72,6 +79,17 @@ class XHERBountyViewCell: UITableViewCell {
                 self.claimITLabel.isHidden = false
             }
         }
+    }
+    func getCurrentDate(updatedDate:Date)->String{
+        
+        
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+        dateFormatter.dateFormat = "MM/dd HH:mm"
+        dateFormatter.timeZone = NSTimeZone.local
+        let timeStamp = dateFormatter.string(from: updatedDate)
+        return timeStamp
     }
     
     func roundToPlaces(value: Double, decimalPlaces: Int) -> Double {
