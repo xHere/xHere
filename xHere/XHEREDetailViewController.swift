@@ -48,7 +48,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     var nearbyBounties : [XHERBounty]?
 
     
-    let debugging = false
+    let debugging = true
     var server = XHERServer.sharedInstance
     
     override func viewDidLoad() {
@@ -196,29 +196,32 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    //Image picker return with Image
+    //Debugging Image picker return with Image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let size = CGSize(width: 400, height: 400)
         let claimedImage = resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
         
-        self.claimedBountyImageView.alpha = 0.0
-        self.claimedBountyImageView.image = claimedImage
+        let claimController = ClaimViewController()
+        claimController.bounty = self.currentBounty
+        claimController.claimingImage =  claimedImage
         
-        weak var weakSelf = self
-        UIView.animate(withDuration: 1.0,
-               animations: {
-                    weakSelf?.claimedBountyImageView.alpha = 1.0
-        },
-               completion: { (didComplete:Bool) in
-                    if didComplete {
-                        let claimController = ClaimViewController()
-                        claimController.bounty = weakSelf?.currentBounty
-                        claimController.claimingImage =  claimedImage
-                        weakSelf?.dismiss(animated: false) {
-                            weakSelf?.present(claimController, animated: true, completion: nil)
-                        }
-                    }
-        })
+        
+        self.dismiss(animated: false) {
+            self.claimedBountyImageView.alpha = 0.0
+            self.claimedBountyImageView.image = claimedImage
+            
+            weak var weakSelf = self
+            UIView.animate(withDuration: 1.0,
+                           animations: {
+                            weakSelf?.claimedBountyImageView.alpha = 1.0
+                },
+                           completion: { (didComplete:Bool) in
+                                self.present(claimController, animated: true, completion: nil)
+
+            })
+
+        }
+        
         
         
     }
