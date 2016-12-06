@@ -107,7 +107,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return self.view.bounds.height * 0.30
+            return self.view.bounds.height * 0.25
         }
         else {
             return self.view.bounds.height * 0.30
