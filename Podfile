@@ -12,6 +12,7 @@ target 'xHere' do
    pod 'PBJVision'
    pod 'AFNetworking', '~> 3.0'
    pod 'iCarousel'
+   pod 'STLocationRequest'
   
   target 'xHereTests' do
     inherit! :search_paths

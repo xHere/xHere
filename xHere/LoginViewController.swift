@@ -105,8 +105,9 @@ class LoginViewController: UIViewController {
             else {
                 print("userLogged In \(user?.username)")
                 //                self.performSegue(withIdentifier: "segueToTimeLine", sender: nil)
-                let homeTabBarVC = XHERHomeTabBarViewController()
-                self.present(homeTabBarVC, animated: true, completion: nil)
+                self.openNextController()
+               
+                
             }
         }
         
@@ -148,6 +149,35 @@ class LoginViewController: UIViewController {
         
     }
     
+    func openNextController(){
+        
+        
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                let locationReq = XHERELocationRequestViewController(nibName: "XHERELocationRequestViewController", bundle: nil)
+                
+                self.present(locationReq, animated: true, completion: nil)
+                
+                
+            case .authorizedAlways, .authorizedWhenInUse:
+                let homeTabBarVC = XHERHomeTabBarViewController()
+                self.present(homeTabBarVC, animated: false, completion: nil)
+                
+                
+            }
+        } else {
+            print("Location services are not enabled")
+            let locationReq = XHERELocationRequestViewController(nibName: "XHERELocationRequestViewController", bundle: nil)
+            
+            self.present(locationReq, animated: true, completion: nil)
+            
+        }
+
+       
+    }
+    
     @IBAction func loginWithFacebook(_ sender: UIButton) {
         let permissions = ["public_profile", "email"]
         PFFacebookUtils.logIn (withPermissions: permissions) { (fbUser: PFUser?, error:Error?) in
@@ -187,8 +217,10 @@ class LoginViewController: UIViewController {
 //                    user?.setValue(data["last_name"], forKey: "lastName")
 //                    user?.setValue(data["first_name"], forKey: "firstName")
                     user?.saveInBackground()
-                    let homeTabBarVC = XHERHomeTabBarViewController()
-                    self.present(homeTabBarVC, animated: true, completion: nil)
+//                    let homeTabBarVC = XHERHomeTabBarViewController()
+//                    self.present(homeTabBarVC, animated: true, completion: nil)
+                    
+                   self.openNextController()
                 
                     
                 })
