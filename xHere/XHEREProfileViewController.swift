@@ -118,6 +118,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
         let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
         detailViewController.currentBounty = cell.bounty
+        detailViewController.viewControllerMode = .browsing
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     

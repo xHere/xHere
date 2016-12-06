@@ -23,7 +23,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
-    @IBOutlet weak var bountyNote: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //Posting related
@@ -33,6 +32,8 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var postUserProfileImageView: UIImageView!
     @IBOutlet weak var postUserNameLabel: UILabel!
     @IBOutlet weak var postBountyButtonPanel: UIView!
+    @IBOutlet weak var bountyNote: UILabel!
+    @IBOutlet weak var bountyNoteBackgroundView: UIView!
   
     //Claiming related
     @IBOutlet weak var claimedBountyImageView: UIImageView!
@@ -59,7 +60,8 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("      ImageViewHeight at appear = \(self.postUserProfileImageView.frame.size.height)")
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,6 +69,27 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        //Some View config
+        self.postUserProfileImageView.layer.cornerRadius = self.postUserProfileImageView.frame.size.height/2
+        print("     ImageViewHeight = \(self.postUserProfileImageView.frame.size.height)")
+        self.postUserProfileImageView.layer.borderColor = kXHERYellow.cgColor
+        self.postUserProfileImageView.layer.borderWidth = 2
+        
+        self.claimUserProfileImage.layer.cornerRadius = self.claimUserProfileImage.frame.size.height/2
+        self.claimUserProfileImage.layer.borderWidth = 2
+        self.claimUserProfileImage.layer.borderColor = kXHERYellow.cgColor
+        
+        self.claimedBountyImageView.layer.cornerRadius = 20
+        //self.claimedBountyImageView.bounds.size.height/10
+        self.bountyNoteBackgroundView.layer.cornerRadius = 20
+        //self.bountyNote.bounds.height/10
+
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+    }
 
     
     func setupView(){
@@ -82,10 +105,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         else if viewControllerMode! == .browsing {
             setupBrowsingMode()
         }
-        
-        //Some View config
-        self.postUserProfileImageView.layer.cornerRadius = self.postUserProfileImageView.bounds.size.height/2
-        self.claimUserProfileImage.layer.cornerRadius = self.claimUserProfileImage.layer.bounds.size.height/2
         
         //Location info
         self.placeNameLabel.text = location?.placeName
@@ -149,6 +168,13 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func setupBrowsingMode() {
+        
+        setupClaimingMode()
+        
+        //Hide all buttons
+        postBountyButtonPanel.isHidden = true
+        claimBountyButtonPanel.isHidden = true
+        
         //If there is claimed bounty image show that or show poi image
         if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
             let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
@@ -266,19 +292,20 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
     }
     
     func setUpCollectionView(){
-        let nib = UINib(nibName: "ClaimedBountyCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "ClaimedBountyCell")
+//        let nib = UINib(nibName: "ClaimedBountyCell", bundle: nil)
+//        collectionView.register(nib, forCellWithReuseIdentifier: "ClaimedBountyCell")
+        collectionView.register(XHERNearByClaimedCollectionCell.self, forCellWithReuseIdentifier: "XHERNearByClaimedCollectionCell")
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClaimedBountyCell", for: indexPath) as! ClaimedBountyCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "XHERNearByClaimedCollectionCell", for: indexPath) as! XHERNearByClaimedCollectionCell
         
         if let imageURLString = nearbyBounties?[indexPath.row].mediaArray?[0].mediaData?.url {
             
             let imageURL = URL(string: imageURLString)
-            cell.claimedImageView.setImageWith(imageURL!)
+            cell.imageView.setImageWith(imageURL!)
         }
         return cell
     }
@@ -301,8 +328,15 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellSize = CGSize(width: 100, height: 100)
+        let height = collectionView.bounds.size.height - 20
+        
+        let cellSize = CGSize(width: height, height: height)
         
         return cellSize	
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let collectionCell = cell as! XHERNearByClaimedCollectionCell
+        collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
     }
 }

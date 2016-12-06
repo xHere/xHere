@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 8B1EDF411DD57DE1000E13D4 /* .gitattributes */; };
+		8B29FE451DF6B0EB00A953CC /* XHERNearByClaimedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29FE441DF6B0EB00A953CC /* XHERNearByClaimedCollectionCell.xib */; };
+		8B29FE471DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29FE461DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift */; };
 		8B2B13D51DD117F200961683 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13D41DD117F200961683 /* AppDelegate.swift */; };
 		8B2B13D71DD117F200961683 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B13D61DD117F200961683 /* ViewController.swift */; };
 		8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2B13D81DD117F200961683 /* Main.storyboard */; };
@@ -31,7 +33,6 @@
 		8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */; };
 		8BA0E72A1DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */; };
 		8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */; };
-		8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */; };
 		8BA0E7341DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7331DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift */; };
 		8BA0E7361DDFB2B900CD73E2 /* XHERPOIInBountyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA0E7351DDFB2B900CD73E2 /* XHERPOIInBountyTest.swift */; };
 		8BA3CBDF1DD90BF500728209 /* FusumaCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDB1DD90BF500728209 /* FusumaCameraViewController.swift */; };
@@ -112,6 +113,8 @@
 		475C27B66A9C49557B7F1E9E /* Pods_xHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4D38724A46AFCF95B78D73 /* Pods-xHereUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xHereUITests/Pods-xHereUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B1EDF411DD57DE1000E13D4 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		8B29FE441DF6B0EB00A953CC /* XHERNearByClaimedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERNearByClaimedCollectionCell.xib; sourceTree = "<group>"; };
+		8B29FE461DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedNearByClaimedCollectionCell.swift; sourceTree = "<group>"; };
 		8B2B13D11DD117F200961683 /* xHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B2B13D41DD117F200961683 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B2B13D61DD117F200961683 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +145,6 @@
 		8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERNearByClaimedViewCell.swift; sourceTree = "<group>"; };
 		8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERNearByClaimedViewCell.xib; sourceTree = "<group>"; };
 		8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERNearByClaimedCollectionCell.swift; sourceTree = "<group>"; };
-		8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERNearByClaimedCollectionCell.xib; sourceTree = "<group>"; };
 		8BA0E7331DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREGooglePlacesServer.swift; sourceTree = "<group>"; };
 		8BA0E7351DDFB2B900CD73E2 /* XHERPOIInBountyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERPOIInBountyTest.swift; sourceTree = "<group>"; };
 		8BA3CBDB1DD90BF500728209 /* FusumaCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FusumaCameraViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +292,8 @@
 				8BA3CBE31DD90BFB00728209 /* Camera Controllers */,
 				939DD2221DDA82890065736C /* Detail View Controller */,
 				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
-				8BA0E7241DDE709D00CD73E2 /* XHERBountyViewCell */,
+				8BA0E7241DDE709D00CD73E2 /* BountyViewCell */,
+				8BA0E7321DDE92DA00CD73E2 /* Claimed CollectionViewCell */,
 				8BA7D21C1DD926D00002C848 /* Home Feed ViewController */,
 				8BA7D2171DD926900002C848 /* Discovery ViewController */,
 				937670561DE4CCBA00576199 /* NearbyBounties */,
@@ -348,13 +351,13 @@
 			name = "Home TabBar ViewController";
 			sourceTree = "<group>";
 		};
-		8BA0E7241DDE709D00CD73E2 /* XHERBountyViewCell */ = {
+		8BA0E7241DDE709D00CD73E2 /* BountyViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				8BA0E7201DDE709900CD73E2 /* XHERBountyViewCell.swift */,
 				8BA0E7211DDE709900CD73E2 /* XHERBountyViewCell.xib */,
 			);
-			name = XHERBountyViewCell;
+			name = BountyViewCell;
 			sourceTree = "<group>";
 		};
 		8BA0E72B1DDE8D3000CD73E2 /* NearBy Claimed Cell */ = {
@@ -362,19 +365,19 @@
 			children = (
 				8BA0E7271DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift */,
 				8BA0E7281DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.xib */,
-				8BA0E7321DDE92DA00CD73E2 /* CollectionViewCell */,
 				8B52B4C11DF1340E0045230A /* CircleCollectionViewLayout.swift */,
+				8B29FE461DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift */,
 			);
 			name = "NearBy Claimed Cell";
 			sourceTree = "<group>";
 		};
-		8BA0E7321DDE92DA00CD73E2 /* CollectionViewCell */ = {
+		8BA0E7321DDE92DA00CD73E2 /* Claimed CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				8BA0E72E1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift */,
-				8BA0E72F1DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib */,
+				8B29FE441DF6B0EB00A953CC /* XHERNearByClaimedCollectionCell.xib */,
 			);
-			name = CollectionViewCell;
+			name = "Claimed CollectionViewCell";
 			sourceTree = "<group>";
 		};
 		8BA3CBE31DD90BFB00728209 /* Camera Controllers */ = {
@@ -729,10 +732,10 @@
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
 				993E46351DF150A0009D6214 /* CarouselViewController.xib in Resources */,
 				8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */,
+				8B29FE451DF6B0EB00A953CC /* XHERNearByClaimedCollectionCell.xib in Resources */,
 				993E463A1DF1DF2C009D6214 /* ClaimedBountyCell.xib in Resources */,
 				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
 				99F0F7A61DF4E2810019288D /* AnimationViewController.xib in Resources */,
-				8BA0E7311DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.xib in Resources */,
 				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
@@ -902,6 +905,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B29FE471DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift in Sources */,
 				9376705E1DE4E60D00576199 /* XHEREPostBountyViewController.swift in Sources */,
 				8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */,
 				9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */,

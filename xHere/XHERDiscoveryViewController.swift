@@ -368,6 +368,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         cell.startSelectedAnimation(completion: { (selectedCell:LocationCollectionViewCell) in
             let detailVC = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
             detailVC.location = self.locations?[indexPath.row]
+            detailVC.viewControllerMode = .posting
             self.navigationController?.pushViewController(detailVC, animated: true)
         })
 

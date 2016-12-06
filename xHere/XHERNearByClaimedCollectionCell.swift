@@ -11,6 +11,7 @@ import UIKit
 class XHERNearByClaimedCollectionCell: UICollectionViewCell {
 
 
+    @IBOutlet var customContentView: UIView!
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -21,12 +22,22 @@ class XHERNearByClaimedCollectionCell: UICollectionViewCell {
         // Initialization code
     
     }
-
-    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        super.apply(layoutAttributes)
-        let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
-        self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
-        self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5) * self.bounds.height
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.initSubviews()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.initSubviews()
+    }
+    
+    func initSubviews() {
+        let nib = UINib(nibName: "XHERNearByClaimedCollectionCell", bundle: nil)
+        nib.instantiate(withOwner: self, options: nil)
+        customContentView.frame = self.contentView.bounds
+        contentView.addSubview(customContentView)
+    }
+        
 }
