@@ -350,9 +350,12 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
-        let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
-        neabyBountiesViewController.location = self.locations?[indexPath.row]
-        self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
+//        let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
+//        neabyBountiesViewController.location = self.locations?[indexPath.row]
+//        self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
+        let detailVC = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+        detailVC.location = self.locations?[indexPath.row]
+        self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

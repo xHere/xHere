@@ -7,16 +7,31 @@
 //
 
 import UIKit
+import Parse
 
 class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var searchDistanceInMiles = 0.0
-    @IBOutlet weak var placeImageView: UIImageView!
+//    @IBOutlet weak var placeImageView: UIImageView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var detailDesciptionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    //Posting related
+    @IBOutlet weak var postBountyPanel: UIView!
+    @IBOutlet weak var bountyNoteTextView: UITextView!
+    var location:POI?
+    
+    //Claiming related
+    @IBOutlet weak var claimBountyPanel: UIView!
+    @IBOutlet weak var claimBountyButton: UIButton!
     var currentBounty : XHERBounty!
-    let debugging = true
+   
+    
+    let debugging = false
     var server = XHERServer.sharedInstance
     var nearbyBounties : [XHERBounty]?
     
@@ -36,18 +51,64 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+
+    
     func setupView(){
+
+        
+        //If in Claiming or Browsing Bounty Mode
         if let currentBounty = currentBounty {
+       
+            //User Info
+            usernameLabel.text = currentBounty.postedByUser?.firstName
+            
+            //Bounty Note
             detailDesciptionLabel.text = currentBounty.bountyNote
-            usernameLabel.text = currentBounty.postedByUser?.screenName
-            let postedLocation = currentBounty.postedAtLocation
-            if let imageUrl = postedLocation.placeImageURL {
-                placeImageView.setImageWith(imageUrl)
+            
+            //If there is claimed bounty image show that or show poi image
+            if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
+                let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
+            {
+                mainImageView.setImageWith(bountyClaimedImageURL)
             }
+            else {
+                //Place Info
+                let postedLocation = currentBounty.postedAtLocation
+                if let imageUrl = postedLocation.placeImageURL {
+                    mainImageView.setImageWith(imageUrl)
+                }
+            }
+            
+            //Set the location of this class to the bounty location
+            self.location = currentBounty.postedAtLocation
+            
+            self.postBountyPanel.isHidden = true
+        }
+        else {        //If in Posting Bounty Mode
+
+            self.claimBountyPanel.isHidden = true
         }
     }
     
 
+    // MARK: - Post Bounty
+    @IBAction func touchOnPost(_ sender: UIButton) {
+        
+        let user = PFUser.current() as! User
+        
+        guard let location = location
+            else {
+                return
+            }
+
+        server.postBountyBy(user: user, withNote: bountyNoteTextView.text!, atPOI: location, withTokenValue: 1, success: {
+            print("Bounty posted successfully")
+            _ = self.navigationController?.popToRootViewController(animated: true)
+            
+        }) {
+            print("Cant post bounty")
+        }
+    }
     
 
     
@@ -107,19 +168,22 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
     
     // MARK: - API call and delegates methods for NearByClaimedBounties CollectionView
     func getNearByClaimedBounties(){
-        server.fetchClaimedBountyNear(location: currentBounty.postedAtLocation.geoPoint!, withInMiles: searchDistanceInMiles, success: { (bounties : [XHERBounty]?) in
-            if let bounties = bounties {
-                if (bounties.count) > 0 {
-                    self.nearbyBounties = bounties
-                    self.setUpCollectionView()
+        
+        if let geoPoint = location?.geoPoint {
+            server.fetchClaimedBountyNear(location: geoPoint, withInMiles: searchDistanceInMiles, success: { (bounties : [XHERBounty]?) in
+                if let bounties = bounties {
+                    if (bounties.count) > 0 {
+                        self.nearbyBounties = bounties
+                        self.setUpCollectionView()
+                    }
+                    else
+                    {
+                        self.nearbyBounties = []
+                    }
                 }
-                else
-                {
-                    self.nearbyBounties = []
-                }
+            }) { (error: Error?) in
+                print(error?.localizedDescription)
             }
-        }) { (error: Error?) in
-            print(error?.localizedDescription)
         }
     }
     
