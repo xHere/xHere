@@ -18,20 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRA-bu-4Wi">
-                        <rect key="frame" x="8" y="8" width="304" height="27.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xtq-iy-MfK">
+                        <rect key="frame" x="1" y="1" width="318" height="41.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRA-bu-4Wi">
+                                <rect key="frame" x="7" y="7" width="304" height="27.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uRA-bu-4Wi" firstAttribute="leading" secondItem="Xtq-iy-MfK" secondAttribute="leading" constant="7" id="FnK-Oe-S0Y"/>
+                            <constraint firstAttribute="bottom" secondItem="uRA-bu-4Wi" secondAttribute="bottom" constant="7" id="PAO-xS-YRB"/>
+                            <constraint firstAttribute="trailing" secondItem="uRA-bu-4Wi" secondAttribute="trailing" constant="7" id="gGO-4V-t7O"/>
+                            <constraint firstItem="uRA-bu-4Wi" firstAttribute="top" secondItem="Xtq-iy-MfK" secondAttribute="top" constant="7" id="qzN-Ah-Ode"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="uRA-bu-4Wi" secondAttribute="trailing" constant="8" id="3Nc-SZ-zAQ"/>
-                    <constraint firstAttribute="bottom" secondItem="uRA-bu-4Wi" secondAttribute="bottom" constant="8" id="ND4-OZ-hVo"/>
-                    <constraint firstItem="uRA-bu-4Wi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="oEd-mi-Rdy"/>
-                    <constraint firstItem="uRA-bu-4Wi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="re0-vY-IlA"/>
+                    <constraint firstItem="Xtq-iy-MfK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="7iw-AK-iOk"/>
+                    <constraint firstAttribute="trailing" secondItem="Xtq-iy-MfK" secondAttribute="trailing" constant="1" id="96e-pD-7Au"/>
+                    <constraint firstAttribute="bottom" secondItem="Xtq-iy-MfK" secondAttribute="bottom" constant="1" id="XuW-zi-31x"/>
+                    <constraint firstItem="Xtq-iy-MfK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="gYi-5N-3xg"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="locationNameLabel" destination="uRA-bu-4Wi" id="2zg-oj-M53"/>
             </connections>

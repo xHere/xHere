@@ -16,7 +16,7 @@ let pinImage = UIImage(named: "pin")
 
 class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,MKMapViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate {
 
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchTextField: XHERELeftPaddedTextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var autoCompleteTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
@@ -65,6 +65,10 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         self.edgesForExtendedLayout = []
        
       
+        let tblView =  UIView(frame: CGRect.zero)
+        self.autoCompleteTableView.tableFooterView = tblView
+        self.autoCompleteTableView.tableFooterView?.isHidden = true
+        self.autoCompleteTableView.backgroundColor = UIColor.clear
         
         self.autoCompleteTableView.estimatedRowHeight = 100
         self.autoCompleteTableView.rowHeight = UITableViewAutomaticDimension
@@ -227,6 +231,8 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                     self.view.endEditing(true)
                     self.getPlaceDeatils(placeID: (location?.googlePlaceID)!)
                     
+                }else{
+                    print(error?.description)
                 }
             })
         //}
@@ -235,6 +241,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     // MARK: - Search Bar delegate
+    
 
     @IBAction func seachTextChanged(_ sender: UITextField) {
         autoCompleteTableView.isHidden = false
@@ -259,6 +266,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
             //self.getNearbyLocations(geoPoint: currentLocation)
         }
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchLocationsWithPlace(searchText: searchBar.text!)
     }
@@ -353,9 +361,16 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
 //        let neabyBountiesViewController = XHERENeabyBountiesViewController(nibName: "XHERENeabyBountiesViewController", bundle: nil)
 //        neabyBountiesViewController.location = self.locations?[indexPath.row]
 //        self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
-        let detailVC = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-        detailVC.location = self.locations?[indexPath.row]
-        self.navigationController?.pushViewController(detailVC, animated: true)
+       
+        
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! LocationCollectionViewCell
+        cell.startSelectedAnimation(completion: { (selectedCell:LocationCollectionViewCell) in
+            let detailVC = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+            detailVC.location = self.locations?[indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        })
+
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

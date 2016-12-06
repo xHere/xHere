@@ -67,6 +67,7 @@
 		939DD2251DDA82C40065736C /* XHEREDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */; };
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
 		93C399AB1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */; };
+		93F925951DF666FA000E7D60 /* XHERELeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */; };
 		9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992234391DDE4B28003C792F /* XHEREPlaces.swift */; };
 		9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992654091DECE05000A10614 /* XHEREProfileViewController.swift */; };
 		9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */; };
@@ -177,6 +178,7 @@
 		939DD2231DDA82C40065736C /* XHEREDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREDetailViewController.swift; sourceTree = "<group>"; };
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
 		93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERELeftPaddedTextField.swift; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		992234391DDE4B28003C792F /* XHEREPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPlaces.swift; sourceTree = "<group>"; };
 		992654091DECE05000A10614 /* XHEREProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREProfileViewController.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 		8BA7D2171DD926900002C848 /* Discovery ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				93F925931DF666D9000E7D60 /* TextfeildPadding */,
 				934A75CB1DF202D200525331 /* Pin Details */,
 				939AF8991DEFFF36008775F7 /* LocationCollectionViewCell */,
 				939AF8941DEE1814008775F7 /* AutocompleteLocationCell */,
@@ -509,6 +512,14 @@
 				939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */,
 			);
 			name = "Detail View Controller";
+			sourceTree = "<group>";
+		};
+		93F925931DF666D9000E7D60 /* TextfeildPadding */ = {
+			isa = PBXGroup;
+			children = (
+				93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */,
+			);
+			name = TextfeildPadding;
 			sourceTree = "<group>";
 		};
 		992B94821DEA49BE0010482D /* Claim Bounty Controller */ = {
@@ -906,6 +917,7 @@
 				8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */,
 				8B2B13DD1DD117F200961683 /* xHere.xcdatamodeld in Sources */,
 				8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */,
+				93F925951DF666FA000E7D60 /* XHERELeftPaddedTextField.swift in Sources */,
 				9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */,
 				8BA0E7341DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift in Sources */,
 				8B52B4C71DF287BB0045230A /* XHerHomeFeedUnclaimedBountyCell.swift in Sources */,
