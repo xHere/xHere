@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -31,28 +31,21 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-iC-fn3">
-                                    <rect key="frame" x="0.0" y="0.0" width="94" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="64"/>
                                     <state key="normal" title="HOME"/>
                                     <connections>
                                         <action selector="touchOnHome:" destination="-1" eventType="touchUpInside" id="ZJp-VM-ZDq"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Ci-Ls9">
-                                    <rect key="frame" x="94" y="0.0" width="93.5" height="64"/>
+                                    <rect key="frame" x="125" y="0.0" width="125" height="64"/>
                                     <state key="normal" title="DISCOVER"/>
                                     <connections>
                                         <action selector="touchOnDiscover:" destination="-1" eventType="touchUpInside" id="hTg-4y-Dxl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REZ-qD-JKE">
-                                    <rect key="frame" x="187.5" y="0.0" width="94" height="64"/>
-                                    <state key="normal" title="Camera"/>
-                                    <connections>
-                                        <action selector="touchOnCamera:" destination="-1" eventType="touchUpInside" id="tEh-de-c1x"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-lb-t14">
-                                    <rect key="frame" x="281.5" y="0.0" width="93.5" height="64"/>
+                                    <rect key="frame" x="250" y="0.0" width="125" height="64"/>
                                     <state key="normal" title="PROFILE"/>
                                     <connections>
                                         <action selector="touchOnProfile:" destination="-1" eventType="touchUpInside" id="DFt-Vj-bum"/>
