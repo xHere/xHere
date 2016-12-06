@@ -442,8 +442,8 @@ class XHERServer: NSObject {
                 
                 //Set Image
                 if let image = image,
-                    let imageData = UIImagePNGRepresentation(image),
-                    let imageFile = PFFile(name:"newimage.png", data:imageData) {
+                    let imageData = UIImageJPEGRepresentation(image, 0.0),
+                    let imageFile = PFFile(name:"newimage.jpeg", data:imageData) {
                     
                     //  let media = Media()
                     media.mediaType = .image
@@ -536,3 +536,4 @@ class XHERServer: NSObject {
     
     
 }
+
