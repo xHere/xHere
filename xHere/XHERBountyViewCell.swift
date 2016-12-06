@@ -43,18 +43,25 @@ class XHERBountyViewCell: UITableViewCell {
                 userProfileImage.isHidden = true
             }
             
-            //Bounty info
-            self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
+
             
             //Location info
             let distance = self.roundToPlaces(value: bounty.postedAtLocation.distanceFromCurrentInMiles, decimalPlaces: 2)
             self.distanceLabel.text = "\(distance) mi"
             self.locationTitleLabel.text = bounty.postedAtLocation.title
             
+            
+            //Bounty info
+            self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
+            
+            //Check if this bounty has an image aka claimed
             if let bountyClaimedImageURLStr = bounty.mediaArray?[0].mediaData?.url,
                 let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
             {
                 claimedImage.setImageWith(bountyClaimedImageURL)
+                
+                //Find Claim it Lable if claimed
+                self.claimITLabel.isHidden = true
             }
             else {
                 let poi = bounty.postedAtLocation
@@ -62,6 +69,7 @@ class XHERBountyViewCell: UITableViewCell {
                 if let poiImage = poi.placeImageURL {
                     claimedImage.setImageWith(poiImage)
                 }
+                self.claimITLabel.isHidden = false
             }
         }
     }
