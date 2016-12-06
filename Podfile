@@ -13,6 +13,7 @@ target 'xHere' do
    pod 'AFNetworking', '~> 3.0'
    pod 'iCarousel'
    pod 'STLocationRequest'
+   pod 'SVProgressHUD'
   
   target 'xHereTests' do
     inherit! :search_paths

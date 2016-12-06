@@ -34,6 +34,7 @@ PODS:
   - PBJVision (0.5.0)
   - STLocationRequest (1.3.3):
     - Font-Awesome-Swift (~> 1.5.2)
+  - SVProgressHUD (2.1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - ParseFacebookUtils
   - PBJVision
   - STLocationRequest
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -55,7 +57,8 @@ SPEC CHECKSUMS:
   ParseFacebookUtils: 7030f53c989fda36ad50029d90edec1327424317
   PBJVision: 368c58b708c89c3c443e5801a08068a316ee50ea
   STLocationRequest: f78da9f42819fafabbdb710ae0c0f4b845e51c9b
+  SVProgressHUD: 1127180503b9a308ddf7006f3cc58fc05cc1092d
 
-PODFILE CHECKSUM: 93bc855aa492ee6945f2ba52bb900461eedb9165
+PODFILE CHECKSUM: ceea09244d35bf37d88414cb4232475f3d7d5d4b
 
 COCOAPODS: 1.1.1
