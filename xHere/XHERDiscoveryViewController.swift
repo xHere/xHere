@@ -107,7 +107,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         let nib = UINib(nibName: "LocationCollectionViewCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: "LocationCollectionViewCell")
-        self.collectionViewHeightConstraint.constant = self.view.frame.size.height*0.25
+        self.collectionViewHeightConstraint.constant = self.view.frame.size.height*0.22
         self.collectionViewBottomConstraint.constant = CGFloat(kTabbarHeight)
        
         

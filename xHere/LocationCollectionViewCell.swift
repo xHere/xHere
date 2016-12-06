@@ -33,6 +33,11 @@ class LocationCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        placeImageView.layer.shadowColor = UIColor.lightGray.cgColor
+        placeImageView.layer.shadowOpacity = 1
+        placeImageView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
+        placeImageView.layer.shadowRadius = 20
     }
 
 }
