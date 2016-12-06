@@ -11,29 +11,45 @@ import Parse
 
 class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var searchDistanceInMiles = 0.0
-//    @IBOutlet weak var placeImageView: UIImageView!
+
+    
+    enum DetailViewControllerMode: String {
+        case posting = "postingMode",
+        claiming = "claimingMode",
+        browsing = "browsingMode"
+    }
+    
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
-    @IBOutlet weak var detailDesciptionLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var bountyNote: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //Posting related
     @IBOutlet weak var postBountyPanel: UIView!
     @IBOutlet weak var bountyNoteTextView: UITextView!
     var location:POI?
-    
+    @IBOutlet weak var postUserProfileImageView: UIImageView!
+    @IBOutlet weak var postUserNameLabel: UILabel!
+    @IBOutlet weak var postBountyButtonPanel: UIView!
+  
     //Claiming related
+    @IBOutlet weak var claimedBountyImageView: UIImageView!
+    @IBOutlet weak var claimUserProfileImage: UIImageView!
+    @IBOutlet weak var claimUserNameLabel: UILabel!
     @IBOutlet weak var claimBountyPanel: UIView!
     @IBOutlet weak var claimBountyButton: UIButton!
-    var currentBounty : XHERBounty!
+    @IBOutlet weak var claimBountyButtonPanel: UIView!
    
+    
+    var viewControllerMode:DetailViewControllerMode?
+    var currentBounty : XHERBounty!
+    var nearbyBounties : [XHERBounty]?
+
     
     let debugging = false
     var server = XHERServer.sharedInstance
-    var nearbyBounties : [XHERBounty]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,40 +71,92 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func setupView(){
 
+        self.navigationController?.navigationBar.isHidden = false
         
-        //If in Claiming or Browsing Bounty Mode
+        if viewControllerMode! == .posting {
+            setupPostingMode()
+        }
+        else if viewControllerMode! == .claiming {
+            setupClaimingMode()
+        }
+        else if viewControllerMode! == .browsing {
+            setupBrowsingMode()
+        }
+        
+        //Some View config
+        self.postUserProfileImageView.layer.cornerRadius = self.postUserProfileImageView.bounds.size.height/2
+        self.claimUserProfileImage.layer.cornerRadius = self.claimUserProfileImage.layer.bounds.size.height/2
+        
+        //Location info
+        self.placeNameLabel.text = location?.placeName
+        if let placeImageURL = location?.placeImageURL {
+            self.mainImageView.setImageWith(placeImageURL)
+        }
+    }
+    
+    func setupPostingMode() {
+        //User Info
+        let currentUser = PFUser.current() as! User
+        postUserNameLabel.text = currentUser.firstName
+        if let imageURL = currentUser.profileImageUrl {
+            postUserProfileImageView.setImageWith(imageURL)
+        }
+        
+
+        
+        //Hide Claim related elements
+        self.claimBountyPanel.isHidden = false
+        self.claimBountyButtonPanel.isHidden = true
+        self.bountyNote.isHidden = true
+        self.claimBountyPanel.isHidden = true
+        self.claimBountyButtonPanel.isHidden = true
+    }
+    
+    func setupClaimingMode() {
+        
         if let currentBounty = currentBounty {
-       
-            //User Info
-            usernameLabel.text = currentBounty.postedByUser?.firstName
+
+            self.setupPostingMode()
             
-            //Bounty Note
-            detailDesciptionLabel.text = currentBounty.bountyNote
+            self.claimBountyPanel.isHidden = false
+            self.claimBountyButtonPanel.isHidden = false
             
-            //If there is claimed bounty image show that or show poi image
-            if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
-                let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
-            {
-                mainImageView.setImageWith(bountyClaimedImageURL)
+            //Post User View
+            let postUser = currentBounty.postedByUser
+            if let imageURL = postUser?.profileImageUrl {
+                self.postUserProfileImageView.setImageWith(imageURL)
             }
-            else {
-                //Place Info
-                let postedLocation = currentBounty.postedAtLocation
-                if let imageUrl = postedLocation.placeImageURL {
-                    mainImageView.setImageWith(imageUrl)
-                }
+            postUserNameLabel.text = postUser?.firstName
+            
+            //Claim User View
+            let currentUser = PFUser.current() as! User
+            if let imageURL = currentUser.profileImageUrl {
+                self.claimUserProfileImage.setImageWith(imageURL)
             }
+            claimUserNameLabel.text = currentUser.firstName
             
             //Set the location of this class to the bounty location
             self.location = currentBounty.postedAtLocation
             
-            self.postBountyPanel.isHidden = true
-        }
-        else {        //If in Posting Bounty Mode
-
-            self.claimBountyPanel.isHidden = true
+            //Hide the post button
+            self.postBountyButtonPanel.isHidden = true
+            
+            //Bounty Note
+            bountyNote.isHidden = false
+            bountyNote.text = "\"\(currentBounty.bountyNote)\""
+            self.bountyNoteTextView.isHidden = true
         }
     }
+    
+    func setupBrowsingMode() {
+        //If there is claimed bounty image show that or show poi image
+        if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
+            let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
+        {
+            claimedBountyImageView.setImageWith(bountyClaimedImageURL)
+        }
+    }
+
     
 
     // MARK: - Post Bounty
@@ -111,14 +179,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     }
     
 
-    
-
-    
-    
-    
-    
-    
-    
     // MARK: - ImagePicker Activate & Delegates
     @IBAction func initClaim(_ sender: UIButton) {
         
@@ -136,14 +196,31 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    //Image picker return with Image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let claimController = ClaimViewController()
-        claimController.bounty = currentBounty
         let size = CGSize(width: 400, height: 400)
-        claimController.claimingImage =  resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
-        dismiss(animated: false) {
-            self.present(claimController, animated: true, completion: nil)
-        }
+        let claimedImage = resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
+        
+        self.claimedBountyImageView.alpha = 0.0
+        self.claimedBountyImageView.image = claimedImage
+        
+        weak var weakSelf = self
+        UIView.animate(withDuration: 1.0,
+               animations: {
+                    weakSelf?.claimedBountyImageView.alpha = 1.0
+        },
+               completion: { (didComplete:Bool) in
+                    if didComplete {
+                        let claimController = ClaimViewController()
+                        claimController.bounty = weakSelf?.currentBounty
+                        claimController.claimingImage =  claimedImage
+                        weakSelf?.dismiss(animated: false) {
+                            weakSelf?.present(claimController, animated: true, completion: nil)
+                        }
+                    }
+        })
+        
+        
     }
     
     func resize(image: UIImage, newSize: CGSize) -> UIImage {
@@ -159,8 +236,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     }
     
 }
-
-
 
 
 extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
