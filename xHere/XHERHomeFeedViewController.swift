@@ -43,7 +43,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLayoutSubviews() {
         self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
-        print("Top layout guide is \(self.topLayoutGuide.length)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,7 +58,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
             
             if error == nil {
-                
+                print("lat = \(currentLocation?.latitude), long = \(currentLocation?.longitude)")
                 if let currentLocation = currentLocation {
                     self.userCurrentLocation = currentLocation
                     weak var weakSelf = self
@@ -126,18 +125,16 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             
             for bounty in bountiesArray {
                 
-                if bounty.distanceFromCurrentInMiles < 0.1 {  //If bounty is close
+                if bounty.distanceFromCurrentInMiles < 10 {  //If bounty is close
 
                     self.tableViewDataBackArray.append(bounty)
 
                     let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
-                    print("SectionRowCountBefore \(tableView.numberOfRows(inSection: 1))")
                     
                     UIView.animate(withDuration: 2, animations: {
                         self.tableView.beginUpdates()
                         self.tableView.insertRows(at: [newIndexPath], with:.fade)
                         self.tableView.endUpdates()
-                        print("SectionRowCountAfter \(self.tableView.numberOfRows(inSection: 1))")
                     })
                 }
                 else {
@@ -145,13 +142,12 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                     self.tableViewDataBackArrayFar.append(bounty)
 
                     let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
-                    print("Section2RowCountBefore \(tableView.numberOfRows(inSection: 2))")
                     
                     UIView.animate(withDuration: 2, animations: {
                         self.tableView.beginUpdates()
                         self.tableView.insertRows(at: [newIndexPath], with:.left)
                         self.tableView.endUpdates()
-                        print("Section2RowCountAfter \(self.tableView.numberOfRows(inSection: 2))")
+
 //                        self.tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: false)
                     })
 
@@ -229,7 +225,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
             cell.startSelectedAnimation(completion: { (selectedCell:XHERBountyViewCell) in
                 let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-                    detailViewController.currentBounty = selectedCell.bounty
+                detailViewController.currentBounty = selectedCell.bounty
+                detailViewController.viewControllerMode = .claiming
                     self.navigationController?.pushViewController(detailViewController, animated: true)
             })
         }

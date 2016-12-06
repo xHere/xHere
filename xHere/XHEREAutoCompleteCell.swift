@@ -20,6 +20,12 @@ class XHEREAutoCompleteCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.layer.cornerRadius = 5
+        self.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+        self.layer.borderWidth = 0.5
+        self.clipsToBounds = true
+
         // Initialization code
     }
 

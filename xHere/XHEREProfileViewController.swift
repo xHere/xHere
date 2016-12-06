@@ -106,15 +106,19 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+        if indexPath.section == 0 {
             return self.view.bounds.height * 0.25
-        
+        }
+        else {
+            return self.view.bounds.height * 0.30
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
         let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
         detailViewController.currentBounty = cell.bounty
+        detailViewController.viewControllerMode = .browsing
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
@@ -122,7 +126,6 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "XHERBountyViewCell", for: indexPath) as! XHERBountyViewCell
         let bounty = userBounties[indexPath.row]
         cell.bounty = bounty
-        cell.distanceLabel.isHidden = true
         return cell
     }
     

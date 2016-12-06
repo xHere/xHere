@@ -9,7 +9,7 @@
 import Foundation
 
 //Color Constant
-let kXHERYellow = UIColor(red: 250/254, green: 225/255, blue: 30/255, alpha: 1)
+let kXHERYellow = UIColor(red: 250/255, green: 225/255, blue: 30/255, alpha: 1)
 
 
 let kPFClassContent = "Content"

@@ -20,10 +20,30 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     @IBOutlet weak var backgroundColorView: UIView!
     
     var nearByClaimedArray:[XHERBounty]? {
-
+        
+//        get {
+//            if let nearByClaimedArray = self.nearByClaimedArray {
+//                return nearByClaimedArray
+//
+//            }
+//            else {
+//                return nil
+//            }
+//        }
+//        set {
+//            if let nearByClaimedArray = nearByClaimedArray {
+//                collectionViewDataBackArray = nearByClaimedArray
+//                self.collectionView.reloadData()
+//            }
+//        }
+        
+        
         didSet {
             if let nearByClaimedArray = nearByClaimedArray {
-                collectionViewDataBackArray = nearByClaimedArray
+                
+                let firstTenBounties = nearByClaimedArray[0...10]
+                
+                collectionViewDataBackArray = Array(firstTenBounties)
                 self.collectionView.reloadData()
             }
         }
@@ -46,8 +66,10 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     func setupCollectionView() {
         
-        let nib = UINib(nibName: "XHERNearByClaimedCollectionCell", bundle: nil)
-        self.collectionView.register(nib, forCellWithReuseIdentifier: "XHERNearByClaimedCollectionCell")
+//        let nib = UINib(nibName: "XHERNearByClaimedCollectionCell", bundle: nil)
+//        self.collectionView.register(nib, forCellWithReuseIdentifier: "XHERNearByClaimedCollectionCell")
+        
+        self.collectionView.register(XHERHomeFeedNearByClaimedCollectionCell.self, forCellWithReuseIdentifier: "XHERHomeFeedNearByClaimedCollectionCell")
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
@@ -59,7 +81,7 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
      
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "XHERNearByClaimedCollectionCell", for: indexPath) as! XHERNearByClaimedCollectionCell
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "XHERHomeFeedNearByClaimedCollectionCell", for: indexPath) as! XHERHomeFeedNearByClaimedCollectionCell
         
         
         if let imageURLString = collectionViewDataBackArray[indexPath.row].mediaArray?[0].mediaData?.url {
@@ -74,11 +96,8 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let collectionCell = cell as! XHERNearByClaimedCollectionCell
-        collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
-//        collectionCell.claimedLabel.layer.cornerRadius = 5
-        
-        print("COLLECTIONCELL HEIGHT = \(collectionCell.bounds.height)")
+        let collectionCell = cell as! XHERHomeFeedNearByClaimedCollectionCell
+        collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -90,8 +109,6 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetPercentIntoSecondPage = scrollView.contentOffset.x / scrollView.bounds.width
-        
-//        self.backgroundColorView.alpha = CGFloat(offSetPercentIntoSecondPage * 0.25)
         
         delegate?.userDidSwipeCollectionViewTo(offset: offSetPercentIntoSecondPage)
     }
