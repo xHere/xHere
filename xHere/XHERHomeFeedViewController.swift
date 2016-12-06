@@ -31,14 +31,17 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.setupRefreshControl()
         // Do any additional setup after loading the view.
         weak var weakSelf = self
+        let bundle = Bundle(for: XHEREMap.classForCoder())
+        bundle.loadNibNamed("XHEREMap", owner: self, options: nil)
         self.callAPI {
             weakSelf?.updateTableView()
         }
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
- 
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -71,6 +74,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
                                     server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
                                           success: { (claimedBountiesArray:[XHERBounty]?) in
                                                 weakSelf?.claimedBountiesArray = claimedBountiesArray
+                                            
+                                           
                                                 success()
                                     },
                                           failure: { (error:Error?) in

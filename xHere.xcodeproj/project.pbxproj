@@ -68,6 +68,8 @@
 		939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */; };
 		93C399AB1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */; };
 		93F925951DF666FA000E7D60 /* XHERELeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */; };
+		93F9259C1DF6BA5E000E7D60 /* XHEREMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93F9259B1DF6BA5E000E7D60 /* XHEREMap.xib */; };
+		93F9259E1DF6BF80000E7D60 /* XHEREMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F9259D1DF6BF80000E7D60 /* XHEREMap.swift */; };
 		9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992234391DDE4B28003C792F /* XHEREPlaces.swift */; };
 		9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992654091DECE05000A10614 /* XHEREProfileViewController.swift */; };
 		9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */; };
@@ -179,6 +181,8 @@
 		939DD2241DDA82C40065736C /* XHEREDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREDetailViewController.xib; sourceTree = "<group>"; };
 		93C399AA1DF2BC7000D1B68A /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERELeftPaddedTextField.swift; sourceTree = "<group>"; };
+		93F9259B1DF6BA5E000E7D60 /* XHEREMap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREMap.xib; sourceTree = "<group>"; };
+		93F9259D1DF6BF80000E7D60 /* XHEREMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREMap.swift; sourceTree = "<group>"; };
 		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		992234391DDE4B28003C792F /* XHEREPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPlaces.swift; sourceTree = "<group>"; };
 		992654091DECE05000A10614 /* XHEREProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREProfileViewController.swift; sourceTree = "<group>"; };
@@ -419,6 +423,7 @@
 		8BA7D21C1DD926D00002C848 /* Home Feed ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				93F925961DF6B6B6000E7D60 /* Map */,
 				8B34EB061DF509AA00150F6B /* Header View */,
 				8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */,
 				8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */,
@@ -520,6 +525,15 @@
 				93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */,
 			);
 			name = TextfeildPadding;
+			sourceTree = "<group>";
+		};
+		93F925961DF6B6B6000E7D60 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				93F9259D1DF6BF80000E7D60 /* XHEREMap.swift */,
+				93F9259B1DF6BA5E000E7D60 /* XHEREMap.xib */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		992B94821DEA49BE0010482D /* Claim Bounty Controller */ = {
@@ -726,6 +740,7 @@
 				939DD2261DDA82C40065736C /* XHEREDetailViewController.xib in Resources */,
 				99F66C761DE4411100F520D1 /* CameraViewController.xib in Resources */,
 				8B2B13DA1DD117F200961683 /* Main.storyboard in Resources */,
+				93F9259C1DF6BA5E000E7D60 /* XHEREMap.xib in Resources */,
 				8B1EDF421DD57DE1000E13D4 /* .gitattributes in Resources */,
 				993E46351DF150A0009D6214 /* CarouselViewController.xib in Resources */,
 				8BA7D2201DD92D710002C848 /* ContentViewCell.xib in Resources */,
@@ -920,6 +935,7 @@
 				93F925951DF666FA000E7D60 /* XHERELeftPaddedTextField.swift in Sources */,
 				9922343A1DDE4B28003C792F /* XHEREPlaces.swift in Sources */,
 				8BA0E7341DDFAE8500CD73E2 /* XHEREGooglePlacesServer.swift in Sources */,
+				93F9259E1DF6BF80000E7D60 /* XHEREMap.swift in Sources */,
 				8B52B4C71DF287BB0045230A /* XHerHomeFeedUnclaimedBountyCell.swift in Sources */,
 				8B34EB031DF5098A00150F6B /* XHERHomeFeedHeaderView.swift in Sources */,
 				8BEC43B51DD950B700244F11 /* Media.swift in Sources */,
