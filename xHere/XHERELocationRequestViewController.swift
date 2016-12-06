@@ -56,7 +56,7 @@ class XHERELocationRequestViewController: UIViewController,STLocationRequestCont
     }
     func showHomePage(){
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         let homeTabBarVC = XHERHomeTabBarViewController()
         self.present(homeTabBarVC, animated: false, completion: nil)
 
