@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-
+import SVProgressHUD
 class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tokenLabel: UILabel!
@@ -59,6 +59,12 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
             imageProfile.setImageWith(url)
             
         }
+        if currentUser?.firstName != nil{
+            self.usernameLabel.text = currentUser?.firstName
+        }else{
+            self.usernameLabel.text = ""
+        }
+        
         let tokens = currentUser!.tokens
         self.tokenLabel.text = "\(tokens)"
     }
@@ -73,16 +79,36 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
   
     
   @IBAction func getPostedBounties(_ sender: AnyObject){
+    
+//    self.claimedButton.isSelected = false
+//    self.postedButton.isSelected = true
+    
+    self.claimedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+    UIView.animate(withDuration: 0.6 ,
+                               animations: {
+                                self.postedButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+    },
+                               completion: { finish in
+                                UIView.animate(withDuration: 0.6){
+                                    //self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                                }
+    })
+    SVProgressHUD.show()
         XHERServer.sharedInstance.fetchBountyPostedBy(user: currentUser!, success: { (bounties: [XHERBounty]?) in
-            if (bounties?.count)! > 0 {
-                self.userBounties = bounties!
+            SVProgressHUD.dismiss()
+            if bounties != nil{
+                
+                if (bounties?.count)! > 0 {
+                    self.userBounties = bounties!
+                }
+                else {
+                    self.userBounties = []
+                }
             }
-            else {
-                self.userBounties = []
-            }
+            
+            
             self.tableView.reloadData()
-            self.claimedButton.isSelected = false
-            self.postedButton.isSelected = true
+            
             
            
         }) { (error: Error?) in
@@ -91,7 +117,22 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func getClaimedBounties(_ sender: AnyObject){
+        
+        self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        UIView.animate(withDuration: 0.6 ,
+                       animations: {
+                        self.claimedButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        },
+                       completion: { finish in
+                        UIView.animate(withDuration: 0.6){
+                            //self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        }
+        })
+        self.claimedButton.isSelected = true
+        self.postedButton.isSelected = false
+        SVProgressHUD.show()
         XHERServer.sharedInstance.fetchBountyEarneddBy(user: currentUser!, success: { (bounties : [XHERBounty]?) in
+            SVProgressHUD.dismiss()
             if let bounties = bounties {
         
                 self.userBounties = bounties
@@ -100,15 +141,14 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
                 self.userBounties = []
             }
             self.tableView.reloadData()
-            self.claimedButton.isSelected = true
-            self.postedButton.isSelected = false
+            
             
         }) { (error: Error?) in
-                print(error)
+                print(error?.localizedDescription)
         }
     }
     
-    func logOut(sender:UIBarButtonItem) {
+     @IBAction func  logOut(sender:UIButton) {
         PFUser.logOutInBackground { (error:Error?) in
             if error == nil {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userDidLogOut"), object: nil)
@@ -117,7 +157,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if userBounties != nil {
+        if self.userBounties != nil {
             return userBounties.count
         }
         else{
