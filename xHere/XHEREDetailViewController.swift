@@ -144,10 +144,12 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
 
         self.navigationController?.navigationBar.isHidden = false
 
-        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButtonOrange"), style: .plain, target: self, action: #selector(touchOnBack))
+        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButtonBlackArrow"), style: .plain, target: self, action: #selector(touchOnBack))
         self.navigationItem.leftBarButtonItem = backButton
-        self.navigationController?.navigationBar.tintColor = kXHEROrange
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         
+
+
 
         
         
@@ -167,7 +169,11 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         if let placeImageURL = location?.placeImageURL {
             self.mainImageView.setImageWith(placeImageURL)
         }
-        self.title = location?.placeName
+        
+//        let titleView = NavigationTitleView()
+        let titleView = NavigationTitleView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        titleView.textLabel.text = location?.placeName
+        self.navigationItem.titleView = titleView
     }
     
     func setupPostingMode() {
