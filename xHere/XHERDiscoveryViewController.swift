@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import Parse
-
+import SVProgressHUD
 let kTabbarHeight:Int = 0
 let selectedPinImage = UIImage(named: "pinselected")
 let pinImage = UIImage(named: "pin")
@@ -221,7 +221,8 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
 //            neabyBountiesViewController.location = self.locations?[indexPath.row]
 //            self.navigationController?.pushViewController(neabyBountiesViewController, animated: true)
 //        }else{
-        
+    
+            SVProgressHUD.show()
             let location = autoComplete?[indexPath.row]
             XHEREGooglePlacesServer.geocodeAddressString((location?.placeDescription)!, completion: { (placemark, error) -> Void in
                 if (placemark?.location?.coordinate) != nil {
@@ -232,7 +233,8 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                     self.getPlaceDeatils(placeID: (location?.googlePlaceID)!)
                     
                 }else{
-                    print(error?.description)
+                    //print(error?.description)
+                    SVProgressHUD.dismiss()
                 }
             })
         //}
@@ -307,11 +309,12 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     }
     func getNearbyLocations(geoPoint : PFGeoPoint){
         
-       
+        SVProgressHUD.show()
         XHEREGooglePlacesServer.sharedInstance.getLocationBy(
             coordinates: geoPoint,radius: .nearby,
             success: { (contentsArray:[POI]?) in
                 
+                SVProgressHUD.dismiss()
                 if let contentsArray = contentsArray {
                     
                     self.locations = contentsArray

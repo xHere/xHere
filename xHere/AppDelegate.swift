@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            let timeLineVc = storyBoard.instantiateViewController(withIdentifier: "timeLineNavigationController")
 //            window?.rootViewController = timeLineVc
             
-            let homeTabBarVC = XHERHomeTabBarViewController(nibName: "XHERHomeTabBarViewController", bundle: nil)
-            window?.rootViewController = homeTabBarVC
+            self.openNextController()
+            
+
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "userDidLogOut"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
@@ -47,6 +48,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         return true
+    }
+    func openNextController(){
+        
+        
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                let locationReq = XHERELocationRequestViewController(nibName: "XHERELocationRequestViewController", bundle: nil)
+                
+                
+                window?.rootViewController = locationReq
+                
+                
+            case .authorizedAlways, .authorizedWhenInUse:
+                let homeTabBarVC = XHERHomeTabBarViewController(nibName: "XHERHomeTabBarViewController", bundle: nil)
+                window?.rootViewController = homeTabBarVC
+                
+                
+            }
+        } else {
+            print("Location services are not enabled")
+            let locationReq = XHERELocationRequestViewController(nibName: "XHERELocationRequestViewController", bundle: nil)
+            
+            window?.rootViewController = locationReq
+            
+        }
+        
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
