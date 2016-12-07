@@ -65,10 +65,12 @@ class XHERHomeTabBarViewController: UIViewController {
 
         discoverViewController = XHERDiscoveryViewController()
         discoveryNavi = UINavigationController(rootViewController: discoverViewController)
-        
+        discoveryNavi.navigationBar.barTintColor = kXHERYellow
+
         profileViewController = XHEREProfileViewController()
         profileNavi = UINavigationController(rootViewController: profileViewController)
-        
+        profileNavi.navigationBar.barTintColor = kXHERYellow
+
         self.contentVC = homeFeedNavi
     }
     

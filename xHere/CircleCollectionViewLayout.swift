@@ -39,7 +39,7 @@ class CircleCollectionViewLayout: UICollectionViewLayout {
 //    let itemSize = CGSize(width: 133, height: 173)
     
     var itemSize: CGSize {
-        let width = collectionView!.bounds.size.height * 0.75
+        let width = collectionView!.bounds.size.height * 0.8
         let cellSize = CGSize(width: width, height: width)
         return cellSize
     }
@@ -53,7 +53,7 @@ class CircleCollectionViewLayout: UICollectionViewLayout {
             collectionView!.bounds.width)
     }
     
-    var radius: CGFloat = 500 {
+    var radius: CGFloat = 800 {
         didSet {
             invalidateLayout()
         }

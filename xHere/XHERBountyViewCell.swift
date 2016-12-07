@@ -145,8 +145,6 @@ class XHERBountyViewCell: UITableViewCell {
                                 completion: { (didComplete:Bool) in
                                     if let strongSelf = weakSelf {
                                         strongSelf.claimITLabel.textColor = UIColor.white
-                                        
-                                        print("Run COMPLETION")
                                         completion(strongSelf)
                                     }
         })
