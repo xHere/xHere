@@ -47,6 +47,7 @@ class XHERServer: NSObject {
             bountyQuery.includeKey(kPFKeyPostedByUser)
             bountyQuery.includeKey(kPFKeyClaimedByUser)
             bountyQuery.whereKey(kPFKeyBountyIsClaimed, equalTo: true)
+            bountyQuery.order(byDescending: "createdAt")
             bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
                 
                 if error == nil {
