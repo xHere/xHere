@@ -34,6 +34,8 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var postBountyButtonPanel: UIView!
     @IBOutlet weak var bountyNote: UILabel!
     @IBOutlet weak var bountyNoteBackgroundView: UIView!
+    @IBOutlet weak var userTokenCountLabel: UILabel!
+    @IBOutlet weak var userTokenResultCount: UILabel!
   
     //Claiming related
     @IBOutlet weak var claimedBountyImageView: UIImageView!
@@ -176,6 +178,10 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
             postUserProfileImageView.setImageWith(imageURL)
         }
         
+        let tokenCount = currentUser.tokens
+        self.userTokenCountLabel.text = "\(tokenCount) - 1x"
+        self.userTokenResultCount.text = "\(tokenCount-1)"
+        
         //Set TextView's design
         self.bountyNoteTextView.placeholder = "What would you like to know?"
         self.bountyNoteTextView.placeholderColor = UIColor.lightGray
@@ -186,7 +192,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         //Hide Claim related elements
         self.claimBountyPanel.isHidden = true
         self.claimBountyButtonPanel.isHidden = true
-        self.bountyNote.isHidden = true
         self.claimBountyPanel.isHidden = true
     }
     
@@ -273,10 +278,18 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
                 return
             }
 
+        weak var weakSelf = self
         server.postBountyBy(user: user, withNote: bountyNoteTextView.text!, atPOI: location, withTokenValue: 1, success: {
             print("Bounty posted successfully")
-            _ = self.navigationController?.popToRootViewController(animated: true)
             
+
+            UIView.animate(withDuration: 4,
+                   animations: {
+                    weakSelf?.bountyNoteTextView.backgroundColor = kXHEROrange
+            },
+                   completion: { (didComplete:Bool) in
+                        _ = self.navigationController?.popToRootViewController(animated: true)
+            })
         }) {
             print("Cant post bounty")
         }
