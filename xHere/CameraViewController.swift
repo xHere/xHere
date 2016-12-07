@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Parse
 
-class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     
@@ -21,12 +21,12 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var previewImage: UIImageView!
     var session: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
-    var caputurePhoto = AVCapturePhotoOutput()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var captureDevice:AVCaptureDevice?
     var currentBounty : XHERBounty!
     @IBOutlet weak var imagePreviewView: UIImageView!
-    let testing = false
+    @IBOutlet weak var postButton: UIButton!
+    let testing = true
     var animator: UIDynamicAnimator? = nil
     
     @IBOutlet weak var cameraButton: UIButton!
@@ -35,16 +35,27 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         super.viewDidLoad()
         descriptionLabel.text = currentBounty.bountyNote
         imagePreviewView.isHidden = true
+        previewView.backgroundColor = UIColor.black
+        cameraButton.backgroundColor = .clear
+        cameraButton.layer.cornerRadius = cameraButton.frame.height/2
+        cameraButton.layer.borderWidth = 2
+        cameraButton.layer.borderColor = UIColor.white.cgColor
+        postButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                setupCameraSession()
+        if !testing {
+            setupCameraSession()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                videoPreviewLayer!.frame = previewView.bounds
+        if !testing {
+            videoPreviewLayer!.frame = previewView.bounds
+        }
     }
     
     func setupCameraSession(){
@@ -60,9 +71,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
                 
                 // The remainder of the session setup will go here...
                 stillImageOutput = AVCaptureStillImageOutput()
-                let settings = AVCapturePhotoSettings()
-                
-                settings.isHighResolutionPhotoEnabled = false
                 stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
                 
                 if session!.canAddOutput(stillImageOutput) {
@@ -89,61 +97,64 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var pictureTaken = false
     @IBAction func didTakePhoto(_ sender: AnyObject) {
         if testing {
-            if pictureTaken {
-                imagePreviewView.isHidden = true
-            }
-            else {
-                imagePreviewView.isHidden = false
-                imagePreviewView.image = UIImage(named: "testImage")
-            }
+            
+            //                imagePreviewView.isHidden = false
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.sourceType = .photoLibrary
+            present(picker, animated: true, completion: nil)
+            //                imagePreviewView.image = UIImage(named: "testImage")
+            
             pictureTaken = !pictureTaken
         }
         else {
             if pictureTaken == false {
                 self.imagePreviewView.isHidden = true
-//                let settings = AVCapturePhotoSettings()
-
-                                if let videoConnection = stillImageOutput?.connection(withMediaType: AVMediaTypeVideo) {
+                //                let settings = AVCapturePhotoSettings()
+                
+                if let videoConnection = stillImageOutput?.connection(withMediaType: AVMediaTypeVideo) {
                     stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer: CMSampleBuffer?, error: Error?) in
                         if sampleBuffer! != nil {
                             let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
                             let dataProvider = CGDataProvider(data: imageData as! CFData)
                             let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                             let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
-                            let claimController = ClaimViewController()
-                            claimController.bounty = self.currentBounty
-                          
                             self.imagePreviewView.image = image
                             self.imagePreviewView.isHidden = false
-//                            claimController.claimingImage =  self.resize(image: image, newSize: size)
-                            //                        self.navigationController?.pushViewController(claimController, animated: true)
-//                            self.present(claimController, animated: false, completion: nil)
-                            //                    self.cancelCamera()
-                            
+                            self.postButton.isHidden = false
                         }
                     })
                 }
             }
             else {
                 imagePreviewView.isHidden = true
-
+                postButton.isHidden = true
             }
             pictureTaken = !pictureTaken
         }
+        postButton.isHidden = !pictureTaken
+    
     }
     
-    
-    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
-        let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: photoSampleBuffer!, previewPhotoSampleBuffer: previewPhotoSampleBuffer!)
-        let image = UIImage(data: dataImage!)
-        self.imagePreviewView.image = image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let size = CGSize(width: 400, height: 400)
+        let claimedImage = resize(image: (info[UIImagePickerControllerOriginalImage] as? UIImage)!, newSize: size)
+        self.imagePreviewView.image = claimedImage
+        self.imagePreviewView.isHidden = false
+        self.dismiss(animated: false) {
+            self.postButton.isHidden = false
+            
+        }
     }
     
     @IBAction func cancelCamera(_ sender: UIButton) {
         
         dismiss(animated: true) {
-            let currentCameraInput: AVCaptureInput = self.session!.inputs[0] as! AVCaptureInput
-            self.session?.removeInput(currentCameraInput)
+            if !self.testing {
+                
+                let currentCameraInput: AVCaptureInput = self.session!.inputs[0] as! AVCaptureInput
+                self.session?.removeInput(currentCameraInput)
+            }
         }
     }
     
@@ -191,16 +202,12 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @IBAction func postPicture(_ sender: AnyObject) {
-          let size = CGSize(width: 400, height: 400)
-          let image = self.resize(image: imagePreviewView.image!, newSize: size)
+        let size = CGSize(width: 400, height: 400)
+        let image = self.resize(image: imagePreviewView.image!, newSize: size)
         XHERServer.sharedInstance.claimBounty(user: PFUser.current() as! User, objectId: (currentBounty?.objectId!)!, image: image,
                                               success: { (bounty:XHERBounty, tokentAmount:Int) in
                                                 print("Bounty claimed Successfully")
-                                                //                                                let animationView = AnimationViewController()
-                                                //                                                self.present(animationView, animated: true, completion: nil)
                                                 self.addCoin(location: CGRect(x: 150, y: self.bottomView.frame.origin.y, width: self.view.frame.width * 0.16, height: self.view.frame.height * 0.16))
-                                                
-                                                
                                                 self.startAnimation()
             },
                                               faliure: { (error:Error) in
@@ -213,18 +220,20 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         animator = UIDynamicAnimator(referenceView: self.view)
         gravity.gravityDirection = CGVector(dx: 0, dy: -1.0)
-        gravity.magnitude = 0.3
+        gravity.magnitude = 0.6
         animator?.addBehavior(gravity)
         startFlipping()
         cameraButton.isHidden = true
         gravity.addItem(self.coin!)
         
         gravity.action = {
-            print(self.coin?.frame.origin.y)
-            if((self.coin?.frame.origin.y)! < CGFloat(-20)){
+           
+            if((self.coin?.frame.origin.y)! < CGFloat(-100)){
+                print(self.coin?.frame.origin.y)
                 self.animator?.removeAllBehaviors()
                 self.stopFlipping = true
                 let animationView = AnimationViewController()
+                animationView.claimedImage = self.imagePreviewView.image
                 self.present(animationView, animated: true, completion: nil)
                 
             }

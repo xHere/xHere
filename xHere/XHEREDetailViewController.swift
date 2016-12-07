@@ -49,7 +49,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     var nearbyBounties : [XHERBounty]?
 
     
-    let debugging = true
+    let debugging = false
     var server = XHERServer.sharedInstance
     
     override func viewDidLoad() {

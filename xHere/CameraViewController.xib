@@ -13,6 +13,7 @@
                 <outlet property="cameraButton" destination="eJg-G3-Xxo" id="hQC-lc-fL9"/>
                 <outlet property="descriptionLabel" destination="SCe-Om-TSm" id="Yo2-pO-6ky"/>
                 <outlet property="imagePreviewView" destination="USz-Rc-P1t" id="SH6-1M-zig"/>
+                <outlet property="postButton" destination="qB6-As-Nzk" id="rwX-Jb-LXF"/>
                 <outlet property="previewView" destination="qxx-9q-pAM" id="OAV-ga-l94"/>
                 <outlet property="topView" destination="aFT-bV-ue4" id="gdO-nD-jSc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,7 +34,7 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="USz-Rc-P1t"/>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFT-bV-ue4">
+                <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFT-bV-ue4">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwO-WQ-loJ">
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,15 +50,15 @@
                                 <action selector="cancelCamera:" destination="-1" eventType="touchUpInside" id="pwt-rf-6Ws"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-Om-TSm">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-Om-TSm">
                             <frame key="frameInset" minX="68" minY="8" width="280" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="58" id="aas-yT-y36"/>
                         <constraint firstItem="bwO-WQ-loJ" firstAttribute="top" secondItem="aFT-bV-ue4" secondAttribute="top" id="daj-wS-UXe"/>
@@ -95,12 +96,19 @@
                                 <action selector="postPicture:" destination="-1" eventType="touchUpInside" id="78R-in-HqA"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIM IT!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO1-Bv-6aH">
+                            <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.98039215690000003" green="0.88235294119999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="1DI-Du-2os" firstAttribute="centerY" secondItem="E3V-cc-lVP" secondAttribute="centerY" constant="-6.5" id="HsE-Qg-blf"/>
                         <constraint firstItem="eJg-G3-Xxo" firstAttribute="centerX" secondItem="E3V-cc-lVP" secondAttribute="centerX" id="JEP-ti-vJY"/>
+                        <constraint firstItem="ZO1-Bv-6aH" firstAttribute="centerX" secondItem="E3V-cc-lVP" secondAttribute="centerX" id="JIt-EH-jpw"/>
                         <constraint firstItem="qB6-As-Nzk" firstAttribute="width" secondItem="1DI-Du-2os" secondAttribute="width" id="Ow8-mw-tV2"/>
+                        <constraint firstItem="ZO1-Bv-6aH" firstAttribute="centerY" secondItem="E3V-cc-lVP" secondAttribute="centerY" id="SeM-qy-XvC"/>
                         <constraint firstItem="eJg-G3-Xxo" firstAttribute="top" secondItem="E3V-cc-lVP" secondAttribute="top" constant="-25" id="WWu-IO-67G"/>
                         <constraint firstAttribute="trailing" secondItem="qB6-As-Nzk" secondAttribute="trailing" constant="8" id="YEc-Gu-gbb"/>
                         <constraint firstItem="1DI-Du-2os" firstAttribute="leading" secondItem="E3V-cc-lVP" secondAttribute="leading" constant="8" id="d7j-Az-Xj1"/>

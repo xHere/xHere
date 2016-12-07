@@ -20,23 +20,23 @@ class AnimationViewController: UIViewController {
     @IBOutlet weak var dimissButton: UIButton!
     var cancel = false
     var stopFlipping = false
-    var overlayView: UIView!
     var attachmentBehavior : UIAttachmentBehavior!
     var snapBehavior : UISnapBehavior!
-
+    var claimedImage : UIImage!
     @IBOutlet weak var numberOfTokensLabel: UILabel!
     @IBOutlet weak var alertView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        piggyImageView.image = UIImage(named: "piggy")
+//        piggyImageView.image = UIImage(named: "piggy")
         addCoin(location: CGRect(x: 150, y: -30, width: view.frame.width * 0.16, height: view.frame.height * 0.16))
+        alertView.frame = CGRect(x: alertView.frame.origin.x, y: alertView.frame.origin.y, width: view.frame.width * 0.60, height: view.frame.height * 0.60)
          createAnimatorStuff()
     }
     
     func addCoin(location: CGRect) {
         self.view.layoutIfNeeded()
         coin = UIImageView(frame: location)
-        coin?.backgroundColor = UIColor.red
+//        coin?.backgroundColor = UIColor.red
         coin?.image = UIImage(named: "coinFront")
         coin?.layer.masksToBounds = true
         coin?.clipsToBounds = true
@@ -115,20 +115,11 @@ class AnimationViewController: UIViewController {
             }
             if(self.coin!.frame.origin.y) >= CGFloat(stopGravityAt){
                 self.animator?.removeAllBehaviors()
-                self.createOverlay()
                 self.createAlert()
                 self.showAlert()
             }
             
         }
-    }
-    
-    func createOverlay() {
-        // Create a gray view and set its alpha to 0 so it isn't visible
-        overlayView = UIView(frame: view.bounds)
-        overlayView.backgroundColor = UIColor.gray
-        overlayView.alpha = 0.0
-//        view.addSubview(overlayView)
     }
     
     func createAlert() {
@@ -148,10 +139,6 @@ class AnimationViewController: UIViewController {
         createGestureRecognizer()
         animator?.removeAllBehaviors()
         
-        // Animate in the overlay
-        UIView.animate(withDuration: 0.4) {
-            self.overlayView.alpha = 0.0
-        }
         
         // Animate the alert view using UIKit Dynamics.
         alertView.alpha = 1.0
@@ -173,7 +160,7 @@ class AnimationViewController: UIViewController {
         itemBehaviour.addAngularVelocity(CGFloat(-M_PI_2), for: alertView)
         animator?.addBehavior(itemBehaviour)
         UIView.animate(withDuration: 0.4, animations: {
-            self.overlayView.alpha = 0.0
+            
             }, completion: {
                 (value: Bool) in
                 self.alertView.removeFromSuperview()
@@ -185,7 +172,8 @@ class AnimationViewController: UIViewController {
     }
     
     func createGestureRecognizer() {
-        let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector(("handlePan:")))
+        let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(sender:)))
+//        UIPanGestureRecognizer(target: self, action: Selector(("handlePan")))
         view.addGestureRecognizer(panGestureRecognizer)
     }
     
