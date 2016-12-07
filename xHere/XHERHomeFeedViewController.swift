@@ -301,9 +301,18 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         return 0
     }
     
-    // MARK: - XHERBountyViewCell Delegate Methods
+    // MARK: - XHERNearByClaimedViewCell Delegate
     func userDidSwipeCollectionViewTo(offset: CGFloat) {
         self.backgroundColorMask.alpha = offset * 0.25
     }
+    
+    func userDidChoose(claimedBounty: XHERBounty) {
+        let detailVC = XHEREDetailViewController()
+        detailVC.viewControllerMode = .browsing
+        detailVC.currentBounty = claimedBounty
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     
 }

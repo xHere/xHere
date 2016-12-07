@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol XHERNearByClaimedViewCellDelegate {
     func userDidSwipeCollectionViewTo(offset:CGFloat)
+    func userDidChoose(claimedBounty:XHERBounty)
 }
 
 class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
@@ -41,7 +42,7 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         didSet {
             if let nearByClaimedArray = nearByClaimedArray {
                 
-                let firstTenBounties = nearByClaimedArray[0...10]
+                let firstTenBounties = nearByClaimedArray[0...20]
                 
                 collectionViewDataBackArray = Array(firstTenBounties)
                 self.collectionView.reloadData()
@@ -93,6 +94,18 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let bounty = collectionViewDataBackArray[indexPath.row]
+        
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! XHERNearByClaimedCollectionCell
+        
+        weak var weakSelf = self
+        cell.startSelectedAnimation { (cell:XHERNearByClaimedCollectionCell) in
+            weakSelf?.delegate?.userDidChoose(claimedBounty: bounty)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -34,6 +34,8 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var postBountyButtonPanel: UIView!
     @IBOutlet weak var bountyNote: UILabel!
     @IBOutlet weak var bountyNoteBackgroundView: UIView!
+    @IBOutlet weak var userTokenCountLabel: UILabel!
+    @IBOutlet weak var userTokenResultCount: UILabel!
   
     //Claiming related
     @IBOutlet weak var claimedBountyImageView: UIImageView!
@@ -44,6 +46,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var claimBountyButtonPanel: UIView!
     @IBOutlet weak var claimBountyCameraButtonView: UIView!
    
+    @IBOutlet weak var previousClaimedNearbyPanel: UIView!
     
     var viewControllerMode:DetailViewControllerMode?
     var currentBounty : XHERBounty!
@@ -56,7 +59,17 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        getNearByClaimedBounties()
+        
+        weak var weakSelf = self
+        getNearByClaimedBounties { 
+            if let nearbyBounties = weakSelf?.nearbyBounties {
+                if nearbyBounties.count == 0 {
+                    weakSelf?.previousClaimedNearbyPanel.isHidden = true
+                    self.view.setNeedsLayout()
+                }
+            }
+        }
+        
         
         let notificationName = Notification.Name("CompletedClaiming")
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
@@ -64,8 +77,30 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func didCompleteClaiming(sender:Any) {
         
-//        self.currentBounty
+        let notification = sender as! Notification
+        
+        
+        let claimedImage = notification.userInfo?["claimedImage"]!
+        
+        self.claimBountyCameraButtonView.isHidden = true
+        self.claimedBountyImageView.alpha = 0
+        self.claimedBountyImageView.image = claimedImage as! UIImage?
+        
+        
+        self.dismiss(animated: true, completion: {
+            weak var weakSelf = self
+            UIView.animate(withDuration: 5,
+                           animations: {
+                            weakSelf?.claimedBountyImageView.alpha = 1
+            },
+                           completion: { (didComplete:Bool) in
+                            
+            })
+        })
+
+        
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,6 +114,9 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidLayoutSubviews() {
+        
+        self.scrollView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
+        
         //Some View config
         self.postUserProfileImageView.layer.cornerRadius = self.postUserProfileImageView.frame.size.height/2
         print("     ImageViewHeight = \(self.postUserProfileImageView.frame.size.height)")
@@ -101,10 +139,18 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
        
     }
 
-    
+    // MARK: - View Mode Setup
     func setupView(){
 
         self.navigationController?.navigationBar.isHidden = false
+
+        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButtonOrange"), style: .plain, target: self, action: #selector(touchOnBack))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = kXHEROrange
+        
+
+        
+        
         
         if viewControllerMode! == .posting {
             setupPostingMode()
@@ -121,6 +167,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         if let placeImageURL = location?.placeImageURL {
             self.mainImageView.setImageWith(placeImageURL)
         }
+        self.title = location?.placeName
     }
     
     func setupPostingMode() {
@@ -130,6 +177,10 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         if let imageURL = currentUser.profileImageUrl {
             postUserProfileImageView.setImageWith(imageURL)
         }
+        
+        let tokenCount = currentUser.tokens
+        self.userTokenCountLabel.text = "\(tokenCount) - 1x"
+        self.userTokenResultCount.text = "\(tokenCount-1)"
         
         //Set TextView's design
         self.bountyNoteTextView.placeholder = "What would you like to know?"
@@ -141,7 +192,6 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         //Hide Claim related elements
         self.claimBountyPanel.isHidden = true
         self.claimBountyButtonPanel.isHidden = true
-        self.bountyNote.isHidden = true
         self.claimBountyPanel.isHidden = true
     }
     
@@ -214,7 +264,9 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         
     }
 
-    
+    func touchOnBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     // MARK: - Post Bounty
     @IBAction func touchOnPost(_ sender: UIButton) {
@@ -226,19 +278,67 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
                 return
             }
 
+        weak var weakSelf = self
         server.postBountyBy(user: user, withNote: bountyNoteTextView.text!, atPOI: location, withTokenValue: 1, success: {
             print("Bounty posted successfully")
-            _ = self.navigationController?.popToRootViewController(animated: true)
             
+
+            UIView.animate(withDuration: 4,
+                   animations: {
+                    weakSelf?.bountyNoteTextView.backgroundColor = kXHEROrange
+            },
+                   completion: { (didComplete:Bool) in
+                        _ = self.navigationController?.popToRootViewController(animated: true)
+            })
         }) {
             print("Cant post bounty")
         }
     }
     
-    @IBAction func userDidLongPress(_ sender: UILongPressGestureRecognizer) {
-        self.startClaiming()
-    }
 
+    @IBAction func tapOnCameraButtonView(_ sender: UITapGestureRecognizer) {
+    
+        
+        if sender.state == .began {
+            
+            weak var weakSelf = self
+            UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: [],
+                    animations: {
+                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
+                               animations: {
+                                weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+                        })
+
+
+            },
+                    completion: { (didComplete:Bool) in
+                        
+            })
+            
+        }
+        else if sender.state == .ended {
+            
+            weak var weakSelf = self
+            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [],
+                    animations: {
+
+                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5,
+                                           animations: {
+                                            weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
+                        })
+                        
+                        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5,
+                               animations: {
+                                weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                        })
+                        
+            },
+                    completion: { (didComplete:Bool) in
+                        self.startClaiming()
+            })
+        }
+        
+    }
     // MARK: - ImagePicker Activate & Delegates
     @IBAction func initClaim(_ sender: UIButton) {
         self.startClaiming()
@@ -308,7 +408,7 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
     
     
     // MARK: - API call and delegates methods for NearByClaimedBounties CollectionView
-    func getNearByClaimedBounties(){
+    func getNearByClaimedBounties(success:@escaping ()->()){
         
         if let geoPoint = location?.geoPoint {
             server.fetchClaimedBountyNear(location: geoPoint, withInMiles: searchDistanceInMiles, success: { (bounties : [XHERBounty]?) in
@@ -317,11 +417,11 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
                         self.nearbyBounties = bounties
                         self.setUpCollectionView()
                     }
-                    else
-                    {
-                        self.nearbyBounties = []
-                    }
                 }
+                else {
+                    self.nearbyBounties = []
+                }
+                success()
             }) { (error: Error?) in
                 print(error?.localizedDescription)
             }
