@@ -30,6 +30,7 @@
                 <outlet property="postBountyPanel" destination="D5C-X9-uaj" id="dfy-oq-3Yi"/>
                 <outlet property="postUserNameLabel" destination="T2y-i3-VxQ" id="jhZ-tY-wWc"/>
                 <outlet property="postUserProfileImageView" destination="daO-jB-EiE" id="hz2-Eh-gJC"/>
+                <outlet property="previousClaimedNearbyPanel" destination="KWR-FQ-r7U" id="oX3-3C-Gsr"/>
                 <outlet property="scrollView" destination="hAV-xQ-25U" id="uOG-mQ-qBt"/>
                 <outlet property="view" destination="XNc-ec-pa0" id="hSa-LX-mMW"/>
             </connections>
@@ -210,7 +211,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jw7-ht-b7W" userLabel="ClaimBounty">
                                             <rect key="frame" x="0.0" y="260" width="320" height="191"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImagePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="fpz-T8-ZMj">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImagePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="fpz-T8-ZMj">
                                                     <rect key="frame" x="10" y="10" width="240" height="171"/>
                                                     <gestureRecognizers/>
                                                 </imageView>
@@ -220,7 +221,7 @@
                                                         <constraint firstAttribute="width" secondItem="98U-Bt-aJG" secondAttribute="height" multiplier="1:1" id="hQV-Yp-RdG"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78r-9Z-dW1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="78r-9Z-dW1">
                                                     <rect key="frame" x="258" y="70" width="54" height="14"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>

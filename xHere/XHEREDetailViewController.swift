@@ -44,6 +44,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var claimBountyButtonPanel: UIView!
     @IBOutlet weak var claimBountyCameraButtonView: UIView!
    
+    @IBOutlet weak var previousClaimedNearbyPanel: UIView!
     
     var viewControllerMode:DetailViewControllerMode?
     var currentBounty : XHERBounty!
@@ -56,7 +57,16 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        getNearByClaimedBounties()
+        
+        weak var weakSelf = self
+        getNearByClaimedBounties { 
+            if let nearbyBounties = weakSelf?.nearbyBounties {
+                if nearbyBounties.count == 0 {
+                    weakSelf?.previousClaimedNearbyPanel.isHidden = true
+                    self.view.setNeedsLayout()
+                }
+            }
+        }
         
         
         let notificationName = Notification.Name("CompletedClaiming")
@@ -374,7 +384,7 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
     
     
     // MARK: - API call and delegates methods for NearByClaimedBounties CollectionView
-    func getNearByClaimedBounties(){
+    func getNearByClaimedBounties(success:@escaping ()->()){
         
         if let geoPoint = location?.geoPoint {
             server.fetchClaimedBountyNear(location: geoPoint, withInMiles: searchDistanceInMiles, success: { (bounties : [XHERBounty]?) in
@@ -383,11 +393,11 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
                         self.nearbyBounties = bounties
                         self.setUpCollectionView()
                     }
-                    else
-                    {
-                        self.nearbyBounties = []
-                    }
                 }
+                else {
+                    self.nearbyBounties = []
+                }
+                success()
             }) { (error: Error?) in
                 print(error?.localizedDescription)
             }

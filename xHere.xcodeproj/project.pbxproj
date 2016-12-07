@@ -39,8 +39,6 @@
 		8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDC1DD90BF500728209 /* FusumaCameraViewController.xib */; };
 		8BA3CBE11DD90BF500728209 /* PBJVisionCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDD1DD90BF500728209 /* PBJVisionCameraViewController.swift */; };
 		8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA3CBDE1DD90BF500728209 /* PBJVisionCameraViewController.xib */; };
-		8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */; };
-		8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */; };
 		8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */; };
 		8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */; };
 		8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */; };
@@ -153,8 +151,6 @@
 		8BA3CBDC1DD90BF500728209 /* FusumaCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FusumaCameraViewController.xib; sourceTree = "<group>"; };
 		8BA3CBDD1DD90BF500728209 /* PBJVisionCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PBJVisionCameraViewController.swift; sourceTree = "<group>"; };
 		8BA3CBDE1DD90BF500728209 /* PBJVisionCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBJVisionCameraViewController.xib; sourceTree = "<group>"; };
-		8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERProfileViewController.swift; sourceTree = "<group>"; };
-		8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERProfileViewController.xib; sourceTree = "<group>"; };
 		8BA7D2131DD9268C0002C848 /* XHERDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERDiscoveryViewController.swift; sourceTree = "<group>"; };
 		8BA7D2141DD9268C0002C848 /* XHERDiscoveryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERDiscoveryViewController.xib; sourceTree = "<group>"; };
 		8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedViewController.swift; sourceTree = "<group>"; };
@@ -401,8 +397,6 @@
 		8BA7D20E1DD922820002C848 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8BA7D20F1DD923210002C848 /* XHERProfileViewController.swift */,
-				8BA7D2101DD923210002C848 /* XHERProfileViewController.xib */,
 				992654091DECE05000A10614 /* XHEREProfileViewController.swift */,
 				9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */,
 			);
@@ -751,7 +745,6 @@
 				93F925A31DF6CBF0000E7D60 /* XHERELocationRequestViewController.xib in Resources */,
 				8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */,
 				99F0F7A61DF4E2810019288D /* AnimationViewController.xib in Resources */,
-				8BA7D2121DD923210002C848 /* XHERProfileViewController.xib in Resources */,
 				9376705A1DE4CCED00576199 /* XHERENeabyBountiesViewController.xib in Resources */,
 				8BA3CBE01DD90BF500728209 /* FusumaCameraViewController.xib in Resources */,
 				9926540C1DECE05000A10614 /* XHEREProfileViewController.xib in Resources */,
@@ -953,7 +946,6 @@
 				99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */,
 				8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */,
 				8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */,
-				8BA7D2111DD923210002C848 /* XHERProfileViewController.swift in Sources */,
 				99CEF6B01DD661B400D36904 /* LoginViewController.swift in Sources */,
 				8BEC43B61DD950B700244F11 /* POI.swift in Sources */,
 				997E283B1DDFBE7A004A5105 /* loginInputView.swift in Sources */,
