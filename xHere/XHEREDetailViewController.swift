@@ -137,10 +137,18 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
        
     }
 
-    
+    // MARK: - View Mode Setup
     func setupView(){
 
         self.navigationController?.navigationBar.isHidden = false
+
+        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButtonOrange"), style: .plain, target: self, action: #selector(touchOnBack))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = kXHEROrange
+        
+
+        
+        
         
         if viewControllerMode! == .posting {
             setupPostingMode()
@@ -157,6 +165,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         if let placeImageURL = location?.placeImageURL {
             self.mainImageView.setImageWith(placeImageURL)
         }
+        self.title = location?.placeName
     }
     
     func setupPostingMode() {
