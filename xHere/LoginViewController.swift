@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     
     var mode:LoginSignupViewMode = .signup
     let animateDuration = 0.25
+    var animator: UIDynamicAnimator? = nil
     
     @IBOutlet weak var loginPasswordInput: loginInputView!
     
@@ -145,6 +146,21 @@ class LoginViewController: UIViewController {
             transformSignup = transformSignup.rotated(by: rotateAngleSignup)
             self.signupButton.transform = transformSignup
             
+            let bounds = self.socialsView.bounds
+            print(bounds)
+            print(self.mode)
+            self.animator = UIDynamicAnimator(referenceView: self.view)
+            var points = CGPoint()
+            if self.mode == .login{
+//                points = CGPoint(x: self.loginView.center.x, y: self.socialsView.bounds.midY)
+                print(self.socialsView.center.x)
+                points = CGPoint(x: self.socialsView.center.x, y: self.loginButton.center.y + 90)
+            }
+            else {
+                points = CGPoint(x: self.signupView.center.x, y: self.signupButton.center.y + 90)
+            }
+            let snapBehaviour: UISnapBehavior = UISnapBehavior(item: self.socialsView, snapTo: points)
+            self.animator?.addBehavior(snapBehaviour)
         }
         
     }
