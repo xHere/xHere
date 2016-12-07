@@ -31,7 +31,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.setupRefreshControl()
         // Do any additional setup after loading the view.
         weak var weakSelf = self
-        
+        SVProgressHUD.show()
+
         self.callAPI {
             weakSelf?.updateTableView()
         }
@@ -53,7 +54,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     func callAPI(success:@escaping ()->()) {
         
-       SVProgressHUD.show()
         
         let server = XHERServer.sharedInstance
         
