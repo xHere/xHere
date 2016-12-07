@@ -259,7 +259,9 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         
     }
 
-    
+    func touchOnBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     // MARK: - Post Bounty
     @IBAction func touchOnPost(_ sender: UIButton) {
