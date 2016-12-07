@@ -28,7 +28,7 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        piggyImageView.image = UIImage(named: "piggy")
-        addCoin(location: CGRect(x: 150, y: -30, width: view.frame.width * 0.16, height: view.frame.height * 0.16))
+        addCoin(location: CGRect(x: 150, y: -30, width: view.frame.width * 0.14, height: view.frame.height * 0.14))
         alertView.frame = CGRect(x: alertView.frame.origin.x, y: alertView.frame.origin.y, width: view.frame.width * 0.60, height: view.frame.height * 0.60)
          createAnimatorStuff()
     }
@@ -42,7 +42,8 @@ class AnimationViewController: UIViewController {
         coin?.clipsToBounds = true
         coin?.backgroundColor = UIColor.clear
 //        coin?.layer.cornerRadius = (coin?.frame.height)!/2
-        view.insertSubview(coin!, at: 0)
+//        view.insertSubview(coin!, at: 0)
+        view.addSubview(coin!)
         initAnimation()
     }
     
@@ -107,7 +108,7 @@ class AnimationViewController: UIViewController {
             
             if (self.coin?.frame.origin.y)! <= CGFloat(3.0) {
                 self.gravity.gravityDirection = CGVector(dx: 0, dy: 1.0)
-                self.gravity.magnitude = 0.3
+                self.gravity.magnitude = 0.5
             }
             if(self.coin?.frame.origin.y)! > CGFloat(stopFlippingAt){
                 print(self.coin!.frame.origin.y)
@@ -115,6 +116,7 @@ class AnimationViewController: UIViewController {
             }
             if(self.coin!.frame.origin.y) >= CGFloat(stopGravityAt){
                 self.animator?.removeAllBehaviors()
+                self.coin!.isHidden = true
                 self.createAlert()
                 self.showAlert()
             }
@@ -201,7 +203,7 @@ class AnimationViewController: UIViewController {
             }
             else if sender.state == UIGestureRecognizerState.ended {
                 animator?.removeAllBehaviors()
-                
+//               snapBehavior =  UISnapBehavior(item: alertView, snapTo: piggyImageView.bounds.origin)
                 snapBehavior = UISnapBehavior(item: alertView, snapTo: view.center)
                 animator?.addBehavior(snapBehavior)
                 

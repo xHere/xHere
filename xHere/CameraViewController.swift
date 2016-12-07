@@ -26,7 +26,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var currentBounty : XHERBounty!
     @IBOutlet weak var imagePreviewView: UIImageView!
     @IBOutlet weak var postButton: UIButton!
-    let testing = false
+    let testing = true
     var animator: UIDynamicAnimator? = nil
     
     @IBOutlet weak var cameraButton: UIButton!
