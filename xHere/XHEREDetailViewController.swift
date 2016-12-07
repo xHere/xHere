@@ -42,6 +42,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var claimBountyPanel: UIView!
     @IBOutlet weak var claimBountyButton: UIButton!
     @IBOutlet weak var claimBountyButtonPanel: UIView!
+    @IBOutlet weak var claimBountyCameraButtonView: UIView!
    
     
     var viewControllerMode:DetailViewControllerMode?
@@ -63,7 +64,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func didCompleteClaiming(sender:Any) {
         
-        self.currentBounty
+//        self.currentBounty
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +82,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         //Some View config
         self.postUserProfileImageView.layer.cornerRadius = self.postUserProfileImageView.frame.size.height/2
         print("     ImageViewHeight = \(self.postUserProfileImageView.frame.size.height)")
-        self.postUserProfileImageView.layer.borderColor = kXHERYellow.cgColor
+        self.postUserProfileImageView.layer.borderColor = kXHEROrange.cgColor
         self.postUserProfileImageView.layer.borderWidth = 2
         
         self.claimUserProfileImage.layer.cornerRadius = self.claimUserProfileImage.frame.size.height/2
@@ -90,6 +91,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         
         self.claimedBountyImageView.layer.cornerRadius = 20
         //self.claimedBountyImageView.bounds.size.height/10
+        self.claimBountyCameraButtonView.layer.cornerRadius = 20
         self.bountyNoteBackgroundView.layer.cornerRadius = 20
         //self.bountyNote.bounds.height/10
 
@@ -129,14 +131,18 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
             postUserProfileImageView.setImageWith(imageURL)
         }
         
-
+        //Set TextView's design
+        self.bountyNoteTextView.placeholder = "What would you like to know?"
+        self.bountyNoteTextView.placeholderColor = UIColor.lightGray
+        self.bountyNoteTextView.layer.cornerRadius = 10
+        self.bountyNoteTextView.layer.borderColor = kXHEROrange.cgColor
+        self.bountyNoteTextView.layer.borderWidth = 2
         
         //Hide Claim related elements
         self.claimBountyPanel.isHidden = true
         self.claimBountyButtonPanel.isHidden = true
         self.bountyNote.isHidden = true
         self.claimBountyPanel.isHidden = true
-        self.claimBountyButtonPanel.isHidden = true
     }
     
     func setupClaimingMode() {
@@ -146,7 +152,8 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
             self.setupPostingMode()
             
             self.claimBountyPanel.isHidden = false
-            self.claimBountyButtonPanel.isHidden = false
+            self.claimBountyButtonPanel.isHidden = true
+            self.claimBountyCameraButtonView.isHidden = false
             
             //Post User View
             let postUser = currentBounty.postedByUser
@@ -199,6 +206,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
             {
                 claimedBountyImageView.setImageWith(bountyClaimedImageURL)
             }
+            self.claimBountyCameraButtonView.isHidden = true
         }
         else {
             self.claimBountyPanel.isHidden = true

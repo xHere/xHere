@@ -4,3 +4,4 @@
 
 #import <Parse/Parse.h>
 #import<Parse/PFSubclassing.h>
+@import UITextView_Placeholder;
