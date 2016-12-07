@@ -28,6 +28,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     var locations : [POI]?
     var autoComplete : [POI]?
    
+    @IBOutlet weak var currentLocationButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +39,8 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         self.setupTableView()
         autoCompleteTableView.isHidden = true
 
-        
-        PFGeoPoint.geoPointForCurrentLocation { (loc :PFGeoPoint?, error :Error?) in
-            if error == nil{
-                self.currentLocation = loc
-                self.setUpMapView()
-                self.getNearbyLocations(geoPoint: self.currentLocation)
-            }
-        }
+        self.onCurrentLocationClick(currentLocationButton)
+       
     }
 
     
@@ -93,8 +88,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
                 annotation.title = location.placeName
                 annotation.subtitle = "\(index)"
                 self.mapView.addAnnotation(annotation)
-                let viewI = mapView.view(for: annotation)
-                viewI?.image = selectedPinImage
+               
                 
             }
         }
@@ -103,7 +97,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         mapView.showAnnotations(yourAnnotationArray, animated: true)
         
         
-        
+       
        
 
     }
@@ -161,6 +155,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
 
+   
     public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "customAnnotationView"
         
@@ -172,10 +167,21 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         else {
             annotationView!.annotation = annotation
         }
+        
+        let title = annotation.subtitle
+        var index = 0
+        if title! != nil{
+             index = Int.init(title!!)!
+        }
+        
         if annotationView?.annotation is MKUserLocation
         {
             print("uerewjew fjksd fkldsjf d*********'")
-        }else{
+            
+        }else if(index == 1){
+            annotationView!.image = selectedPinImage
+        }
+        else{
             annotationView!.image = pinImage
         }
         
@@ -245,6 +251,16 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Search Bar delegate
     
 
+    @IBAction func onCurrentLocationClick(_ sender: UIButton) {
+        self.searchTextField.text = ""
+        PFGeoPoint.geoPointForCurrentLocation { (loc :PFGeoPoint?, error :Error?) in
+            if error == nil{
+                self.currentLocation = loc
+                self.setUpMapView()
+                self.getNearbyLocations(geoPoint: self.currentLocation)
+            }
+        }
+    }
     @IBAction func seachTextChanged(_ sender: UITextField) {
         autoCompleteTableView.isHidden = false
         fetchLocationsWithPlace(searchText: sender.text!)
@@ -430,19 +446,19 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         
         let location = self.locations?[visibleIndexPath.row]
         
-        let latitude:CLLocationDegrees = (location?.latitute)!
-        
-        let longitude:CLLocationDegrees = (location?.longitude)!
-        
-        let latDelta:CLLocationDegrees = 0.008
-        
-        let lonDelta:CLLocationDegrees = 0.008
-        
-        let span = MKCoordinateSpanMake(latDelta, lonDelta)
-        
-        let locationCord = CLLocationCoordinate2DMake(latitude, longitude)
-        
-        let region = MKCoordinateRegionMake(locationCord, span)
+//        let latitude:CLLocationDegrees = (location?.latitute)!
+//        
+//        let longitude:CLLocationDegrees = (location?.longitude)!
+//        
+//        let latDelta:CLLocationDegrees = 0.008
+//        
+//        let lonDelta:CLLocationDegrees = 0.008
+//        
+//        let span = MKCoordinateSpanMake(latDelta, lonDelta)
+//        
+//        let locationCord = CLLocationCoordinate2DMake(latitude, longitude)
+//        
+//        let region = MKCoordinateRegionMake(locationCord, span)
         
         
 
@@ -451,7 +467,7 @@ class XHERDiscoveryViewController: UIViewController, UITableViewDelegate, UITabl
         self.highlightPin(indexRow: visibleIndexPath.row)
        
     
-        mapView.setRegion(region, animated: true )
+        //mapView.setRegion(region, animated: true )
     }
 
     func highlightPin(indexRow:Int){

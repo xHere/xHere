@@ -15,6 +15,7 @@
                 <outlet property="collectionView" destination="Ynb-yz-oDn" id="egK-Vu-5L5"/>
                 <outlet property="collectionViewBottomConstraint" destination="NKC-5U-4Tk" id="hfp-dQ-CpN"/>
                 <outlet property="collectionViewHeightConstraint" destination="09m-NS-FzO" id="h8Q-n7-e7R"/>
+                <outlet property="currentLocationButton" destination="y3p-wZ-Zru" id="68Y-QF-jez"/>
                 <outlet property="mapView" destination="T3E-8H-9Ug" id="ssT-R2-en3"/>
                 <outlet property="searchTextField" destination="ph7-Df-FlD" id="HSp-Qd-6Kv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -58,6 +59,24 @@
                         <outlet property="delegate" destination="-1" id="DLo-53-Xz7"/>
                     </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3p-wZ-Zru">
+                    <rect key="frame" x="330" y="488" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="ADE-YJ-5OD"/>
+                        <constraint firstAttribute="height" constant="44" id="XKk-u8-tpn"/>
+                    </constraints>
+                    <state key="normal" image="currentLocation"/>
+                    <connections>
+                        <action selector="onCurrentLocationClick:" destination="-1" eventType="touchUpInside" id="Gpc-2Q-uGr"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="Ou1-SL-5XI">
+                    <rect key="frame" x="26" y="31" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="RsZ-Xo-scQ"/>
+                        <constraint firstAttribute="height" constant="20" id="ZrC-6E-VEW"/>
+                    </constraints>
+                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-LJ-VqM">
                     <rect key="frame" x="20" y="56" width="374" height="616"/>
                     <color key="backgroundColor" red="0.98039215686274506" green="0.88235294117647056" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,18 +85,12 @@
                         <outlet property="delegate" destination="-1" id="Skk-g4-xz9"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="Ou1-SL-5XI">
-                    <rect key="frame" x="26" y="31" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="20" id="RsZ-Xo-scQ"/>
-                        <constraint firstAttribute="height" constant="20" id="ZrC-6E-VEW"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="Ou1-SL-5XI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="5Mp-EJ-hwx"/>
+                <constraint firstAttribute="trailing" secondItem="y3p-wZ-Zru" secondAttribute="trailing" constant="40" id="7GS-WX-St3"/>
                 <constraint firstItem="ph7-Df-FlD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="DM8-7z-RSH"/>
                 <constraint firstItem="4J4-LJ-VqM" firstAttribute="trailing" secondItem="ph7-Df-FlD" secondAttribute="trailing" id="F5B-7Q-S58"/>
                 <constraint firstItem="Ynb-yz-oDn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JHE-op-tKA"/>
@@ -89,6 +102,7 @@
                 <constraint firstAttribute="trailing" secondItem="T3E-8H-9Ug" secondAttribute="trailing" id="boc-7a-Y62"/>
                 <constraint firstAttribute="trailing" secondItem="ph7-Df-FlD" secondAttribute="trailing" constant="20" id="j5X-7A-5Ld"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jdO-9A-HRU"/>
+                <constraint firstItem="Ynb-yz-oDn" firstAttribute="top" secondItem="y3p-wZ-Zru" secondAttribute="bottom" constant="8" id="lkZ-vr-vJg"/>
                 <constraint firstItem="Ou1-SL-5XI" firstAttribute="centerY" secondItem="ph7-Df-FlD" secondAttribute="centerY" id="mBU-cD-aLP"/>
                 <constraint firstItem="4J4-LJ-VqM" firstAttribute="leading" secondItem="ph7-Df-FlD" secondAttribute="leading" id="pvf-02-W0b"/>
                 <constraint firstItem="T3E-8H-9Ug" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wWu-ih-So9"/>
@@ -98,6 +112,7 @@
         </view>
     </objects>
     <resources>
+        <image name="currentLocation" width="44" height="44"/>
         <image name="search" width="72" height="72"/>
     </resources>
 </document>
