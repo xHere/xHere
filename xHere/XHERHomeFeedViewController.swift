@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-
+import SVProgressHUD
 var searchDistanceInMiles = 200.0
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate {
 
@@ -31,6 +31,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.setupRefreshControl()
         // Do any additional setup after loading the view.
         weak var weakSelf = self
+        
         self.callAPI {
             weakSelf?.updateTableView()
         }
@@ -52,6 +53,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     func callAPI(success:@escaping ()->()) {
         
+       SVProgressHUD.show()
+        
         let server = XHERServer.sharedInstance
         
         //Get unclaimed bounties nearby
@@ -60,25 +63,30 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             if error == nil {
                 print("lat = \(currentLocation?.latitude), long = \(currentLocation?.longitude)")
                 if let currentLocation = currentLocation {
+                    
                     self.userCurrentLocation = currentLocation
                     weak var weakSelf = self
                     server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
                             success: { (bountiesArray:[XHERBounty]?) in
                             
                                 if let strongSelf = weakSelf {
+                                   
                                     strongSelf.bountiesArray = bountiesArray
                                     
                                     server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
                                           success: { (claimedBountiesArray:[XHERBounty]?) in
                                                 weakSelf?.claimedBountiesArray = claimedBountiesArray
                                                 success()
+                                             SVProgressHUD.dismiss()
                                     },
                                           failure: { (error:Error?) in
+                                             SVProgressHUD.dismiss()
                                     })
   
                                 }
                     },
                             failure: { (error:Error?) in
+                                SVProgressHUD.dismiss()
                     })
                 }
             }

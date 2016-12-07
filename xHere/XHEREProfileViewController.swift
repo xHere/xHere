@@ -11,6 +11,9 @@ import Parse
 
 class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tokenLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var claimedButton: UIButton!
@@ -26,26 +29,47 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         getClaimedBounties(claimedButton)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    override func viewDidLayoutSubviews() {
+        //Some View config
+        self.imageProfile.layer.cornerRadius = self.imageProfile.frame.size.height/2
+        self.imageProfile.layer.borderWidth = 2
+        self.imageProfile.layer.borderColor = kXHERYellow.cgColor
+        
+    }
     
     func setUpView(){
-        let logOutButton = UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logOut(sender:)))
-        self.navigationItem.leftBarButtonItem = logOutButton
+        
+        
+//        let logOutButton = UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logOut(sender:)))
+        //self.navigationItem.leftBarButtonItem = logOutButton
         
         if currentUser?.coverPictureUrl != nil {
             let url = URL(string: (currentUser?.coverPictureUrl!)!)
             coverImage.clipsToBounds = true
             coverImage.setImageWith(url!)
         }
+        if currentUser?.profileImageUrl != nil{
+            
+            let url = (currentUser?.profileImageUrl!)!
+            imageProfile.clipsToBounds = true
+            imageProfile.setImageWith(url)
+            
+        }
+        let tokens = currentUser!.tokens
+        self.tokenLabel.text = "\(tokens)"
     }
     
     func setUpTableView(){
         tableView.dataSource = self;
         tableView.delegate = self
         tableView.estimatedRowHeight = 400
-//        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(XHERBountyViewCell.self, forCellReuseIdentifier: "XHERBountyViewCell")
-    }
     
+    }
   
     
   @IBAction func getPostedBounties(_ sender: AnyObject){

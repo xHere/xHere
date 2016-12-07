@@ -13,6 +13,10 @@ class XHERHomeTabBarViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var discoveryButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
+    
     var homeFeedNavi:UINavigationController!
     var homeFeedViewController:UIViewController!
     
@@ -70,20 +74,27 @@ class XHERHomeTabBarViewController: UIViewController {
     
     // MARK: - Tab Bar Button Actions
     @IBAction func touchOnHome(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        discoveryButton.isSelected = false
+        profileButton.isSelected = false
         self.contentVC = homeFeedNavi
     }
     
     
     @IBAction func touchOnDiscover(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        homeButton.isSelected = false
+        profileButton.isSelected = false
         self.contentVC = discoveryNavi
+        
     }
     
-    @IBAction func touchOnCamera(_ sender: UIButton) {
-        postContentViewController = FusumaCameraViewController()
-        self.present(postContentViewController!, animated: true, completion: nil)
-    }
-    
+       
     @IBAction func touchOnProfile(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        homeButton.isSelected = false
+        discoveryButton.isSelected = false
         self.contentVC = profileNavi
     }
     
