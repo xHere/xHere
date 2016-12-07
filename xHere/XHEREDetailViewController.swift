@@ -278,6 +278,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
                 return
             }
 
+        self.bountyNoteTextView.isUserInteractionEnabled = false
         weak var weakSelf = self
         server.postBountyBy(user: user, withNote: bountyNoteTextView.text!, atPOI: location, withTokenValue: 1, success: {
             print("Bounty posted successfully")
