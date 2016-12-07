@@ -114,6 +114,8 @@ class XHERServer: NSObject {
         bountyQuery.includeKey(kPFKeyMediaArray)
         bountyQuery.includeKey(kPFKeyClaimedByUser)
         bountyQuery.whereKey(kPFKeyBountyIsClaimed, equalTo: isClaimed)
+        
+        bountyQuery.order(byDescending: "createdAt")
         bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
             if error == nil {
@@ -186,6 +188,8 @@ class XHERServer: NSObject {
         bountyQuery.whereKey(postOrEarned.rawValue, equalTo: user)
         bountyQuery.includeKey(postOrEarned.rawValue)
         bountyQuery.includeKeys([kPFKeyMediaArray, kPFKeyPostedByUser, kPFKeyPOI, kPFKeyClaimedByUser])
+        
+        bountyQuery.order(byDescending: "createdAt")
         bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
             if error == nil {
