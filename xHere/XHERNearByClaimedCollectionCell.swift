@@ -39,5 +39,29 @@ class XHERNearByClaimedCollectionCell: UICollectionViewCell {
         customContentView.frame = self.contentView.bounds
         contentView.addSubview(customContentView)
     }
+    
+    func startSelectedAnimation(completion:@escaping (XHERNearByClaimedCollectionCell)->()) {
+        weak var weakSelf = self
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [],
+                                animations: {
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
+                                                       animations: {
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+                                                        
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
+                                                       animations: {
+                                                        weakSelf?.customContentView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                                    })
+                                    
+        },
+                                completion: { (didComplete:Bool) in
+                                    if let strongSelf = weakSelf {
+                                        completion(strongSelf)
+                                    }
+        })
         
+        
+    }
+
 }
