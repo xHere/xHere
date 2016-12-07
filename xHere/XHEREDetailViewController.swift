@@ -472,7 +472,7 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
             self.navigationController?.pushViewController(carouselViewController, animated: true)
         }
         
-//        self.navigationController?.pushViewController(carouselViewController, animated: true)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
