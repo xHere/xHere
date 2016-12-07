@@ -440,7 +440,7 @@ class XHERServer: NSObject {
                 let currentUser = PFUser.current() as! User
                 content.user = currentUser
                 
-                //Set Image
+                //Set Image®
                 if let image = image,
                     let imageData = UIImageJPEGRepresentation(image, 0.0),
                     let imageFile = PFFile(name:"newimage.jpeg", data:imageData) {
