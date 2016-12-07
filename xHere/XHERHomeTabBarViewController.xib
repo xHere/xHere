@@ -9,9 +9,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="xHERHomeTabBarViewController" customModule="xHere" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHERHomeTabBarViewController" customModule="xHere" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="HVO-vX-ZHH" id="xpc-D2-BlU"/>
+                <outlet property="discoveryButton" destination="o7x-Ci-Ls9" id="e4R-pW-NUe"/>
+                <outlet property="homeButton" destination="DUG-iC-fn3" id="kRX-NS-cHR"/>
+                <outlet property="profileButton" destination="s2S-lb-t14" id="jo1-dG-s6e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,23 +33,26 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qjr-Ad-EFf">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-iC-fn3">
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-iC-fn3">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="64"/>
-                                    <state key="normal" title="HOME"/>
+                                    <state key="normal" image="home"/>
+                                    <state key="selected" image="homeSelected"/>
                                     <connections>
                                         <action selector="touchOnHome:" destination="-1" eventType="touchUpInside" id="ZJp-VM-ZDq"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Ci-Ls9">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Ci-Ls9">
                                     <rect key="frame" x="125" y="0.0" width="125" height="64"/>
-                                    <state key="normal" title="DISCOVER"/>
+                                    <state key="normal" image="searchTab"/>
+                                    <state key="selected" image="searchSelected"/>
                                     <connections>
                                         <action selector="touchOnDiscover:" destination="-1" eventType="touchUpInside" id="hTg-4y-Dxl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-lb-t14">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-lb-t14">
                                     <rect key="frame" x="250" y="0.0" width="125" height="64"/>
-                                    <state key="normal" title="PROFILE"/>
+                                    <state key="normal" image="profileTab"/>
+                                    <state key="selected" image="profileSelected"/>
                                     <connections>
                                         <action selector="touchOnProfile:" destination="-1" eventType="touchUpInside" id="DFt-Vj-bum"/>
                                     </connections>
@@ -77,4 +83,12 @@
             <point key="canvasLocation" x="32.5" y="59.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="home" width="25" height="26"/>
+        <image name="homeSelected" width="25" height="26"/>
+        <image name="profileSelected" width="37" height="37"/>
+        <image name="profileTab" width="37" height="37"/>
+        <image name="searchSelected" width="25" height="25"/>
+        <image name="searchTab" width="26" height="27"/>
+    </resources>
 </document>
