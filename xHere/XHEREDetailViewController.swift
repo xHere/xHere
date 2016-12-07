@@ -319,23 +319,28 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         else if sender.state == .ended {
             
             weak var weakSelf = self
-            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [],
+            UIView.animateKeyframes(withDuration: 2, delay: 0, options: [],
                     animations: {
 
-                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5,
+//                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5,
+//                                           animations: {
+//                                            weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
+//                        })
+                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 2,
                                            animations: {
-                                            weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
+                                            weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 100, y: 100)
                         })
                         
-                        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5,
-                               animations: {
-                                weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                        })
+//                        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5,
+//                               animations: {
+//                                weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1, y: 1)
+//                        })
                         
             },
                     completion: { (didComplete:Bool) in
-                        self.startClaiming()
+                        weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1, y: 1)
             })
+            self.startClaiming()
         }
         
     }
@@ -355,7 +360,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         {
             let cameraViewController = CameraViewController(nibName: "CameraViewController", bundle: nil)
             cameraViewController.currentBounty = self.currentBounty
-            self.present(cameraViewController, animated: true, completion: nil)
+            self.present(cameraViewController, animated: false, completion: nil)
         }
     }
     
@@ -460,6 +465,13 @@ extension XHEREDetailViewController : UICollectionViewDelegate, UICollectionView
         let carouselViewController = CarouselViewController(nibName: "CarouselViewController", bundle: nil)
         carouselViewController.bounties = nearbyBounties!
         carouselViewController.currentIndex = indexPath.row
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! XHERNearByClaimedCollectionCell
+        
+        cell.startSelectedAnimation { (cell:XHERNearByClaimedCollectionCell) in
+            self.navigationController?.pushViewController(carouselViewController, animated: true)
+        }
+        
         self.navigationController?.pushViewController(carouselViewController, animated: true)
     }
     
