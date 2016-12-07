@@ -676,7 +676,6 @@
 					8B2B13D01DD117F200961683 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 76BC6YJE4F;
-						DevelopmentTeam = SDHBMW8ZGY;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1123,11 +1122,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 76BC6YJE4F;
-				DEVELOPMENT_TEAM = SDHBMW8ZGY;
 				INFOPLIST_FILE = xHere/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
+				PRODUCT_BUNDLE_IDENTIFIER = today1.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xHere/xHere-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1146,11 +1144,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 76BC6YJE4F;
-				DEVELOPMENT_TEAM = SDHBMW8ZGY;
 				INFOPLIST_FILE = xHere/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
+				PRODUCT_BUNDLE_IDENTIFIER = today1.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xHere/xHere-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
