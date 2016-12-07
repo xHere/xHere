@@ -51,6 +51,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
             let url = URL(string: (currentUser?.coverPictureUrl!)!)
             coverImage.clipsToBounds = true
             coverImage.setImageWith(url!)
+            coverImage.contentMode = .scaleAspectFill
         }
         if currentUser?.profileImageUrl != nil{
             

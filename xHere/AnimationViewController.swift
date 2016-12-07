@@ -28,8 +28,11 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        piggyImageView.image = UIImage(named: "piggy")
+
+        piggyImageView.contentMode = .scaleAspectFit
         addCoin(location: CGRect(x: 150, y: -30, width: view.frame.width * 0.14, height: view.frame.height * 0.14))
-        alertView.frame = CGRect(x: alertView.frame.origin.x, y: alertView.frame.origin.y, width: view.frame.width * 0.60, height: view.frame.height * 0.60)
+     
+
          createAnimatorStuff()
     }
     
@@ -73,8 +76,8 @@ class AnimationViewController: UIViewController {
         instantaneousPush?.setAngle( CGFloat(M_PI_2) , magnitude: 0.3);
 //        collison.translatesReferenceBoundsIntoBoundary = true
         animator?.addBehavior(collison)
-        gravity.gravityDirection = CGVector(dx: 0, dy: -1.0)
-        gravity.magnitude = 0.6
+        gravity.gravityDirection = CGVector(dx: 0, dy: 1.0)
+        gravity.magnitude = 0.3
         animator?.addBehavior(gravity)
         
     }
@@ -105,6 +108,7 @@ class AnimationViewController: UIViewController {
       
         gravity.action = {
 //  
+
             
             if (self.coin?.frame.origin.y)! <= CGFloat(3.0) {
                 self.gravity.gravityDirection = CGVector(dx: 0, dy: 1.0)
@@ -125,7 +129,6 @@ class AnimationViewController: UIViewController {
     }
     
     func createAlert() {
-        
         alertView.layer.cornerRadius = 10;
         alertView.layer.shadowColor = UIColor.black.cgColor;
         alertView.layer.shadowOffset = CGSize(width: 0, height: 5);
@@ -192,7 +195,7 @@ class AnimationViewController: UIViewController {
             
             if sender.state == UIGestureRecognizerState.began {
                 animator?.removeAllBehaviors()
-                
+                print(panLocationInAlertView.y)
                 let offset = UIOffsetMake(panLocationInAlertView.x - alertView.bounds.midX, panLocationInAlertView.y - alertView.bounds.midY);
                 attachmentBehavior = UIAttachmentBehavior(item: alertView, offsetFromCenter: offset, attachedToAnchor: panLocationInView)
                 
