@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +15,7 @@
                 <outlet property="contentView" destination="HVO-vX-ZHH" id="xpc-D2-BlU"/>
                 <outlet property="discoveryButton" destination="o7x-Ci-Ls9" id="e4R-pW-NUe"/>
                 <outlet property="homeButton" destination="DUG-iC-fn3" id="kRX-NS-cHR"/>
-                <outlet property="profileButton" destination="s2S-lb-t14" id="jo1-dG-s6e"/>
+                <outlet property="profileImageView" destination="ufU-Yb-sUW" id="lt4-yV-TRK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,13 +29,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJY-mi-IcX">
-                    <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qjr-Ad-EFf">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-iC-fn3">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="60"/>
                                     <state key="normal" image="home"/>
                                     <state key="selected" image="homeSelected"/>
                                     <connections>
@@ -42,28 +43,41 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7x-Ci-Ls9">
-                                    <rect key="frame" x="125" y="0.0" width="125" height="64"/>
+                                    <rect key="frame" x="125" y="0.0" width="125" height="60"/>
                                     <state key="normal" image="searchTab"/>
                                     <state key="selected" image="searchSelected"/>
                                     <connections>
                                         <action selector="touchOnDiscover:" destination="-1" eventType="touchUpInside" id="hTg-4y-Dxl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-lb-t14">
-                                    <rect key="frame" x="250" y="0.0" width="125" height="64"/>
-                                    <state key="normal" image="profileTab"/>
-                                    <state key="selected" image="profileSelected"/>
-                                    <connections>
-                                        <action selector="touchOnProfile:" destination="-1" eventType="touchUpInside" id="DFt-Vj-bum"/>
-                                    </connections>
-                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3n1-yd-xPs">
+                                    <rect key="frame" x="250" y="0.0" width="125" height="60"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ufU-Yb-sUW">
+                                            <rect key="frame" x="37.5" y="5" width="50" height="50"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="HSD-sy-eF9"/>
+                                                <constraint firstAttribute="width" secondItem="ufU-Yb-sUW" secondAttribute="height" multiplier="1:1" id="zTV-yN-gj4"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="KGz-ZD-xnz" appends="YES" id="tSi-GZ-1cJ"/>
+                                            </connections>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="ufU-Yb-sUW" firstAttribute="centerX" secondItem="3n1-yd-xPs" secondAttribute="centerX" id="3gj-5b-JXy"/>
+                                        <constraint firstItem="ufU-Yb-sUW" firstAttribute="centerY" secondItem="3n1-yd-xPs" secondAttribute="centerY" id="Mjg-bh-EhM"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.98039215686274506" green="0.88235294117647056" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="HsS-eX-cRD"/>
                         <constraint firstItem="Qjr-Ad-EFf" firstAttribute="top" secondItem="PJY-mi-IcX" secondAttribute="top" id="MYw-LJ-dHh"/>
+                        <constraint firstAttribute="height" constant="60" id="XaI-Cn-N7H"/>
                         <constraint firstItem="Qjr-Ad-EFf" firstAttribute="leading" secondItem="PJY-mi-IcX" secondAttribute="leading" id="Zk1-BW-7kb"/>
                         <constraint firstAttribute="bottom" secondItem="Qjr-Ad-EFf" secondAttribute="bottom" id="l95-X1-80x"/>
                         <constraint firstAttribute="trailing" secondItem="Qjr-Ad-EFf" secondAttribute="trailing" id="ls5-mg-IqQ"/>
@@ -82,12 +96,15 @@
             </constraints>
             <point key="canvasLocation" x="32.5" y="59.5"/>
         </view>
+        <tapGestureRecognizer id="KGz-ZD-xnz">
+            <connections>
+                <action selector="touchOnProfileImageView:" destination="-1" id="QbK-Lr-cRk"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="home" width="25" height="26"/>
         <image name="homeSelected" width="25" height="26"/>
-        <image name="profileSelected" width="37" height="37"/>
-        <image name="profileTab" width="37" height="37"/>
         <image name="searchSelected" width="25" height="25"/>
         <image name="searchTab" width="26" height="27"/>
     </resources>
