@@ -22,6 +22,7 @@ class XHERELocationRequestViewController: UIViewController,STLocationRequestCont
         locationRequestController.authorizeType = .requestAlwaysAuthorization
         locationRequestController.delegate = self
         //locationRequestController.present(onViewController: self)
+        locationRequestController.view.frame = self.view.frame
         self.view.addSubview(locationRequestController.view)
 
         
