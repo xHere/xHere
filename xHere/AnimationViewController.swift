@@ -167,9 +167,10 @@ class AnimationViewController: UIViewController {
                 self.alertView = nil
                 let homeTabBarVC = XHERHomeTabBarViewController()
 //                self.present(homeTabBarVC, animated: true, completion: nil)
-                
+                let imageDic = ["claimedImage":self.claimedImage]
                 let notificationName = Notification.Name("CompletedClaiming")
-                NotificationCenter.default.post(name: notificationName, object: self)
+//                NotificationCenter.default.post(name: notificationName, object: imageDic)
+                NotificationCenter.default.post(name: notificationName, object: nil, userInfo: imageDic)
 
         })
         

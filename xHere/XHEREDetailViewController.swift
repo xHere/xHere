@@ -58,14 +58,37 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         self.setupView()
         getNearByClaimedBounties()
         
+        
         let notificationName = Notification.Name("CompletedClaiming")
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
     }
     
     func didCompleteClaiming(sender:Any) {
         
-//        self.currentBounty
+        let notification = sender as! Notification
+        
+        
+        let claimedImage = notification.userInfo?["claimedImage"]!
+        
+        self.claimBountyCameraButtonView.isHidden = true
+        self.claimedBountyImageView.alpha = 0
+        self.claimedBountyImageView.image = claimedImage as! UIImage?
+        
+        
+        self.dismiss(animated: true, completion: {
+            weak var weakSelf = self
+            UIView.animate(withDuration: 5,
+                           animations: {
+                            weakSelf?.claimedBountyImageView.alpha = 1
+            },
+                           completion: { (didComplete:Bool) in
+                            
+            })
+        })
+
+        
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,6 +102,9 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidLayoutSubviews() {
+        
+        self.scrollView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
+        
         //Some View config
         self.postUserProfileImageView.layer.cornerRadius = self.postUserProfileImageView.frame.size.height/2
         print("     ImageViewHeight = \(self.postUserProfileImageView.frame.size.height)")
@@ -235,10 +261,50 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    @IBAction func userDidLongPress(_ sender: UILongPressGestureRecognizer) {
-        self.startClaiming()
-    }
 
+    @IBAction func tapOnCameraButtonView(_ sender: UITapGestureRecognizer) {
+    
+        
+        if sender.state == .began {
+            
+            weak var weakSelf = self
+            UIView.animateKeyframes(withDuration: 0.2, delay: 0, options: [],
+                    animations: {
+                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
+                               animations: {
+                                weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+                        })
+
+
+            },
+                    completion: { (didComplete:Bool) in
+                        
+            })
+            
+        }
+        else if sender.state == .ended {
+            
+            weak var weakSelf = self
+            UIView.animateKeyframes(withDuration: 1, delay: 0, options: [],
+                    animations: {
+
+                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5,
+                                           animations: {
+                                            weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
+                        })
+                        
+                        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5,
+                               animations: {
+                                weakSelf?.claimBountyCameraButtonView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                        })
+                        
+            },
+                    completion: { (didComplete:Bool) in
+                        self.startClaiming()
+            })
+        }
+        
+    }
     // MARK: - ImagePicker Activate & Delegates
     @IBAction func initClaim(_ sender: UIButton) {
         self.startClaiming()

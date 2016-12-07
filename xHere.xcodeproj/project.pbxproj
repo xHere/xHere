@@ -682,8 +682,6 @@
 					8B2B13D01DD117F200961683 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = SDHBMW8ZGY;
-						DevelopmentTeam = 25UQP5NM3X;
-						DevelopmentTeam = 76BC6YJE4F;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1132,10 +1130,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = SDHBMW8ZGY;
-				DEVELOPMENT_TEAM = 25UQP5NM3X;
-				DEVELOPMENT_TEAM = 76BC6YJE4F;
 				INFOPLIST_FILE = xHere/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1156,10 +1152,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = SDHBMW8ZGY;
-				DEVELOPMENT_TEAM = 25UQP5NM3X;
-				DEVELOPMENT_TEAM = 76BC6YJE4F;
 				INFOPLIST_FILE = xHere/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
