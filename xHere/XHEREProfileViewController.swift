@@ -19,18 +19,23 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var claimedButton: UIButton!
     let currentUser = User.current()
     @IBOutlet weak var postedButton: UIButton!
-    var userBounties = [XHERBounty]()
-    var claimedSelected = true
-    var postedSelected = false
+    var claimedBounties = [XHERBounty]()
+    var postedBouties = [XHERBounty]()
+    let refreshControl = UIRefreshControl()
+    var isClaimed = true
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
         setUpTableView()
-        getClaimedBounties(claimedButton)
+        setupRefreshControl()
+        self.animationButton(btn: claimedButton)
+        self.getClaimedBouties(isRefresh: false)
+        self.getPostedBounties(isRefresh: false)
         
     }
     override func viewWillAppear(_ animated: Bool) {
         
+    
         self.navigationController?.navigationBar.isHidden = true
     }
     override func viewDidLayoutSubviews() {
@@ -74,79 +79,48 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self;
         tableView.delegate = self
         tableView.estimatedRowHeight = 400
-        tableView.register(XHERBountyViewCell.self, forCellReuseIdentifier: "XHERBountyViewCell")
+        //tableView.register(XHERBountyViewCell.self, forCellReuseIdentifier: "XHERBountyViewCell")
+        self.tableView.register(XHerHomeFeedUnclaimedBountyCell.self, forCellReuseIdentifier: "XHerHomeFeedUnclaimedBountyCell")
+        tableView.tableFooterView = UIView()
     
+    }
+    func setupRefreshControl() {
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        
+       
+        if isClaimed{
+            
+            self.getClaimedBouties(isRefresh: true)
+        }else{
+            self.getPostedBounties(isRefresh: true)
+        }
     }
   
     
   @IBAction func getPostedBounties(_ sender: AnyObject){
     
-//    self.claimedButton.isSelected = false
-//    self.postedButton.isSelected = true
+
+    isClaimed = false
+     self.claimedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+    self.animationButton(btn: postedButton)
+    self.tableView.reloadData()
     
-    self.claimedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-    UIView.animate(withDuration: 0.6 ,
-                               animations: {
-                                self.postedButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-    },
-                               completion: { finish in
-                                UIView.animate(withDuration: 0.6){
-                                    //self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                                }
-    })
-    SVProgressHUD.show()
-        XHERServer.sharedInstance.fetchBountyPostedBy(user: currentUser!, success: { (bounties: [XHERBounty]?) in
-            SVProgressHUD.dismiss()
-            if bounties != nil{
-                
-                if (bounties?.count)! > 0 {
-                    self.userBounties = bounties!
-                }
-                else {
-                    self.userBounties = []
-                }
-            }
-            
-            
-            self.tableView.reloadData()
-            
-            
-           
-        }) { (error: Error?) in
-            print(error)
-        }
     }
+    
     
     @IBAction func getClaimedBounties(_ sender: AnyObject){
         
+        isClaimed = true
         self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        UIView.animate(withDuration: 0.6 ,
-                       animations: {
-                        self.claimedButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        },
-                       completion: { finish in
-                        UIView.animate(withDuration: 0.6){
-                            //self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                        }
-        })
-        self.claimedButton.isSelected = true
-        self.postedButton.isSelected = false
-        SVProgressHUD.show()
-        XHERServer.sharedInstance.fetchBountyEarneddBy(user: currentUser!, success: { (bounties : [XHERBounty]?) in
-            SVProgressHUD.dismiss()
-            if let bounties = bounties {
         
-                self.userBounties = bounties
-            }
-            else {
-                self.userBounties = []
-            }
-            self.tableView.reloadData()
-            
-            
-        }) { (error: Error?) in
-                print(error?.localizedDescription)
-        }
+       self.animationButton(btn: claimedButton)
+        self.tableView.reloadData()
+        
     }
     
      @IBAction func  logOut(sender:UIButton) {
@@ -158,12 +132,23 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.userBounties != nil {
-            return userBounties.count
+        
+        if isClaimed{
+            if self.claimedBounties != nil {
+                return claimedBounties.count
+            }
+            else{
+                return 0
+            }
+        }else{
+            if self.postedBouties != nil {
+                return postedBouties.count
+            }
+            else{
+                return 0
+            }
         }
-        else{
-            return 0
-        }
+        
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -188,10 +173,98 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "XHERBountyViewCell", for: indexPath) as! XHERBountyViewCell
-        let bounty = userBounties[indexPath.row]
-        cell.bounty = bounty
-        return cell
+        
+        
+        
+            let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
+        
+        let bounty : XHERBounty
+            if isClaimed{
+                cell.claimITLabel.isHidden = false
+                bounty = self.claimedBounties[indexPath.row]
+            }else{
+                cell.claimITLabel.isHidden = true
+                bounty = self.postedBouties[indexPath.row]
+            }
+        
+        
+            cell.distanceLabel.isHidden = true
+
+            cell.bounty = bounty
+        
+        
+        
+            return cell
+       
+        
+        
+
     }
+    func animationButton(btn : UIButton){
+        UIView.animate(withDuration: 0.6 ,
+                       animations: {
+                        btn.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        },
+                       completion: { finish in
+                        UIView.animate(withDuration: 0.6){
+                            //self.postedButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        }
+        })
+    }
+    func getClaimedBouties(isRefresh : Bool){
+        if !isRefresh{
+            SVProgressHUD.show()
+        }
+        
+        XHERServer.sharedInstance.fetchBountyEarneddBy(user: currentUser!, success: { (bounties : [XHERBounty]?) in
+            SVProgressHUD.dismiss()
+            self.refreshControl.endRefreshing()
+            if let bounties = bounties {
+                
+                self.claimedBounties = bounties
+            }
+            else {
+                self.claimedBounties = []
+            }
+            
+            self.tableView.reloadData()
+            
+            
+        }) { (error: Error?) in
+            print(error?.localizedDescription)
+        }
+    }
+    func getPostedBounties(isRefresh : Bool){
+        
+        if !isRefresh{
+            SVProgressHUD.show()
+        }
+
+        XHERServer.sharedInstance.fetchBountyPostedBy(user: currentUser!, success: { (bounties: [XHERBounty]?) in
+            SVProgressHUD.dismiss()
+            self.refreshControl.endRefreshing()
+            if bounties != nil{
+                
+                if (bounties?.count)! > 0 {
+                    self.postedBouties = bounties!
+                }
+                else {
+                    self.postedBouties = []
+                }
+            }
+            
+            
+            if isRefresh{
+                 self.tableView.reloadData()
+            }
+           
+            
+            
+            
+        }) { (error: Error?) in
+            print(error)
+        }
+    }
+    
     
 }

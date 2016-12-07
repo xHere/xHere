@@ -48,6 +48,8 @@
 		8BA7D2241DD92F9A0002C848 /* POIViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */; };
 		8BA7D2251DD92F9A0002C848 /* POIViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */; };
 		8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFFAB81DDA57D200A7517E /* XHERServer.swift */; };
+		8BCA9C531DF8B4410011DE6D /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA9C521DF8B4410011DE6D /* NavigationTitleView.swift */; };
+		8BCA9C551DF8B4510011DE6D /* NavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCA9C541DF8B4510011DE6D /* NavigationTitleView.xib */; };
 		8BEC43B31DD950B700244F11 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AE1DD950B700244F11 /* Comment.swift */; };
 		8BEC43B41DD950B700244F11 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AF1DD950B700244F11 /* Content.swift */; };
 		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
@@ -160,6 +162,8 @@
 		8BA7D2221DD92F9A0002C848 /* POIViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewCell.swift; sourceTree = "<group>"; };
 		8BA7D2231DD92F9A0002C848 /* POIViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = POIViewCell.xib; sourceTree = "<group>"; };
 		8BAFFAB81DDA57D200A7517E /* XHERServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERServer.swift; sourceTree = "<group>"; };
+		8BCA9C521DF8B4410011DE6D /* NavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
+		8BCA9C541DF8B4510011DE6D /* NavigationTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationTitleView.xib; sourceTree = "<group>"; };
 		8BEC43AE1DD950B700244F11 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8BEC43AF1DD950B700244F11 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 		8B2B13D31DD117F200961683 /* xHere */ = {
 			isa = PBXGroup;
 			children = (
+				8BCA9C521DF8B4410011DE6D /* NavigationTitleView.swift */,
+				8BCA9C541DF8B4510011DE6D /* NavigationTitleView.xib */,
 				93F9259F1DF6CBC5000E7D60 /* Location Request */,
 				99F0F7A21DF4E22B0019288D /* Claimed Animation */,
 				993E46311DF15060009D6214 /* Carousel View Controller */,
@@ -729,6 +735,7 @@
 				939AF89D1DEFFF88008775F7 /* LocationCollectionViewCell.xib in Resources */,
 				8BA7D2161DD9268C0002C848 /* XHERDiscoveryViewController.xib in Resources */,
 				8BA3CBE21DD90BF500728209 /* PBJVisionCameraViewController.xib in Resources */,
+				8BCA9C551DF8B4510011DE6D /* NavigationTitleView.xib in Resources */,
 				8B34EB051DF5099F00150F6B /* XHERHomeFeedHeaderView.xib in Resources */,
 				8B2B13DF1DD117F200961683 /* Assets.xcassets in Resources */,
 				997E28391DDFBDC1004A5105 /* loginInput.xib in Resources */,
@@ -916,6 +923,7 @@
 				8B29FE471DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift in Sources */,
 				9376705E1DE4E60D00576199 /* XHEREPostBountyViewController.swift in Sources */,
 				8BA0E7301DDE92D600CD73E2 /* XHERNearByClaimedCollectionCell.swift in Sources */,
+				8BCA9C531DF8B4410011DE6D /* NavigationTitleView.swift in Sources */,
 				9926540B1DECE05000A10614 /* XHEREProfileViewController.swift in Sources */,
 				8BA7D2151DD9268C0002C848 /* XHERDiscoveryViewController.swift in Sources */,
 				937670591DE4CCED00576199 /* XHERENeabyBountiesViewController.swift in Sources */,

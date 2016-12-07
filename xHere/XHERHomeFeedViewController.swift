@@ -25,7 +25,14 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "HOME"
+//        self.title = "HOME"
+        let appLogo = UIImage(named: "xhere_logo")
+        let appLogoImageView = UIImageView(image: appLogo)
+        appLogoImageView.contentMode = .scaleAspectFit
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        appLogoImageView.frame = titleView.bounds
+        titleView.addSubview(appLogoImageView)
+        self.navigationItem.titleView = titleView
         
         self.setupTableView()
         self.setupRefreshControl()

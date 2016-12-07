@@ -15,7 +15,7 @@ class XHERHomeTabBarViewController: UIViewController {
     
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var discoveryButton: UIButton!
-    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     var homeFeedNavi:UINavigationController!
     var homeFeedViewController:UIViewController!
@@ -51,6 +51,14 @@ class XHERHomeTabBarViewController: UIViewController {
         
         self.setupContainedControllers()
         // Do any additional setup after loading the view.
+        
+        let currentUser = PFUser.current() as! User
+        profileImageView.layer.cornerRadius = profileImageView.bounds.size.height/2
+        profileImageView.layer.borderColor = UIColor.gray.cgColor
+        profileImageView.layer.borderWidth = 2
+        profileImageView.setImageWith(currentUser.profileImageUrl!)
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,7 +86,6 @@ class XHERHomeTabBarViewController: UIViewController {
     @IBAction func touchOnHome(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         discoveryButton.isSelected = false
-        profileButton.isSelected = false
         self.contentVC = homeFeedNavi
     }
     
@@ -87,7 +94,6 @@ class XHERHomeTabBarViewController: UIViewController {
         
         sender.isSelected = !sender.isSelected
         homeButton.isSelected = false
-        profileButton.isSelected = false
         self.contentVC = discoveryNavi
         
     }
@@ -101,6 +107,31 @@ class XHERHomeTabBarViewController: UIViewController {
     }
     
     
+    @IBAction func touchOnProfileImageView(_ sender: Any) {
+        
+        
+        homeButton.isSelected = false
+        discoveryButton.isSelected = false
+        
+        weak var weakSelf = self
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [],
+                                animations: {
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
+                                                       animations: {
+                                                        weakSelf?.profileImageView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+                                                        
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
+                                                       animations: {
+                                                        weakSelf?.profileImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                                    })
+                                    
+        },
+                                completion: { (didComplete:Bool) in
+                                    weakSelf?.contentVC = weakSelf?.profileNavi
+
+        })
+    }
     
     
     /*
