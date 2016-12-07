@@ -14,6 +14,7 @@ target 'xHere' do
    pod 'iCarousel'
    pod 'STLocationRequest'
    pod 'SVProgressHUD'
+   pod 'UITextView+Placeholder', '~> 1.2'
   
   target 'xHereTests' do
     inherit! :search_paths

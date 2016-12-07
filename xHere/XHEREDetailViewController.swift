@@ -49,13 +49,21 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
     var nearbyBounties : [XHERBounty]?
 
     
-    let debugging = true
+    let debugging = false
     var server = XHERServer.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
         getNearByClaimedBounties()
+        
+        let notificationName = Notification.Name("CompletedClaiming")
+        NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
+    }
+    
+    func didCompleteClaiming(sender:Any) {
+        
+        self.currentBounty
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +132,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
 
         
         //Hide Claim related elements
-        self.claimBountyPanel.isHidden = false
+        self.claimBountyPanel.isHidden = true
         self.claimBountyButtonPanel.isHidden = true
         self.bountyNote.isHidden = true
         self.claimBountyPanel.isHidden = true
@@ -145,7 +153,16 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
             if let imageURL = postUser?.profileImageUrl {
                 self.postUserProfileImageView.setImageWith(imageURL)
             }
-            postUserNameLabel.text = postUser?.firstName
+            else {
+                self.postUserProfileImageView.isHidden = true
+            }
+            
+            if let postUserName = postUser?.firstName {
+                postUserNameLabel.text = postUserName
+            }
+            else {
+                postUserNameLabel.isHidden = true
+            }
             
             //Claim User View
             let currentUser = PFUser.current() as! User
@@ -175,12 +192,18 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         postBountyButtonPanel.isHidden = true
         claimBountyButtonPanel.isHidden = true
         
-        //If there is claimed bounty image show that or show poi image
-        if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
-            let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
-        {
-            claimedBountyImageView.setImageWith(bountyClaimedImageURL)
+        if currentBounty.isClaimed {
+            //If there is claimed bounty image show that or show poi image
+            if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
+                let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
+            {
+                claimedBountyImageView.setImageWith(bountyClaimedImageURL)
+            }
         }
+        else {
+            self.claimBountyPanel.isHidden = true
+        }
+        
     }
 
     
@@ -204,10 +227,16 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    @IBAction func userDidLongPress(_ sender: UILongPressGestureRecognizer) {
+        self.startClaiming()
+    }
 
     // MARK: - ImagePicker Activate & Delegates
     @IBAction func initClaim(_ sender: UIButton) {
-        
+        self.startClaiming()
+    }
+    
+    func startClaiming() {
         if(debugging){
             let picker = UIImagePickerController()
             picker.delegate = self

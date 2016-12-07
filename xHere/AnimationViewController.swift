@@ -178,7 +178,11 @@ class AnimationViewController: UIViewController {
                 self.alertView.removeFromSuperview()
                 self.alertView = nil
                 let homeTabBarVC = XHERHomeTabBarViewController()
-                self.present(homeTabBarVC, animated: true, completion: nil)
+//                self.present(homeTabBarVC, animated: true, completion: nil)
+                
+                let notificationName = Notification.Name("CompletedClaiming")
+                NotificationCenter.default.post(name: notificationName, object: self)
+
         })
         
     }
