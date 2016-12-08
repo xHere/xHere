@@ -133,7 +133,7 @@ class XHERServer: NSObject {
                         if let distanceFromCurrentInMiles = bounty.postedAtLocation.geoPoint?.distanceInMiles(to: location) {
                             bounty.postedAtLocation.distanceFromCurrentInMiles = distanceFromCurrentInMiles
                         }
-                        
+                        print("fetchBountyNear POI Name\(bounty.postedAtLocation.placeName)")
                         bountyArrayTyped.append(bounty)
                     }
                     
@@ -188,8 +188,11 @@ class XHERServer: NSObject {
         let bountyQuery = PFQuery(className: kPFClassBounty)
         bountyQuery.whereKey(postOrEarned.rawValue, equalTo: user)
         bountyQuery.includeKey(postOrEarned.rawValue)
-        bountyQuery.includeKeys([kPFKeyMediaArray, kPFKeyPostedByUser, kPFKeyPOI, kPFKeyClaimedByUser])
-        
+
+        bountyQuery.includeKey(kPFKeyPOI)
+        bountyQuery.includeKey(kPFKeyPostedByUser)
+        bountyQuery.includeKey(kPFKeyMediaArray)
+        bountyQuery.includeKey(kPFKeyClaimedByUser)
         bountyQuery.order(byDescending: "createdAt")
         bountyQuery.findObjectsInBackground { (bountiesArray:[PFObject]?, error:Error?) in
             
@@ -201,7 +204,7 @@ class XHERServer: NSObject {
                     var bountyArrayTyped = [XHERBounty]()
                     for object in bountiesArray {
                         let bounty = object as! XHERBounty
-                        
+                        print("fetchRelatedTo POI Name\(bounty.postedAtLocation.placeName)")
                         bountyArrayTyped.append(bounty)
                     }
                     

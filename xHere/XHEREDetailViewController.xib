@@ -69,19 +69,12 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMz-2q-7WX">
-                                                            <rect key="frame" x="132" y="0.0" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="TLH-lO-qHv" firstAttribute="height" secondItem="Km4-jg-oYi" secondAttribute="height" id="EH0-3j-yE9"/>
                                                         <constraint firstAttribute="bottom" secondItem="TLH-lO-qHv" secondAttribute="bottom" id="WuH-Zk-q7X"/>
                                                         <constraint firstAttribute="trailing" secondItem="TLH-lO-qHv" secondAttribute="trailing" constant="10" id="akt-2g-32S"/>
-                                                        <constraint firstItem="OMz-2q-7WX" firstAttribute="centerY" secondItem="TLH-lO-qHv" secondAttribute="centerY" id="irC-Gi-tYR"/>
                                                         <constraint firstItem="TLH-lO-qHv" firstAttribute="top" secondItem="Km4-jg-oYi" secondAttribute="top" id="ppw-Pa-ou1"/>
                                                         <constraint firstItem="TLH-lO-qHv" firstAttribute="leading" secondItem="Km4-jg-oYi" secondAttribute="leading" constant="10" id="wYM-SY-nH4"/>
                                                     </constraints>
