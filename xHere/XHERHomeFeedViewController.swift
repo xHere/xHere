@@ -43,7 +43,21 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.callAPI {
             weakSelf?.updateTableView()
         }
+        
+        let notificationName = Notification.Name("CompletedClaiming")
+        NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
+        
     }
+    
+    func didCompleteClaiming(sender:Any) {
+        weak var weakSelf = self
+        self.callAPI {
+            weakSelf?.updateTableView()
+        }
+
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
 

@@ -36,8 +36,15 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
 //        profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        
+        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "backButtonBlackArrow"), style: .plain, target: self, action: #selector(touchOnBack))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     
+    func touchOnBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     public func numberOfItems(in carousel: iCarousel) -> Int {
         if let bounties =  bounties {
@@ -65,7 +72,7 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
                 }
             }
         
-        print(bounties?[index].claimedByUser!.email)
+        //print(bounties?[index].claimedByUser!.email)
 //        self.userNameLabel.text = bounties?[index].claimedByUser?.username!
         return itemView
     }
@@ -102,7 +109,10 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
         var currentIndex = carousel.currentItemIndex
         userNameLabel.text = bounties?[currentIndex].claimedByUser?.firstName
         print(bounties?[0].claimedByUser?.profileImageUrl)
-        profileImageView.setImageWith((bounties?[currentIndex].claimedByUser?.profileImageUrl)!)
+        if  (bounties?[currentIndex].claimedByUser?.profileImageUrl) != nil{
+             profileImageView.setImageWith((bounties?[currentIndex].claimedByUser?.profileImageUrl)!)
+        }
+       
         setupBackground(currentIndex: currentIndex)
     }
     

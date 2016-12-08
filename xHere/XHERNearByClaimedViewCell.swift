@@ -110,7 +110,7 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let collectionCell = cell as! XHERHomeFeedNearByClaimedCollectionCell
-        collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2        
+        collectionCell.imageView.layer.cornerRadius = collectionCell.bounds.size.height/2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

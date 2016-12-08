@@ -255,6 +255,14 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         postBountyButtonPanel.isHidden = true
         claimBountyButtonPanel.isHidden = true
         
+        
+        //Claim User View
+        let claimedUser = currentBounty.claimedByUser
+        if let imageURL = claimedUser?.profileImageUrl {
+            self.claimUserProfileImage.setImageWith(imageURL)
+        }
+        claimUserNameLabel.text = claimedUser?.firstName
+        
         if currentBounty.isClaimed {
             //If there is claimed bounty image show that or show poi image
             if let bountyClaimedImageURLStr = currentBounty.mediaArray?[0].mediaData?.url,
