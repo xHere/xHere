@@ -30,14 +30,16 @@
                     <subviews>
                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drK-YS-Y3m">
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7X-Ux-Ohw">
-                                    <frame key="frameInset" minX="143" minY="2" width="30" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7X-Ux-Ohw">
                                     <state key="normal" title="Ok"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="t7X-Ux-Ohw" firstAttribute="centerY" secondItem="drK-YS-Y3m" secondAttribute="centerY" id="ecL-id-nZf"/>
+                                <constraint firstItem="t7X-Ux-Ohw" firstAttribute="centerX" secondItem="drK-YS-Y3m" secondAttribute="centerX" id="usM-1o-AaB"/>
+                            </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIMED!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQr-3G-cJN">
                             <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="36"/>
@@ -108,7 +110,6 @@
                 <constraint firstItem="uK9-AP-ggQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9ZI-28-dkq"/>
                 <constraint firstAttribute="bottom" secondItem="uK9-AP-ggQ" secondAttribute="bottom" id="CJl-FP-gDU"/>
                 <constraint firstItem="JNh-Je-cw6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CYm-SV-9MX"/>
-                <constraint firstAttribute="trailing" secondItem="JNh-Je-cw6" secondAttribute="trailing" constant="20" id="izG-Rh-2Fo"/>
                 <constraint firstItem="JNh-Je-cw6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="qDB-JH-JYP"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="66.5"/>
