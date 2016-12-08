@@ -25,7 +25,6 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxx-9q-pAM">
-                    <color key="backgroundColor" red="0.98597460989999997" green="0.0" blue="0.052109248939999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="FOw-4L-C5v"/>
                         <constraint firstAttribute="height" constant="581" id="fwp-pH-WxX"/>
