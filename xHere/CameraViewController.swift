@@ -234,6 +234,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.stopFlipping = true
                 let animationView = AnimationViewController()
                 animationView.claimedImage = self.imagePreviewView.image
+                self.coin?.isHidden = true
                 self.present(animationView, animated: true, completion: nil)
                 
             }
