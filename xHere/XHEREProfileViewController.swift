@@ -176,11 +176,11 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         
         
         
-            let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
         
         let bounty : XHERBounty
             if isClaimed{
-                cell.claimITLabel.isHidden = false
+                cell.claimITLabel.isHidden = false 
                 bounty = self.claimedBounties[indexPath.row]
             }else{
                 cell.claimITLabel.isHidden = true
@@ -189,7 +189,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         
         
             cell.distanceLabel.isHidden = true
-
+print("cell for row at index \(bounty.postedAtLocation.placeName)")
             cell.bounty = bounty
         
         

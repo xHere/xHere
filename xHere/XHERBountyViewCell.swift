@@ -49,7 +49,8 @@ class XHERBountyViewCell: UITableViewCell {
             //Location info
             let distance = self.roundToPlaces(value: bounty.postedAtLocation.distanceFromCurrentInMiles, decimalPlaces: 2)
             self.distanceLabel.text = "\(distance) mi"
-            self.locationTitleLabel.text = bounty.postedAtLocation.title
+            print("Bonty place name \(bounty.postedAtLocation.placeName)")
+            self.locationTitleLabel.text = bounty.postedAtLocation.placeName
             
             
             //Bounty info
