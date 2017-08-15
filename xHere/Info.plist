@@ -51,6 +51,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Use Camera?</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow use of your location when using the app?</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow use of your location always?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Use Your Location?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
