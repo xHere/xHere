@@ -42,7 +42,9 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         didSet {
             if let nearByClaimedArray = nearByClaimedArray {
                 
-                let firstTenBounties = nearByClaimedArray[0...20]
+                
+                
+                let firstTenBounties = nearByClaimedArray[0...nearByClaimedArray.count%10]
                 
                 collectionViewDataBackArray = Array(firstTenBounties)
                 self.collectionView.reloadData()
