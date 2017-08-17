@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import SVProgressHUD
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
@@ -33,7 +32,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     var tableViewDataBackArray = [XHERBounty]()
     var tableViewDataBackArrayFar = [XHERBounty]()
     
-    var userCurrentLocation:PFGeoPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
