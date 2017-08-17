@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol XHERNearByClaimedViewCellDelegate {
-    func userDidSwipeCollectionViewTo(offset:CGFloat)
+    @objc optional func userDidSwipeCollectionViewTo(offset:CGFloat)
     func userDidChoose(claimedBounty:XHERBounty)
 }
 
@@ -125,7 +125,7 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetPercentIntoSecondPage = scrollView.contentOffset.x / scrollView.bounds.width
         
-        delegate?.userDidSwipeCollectionViewTo(offset: offSetPercentIntoSecondPage)
+        delegate?.userDidSwipeCollectionViewTo!(offset: offSetPercentIntoSecondPage)
     }
     
 }
