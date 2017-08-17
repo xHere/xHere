@@ -306,7 +306,7 @@ private class FontLoader {
                 let font = CGFont(provider!)
                 
                 var error: Unmanaged<CFError>?
-                if !CTFontManagerRegisterGraphicsFont(font, &error) {
+            if !CTFontManagerRegisterGraphicsFont(font!, &error) {
                     
                     let errorDescription: CFString = CFErrorCopyDescription(error!.takeUnretainedValue())
                     let nsError = error!.takeUnretainedValue() as AnyObject as! NSError

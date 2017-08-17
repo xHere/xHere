@@ -191,14 +191,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice {
+    func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices()
         for device in devices! {
             if((device as AnyObject).position == position){
                 return device as! AVCaptureDevice
             }
         }
-        return AVCaptureDevice()
+        return nil
     }
     
     @IBAction func postPicture(_ sender: AnyObject) {
