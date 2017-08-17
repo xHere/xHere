@@ -50,6 +50,7 @@
 		8BAFFAB91DDA57D200A7517E /* XHERServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFFAB81DDA57D200A7517E /* XHERServer.swift */; };
 		8BCA9C531DF8B4410011DE6D /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCA9C521DF8B4410011DE6D /* NavigationTitleView.swift */; };
 		8BCA9C551DF8B4510011DE6D /* NavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCA9C541DF8B4510011DE6D /* NavigationTitleView.xib */; };
+		8BE2CAF51F44FC5800A7302E /* XHERHomeFeedVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE2CAF41F44FC5800A7302E /* XHERHomeFeedVCModel.swift */; };
 		8BEC43B31DD950B700244F11 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AE1DD950B700244F11 /* Comment.swift */; };
 		8BEC43B41DD950B700244F11 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43AF1DD950B700244F11 /* Content.swift */; };
 		8BEC43B51DD950B700244F11 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEC43B01DD950B700244F11 /* Media.swift */; };
@@ -164,6 +165,7 @@
 		8BAFFAB81DDA57D200A7517E /* XHERServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERServer.swift; sourceTree = "<group>"; };
 		8BCA9C521DF8B4410011DE6D /* NavigationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		8BCA9C541DF8B4510011DE6D /* NavigationTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationTitleView.xib; sourceTree = "<group>"; };
+		8BE2CAF41F44FC5800A7302E /* XHERHomeFeedVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedVCModel.swift; sourceTree = "<group>"; };
 		8BEC43AE1DD950B700244F11 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8BEC43AF1DD950B700244F11 /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		8BEC43B01DD950B700244F11 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
@@ -352,8 +354,8 @@
 		8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */,
 				8B4BCC821DD8FB5200FACD79 /* XHERHomeTabBarViewController.swift */,
+				8B4BCC831DD8FB5200FACD79 /* XHERHomeTabBarViewController.xib */,
 			);
 			name = "Home TabBar ViewController";
 			sourceTree = "<group>";
@@ -431,6 +433,7 @@
 				8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */,
 				8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */,
 				8B52B4C61DF287BB0045230A /* XHerHomeFeedUnclaimedBountyCell.swift */,
+				8BE2CAF41F44FC5800A7302E /* XHERHomeFeedVCModel.swift */,
 				8BA0E72B1DDE8D3000CD73E2 /* NearBy Claimed Cell */,
 			);
 			name = "Home Feed ViewController";
@@ -681,7 +684,7 @@
 				TargetAttributes = {
 					8B2B13D01DD117F200961683 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 25UQP5NM3X;
+						DevelopmentTeam = SDHBMW8ZGY;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -951,6 +954,7 @@
 				939AF8971DEE184E008775F7 /* XHEREAutoCompleteCell.swift in Sources */,
 				934A75CF1DF2030700525331 /* XHEREPinDetails.swift in Sources */,
 				8BEC43B41DD950B700244F11 /* Content.swift in Sources */,
+				8BE2CAF51F44FC5800A7302E /* XHERHomeFeedVCModel.swift in Sources */,
 				99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */,
 				8BA0E7291DDE8D2C00CD73E2 /* XHERNearByClaimedViewCell.swift in Sources */,
 				8BA7D21A1DD926CC0002C848 /* XHERHomeFeedViewController.swift in Sources */,
@@ -1129,7 +1133,7 @@
 				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 25UQP5NM3X;
+				DEVELOPMENT_TEAM = SDHBMW8ZGY;
 				INFOPLIST_FILE = xHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1151,7 +1155,7 @@
 				CODE_SIGN_ENTITLEMENTS = xHere/xHere.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 25UQP5NM3X;
+				DEVELOPMENT_TEAM = SDHBMW8ZGY;
 				INFOPLIST_FILE = xHere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
