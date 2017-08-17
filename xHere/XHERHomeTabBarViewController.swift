@@ -18,7 +18,7 @@ class XHERHomeTabBarViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     
     var homeFeedNavi:UINavigationController!
-    var homeFeedViewController:UIViewController!
+    var homeFeedViewController:XHERHomeFeedViewController!
     
     var discoveryNavi:UINavigationController!
     var discoverViewController:UIViewController!
@@ -67,7 +67,8 @@ class XHERHomeTabBarViewController: UIViewController {
     }
     
     func setupContainedControllers() {
-        homeFeedViewController = XHERHomeFeedViewController()
+        homeFeedViewController = XHERHomeFeedViewController() as XHERHomeFeedViewController
+        homeFeedViewController.viewModel = XHERHomeFeedVCModel(withServer: XHERServer.sharedInstance, delegate: homeFeedViewController)
         homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
         homeFeedNavi.navigationBar.barTintColor = kXHERYellow
 
