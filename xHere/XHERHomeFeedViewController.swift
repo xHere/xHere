@@ -9,14 +9,27 @@
 import UIKit
 import Parse
 import SVProgressHUD
-var searchDistanceInMiles = 200.0
-class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate {
 
+class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorMask: UIView!
     
-    var bountiesArray:[XHERBounty]?
-    var claimedBountiesArray:[XHERBounty]?
+    var viewModel:XHERHomeFeedVCModel!
+    
+    var claimedBountiesArray: [XHERBounty]? {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    var unClaimedBountiesArray: [XHERBounty]? {
+        didSet {
+            self.tableViewDataBackArray = self.unClaimedBountiesArray ?? self.tableViewDataBackArray
+            self.tableView.reloadData()
+        }
+    }
     var tableViewDataBackArray = [XHERBounty]()
     var tableViewDataBackArrayFar = [XHERBounty]()
     
@@ -25,7 +38,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.title = "HOME"
+        //Set title of ViewController
         let appLogo = UIImage(named: "xhere_logo")
         let appLogoImageView = UIImageView(image: appLogo)
         appLogoImageView.contentMode = .scaleAspectFit
@@ -34,14 +47,17 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         titleView.addSubview(appLogoImageView)
         self.navigationItem.titleView = titleView
         
-        self.setupTableView()
-        self.setupRefreshControl()
-        // Do any additional setup after loading the view.
-        weak var weakSelf = self
-        SVProgressHUD.show()
 
+        self.setupTableView()
+//        self.setupRefreshControl()
+        // Do any additional setup after loading the view.
+        
+        
+        weak var weakSelf = self
+//        SVProgressHUD.show()
+        
         self.callAPI {
-            weakSelf?.updateTableView()
+//            weakSelf?.updateTableView()
         }
         
         let notificationName = Notification.Name("CompletedClaiming")
@@ -74,60 +90,62 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func callAPI(success:@escaping ()->()) {
-        
-        
-        let server = XHERServer.sharedInstance
-        
-        //Get unclaimed bounties nearby
-        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
+        viewModel.getClaimedAndUnclaimedBountyNearBy { (claimed, unclaimed) in
             
-            if error == nil {
-                print("lat = \(currentLocation?.latitude), long = \(currentLocation?.longitude)")
-                if let currentLocation = currentLocation {
-                    
-                    self.userCurrentLocation = currentLocation
-                    weak var weakSelf = self
-                    server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
-                            success: { (bountiesArray:[XHERBounty]?) in
-                            
-                                if let strongSelf = weakSelf {
-                                   
-                                    strongSelf.bountiesArray = bountiesArray
-                                    
-                                    server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
-                                          success: { (claimedBountiesArray:[XHERBounty]?) in
-                                                weakSelf?.claimedBountiesArray = claimedBountiesArray
-                                                success()
-                                             SVProgressHUD.dismiss()
-                                    },
-                                          failure: { (error:Error?) in
-                                             SVProgressHUD.dismiss()
-                                    })
-  
-                                }
-                    },
-                            failure: { (error:Error?) in
-                                SVProgressHUD.dismiss()
-                    })
-                }
-            }
         }
-    }
-    
-    func setupRefreshControl() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
-        tableView.insertSubview(refreshControl, at: 0)
-    }
-    
-    func refreshControlAction(refreshControl: UIRefreshControl) {
         
-        weak var weakSelf = self
-        self.callAPI {
-            refreshControl.endRefreshing()
-            weakSelf?.updateTableView()
-        }
+//        let server = viewModel.server!
+//
+//        //Get unclaimed bounties nearby
+//        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
+//
+//            if error == nil {
+//                print("lat = \(currentLocation?.latitude), long = \(currentLocation?.longitude)")
+//                if let currentLocation = currentLocation {
+//
+//                    self.userCurrentLocation = currentLocation
+//                    weak var weakSelf = self
+//                    server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
+//                            success: { (bountiesArray:[XHERBounty]?) in
+//
+//                                if let strongSelf = weakSelf {
+//
+//                                    strongSelf.unClaimedBountiesArray = bountiesArray ?? [XHERBounty]()
+//
+//                                    server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
+//                                          success: { (claimedBountiesArray:[XHERBounty]?) in
+//                                                weakSelf?.claimedBountiesArray = claimedBountiesArray ?? [XHERBounty]()
+//                                                success()
+//                                             SVProgressHUD.dismiss()
+//                                    },
+//                                          failure: { (error:Error?) in
+//                                             SVProgressHUD.dismiss()
+//                                    })
+//
+//                                }
+//                    },
+//                            failure: { (error:Error?) in
+//                                SVProgressHUD.dismiss()
+//                    })
+//                }
+//            }
+//        }
     }
+    
+//    func setupRefreshControl() {
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+//        tableView.insertSubview(refreshControl, at: 0)
+//    }
+//
+//    func refreshControlAction(refreshControl: UIRefreshControl) {
+//
+//        weak var weakSelf = self
+//        self.callAPI {
+//            refreshControl.endRefreshing()
+//            weakSelf?.updateTableView()
+//        }
+//    }
     
     // MARK: - TableView Methods
     func setupTableView() {
@@ -139,63 +157,53 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         let collectionViewNib = UINib(nibName: "XHERNearByClaimedViewCell", bundle: nil)
         self.tableView.register(collectionViewNib, forCellReuseIdentifier: "XHERNearByClaimedViewCell")
         
-        self.tableView.isHidden = true
+//        self.tableView.isHidden = true
     }
     
     func updateTableView() {
         
-        self.tableView.isHidden = false
+//        self.tableView.isHidden = false
         
-        self.tableViewDataBackArray.removeAll()
-        self.tableViewDataBackArrayFar.removeAll()
-        self.tableView.reloadData()
-        
-        if let bountiesArray = bountiesArray {
-            
-            for bounty in bountiesArray {
-                
-                if bounty.distanceFromCurrentInMiles < 10 {  //If bounty is close
-
-                    self.tableViewDataBackArray.append(bounty)
-
-                    let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
-                    
-                    UIView.animate(withDuration: 2, animations: {
-                        self.tableView.beginUpdates()
-                        self.tableView.insertRows(at: [newIndexPath], with:.fade)
-                        self.tableView.endUpdates()
-                    })
-                }
-                else {
-                   
-                    self.tableViewDataBackArrayFar.append(bounty)
-
-                    let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
-                    
-                    UIView.animate(withDuration: 2, animations: {
-                        self.tableView.beginUpdates()
-                        self.tableView.insertRows(at: [newIndexPath], with:.left)
-                        self.tableView.endUpdates()
-
-//                        self.tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: false)
-                    })
-
-//                    self.tableView.reloadRows(at: [newIndexPath], with: .left)
-
-                    
-//                    let indexOfFirstFar = bountiesArray.index(of: bounty)
-//                    let restOfBounties = Array(bountiesArray.suffix(from: indexOfFirstFar!))
-//                    self.tableViewDataBackArrayFar.append(contentsOf: restOfBounties)
-//                    break
-                }
-            }
-            
-            UIView.animate(withDuration: 1, animations: {
-                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            })
-        }
-        
+//        self.tableViewDataBackArray.removeAll()
+//        self.tableViewDataBackArrayFar.removeAll()
 //        self.tableView.reloadData()
+        
+//        if let bountiesArray =  self.unClaimedBountiesArray {
+//            for bounty in bountiesArray {
+//
+//                if bounty.distanceFromCurrentInMiles < 10 {  //If bounty is close
+//
+//                    self.tableViewDataBackArray.append(bounty)
+//
+//                    let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
+//
+//                    UIView.animate(withDuration: 2, animations: {
+//                        self.tableView.beginUpdates()
+//                        self.tableView.insertRows(at: [newIndexPath], with:.fade)
+//                        self.tableView.endUpdates()
+//                    })
+//                }
+//                else {
+//
+//                    self.tableViewDataBackArrayFar.append(bounty)
+//
+//                    let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
+//
+//                    UIView.animate(withDuration: 2, animations: {
+//                        self.tableView.beginUpdates()
+//                        self.tableView.insertRows(at: [newIndexPath], with:.left)
+//                        self.tableView.endUpdates()
+//
+//                    })
+//
+//                }
+//            }
+//
+//            UIView.animate(withDuration: 1, animations: {
+//                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            })
+//        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -323,9 +331,9 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // MARK: - XHERNearByClaimedViewCell Delegate
-    func userDidSwipeCollectionViewTo(offset: CGFloat) {
-        self.backgroundColorMask.alpha = offset * 0.25
-    }
+//    func userDidSwipeCollectionViewTo(offset: CGFloat) {
+//        self.backgroundColorMask.alpha = offset * 0.25
+//    }
     
     func userDidChoose(claimedBounty: XHERBounty) {
         let detailVC = XHEREDetailViewController()
