@@ -82,6 +82,43 @@ class XHERServer: NSObject {
         })
     }
     
+    func fetchUnClaimedBountyNearHere( withInMiles miles:Double, success: @escaping ([XHERBounty]?)->(), failure: @escaping (Error?)->()) {
+        fetchNearHere(claimType: .unclaimed, withInMiles: miles, success: success, failure: failure)
+    }
+    
+    func fetchClaimedBountyNearHere( withInMiles miles:Double, success: @escaping ([XHERBounty]?)->(), failure: @escaping (Error?)->()) {
+        fetchNearHere(claimType: .claimed, withInMiles: miles, success: success, failure: failure)
+    }
+    
+    enum ClaimType {
+        case claimed
+        case unclaimed
+    }
+    
+    private func fetchNearHere( claimType:ClaimType, withInMiles miles:Double, success: @escaping ([XHERBounty]?)->(), failure: @escaping (Error?)->()) {
+        
+        let fetchNearBlock = { [unowned self] (currentLocation:PFGeoPoint) in
+            
+            if claimType == .claimed {
+                self.fetchClaimedBountyNear(location: currentLocation, withInMiles: miles, success: success, failure: failure)
+            }
+            else {
+                self.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: miles, success: success, failure: failure)
+            }
+        }
+        
+        PFGeoPoint.geoPointForCurrentLocation { (currentPoint:PFGeoPoint?, error:Error?) in
+            if error != nil {
+                return
+            }
+            guard let currentPoint = currentPoint
+                else {return}
+            
+            fetchNearBlock(currentPoint)
+        }
+    }
+    
+    
     // Find Bounty Claimed in an area
     func fetchUnClaimedBountyNear( location:PFGeoPoint, withInMiles miles:Double, success:@escaping ([XHERBounty]?)->(), failure:@escaping (Error?)->()) {
         
