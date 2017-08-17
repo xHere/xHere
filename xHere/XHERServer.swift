@@ -82,6 +82,22 @@ class XHERServer: NSObject {
         })
     }
     
+    //Find Bounty NearHere Current With Range
+    
+    func fetchClaimedAndUnClaimedBountyNearHere (withInMiles miles:Double, success: @escaping (_ claimed: [XHERBounty]?, _ unclaimed: [XHERBounty]?)->(), failure: @escaping (Error?)->()) {
+        
+        let block = {[unowned self] (claimedArray:[XHERBounty]?) in
+            self.fetchUnClaimedBountyNearHere(withInMiles: miles, success: { (unclaimedArray) in
+                success(claimedArray, unclaimedArray)
+            }, failure: failure)
+        }
+        
+        fetchClaimedBountyNearHere(withInMiles: miles, success: { (claimedArray) in
+            block(claimedArray)
+        }, failure: failure)
+    }
+    
+    
     func fetchUnClaimedBountyNearHere( withInMiles miles:Double, success: @escaping ([XHERBounty]?)->(), failure: @escaping (Error?)->()) {
         fetchNearHere(claimType: .unclaimed, withInMiles: miles, success: success, failure: failure)
     }
