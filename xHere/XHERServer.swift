@@ -190,6 +190,10 @@ class XHERServer: NSObject {
                         bountyArrayTyped.append(bounty)
                     }
                     
+                    bountyArrayTyped.sort(by: { (a, b) -> Bool in
+                        return a.distanceFromCurrentInMiles < b.distanceFromCurrentInMiles
+                    })
+                    
                     if bountyArrayTyped.count > 0 {
                         success(bountyArrayTyped)
                     }
