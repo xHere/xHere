@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
     
