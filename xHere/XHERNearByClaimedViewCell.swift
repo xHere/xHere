@@ -43,11 +43,12 @@ class XHERNearByClaimedViewCell: UITableViewCell, UICollectionViewDelegate, UICo
             if let nearByClaimedArray = nearByClaimedArray {
                 
                 
-                
-                let firstTenBounties = nearByClaimedArray[0...nearByClaimedArray.count%10]
-                
-                collectionViewDataBackArray = Array(firstTenBounties)
-                self.collectionView.reloadData()
+                if !nearByClaimedArray.isEmpty {
+                    let firstTenBounties = nearByClaimedArray[0...nearByClaimedArray.count%10]
+                    
+                    collectionViewDataBackArray = Array(firstTenBounties)
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
