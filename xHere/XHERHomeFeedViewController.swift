@@ -2,12 +2,11 @@
 //  XHERHomeFeedViewController.swift
 //  xHere
 //
-//  Created by Developer on 11/13/16.
+//  Created by Chi Hwa Michael Ting on 11/13/16.
 //  Copyright © 2016 Developer. All rights reserved.
 //
 
 import UIKit
-import SVProgressHUD
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
     
@@ -18,7 +17,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     
     var tableViewDataBackArray = [XHERBounty]()
     var tableViewDataBackArrayFar = [XHERBounty]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,39 +30,22 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         titleView.addSubview(appLogoImageView)
         self.navigationItem.titleView = titleView
         
-
         self.setupTableView()
-//        self.setupRefreshControl()
-        // Do any additional setup after loading the view.
-        
-        
-        weak var weakSelf = self
-//        SVProgressHUD.show()
         self.setupRefreshControl()
         
         self.callAPI {
-//            weakSelf?.updateTableView()
         }
         
         let notificationName = Notification.Name("CompletedClaiming")
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
-        
     }
     
     func didCompleteClaiming(sender:Any) {
         weak var weakSelf = self
-        self.callAPI {
-            weakSelf?.updateTableView()
-        }
-
-        
         self.callAPI(success: nil)
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
-
- 
     }
     
     override func viewDidLayoutSubviews() {
@@ -83,59 +64,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             self.reloadData()
             SVProgressHUD.dismiss()
         }
-        
-//        let server = viewModel.server!
-//
-//        //Get unclaimed bounties nearby
-//        PFGeoPoint.geoPointForCurrentLocation { (currentLocation:PFGeoPoint?, error:Error?) in
-//
-//            if error == nil {
-//                print("lat = \(currentLocation?.latitude), long = \(currentLocation?.longitude)")
-//                if let currentLocation = currentLocation {
-//
-//                    self.userCurrentLocation = currentLocation
-//                    weak var weakSelf = self
-//                    server.fetchUnClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
-//                            success: { (bountiesArray:[XHERBounty]?) in
-//
-//                                if let strongSelf = weakSelf {
-//
-//                                    strongSelf.unClaimedBountiesArray = bountiesArray ?? [XHERBounty]()
-//
-//                                    server.fetchClaimedBountyNear(location: currentLocation, withInMiles: searchDistanceInMiles,
-//                                          success: { (claimedBountiesArray:[XHERBounty]?) in
-//                                                weakSelf?.claimedBountiesArray = claimedBountiesArray ?? [XHERBounty]()
-//                                                success()
-//                                             SVProgressHUD.dismiss()
-//                                    },
-//                                          failure: { (error:Error?) in
-//                                             SVProgressHUD.dismiss()
-//                                    })
-//
-//                                }
-//                    },
-//                            failure: { (error:Error?) in
-//                                SVProgressHUD.dismiss()
-//                    })
-//                }
-//            }
-//        }
     }
     
-//    func setupRefreshControl() {
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
-//        tableView.insertSubview(refreshControl, at: 0)
-//    }
-//
-//    func refreshControlAction(refreshControl: UIRefreshControl) {
-//
-//        weak var weakSelf = self
-//        self.callAPI {
-//            refreshControl.endRefreshing()
-//            weakSelf?.updateTableView()
-//        }
-//    }
     func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
@@ -313,11 +243,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         return 0
     }
     
-    // MARK: - XHERNearByClaimedViewCell Delegate
-//    func userDidSwipeCollectionViewTo(offset: CGFloat) {
-//        self.backgroundColorMask.alpha = offset * 0.25
-//    }
-    
     func userDidChoose(claimedBounty: XHERBounty) {
         let detailVC = XHEREDetailViewController()
         detailVC.viewControllerMode = .browsing
@@ -325,6 +250,5 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
-    
     
 }
