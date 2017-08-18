@@ -50,3 +50,18 @@ class XHERHomeFeedVCModel {
     }
     
 }
+
+//Helper
+extension XHERHomeFeedVCModel {
+    func createNearAndFarArray(bounties:[XHERBounty]) -> (nearArray:[XHERBounty], farArray:[XHERBounty]) {
+        
+        var nearArray = [XHERBounty]()
+        var farArray = [XHERBounty]()
+        
+        for bounty in bounties {
+            bounty.distanceFromCurrentInMiles <= 10 ? nearArray.append(bounty) : farArray.append(bounty)
+        }
+        
+        return (nearArray, farArray)
+    }
+}
