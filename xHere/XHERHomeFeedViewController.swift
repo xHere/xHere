@@ -11,13 +11,17 @@ import SVProgressHUD
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorMask: UIView!
     
+    
     var viewModel:XHERHomeFeedVCModel!
     
+    //Local model simply to create an desired animation effect.
     var tableViewDataBackArray = [XHERBounty]()
     var tableViewDataBackArrayFar = [XHERBounty]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +45,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func didCompleteClaiming(sender:Any) {
-        weak var weakSelf = self
         self.callAPI(success: nil)
     }
     
@@ -56,6 +59,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     func callAPI(success: (()->())?) {
         SVProgressHUD.show()
@@ -201,17 +205,6 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         //Make all cell transparent for backgroundMask to show through
         cell.backgroundColor = UIColor.clear
-        
-//        if indexPath.section == 0 {
-//            
-//            if claimedBountiesArray != nil && (claimedBountiesArray?.count)! > 0 {
-//                let nearByClaimedViewCell = cell as! XHERNearByClaimedViewCell
-//                
-//                nearByClaimedViewCell.collectionView.collectionViewLayout.collectionViewContentSize
-//                let indexPathOfItemOne = IndexPath(item: 0, section: 0)
-//                nearByClaimedViewCell.collectionView.scrollToItem(at: indexPathOfItemOne, at: .left, animated: true)
-//            }
-//        }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
