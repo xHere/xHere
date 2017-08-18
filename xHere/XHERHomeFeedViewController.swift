@@ -40,6 +40,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         weak var weakSelf = self
 //        SVProgressHUD.show()
+        self.setupRefreshControl()
         
         self.callAPI {
 //            weakSelf?.updateTableView()
@@ -135,6 +136,17 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
 //            weakSelf?.updateTableView()
 //        }
 //    }
+    func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        self.callAPI {
+            refreshControl.endRefreshing()
+        }
+    }
     
     // MARK: - TableView Methods
     func setupTableView() {
