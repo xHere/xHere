@@ -12,7 +12,6 @@ import SVProgressHUD
 let searchDistanceInMiles:Double = 200.0
 
 protocol XHERHomeFeedVCModelDelegate {
-    
     func reloadData()
 }
 

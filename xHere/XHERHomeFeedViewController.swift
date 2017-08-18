@@ -34,8 +34,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.setupTableView()
         self.setupRefreshControl()
         
-        self.callAPI {
-        }
+        self.callAPI(success: nil)
         
         let notificationName = Notification.Name("CompletedClaiming")
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
