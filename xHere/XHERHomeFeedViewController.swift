@@ -57,6 +57,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         }
 
         
+        self.callAPI(success: nil)
     }
     
     
@@ -74,9 +75,12 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func callAPI(success:@escaping ()->()) {
-        viewModel.getClaimedAndUnclaimedBountyNearBy { (claimed, unclaimed) in
-            
+    func callAPI(success: (()->())?) {
+        SVProgressHUD.show()
+        viewModel.getClaimedAndUnclaimedBountyNearBy {[unowned self] (claimed, unclaimed) in
+            success?()
+            self.reloadData()
+            SVProgressHUD.dismiss()
         }
         
 //        let server = viewModel.server!
