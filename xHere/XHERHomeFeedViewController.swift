@@ -11,24 +11,11 @@ import SVProgressHUD
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
     
-    
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorMask: UIView!
     
     var viewModel:XHERHomeFeedVCModel!
     
-    var claimedBountiesArray: [XHERBounty]? {
-        didSet{
-            self.tableView.reloadData()
-        }
-    }
-    var unClaimedBountiesArray: [XHERBounty]? {
-        didSet {
-            self.tableViewDataBackArray = self.unClaimedBountiesArray ?? self.tableViewDataBackArray
-            self.tableView.reloadData()
-        }
-    }
     var tableViewDataBackArray = [XHERBounty]()
     var tableViewDataBackArrayFar = [XHERBounty]()
     
@@ -155,53 +142,35 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         let collectionViewNib = UINib(nibName: "XHERNearByClaimedViewCell", bundle: nil)
         self.tableView.register(collectionViewNib, forCellReuseIdentifier: "XHERNearByClaimedViewCell")
         
-//        self.tableView.isHidden = true
+        self.tableView.isHidden = true
     }
     
-    func updateTableView() {
+    func reloadData() {
+        self.tableView.isHidden = false
+        self.tableViewDataBackArray.removeAll()
+        self.tableViewDataBackArrayFar.removeAll()
+        self.tableView.reloadData()
         
-//        self.tableView.isHidden = false
+        for nearBounty in viewModel.nearUnClaimedArray {
+            self.tableViewDataBackArray.append(nearBounty)
+            let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
+            
+            UIView.animate(withDuration: 2) {
+                self.tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        }
         
-//        self.tableViewDataBackArray.removeAll()
-//        self.tableViewDataBackArrayFar.removeAll()
-//        self.tableView.reloadData()
-        
-//        if let bountiesArray =  self.unClaimedBountiesArray {
-//            for bounty in bountiesArray {
-//
-//                if bounty.distanceFromCurrentInMiles < 10 {  //If bounty is close
-//
-//                    self.tableViewDataBackArray.append(bounty)
-//
-//                    let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
-//
-//                    UIView.animate(withDuration: 2, animations: {
-//                        self.tableView.beginUpdates()
-//                        self.tableView.insertRows(at: [newIndexPath], with:.fade)
-//                        self.tableView.endUpdates()
-//                    })
-//                }
-//                else {
-//
-//                    self.tableViewDataBackArrayFar.append(bounty)
-//
-//                    let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
-//
-//                    UIView.animate(withDuration: 2, animations: {
-//                        self.tableView.beginUpdates()
-//                        self.tableView.insertRows(at: [newIndexPath], with:.left)
-//                        self.tableView.endUpdates()
-//
-//                    })
-//
-//                }
-//            }
-//
-//            UIView.animate(withDuration: 1, animations: {
-//                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-//            })
-//        }
-        
+        for farBounty in viewModel.farUnClaimedArray {
+            self.tableViewDataBackArrayFar.append(farBounty)
+            let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
+            
+            UIView.animate(withDuration: 2) {
+                self.tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        }
+        UIView.animate(withDuration: 1, animations: {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -226,7 +195,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHERNearByClaimedViewCell", for: indexPath) as! XHERNearByClaimedViewCell
             
-            cell.nearByClaimedArray = claimedBountiesArray
+            cell.nearByClaimedArray = viewModel.claimedArray
             
             cell.delegate = self
             
@@ -236,7 +205,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
 
-            let bounty = self.tableViewDataBackArray[indexPath.row]
+            let bounty = tableViewDataBackArray[indexPath.row]
             
             cell.bounty = bounty
             cell.claimITLabel.isHidden = false
@@ -245,7 +214,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
             
-            let bounty = self.tableViewDataBackArrayFar[indexPath.row]
+            let bounty = tableViewDataBackArrayFar[indexPath.row]
             cell.bounty = bounty
             cell.claimITLabel.isHidden = true
             return cell

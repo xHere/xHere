@@ -7,13 +7,13 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 let searchDistanceInMiles:Double = 200.0
 
 protocol XHERHomeFeedVCModelDelegate {
     
-    var claimedBountiesArray: [XHERBounty]? {get set}
-    var unClaimedBountiesArray: [XHERBounty]? {get set}
+    func reloadData()
 }
 
 class XHERHomeFeedVCModel {
@@ -21,6 +21,28 @@ class XHERHomeFeedVCModel {
     var delegate: XHERHomeFeedVCModelDelegate?
     
     var server: XHERServer!
+    
+    var claimedArray = [XHERBounty]() {
+        didSet {
+        }
+    }
+    var unClaimedArray = [XHERBounty]() {
+        didSet {
+            let tuple = createNearAndFarArray(bounties: unClaimedArray)
+            nearUnClaimedArray = tuple.nearArray
+            farUnClaimedArray = tuple.farArray
+        }
+    }
+    var nearUnClaimedArray = [XHERBounty]() {
+        didSet {
+            print("$$$$$$$$$$$ update near array")
+        }
+    }
+    var farUnClaimedArray = [XHERBounty]() {
+        didSet {
+            print("$$$$$$$$$$ update far array")
+        }
+    }
     
     init(withServer server:XHERServer, delegate:XHERHomeFeedVCModelDelegate?) {
         self.server = server
@@ -31,24 +53,23 @@ class XHERHomeFeedVCModel {
         self.init(withServer: XHERServer.sharedInstance, delegate:nil)
     }
     
-    typealias claimedAndUnClaimedBounties = (_ claimed:[XHERBounty], _ unclaimed:[XHERBounty])->Void
-    
-    func getClaimedAndUnclaimedBountyNearBy(completion:@escaping claimedAndUnClaimedBounties) {
-        
+    // Data fetch
+    typealias claimedAndUnClaimedBounties = ((_ claimed:[XHERBounty], _ unclaimed:[XHERBounty])->Void)?
+    func getClaimedAndUnclaimedBountyNearBy(completion: claimedAndUnClaimedBounties) {
+        SVProgressHUD.show()
         server.fetchClaimedAndUnClaimedBountyNearHere(withInMiles: searchDistanceInMiles, success: { [weak self] (claimedArray, unclaimedArray) in
             
-            let solidClaimedArray = claimedArray ?? [XHERBounty]()
-            let solidUnClaimedArray = unclaimedArray ?? [XHERBounty]()
-            completion(solidClaimedArray, solidUnClaimedArray)
-            
-            self?.delegate?.claimedBountiesArray = solidClaimedArray
-            self?.delegate?.unClaimedBountiesArray = solidUnClaimedArray
-            
+            if let strongSelf = self {
+                
+                strongSelf.claimedArray = claimedArray ?? strongSelf.claimedArray
+                strongSelf.unClaimedArray = unclaimedArray ?? strongSelf.unClaimedArray
+                
+                completion?(strongSelf.claimedArray, strongSelf.unClaimedArray)
+            }
         }, failure: { (error) in
             print("Error: getClaimedAndUnclaimedBountyNearBy:")
         })
     }
-    
 }
 
 //Helper
