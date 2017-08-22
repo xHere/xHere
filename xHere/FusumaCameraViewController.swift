@@ -12,6 +12,10 @@ import Parse
 
 class FusumaCameraViewController: UIViewController, FusumaDelegate {
 
+
+
+
+
     @IBOutlet weak var imageView: UIImageView!
     
     var userCreatedImage:UIImage?
@@ -40,17 +44,18 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
         let fusuma = FusumaViewController()
         fusuma.delegate = self
         fusuma.hasVideo = true // If you want to let the users allow to use video.
+        fusuma.allowMultipleSelection = false
         self.present(fusuma, animated: true, completion: nil)
         
     }
     
     
     // Return the image which is selected from camera roll or is taken via the camera.
-    func fusumaImageSelected(_ image: UIImage) {
+    func fusumaImageSelected(_ image: UIImage, source:FusumaMode) {
         
         print("Image selected")
     }
-    
+
     // Return the image but called after is dismissed.
     func fusumaDismissedWithImage(_ image: UIImage) {
         
@@ -68,6 +73,10 @@ class FusumaCameraViewController: UIViewController, FusumaDelegate {
     func fusumaCameraRollUnauthorized() {
         
         print("Camera roll unauthorized")
+    }
+    
+    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
+        
     }
     
     public func fusumaClosed() {

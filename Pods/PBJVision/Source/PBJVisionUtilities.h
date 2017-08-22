@@ -1,6 +1,6 @@
 //
 //  PBJVisionUtilities.h
-//  Vision
+//  PBJVision
 //
 //  Created by Patrick Piemonte on 5/20/13.
 //  Copyright (c) 2013-present, Patrick Piemonte, http://patrickpiemonte.com
@@ -28,10 +28,6 @@
 
 @interface PBJVisionUtilities : NSObject
 
-// coordinate conversion
-
-+ (CGPoint)convertToPointOfInterestFromViewCoordinates:(CGPoint)viewCoordinates inFrame:(CGRect)frame;
-
 // devices and connections
 
 + (AVCaptureDevice *)captureDeviceForPosition:(AVCaptureDevicePosition)position;
@@ -42,13 +38,16 @@
 
 + (CMSampleBufferRef)createOffsetSampleBufferWithSampleBuffer:(CMSampleBufferRef)sampleBuffer withTimeOffset:(CMTime)timeOffset;
 
++ (UIImage *)uiimageFromJPEGData:(NSData *)jpegData;
+
 // orientation
 
++ (UIImageOrientation)uiimageOrientationFromExifOrientation:(NSInteger)exifOrientation;
 + (CGFloat)angleOffsetFromPortraitOrientationToOrientation:(AVCaptureVideoOrientation)orientation;
 
 // storage
 
-+ (uint64_t)availableDiskSpaceInBytes;
++ (uint64_t)availableStorageSpaceInBytes;
 
 @end
 

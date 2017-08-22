@@ -42,20 +42,26 @@ public enum STAwesomePlace : String {
     case sydneyOperaHouse = "-33.857197_151.215140"
     // MARK: France
     case parisEiffelTower = "48.85815_2.29452"
+    // MARK: Custom Places
+    case customPlaces
 }
 
 /// STAwesomePlacesFactory generates Coordinates from awesome Places
-struct STAwesomePlacesFactory {
+public struct STAwesomePlacesFactory {
     
     /// Return an array of CLLocationCoordiante2D with awesome places
     ///
     /// - Parameter filter: An array of STAwesomePlaces Enums which only should be added to the return array. If the parameter is nil all places will be added to the return array.
     /// - Returns: CLLocationCoordinate2D Array of awesome places
-    static func getAwesomePlaces(withPlacesFilter filter : [STAwesomePlace]?) -> [CLLocationCoordinate2D]{
+    public static func getAwesomePlaces(withPlacesFilter filter: [STAwesomePlace]?, andCustomPlaces customPlaces: [CLLocationCoordinate2D]?) -> [CLLocationCoordinate2D]{
         // Initialize the CLLocationCoordinate2D Array
         var places: [CLLocationCoordinate2D] = []
         // Iterate through all STAwesomePlaces Enums
         for awesomePlace in iterateEnum(STAwesomePlace.self) {
+            // If the current iteration is customPlaces continue
+            if awesomePlace == .customPlaces {
+                continue
+            }
             // Check if the placesFilter is nil
             if let placesFilter = filter {
                 // The placesFilter is set. Check if the placesFilter contains the current STAwesomePlace Enum
@@ -71,8 +77,18 @@ struct STAwesomePlacesFactory {
                     places.append(coordinate)
                 }
             }
-
         }
+        // Check if a filter is set and if true check if customPlaces should be shown
+        if let filter = filter {
+            if !filter.contains(.customPlaces) {
+                return places
+            }
+        }
+        // Check if customPlaces are definied
+        guard let customPlaces = customPlaces else {
+            return places
+        }
+        places.append(contentsOf: customPlaces)
         // Return the places array
         return places
     }
@@ -81,7 +97,11 @@ struct STAwesomePlacesFactory {
     ///
     /// - Parameter awesomePlace: STAwesomePlace Enum
     /// - Returns: CLLocationCoordinate2D of STAwesomePlace Enum
-    private static func getCoordinate(fromAwesomePlace awesomePlace : STAwesomePlace) -> CLLocationCoordinate2D? {
+    fileprivate static func getCoordinate(fromAwesomePlace awesomePlace: STAwesomePlace) -> CLLocationCoordinate2D? {
+        // Check if STAwesomePlace is a customPlace, if true return nil
+        if awesomePlace == .customPlaces {
+            return nil
+        }
         let awesomePlaceCoordinatesText = awesomePlace.rawValue.components(separatedBy: "_")
         guard let latitudeText = awesomePlaceCoordinatesText.first, let longitudeText = awesomePlaceCoordinatesText.last else {
             return nil
@@ -96,7 +116,7 @@ struct STAwesomePlacesFactory {
     ///
     /// - Parameter _: Enumeration
     /// - Returns: Iterator for the enumeration
-    private static func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
+    fileprivate static func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
         var i = 0
         return AnyIterator {
             let next = withUnsafePointer(to: &i) {

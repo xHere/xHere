@@ -1,6 +1,7 @@
 <p align="center">
 <img width=300 src="./Preview/STLocationRequest_AppIcon.jpg" alt="STLocationRequestAppIcon" title="STLocationRequestAppIcon">
 </p>
+
 # STLocationRequest
 
 [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
@@ -27,12 +28,10 @@ pod 'STLocationRequest'
 
 ## Usage
 
-To present the `STLocationRequestController`
-
 ```swift
 import STLocationRequest
 
-class ViewController : UIViewController, STLocationRequestControllerDelegate {
+class ViewController: UIViewController, STLocationRequestControllerDelegate {
 
     func presentLocationRequestController(){
         let locationRequestController = STLocationRequestController.getInstance()
@@ -47,6 +46,7 @@ class ViewController : UIViewController, STLocationRequestControllerDelegate {
 }
 
 ```
+> Please keep in mind that the 3D-SatelliteFlyover only works on a real iOS Device ([Read more](#ios-simulator)).
 
 ## Customizing
 
@@ -60,7 +60,7 @@ locationRequestController.mapViewAlpha = 0.7
 
 #### BackgroundColor
 ```swift
-locationRequestController.backgroundColor = UIColor.orangeColor()
+locationRequestController.backgroundColor = UIColor.orange
 ```
 > The backgroundcolor for the view of the STLocationRequestController
 
@@ -70,8 +70,6 @@ locationRequestController.backgroundColor = UIColor.orangeColor()
 <img width=200 src="./Preview/STLocationRequest_Orange.jpg" alt="STLocationRequest" title="STLocationRequest">
 <img width=200 src="./Preview/STLocationRequest_Red.jpg" alt="STLocationRequest" title="STLocationRequest">
 </p>
-
-Furthermore you can change the behavior of the `STLocationRequestController` by changing these attributes on your purpose.
 
 #### TitleText
 ```swift
@@ -86,7 +84,7 @@ locationRequestController.titleFont = UIFont.systemFont(ofSize: 14.0)
 > The title which will be presented at the top of the STLocationRequestController. Default-Value: UIFont.systemFontOfSize(25.0)
 
 #### AllowButtonTitle
-````swift
+```swift
 locationRequestController.allowButtonTitle = "Yes of course"
 ```
 > The title for the allowButton which will trigger the requestWhenInUseAuthorization() or requestAlwaysAuthorization() Method on CLLocationManager. Default value is "Alright"
@@ -96,6 +94,12 @@ locationRequestController.allowButtonTitle = "Yes of course"
 locationRequestController.notNowButtonTitle = "Nope"
 ```
 > The title for the notNowButton which will dismiss the STLocationRequestController. Default value is "Not now"
+
+#### Location-Request Authorization-Type
+```swift
+locationRequestController.authorizeType = .requestWhenInUseAuthorization
+```
+> Set the location request authorize Type for STLocationRequestController. Choose between: .requestWhenInUseAuthorization and .requestAlwaysAuthorization. Default value is .requestWhenInUseAuthorization
 
 #### isPulseEffectEnabled
 ```swift
@@ -167,13 +171,13 @@ func locationRequestControllerDidChange(event: STLocationRequestControllerEvent)
 
 Also don't forget to add the usage description key to your `Info.plist` for you selected authorization type.
 
-STLocationRequestControllerAuthorizeType.**RequestWhenInUseAuthorization**
+STLocationRequestControllerAuthorizeType.**requestWhenInUseAuthorization**
 ```swift
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>PUT IN YOUR LOCATION EXPLANATION TEXT</string>
 ```
 
-STLocationRequestControllerAuthorizeType.**RequestAlwaysAuthorization**
+STLocationRequestControllerAuthorizeType.**requestAlwaysAuthorization**
 ```swift
 <key>NSLocationAlwaysUsageDescription</key>
 <string>PUT IN YOUR LOCATION EXPLANATION TEXT</string>
@@ -222,7 +226,7 @@ Please mind that the 3D Flyover-View will only work on a real iOS device (not in
 
 ## Objective-C
 
-To present the `STLocationRequestController` in an `Objective-C` project you can go like this.
+An example usage of `STLocationRequestController` in an `Objective-C` project.
 
 ```objective-c
 #import "ViewController.h"
@@ -262,7 +266,7 @@ To present the `STLocationRequestController` in an `Objective-C` project you can
 
 ```
 ## Credits
-`STLocationRequestController` is using following libraries.
+`STLocationRequest` is using following libraries.
 
 + [Font-Awesome-Swift](https://github.com/Vaberer/Font-Awesome-Swift)
 + [SwiftPulse](https://github.com/ctews/SwiftPulse)

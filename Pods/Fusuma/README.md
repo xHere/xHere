@@ -1,6 +1,6 @@
 ## Fusuma
 
-Fusuma is a Swift library that provides an Instagram-like photo browser and a camera feature with a few line of code.  
+Fusuma is a Swift library that provides an Instagram-like photo browser with a camera feature using only a few lines of code.  
 You can use Fusuma instead of UIImagePickerController. It also has a feature to take a square-sized photo.
 
 [![Version](https://img.shields.io/cocoapods/v/Fusuma.svg?style=flat)](http://cocoapods.org/pods/Fusuma)
@@ -10,26 +10,28 @@ You can use Fusuma instead of UIImagePickerController. It also has a feature to 
 [![codebeat](https://codebeat.co/badges/287ff7b1-4cda-4384-8780-88e1dbff95cd)](https://codebeat.co/projects/github-com-ytakzk-fusuma)
 
 ## Preview
-<img src="https://raw.githubusercontent.com/wiki/ytakzk/Fusuma/images/fusuma.gif" width="340px">
+<img src="./Demo/fusuma.gif?raw=true" width="340px">
 
 ## Images
-<img src="https://raw.githubusercontent.com/wiki/ytakzk/Fusuma/images/shot1.jpg" width="340px">
-<img src="https://raw.githubusercontent.com/wiki/ytakzk/Fusuma/images/shot2.jpg" width="340px">
+<img src="./Demo/camera_roll.png?raw=true" width="340px">
+<img src="./Demo/photo.png?raw=true" width="340px">
 
 ## Features
 - [x] UIImagePickerController alternative
 - [x] Cropping images in camera roll
 - [x] Taking a square-sized photo and a video using AVFoundation
-- [x] Flash: On Off 
-- [x] Camera Mode: Front Back 
-- [x] Video Mode 
+- [x] Flash: On & Off 
+- [x] Camera Mode: Front & Back 
+- [x] Video Mode
+- [x] Colors fully customizable
 
 Those features are available just with a few lines of code!
 
 ## Installation
 
-Drop in the Classes folder to your Xcode project.  
-You can also use CocoaPods or Carthage.
+#### Manual installation
+
+Download and drop the 'Classes' folder into your Xcode project.  
 
 #### Using [CocoaPods](http://cocoapods.org/)
 
@@ -55,6 +57,9 @@ Import Fusuma ```import Fusuma``` then use the following codes in some function 
 let fusuma = FusumaViewController()
 fusuma.delegate = self
 fusuma.hasVideo = true // If you want to let the users allow to use video.
+fusuma.cropHeightRatio = 0.6 // Height-to-width ratio. The default value is 1, which means a squared-size photo.
+fusuma.allowMultipleSelection = true // You can select multiple photos from the camera roll. The default value is false.
+fusuma.defaultMode = .photo // The first choice to show (.camera, .library, .video). The default value is .camera.
 self.presentViewController(fusuma, animated: true, completion: nil)
 ```
 
@@ -62,13 +67,13 @@ self.presentViewController(fusuma, animated: true, completion: nil)
 
 ```Swift
 // Return the image which is selected from camera roll or is taken via the camera.
-func fusumaImageSelected(image: UIImage) {
+func fusumaImageSelected(image: UIImage, source: FusumaMode) {
 
   print("Image selected")
 }
 
 // Return the image but called after is dismissed.
-func fusumaDismissedWithImage(image: UIImage) {
+func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
         
   print("Called just after FusumaViewController is dismissed.")
 }
@@ -82,6 +87,16 @@ func fusumaVideoCompleted(withFileURL fileURL: NSURL) {
 func fusumaCameraRollUnauthorized() {
 
   print("Camera roll unauthorized")
+}
+
+// Return selected images when you allow to select multiple photos.
+func fusumaMultipleImageSelected(images: [UIImage], source: FusumaMode) {
+
+}
+
+// Return an image and the detailed information.
+func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
+
 }
 ```
 
@@ -106,10 +121,10 @@ https://github.com/Cheesebaron/Chafu
 
 ## Author
 ytakzk  
- [http://ytakzk.me](http://ytakzk.me)
+ [https://ytakzk.me](https://ytakzk.me)
  
 ## Donation
-Your support is welcome through Bitcoin 16485BTK9EoQUqkMmSecJ9xN6E9nhW8ePd
+Your support is welcome through Bitcoin 3Ps8tBgz4qn6zVUr5D1wcYrrzYjMgEugqv
  
 ## License
 Fusuma is released under the MIT license.  
