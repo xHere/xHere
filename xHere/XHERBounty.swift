@@ -29,7 +29,7 @@ class XHERBounty: PFObject, PFSubclassing {
         }
     }
     
-    var _userArrayTyped:[User]?
+    private var _userArrayTyped:[User]?
     var postedByUser:User? {
         get {
             
