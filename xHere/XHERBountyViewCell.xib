@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-BoldItalic</string>
+            <string>AvenirNext-Regular</string>
+        </array>
+        <array key="AvenirNextCondensed.ttc">
+            <string>AvenirNextCondensed-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XHERBountyViewCell" customModule="xHere" customModuleProvider="target">
             <connections>
@@ -16,10 +25,10 @@
                 <outlet property="claimITLabel" destination="chN-le-yK5" id="k9t-KH-e2u"/>
                 <outlet property="claimedImage" destination="DbL-DH-etn" id="Ymr-Rh-CJv"/>
                 <outlet property="customContentView" destination="6Ot-zZ-jA0" id="YDS-nl-JXN"/>
-                <outlet property="dateUpdatedAtLabel" destination="0Nk-1A-ah6" id="ZlU-Oj-FOk"/>
                 <outlet property="distanceLabel" destination="TSI-9k-UUQ" id="VC7-sp-n5G"/>
                 <outlet property="locationTitleLabel" destination="Bea-jo-fgN" id="qLM-X6-eIj"/>
                 <outlet property="postedByUserLabel" destination="1gw-7T-YYj" id="j9w-Xi-yEb"/>
+                <outlet property="updatedDateLabel" destination="0Nk-1A-ah6" id="BSC-jq-RUe"/>
                 <outlet property="userProfileImage" destination="WeF-bb-07L" id="qpK-VP-hiS"/>
             </connections>
         </placeholder>
@@ -28,7 +37,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="361"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="360.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ot-zZ-jA0" userLabel="CustomContentView">
