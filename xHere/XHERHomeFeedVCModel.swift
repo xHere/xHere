@@ -9,6 +9,9 @@
 import Foundation
 import SVProgressHUD
 
+
+typealias claimedAndUnClaimedBountiesCompletion = ((_ claimed:[XHERBounty], _ unclaimed:[XHERBounty])->Void)?
+
 let searchDistanceInMiles:Double = 200.0
 
 protocol XHERHomeFeedVCModelDelegate {
@@ -53,8 +56,7 @@ class XHERHomeFeedVCModel {
     }
     
     // Data fetch
-    typealias claimedAndUnClaimedBounties = ((_ claimed:[XHERBounty], _ unclaimed:[XHERBounty])->Void)?
-    func getClaimedAndUnclaimedBountyNearBy(completion: claimedAndUnClaimedBounties) {
+    func getClaimedAndUnclaimedBountyNearBy(completion: claimedAndUnClaimedBountiesCompletion) {
         SVProgressHUD.show()
         server.fetchClaimedAndUnClaimedBountyNearHere(withInMiles: searchDistanceInMiles, success: { [weak self] (claimedArray, unclaimedArray) in
             
