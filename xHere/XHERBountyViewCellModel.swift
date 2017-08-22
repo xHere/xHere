@@ -35,10 +35,12 @@ class XHERBountyViewCellModel {
     var isClaimed: Box<Bool> = Box(false)
     var updatedDate: Box<String> = Box("")
     var posedByUser: Box<String> = Box("")
-    var userProfileImage: Box<URL> = Box(URL(string: "")!)
+    var userProfileImage: Box<URL>?
+    var claimedImage: Box<URL>?
     
     init(_ model:XHERBounty) {
         self.bounty = model
+        self.setModel(self.bounty)
     }
     
     func setModel(_ model:XHERBounty) {
@@ -62,12 +64,20 @@ class XHERBountyViewCellModel {
             self.posedByUser.value = user.username ?? ""
         }
         if let profileImage = bounty.postedByUser?.profileImageUrl {
-            userProfileImage.value = profileImage
+            userProfileImage = Box(profileImage)
         }
         
+        if let claimedImageURLStr = bounty.mediaArray?[0].mediaData?.url, let claimedImageURL = URL(string:claimedImageURLStr) {
+            claimedImage = Box(claimedImageURL)
+        }
+        else {
+            let poi = bounty.postedAtLocation
+            self.locationTitle.value = poi.placeName ?? self.locationTitle.value
+            if let poiImage = poi.placeImageURL {
+                claimedImage = Box(poiImage)
+            }
+        }
     }
-    
-    
 }
 
 extension XHERBountyViewCellModel {
@@ -84,7 +94,6 @@ extension XHERBountyViewCellModel {
         let divisor = pow(10.0, Double(decimalPlaces))
         return round(value * divisor) / divisor
     }
-    
 }
 
 
@@ -92,9 +101,13 @@ extension XHERBountyViewCellModel {
 class Box<T> {
     
     typealias DidChanged = ((_ value:T)->Void)
-    var value:T
     var changed:DidChanged?
-    
+
+    var value:T {
+        didSet {
+            changed?(value)
+        }
+    }
     
     init(_ value:T) {
         self.value = value

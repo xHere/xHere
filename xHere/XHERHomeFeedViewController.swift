@@ -156,8 +156,11 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
 
             let bounty = tableViewDataBackArray[indexPath.row]
+            let cellViewModel = XHERBountyViewCellModel(bounty)
             
-            cell.bounty = bounty
+            cell.viewModel = cellViewModel
+            
+//            cell.bounty = bounty
             cell.claimITLabel.isHidden = false
             return cell
         }
@@ -165,7 +168,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
             
             let bounty = tableViewDataBackArrayFar[indexPath.row]
-            cell.bounty = bounty
+            let cellViewModel = XHERBountyViewCellModel(bounty)
+            
+            cell.viewModel = cellViewModel
+//            cell.bounty = bounty
             cell.claimITLabel.isHidden = true
             return cell
         }

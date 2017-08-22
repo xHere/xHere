@@ -18,10 +18,9 @@ class XHERBountyViewCell: UITableViewCell {
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    
     @IBOutlet weak var bountyNotesLabel: UILabel!
     @IBOutlet weak var claimITLabel: UILabel!
-    @IBOutlet weak var dateUpdatedAtLabel: UILabel!
+    @IBOutlet weak var updatedDateLabel: UILabel!
     //UserInfo
     @IBOutlet weak var postedByUserLabel: UILabel!
     @IBOutlet weak var userProfileImage: UIImageView!
@@ -29,74 +28,97 @@ class XHERBountyViewCell: UITableViewCell {
     //Main Container Image
     @IBOutlet weak var claimedImage: UIImageView!
     
+    var viewModel:XHERBountyViewCellModel! {
     
-    var bounty: XHERBounty! {
-        
         didSet {
-            
-            //User info
-            self.postedByUserLabel.text = bounty.postedByUser?.username
-            if let profileImage = bounty.postedByUser?.profileImageUrl {
-                userProfileImage.isHidden = false
-                userProfileImage.setImageWith(profileImage)
+        
+            //Location Info
+            viewModel.locationTitle.bind { [unowned self] (title) in
+                self.locationTitleLabel.text = title
             }
-            else {
-                userProfileImage.isHidden = true
+            viewModel.distanceText.bind { [unowned self] (distance) in
+                self.distanceLabel.text = distance
             }
             
-
-            
-            //Location info
-            let distance = self.roundToPlaces(value: bounty.postedAtLocation.distanceFromCurrentInMiles, decimalPlaces: 2)
-            self.distanceLabel.text = "\(distance) mi"
-            print("Bonty place name \(bounty.postedAtLocation.placeName)")
-            self.locationTitleLabel.text = bounty.postedAtLocation.placeName
-            
-            
-            //Bounty info
-            self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
-            
-          
-            //Updated date info
-            self.dateUpdatedAtLabel.text = self.getCurrentDate(updatedDate: bounty.createdAt!)
-            
-           
-            
-            //Check if this bounty has an image aka claimed
-            if let bountyClaimedImageURLStr = bounty.mediaArray?[0].mediaData?.url,
-                let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
-            {
-                claimedImage.setImageWith(bountyClaimedImageURL)
-                
-                //Find Claim it Lable if claimed
-                self.claimITLabel.isHidden = true
+            //Bounty Info
+            viewModel.bountyNotesText.bind { [unowned self] (bountyNote) in
+                self.bountyNotesLabel.text = bountyNote
             }
-            else {
-                let poi = bounty.postedAtLocation
-                locationTitleLabel.text = poi.placeName
-                if let poiImage = poi.placeImageURL {
-                    claimedImage.setImageWith(poiImage)
-                }
-                self.claimITLabel.isHidden = false
+            viewModel.isClaimed.bind { [unowned self] (isClaimed) in
+                self.claimITLabel.isHidden = isClaimed
+            }
+            viewModel.updatedDate.bind { [unowned self] (date) in
+                self.updatedDateLabel.text = date
+            }
+            
+            //User Info
+            viewModel.posedByUser.bind { [unowned self] (userName) in
+                self.postedByUserLabel.text = userName
+            }
+            viewModel.userProfileImage?.bind { [unowned self] (imageURL) in
+                self.userProfileImage.setImageWith(imageURL)
+            }
+            
+            //Bounty Image
+            viewModel.claimedImage?.bind { [unowned self] (imageURL) in
+                self.claimedImage.setImageWith(imageURL)
             }
         }
-    }
-    func getCurrentDate(updatedDate:Date)->String{
         
-        
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
-        dateFormatter.dateFormat = "MM/dd HH:mm"
-        dateFormatter.timeZone = NSTimeZone.local
-        let timeStamp = dateFormatter.string(from: updatedDate)
-        return timeStamp
     }
     
-    func roundToPlaces(value: Double, decimalPlaces: Int) -> Double {
-        let divisor = pow(10.0, Double(decimalPlaces))
-        return round(value * divisor) / divisor
-    }
+    var bounty: XHERBounty!
+//    {
+//
+//        didSet {
+//            
+//            //User info
+//            self.postedByUserLabel.text = bounty.postedByUser?.username
+//            if let profileImage = bounty.postedByUser?.profileImageUrl {
+//                userProfileImage.isHidden = false
+//                userProfileImage.setImageWith(profileImage)
+//            }
+//            else {
+//                userProfileImage.isHidden = true
+//            }
+//            
+//
+//            
+//            //Location info
+//            let distance = self.roundToPlaces(value: bounty.postedAtLocation.distanceFromCurrentInMiles, decimalPlaces: 2)
+//            self.distanceLabel.text = "\(distance) mi"
+//            print("Bonty place name \(bounty.postedAtLocation.placeName)")
+//            self.locationTitleLabel.text = bounty.postedAtLocation.placeName
+//            
+//            
+//            //Bounty info
+//            self.bountyNotesLabel.text = "\"\(bounty.bountyNote)\""
+//            
+//          
+//            //Updated date info
+//            self.updatedDateLabel.text = self.getCurrentDate(updatedDate: bounty.createdAt!)
+//            
+//           
+//            
+//            //Check if this bounty has an image aka claimed
+//            if let bountyClaimedImageURLStr = bounty.mediaArray?[0].mediaData?.url,
+//                let bountyClaimedImageURL = URL(string:bountyClaimedImageURLStr)
+//            {
+//                claimedImage.setImageWith(bountyClaimedImageURL)
+//                
+//                //Find Claim it Lable if claimed
+//                self.claimITLabel.isHidden = true
+//            }
+//            else {
+//                let poi = bounty.postedAtLocation
+//                locationTitleLabel.text = poi.placeName
+//                if let poiImage = poi.placeImageURL {
+//                    claimedImage.setImageWith(poiImage)
+//                }
+//                self.claimITLabel.isHidden = false
+//            }
+//        }
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -197,7 +219,6 @@ class XHERBountyViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        
         claimITLabel.textColor = UIColor.white
         distanceLabel.text = ""
         distanceLabel.textColor = UIColor.white
@@ -205,8 +226,7 @@ class XHERBountyViewCell: UITableViewCell {
         postedByUserLabel.text = ""
         bountyNotesLabel.text = ""
         claimedImage.image = UIImage(named: "NoImagePlaceHolder")
-        dateUpdatedAtLabel.text = ""
-//        claimedImage.cancelImageDownloadTask()
+        updatedDateLabel.text = ""
     }
     
     override func layoutSubviews() {
