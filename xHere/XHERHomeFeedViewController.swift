@@ -159,10 +159,9 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
 
             let cellViewModel = tableViewDataBackArray[indexPath.row]
             
-            
             cell.viewModel = cellViewModel
-            
             cell.claimITLabel.isHidden = false
+           
             return cell
         }
         else {
@@ -172,6 +171,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             
             cell.viewModel = cellViewModel
             cell.claimITLabel.isHidden = true
+           
             return cell
         }
     }
