@@ -81,9 +81,17 @@ extension XHERHomeFeedVCModel {
         var farArray = [XHERBountyViewCellModel]()
         
         for bounty in bounties {
-            bounty.distanceFromCurrentInMiles <= 10 ?
-                nearArray.append(XHERBountyViewCellModel(bounty)) :
-                farArray.append(XHERBountyViewCellModel(bounty))
+            
+            let cellModel = XHERBountyViewCellModel(bounty)
+            
+            if bounty.distanceFromCurrentInMiles <= 10 {
+                cellModel.isClaimed.value = false
+                nearArray.append(cellModel)
+            }
+            else {
+                cellModel.isClaimed.value = true
+                farArray.append(cellModel)
+            }
         }
         
         return (nearArray, farArray)
