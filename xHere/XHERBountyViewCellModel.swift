@@ -23,7 +23,7 @@ protocol XHERBountyViewCellModelDelegate {
 
 class XHERBountyViewCellModel {
     
-    private var bounty: XHERBounty! {
+    var bounty: XHERBounty! {
         didSet {
             self.setModel(self.bounty)
         }
