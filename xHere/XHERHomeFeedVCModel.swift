@@ -35,12 +35,12 @@ class XHERHomeFeedVCModel {
             farUnClaimedArray = tuple.farArray
         }
     }
-    var nearUnClaimedArray = [XHERBounty]() {
+    var nearUnClaimedArray = [XHERBountyViewCellModel]() {
         didSet {
             print("$$$$$$$$$$$ update near array")
         }
     }
-    var farUnClaimedArray = [XHERBounty]() {
+    var farUnClaimedArray = [XHERBountyViewCellModel]() {
         didSet {
             print("$$$$$$$$$$ update far array")
         }
@@ -75,13 +75,15 @@ class XHERHomeFeedVCModel {
 
 //Helper
 extension XHERHomeFeedVCModel {
-    func createNearAndFarArray(bounties:[XHERBounty]) -> (nearArray:[XHERBounty], farArray:[XHERBounty]) {
+    func createNearAndFarArray(bounties:[XHERBounty]) -> (nearArray:[XHERBountyViewCellModel], farArray:[XHERBountyViewCellModel]) {
         
-        var nearArray = [XHERBounty]()
-        var farArray = [XHERBounty]()
+        var nearArray = [XHERBountyViewCellModel]()
+        var farArray = [XHERBountyViewCellModel]()
         
         for bounty in bounties {
-            bounty.distanceFromCurrentInMiles <= 10 ? nearArray.append(bounty) : farArray.append(bounty)
+            bounty.distanceFromCurrentInMiles <= 10 ?
+                nearArray.append(XHERBountyViewCellModel(bounty)) :
+                farArray.append(XHERBountyViewCellModel(bounty))
         }
         
         return (nearArray, farArray)

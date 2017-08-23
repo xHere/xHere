@@ -91,9 +91,10 @@ class XHERENeabyBountiesViewController: UIViewController,UITableViewDataSource,U
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "XHERBountyViewCell", for: indexPath) as! XHERBountyViewCell
         
-        let bounty = self.bounties?[indexPath.row]
+        if let bounty = self.bounties?[indexPath.row] {
+            cell.viewModel = XHERBountyViewCellModel(bounty)
+        }
         
-        cell.bounty = bounty
         return cell
 
         

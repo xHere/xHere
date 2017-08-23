@@ -167,7 +167,8 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
         let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
-        detailViewController.currentBounty = cell.bounty
+        
+        detailViewController.currentBounty = cell.viewModel.bounty
         detailViewController.viewControllerMode = .browsing
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
@@ -179,23 +180,23 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
         
         let bounty : XHERBounty
-            if isClaimed{
-                cell.claimITLabel.isHidden = false 
-                bounty = self.claimedBounties[indexPath.row]
-            }else{
-                cell.claimITLabel.isHidden = true
-                bounty = self.postedBouties[indexPath.row]
-            }
-        
-        
-            cell.distanceLabel.isHidden = true
+        if isClaimed{
+            cell.claimITLabel.isHidden = false 
+            bounty = self.claimedBounties[indexPath.row]
+        }else{
+            cell.claimITLabel.isHidden = true
+            bounty = self.postedBouties[indexPath.row]
+        }
+    
+    
+        cell.distanceLabel.isHidden = true
 print("cell for row at index \(bounty.postedAtLocation.placeName)")
-            cell.bounty = bounty
-        
-        
-        
-            return cell
-       
+//        cell.bounty = bounty
+    
+        cell.viewModel = XHERBountyViewCellModel(bounty)
+    
+        return cell
+   
         
         
 

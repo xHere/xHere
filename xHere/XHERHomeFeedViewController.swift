@@ -19,8 +19,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
     var viewModel:XHERHomeFeedVCModel!
     
     //Local model simply to create an desired animation effect.
-    var tableViewDataBackArray = [XHERBounty]()
-    var tableViewDataBackArrayFar = [XHERBounty]()
+    var tableViewDataBackArray = [XHERBountyViewCellModel]()
+    var tableViewDataBackArrayFar = [XHERBountyViewCellModel]()
 
     
     override func viewDidLoad() {
@@ -101,8 +101,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.tableViewDataBackArrayFar.removeAll()
         self.tableView.reloadData()
         
-        for nearBounty in viewModel.nearUnClaimedArray {
-            self.tableViewDataBackArray.append(nearBounty)
+        
+        //Clever animation of loading viewModel's data into a local tableview data and animate each row.
+        for nearViewModel in viewModel.nearUnClaimedArray {
+            self.tableViewDataBackArray.append(nearViewModel)
             let newIndexPath = IndexPath(row: self.tableViewDataBackArray.count-1, section: 1)
             
             UIView.animate(withDuration: 2) {
@@ -110,8 +112,8 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-        for farBounty in viewModel.farUnClaimedArray {
-            self.tableViewDataBackArrayFar.append(farBounty)
+        for farViewModel in viewModel.farUnClaimedArray {
+            self.tableViewDataBackArrayFar.append(farViewModel)
             let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
             
             UIView.animate(withDuration: 2) {
@@ -155,23 +157,20 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
 
-            let bounty = tableViewDataBackArray[indexPath.row]
-            let cellViewModel = XHERBountyViewCellModel(bounty)
+            let cellViewModel = tableViewDataBackArray[indexPath.row]
+            
             
             cell.viewModel = cellViewModel
             
-//            cell.bounty = bounty
             cell.claimITLabel.isHidden = false
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
             
-            let bounty = tableViewDataBackArrayFar[indexPath.row]
-            let cellViewModel = XHERBountyViewCellModel(bounty)
+            let cellViewModel = tableViewDataBackArrayFar[indexPath.row]
             
             cell.viewModel = cellViewModel
-//            cell.bounty = bounty
             cell.claimITLabel.isHidden = true
             return cell
         }
@@ -183,9 +182,10 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         if indexPath.section == 1 {
             
             let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
-            cell.startSelectedAnimation(completion: { (selectedCell:XHERBountyViewCell) in
+            cell.startSelectedAnimation(completion: {[unowned self] (selectedCell:XHERBountyViewCell) in
+                
                 let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
-                detailViewController.currentBounty = selectedCell.bounty
+                detailViewController.currentBounty = self.viewModel.unClaimedArray[indexPath.row]
                 detailViewController.viewControllerMode = .claiming
                     self.navigationController?.pushViewController(detailViewController, animated: true)
             })
