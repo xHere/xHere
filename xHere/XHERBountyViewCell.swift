@@ -67,7 +67,7 @@ class XHERBountyViewCell: UITableViewCell {
         
     }
     
-    var bounty: XHERBounty!
+//    var bounty: XHERBounty!
 //    {
 //
 //        didSet {
