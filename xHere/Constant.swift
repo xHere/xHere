@@ -10,3 +10,9 @@ import Foundation
 
 
 let xHereDateFormatter = DateFormatter()
+
+let kClassUnclaimedBountyCell = "XHerHomeFeedUnclaimedBountyCell"
+let kClassNearByClaimedViewCell = "XHERNearByClaimedViewCell"
+let kClassDetailViewController = "XHEREDetailViewController"
+
+let kNotiCompletedClaiming = Notification.Name("CompletedClaiming")

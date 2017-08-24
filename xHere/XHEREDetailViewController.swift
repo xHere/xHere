@@ -71,7 +71,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         
-        let notificationName = Notification.Name("CompletedClaiming")
+        let notificationName = kNotiCompletedClaiming
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
     }
     

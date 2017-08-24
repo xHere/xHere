@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
     
+fileprivate let kSection2Header = "Go There!"
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorMask: UIView!
@@ -40,7 +41,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         
         self.callAPI(success: nil)
         
-        let notificationName = Notification.Name("CompletedClaiming")
+        let notificationName = kNotiCompletedClaiming
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
     }
     
@@ -88,9 +89,13 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.register(XHerHomeFeedUnclaimedBountyCell.self, forCellReuseIdentifier: "XHerHomeFeedUnclaimedBountyCell")
-        let collectionViewNib = UINib(nibName: "XHERNearByClaimedViewCell", bundle: nil)
-        self.tableView.register(collectionViewNib, forCellReuseIdentifier: "XHERNearByClaimedViewCell")
+        
+        //Registering cell for sectino 0 which contains collectionView
+        let collectionViewNib = UINib(nibName: kClassNearByClaimedViewCell, bundle: nil)
+        self.tableView.register(collectionViewNib, forCellReuseIdentifier: kClassNearByClaimedViewCell)
+        
+        //Registering cell for section 1-2 which contains bountyViewCells
+        self.tableView.register(XHerHomeFeedUnclaimedBountyCell.self, forCellReuseIdentifier: kClassUnclaimedBountyCell)
         
         self.tableView.isHidden = true
     }
@@ -182,7 +187,7 @@ class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITable
             let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
             cell.startSelectedAnimation(completion: {[unowned self] (selectedCell:XHERBountyViewCell) in
                 
-                let detailViewController = XHEREDetailViewController(nibName: "XHEREDetailViewController", bundle: nil)
+                let detailViewController = XHEREDetailViewController(nibName: kClassDetailViewController, bundle: nil)
                 detailViewController.currentBounty = self.viewModel.unClaimedArray[indexPath.row]
                 detailViewController.viewControllerMode = .claiming
                     self.navigationController?.pushViewController(detailViewController, animated: true)
