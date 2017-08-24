@@ -9,13 +9,12 @@
 import UIKit
 import SVProgressHUD
 
-class XHERHomeFeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, XHERNearByClaimedViewCellDelegate, XHERHomeFeedVCModelDelegate  {
-    
 fileprivate let kSection2Header = "Go There!"
+
+class XHERHomeFeedViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundColorMask: UIView!
-    
     
     var viewModel:XHERHomeFeedVCModel!
     
@@ -23,10 +22,8 @@ fileprivate let kSection2Header = "Go There!"
     var tableViewDataBackArray = [XHERBountyViewCellModel]()
     var tableViewDataBackArrayFar = [XHERBountyViewCellModel]()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Set title of ViewController
         let appLogo = UIImage(named: "xhere_logo")
         let appLogoImageView = UIImageView(image: appLogo)
@@ -45,6 +42,7 @@ fileprivate let kSection2Header = "Go There!"
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
     }
     
+    // Refresh the data when someone returns to this view after claiming a bounty.
     func didCompleteClaiming(sender:Any) {
         self.callAPI(success: nil)
     }
@@ -60,7 +58,6 @@ fileprivate let kSection2Header = "Go There!"
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
     func callAPI(success: (()->())?) {
         SVProgressHUD.show()
@@ -70,8 +67,11 @@ fileprivate let kSection2Header = "Go There!"
             SVProgressHUD.dismiss()
         }
     }
-    
-    func setupRefreshControl() {
+}
+
+// MARK: - RefreshControl
+extension XHERHomeFeedViewController {
+    fileprivate func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
@@ -82,9 +82,23 @@ fileprivate let kSection2Header = "Go There!"
             refreshControl.endRefreshing()
         }
     }
+}
+
+// MARK: - Delegte method for user choosing a bounty
+extension XHERHomeFeedViewController: XHERNearByClaimedViewCellDelegate{
+    func userDidChoose(claimedBounty: XHERBounty) {
+        let detailVC = XHEREDetailViewController()
+        detailVC.viewControllerMode = .browsing
+        detailVC.currentBounty = claimedBounty
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+// MARK: - TableView Methods
+extension XHERHomeFeedViewController {
     
-    // MARK: - TableView Methods
-    func setupTableView() {
+    fileprivate func setupTableView() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 100
@@ -106,7 +120,6 @@ fileprivate let kSection2Header = "Go There!"
         self.tableViewDataBackArrayFar.removeAll()
         self.tableView.reloadData()
         
-        
         //Clever animation of loading viewModel's data into a local tableview data and animate each row.
         for nearViewModel in viewModel.nearUnClaimedArray {
             self.tableViewDataBackArray.append(nearViewModel)
@@ -116,7 +129,6 @@ fileprivate let kSection2Header = "Go There!"
                 self.tableView.insertRows(at: [newIndexPath], with: .fade)
             }
         }
-        
         for farViewModel in viewModel.farUnClaimedArray {
             self.tableViewDataBackArrayFar.append(farViewModel)
             let newIndexPath = IndexPath(row: self.tableViewDataBackArrayFar.count-1, section: 2)
@@ -129,60 +141,14 @@ fileprivate let kSection2Header = "Go There!"
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         })
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if section == 0 {
-            return 1
-        }
-        else if section == 1{
-            return tableViewDataBackArray.count
-        }
-        else {
-            return tableViewDataBackArrayFar.count
-        }
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "XHERNearByClaimedViewCell", for: indexPath) as! XHERNearByClaimedViewCell
-            
-            cell.nearByClaimedArray = viewModel.claimedArray
-            
-            cell.delegate = self
-            
-            return cell
-        }
-        
-        else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
+}
 
-            let cellViewModel = tableViewDataBackArray[indexPath.row]
-            
-            cell.viewModel = cellViewModel
-           
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "XHerHomeFeedUnclaimedBountyCell", for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
-            
-            let cellViewModel = tableViewDataBackArrayFar[indexPath.row]
-            
-            cell.viewModel = cellViewModel
-           
-            return cell
-        }
-    }
+// MARK: UITableViewDelegate
+extension XHERHomeFeedViewController: UITableViewDelegate {
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //If selected is a XHERBountyViewCell run it's builtin selected animation before pushing
-        if indexPath.section == 1 {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //If selected is a XHERBountyViewCell run it's built-in selected animation before pushing
+        if indexPath.section == 1 { //Section for normal near unclaimedBounties
             
             let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
             cell.startSelectedAnimation(completion: {[unowned self] (selectedCell:XHERBountyViewCell) in
@@ -190,19 +156,18 @@ fileprivate let kSection2Header = "Go There!"
                 let detailViewController = XHEREDetailViewController(nibName: kClassDetailViewController, bundle: nil)
                 detailViewController.currentBounty = self.viewModel.unClaimedArray[indexPath.row]
                 detailViewController.viewControllerMode = .claiming
-                    self.navigationController?.pushViewController(detailViewController, animated: true)
+                self.navigationController?.pushViewController(detailViewController, animated: true)
             })
         }
-        if indexPath.section == 2 {
+        if indexPath.section == 2 { //Section for normal far unclaimedBounties
             let cell = tableView.cellForRow(at: indexPath) as! XHERBountyViewCell
             cell.startDeniedSelectionAnimation(completion: { (selectedCell:XHERBountyViewCell) in
-                
             })
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { //Section for collectionView
             return self.view.bounds.height * 0.25
         }
         else {
@@ -216,8 +181,18 @@ fileprivate let kSection2Header = "Go There!"
         cell.backgroundColor = UIColor.clear
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        //Section for normal far unclaimedBounties
+        if section == 2 { //Section for normal far unclaimedBounties
+            let headerView = XHERHomeFeedHeaderView()
+            headerView.headerLabel.text = kSection2Header
+            return headerView
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
+        //Section for normal far unclaimedBounties
         if section == 2 {
             if let headerView = view as? XHERHomeFeedHeaderView {
                 let backgroundView = UIView()
@@ -227,30 +202,63 @@ fileprivate let kSection2Header = "Go There!"
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if section == 2 {
-            let headerView = XHERHomeFeedHeaderView()
-            headerView.headerLabel.text = "Go There!"
-            return headerView
-        }
-        return nil
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if section == 2 {
+        if section == 2 { //Section for normal far unclaimedBounties
             return 30.0
         }
         return 0
     }
+}
+
+// MARK: UITableViewDataSource
+extension XHERHomeFeedViewController: UITableViewDataSource {
     
-    func userDidChoose(claimedBounty: XHERBounty) {
-        let detailVC = XHEREDetailViewController()
-        detailVC.viewControllerMode = .browsing
-        detailVC.currentBounty = claimedBounty
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == 0 { //Section for collectionView
+            return 1
+        }
+        else if section == 1 { //Section for normal near unclaimedBounties
+            return tableViewDataBackArray.count
+        }
+        else { //Section for normal far unclaimedBounties
+            return tableViewDataBackArrayFar.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 { //Section for collectionView
+            let cell = tableView.dequeueReusableCell(withIdentifier: kClassNearByClaimedViewCell, for: indexPath) as! XHERNearByClaimedViewCell
+            
+            cell.nearByClaimedArray = viewModel.claimedArray
+            
+            cell.delegate = self
+            
+            return cell
+        }
+        else if indexPath.section == 1 { //Section for normal near unclaimedBounties
+            let cell = tableView.dequeueReusableCell(withIdentifier: kClassUnclaimedBountyCell, for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
+            
+            let cellViewModel = tableViewDataBackArray[indexPath.row]
+            
+            cell.viewModel = cellViewModel
+            
+            return cell
+        }
+        else { //Section for normal far unclaimedBounties
+            let cell = tableView.dequeueReusableCell(withIdentifier: kClassUnclaimedBountyCell, for: indexPath) as! XHerHomeFeedUnclaimedBountyCell
+            
+            let cellViewModel = tableViewDataBackArrayFar[indexPath.row]
+            
+            cell.viewModel = cellViewModel
+            
+            return cell
+        }
+    }
 }
