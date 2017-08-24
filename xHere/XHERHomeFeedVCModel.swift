@@ -9,25 +9,23 @@
 import Foundation
 import SVProgressHUD
 
-
 typealias claimedAndUnClaimedBountiesCompletion = ((_ claimed:[XHERBounty], _ unclaimed:[XHERBounty])->Void)?
 
 let searchDistanceInMiles:Double = 200.0
 
-protocol XHERHomeFeedVCModelDelegate {
-    func reloadData()
-}
+//protocol XHERHomeFeedVCModelDelegate {
+//    func reloadData()
+//}
 
 class XHERHomeFeedVCModel {
-    
-    var delegate: XHERHomeFeedVCModelDelegate?
-    
-    var server: XHERServer!
+        
+    private var server: XHERServer!
     
     var claimedArray = [XHERBounty]() {
         didSet {
         }
     }
+    
     var unClaimedArray = [XHERBounty]() {
         didSet {
             let tuple = createNearAndFarArray(bounties: unClaimedArray)
@@ -46,13 +44,12 @@ class XHERHomeFeedVCModel {
         }
     }
     
-    init(withServer server:XHERServer, delegate:XHERHomeFeedVCModelDelegate?) {
+    init(withServer server:XHERServer) {
         self.server = server
-        self.delegate = delegate
     }
     
     convenience init() {
-        self.init(withServer: XHERServer.sharedInstance, delegate:nil)
+        self.init(withServer: XHERServer.sharedInstance)
     }
     
     // Data fetch
@@ -61,7 +58,6 @@ class XHERHomeFeedVCModel {
         server.fetchClaimedAndUnClaimedBountyNearHere(withInMiles: searchDistanceInMiles, success: { [weak self] (claimedArray, unclaimedArray) in
             
             if let strongSelf = self {
-                
                 strongSelf.claimedArray = claimedArray ?? strongSelf.claimedArray
                 strongSelf.unClaimedArray = unclaimedArray ?? strongSelf.unClaimedArray
                 
@@ -73,7 +69,7 @@ class XHERHomeFeedVCModel {
     }
 }
 
-//Helper
+// MARK: - Helper
 extension XHERHomeFeedVCModel {
     func createNearAndFarArray(bounties:[XHERBounty]) -> (nearArray:[XHERBountyViewCellModel], farArray:[XHERBountyViewCellModel]) {
         

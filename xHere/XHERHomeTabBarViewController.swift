@@ -29,8 +29,6 @@ class XHERHomeTabBarViewController: UIViewController {
     var profileNavi:UINavigationController!
     var profileViewController:UIViewController!
     
-    
-    
     var contentVC:UIViewController! {
         didSet {
             if (oldValue != nil) {
@@ -57,8 +55,6 @@ class XHERHomeTabBarViewController: UIViewController {
         profileImageView.layer.borderColor = UIColor.gray.cgColor
         profileImageView.layer.borderWidth = 2
         profileImageView.setImageWith(currentUser.profileImageUrl!)
-        
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,7 +64,7 @@ class XHERHomeTabBarViewController: UIViewController {
     
     func setupContainedControllers() {
         homeFeedViewController = XHERHomeFeedViewController() as XHERHomeFeedViewController
-        homeFeedViewController.viewModel = XHERHomeFeedVCModel(withServer: XHERServer.sharedInstance, delegate: homeFeedViewController)
+        homeFeedViewController.viewModel = XHERHomeFeedVCModel(withServer: XHERServer.sharedInstance)
         homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
         homeFeedNavi.navigationBar.barTintColor = kXHERYellow
 
@@ -110,7 +106,6 @@ class XHERHomeTabBarViewController: UIViewController {
     
     @IBAction func touchOnProfileImageView(_ sender: Any) {
         
-        
         homeButton.isSelected = false
         discoveryButton.isSelected = false
         
@@ -120,17 +115,14 @@ class XHERHomeTabBarViewController: UIViewController {
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
                                                        animations: {
                                                         weakSelf?.profileImageView.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
-                                                        
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2,
                                                        animations: {
                                                         weakSelf?.profileImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                                     })
-                                    
         },
                                 completion: { (didComplete:Bool) in
                                     weakSelf?.contentVC = weakSelf?.profileNavi
-
         })
     }
     
