@@ -43,7 +43,7 @@ class XHERHomeFeedViewController: UIViewController  {
     }
     
     // Refresh the data when someone returns to this view after claiming a bounty.
-    func didCompleteClaiming(sender:Any) {
+    @objc func didCompleteClaiming(sender:Any) {
         self.callAPI(success: nil)
     }
     
@@ -77,7 +77,7 @@ extension XHERHomeFeedViewController {
         tableView.insertSubview(refreshControl, at: 0)
     }
     
-    func refreshControlAction(refreshControl: UIRefreshControl) {
+    @objc func refreshControlAction(refreshControl: UIRefreshControl) {
         self.callAPI {
             refreshControl.endRefreshing()
         }

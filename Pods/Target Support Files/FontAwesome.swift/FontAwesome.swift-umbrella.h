@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_xHereTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_xHereTestsVersionString[];
+FOUNDATION_EXPORT double FontAwesome_swiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char FontAwesome_swiftVersionString[];
 

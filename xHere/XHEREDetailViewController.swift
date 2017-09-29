@@ -75,7 +75,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
     }
     
-    func didCompleteClaiming(sender:Any) {
+    @objc func didCompleteClaiming(sender:Any) {
         
         let notification = sender as! Notification
         
@@ -278,7 +278,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         
     }
 
-    func touchOnBack() {
+    @objc func touchOnBack() {
         self.navigationController?.popViewController(animated: true)
     }
 

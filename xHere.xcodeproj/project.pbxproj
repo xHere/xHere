@@ -91,8 +91,6 @@
 		99F66C751DE4411100F520D1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F66C731DE4411100F520D1 /* CameraViewController.swift */; };
 		99F66C761DE4411100F520D1 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99F66C741DE4411100F520D1 /* CameraViewController.xib */; };
 		C1D59EB344C288FBFF399CE8 /* Pods_xHere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */; };
-		D3BC9310B228645C468D7888 /* Pods_xHereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 475C27B66A9C49557B7F1E9E /* Pods_xHereUITests.framework */; };
-		F193F61CB3C3A2D6CA1104EE /* Pods_xHereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AFD26D5C1F7C83912A3C61 /* Pods_xHereTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,10 +111,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0791287B549944494DE24323 /* Pods-xHereUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereUITests/Pods-xHereUITests.release.xcconfig"; sourceTree = "<group>"; };
 		395BF3E673E9739924CB37A9 /* Pods-xHere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHere.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHere/Pods-xHere.release.xcconfig"; sourceTree = "<group>"; };
 		475C27B66A9C49557B7F1E9E /* Pods_xHereUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B4D38724A46AFCF95B78D73 /* Pods-xHereUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xHereUITests/Pods-xHereUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B1EDF411DD57DE1000E13D4 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		8B29FE441DF6B0EB00A953CC /* XHERNearByClaimedCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERNearByClaimedCollectionCell.xib; sourceTree = "<group>"; };
 		8B29FE461DF6B33B00A953CC /* XHERHomeFeedNearByClaimedCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERHomeFeedNearByClaimedCollectionCell.swift; sourceTree = "<group>"; };
@@ -191,7 +187,6 @@
 		93F925941DF666FA000E7D60 /* XHERELeftPaddedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERELeftPaddedTextField.swift; sourceTree = "<group>"; };
 		93F925A01DF6CBF0000E7D60 /* XHERELocationRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHERELocationRequestViewController.swift; sourceTree = "<group>"; };
 		93F925A11DF6CBF0000E7D60 /* XHERELocationRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHERELocationRequestViewController.xib; sourceTree = "<group>"; };
-		945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.release.xcconfig"; sourceTree = "<group>"; };
 		992234391DDE4B28003C792F /* XHEREPlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREPlaces.swift; sourceTree = "<group>"; };
 		992654091DECE05000A10614 /* XHEREProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHEREProfileViewController.swift; sourceTree = "<group>"; };
 		9926540A1DECE05000A10614 /* XHEREProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XHEREProfileViewController.xib; sourceTree = "<group>"; };
@@ -212,7 +207,6 @@
 		A5AFD26D5C1F7C83912A3C61 /* Pods_xHereTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHereTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B459821A47443B726044EC38 /* Pods-xHere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xHere/Pods-xHere.debug.xcconfig"; sourceTree = "<group>"; };
 		D46A2F15073BB6A032EB0092 /* Pods_xHere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xHere.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6ECDA7087CD890CD5D85A60 /* Pods-xHereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xHereTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +222,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F193F61CB3C3A2D6CA1104EE /* Pods_xHereTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +229,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3BC9310B228645C468D7888 /* Pods_xHereUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +240,6 @@
 			children = (
 				B459821A47443B726044EC38 /* Pods-xHere.debug.xcconfig */,
 				395BF3E673E9739924CB37A9 /* Pods-xHere.release.xcconfig */,
-				F6ECDA7087CD890CD5D85A60 /* Pods-xHereTests.debug.xcconfig */,
-				945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */,
-				7B4D38724A46AFCF95B78D73 /* Pods-xHereUITests.debug.xcconfig */,
-				0791287B549944494DE24323 /* Pods-xHereUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -640,12 +628,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B2B13FF1DD117F300961683 /* Build configuration list for PBXNativeTarget "xHereTests" */;
 			buildPhases = (
-				69E2DA6C58EF75EBCAA6CFC6 /* [CP] Check Pods Manifest.lock */,
 				8B2B13E41DD117F300961683 /* Sources */,
 				8B2B13E51DD117F300961683 /* Frameworks */,
 				8B2B13E61DD117F300961683 /* Resources */,
-				6FA90E3123CFC060369548DD /* [CP] Embed Pods Frameworks */,
-				2211A4659036D868FFDC4059 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -661,12 +646,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B2B14021DD117F300961683 /* Build configuration list for PBXNativeTarget "xHereUITests" */;
 			buildPhases = (
-				04E7432B69009C9C6D7D8EEE /* [CP] Check Pods Manifest.lock */,
 				8B2B13EF1DD117F300961683 /* Sources */,
 				8B2B13F01DD117F300961683 /* Frameworks */,
 				8B2B13F11DD117F300961683 /* Resources */,
-				0E4826E0F129C2F2637D4E1A /* [CP] Copy Pods Resources */,
-				7BDBF41C6999ADC6311F95F8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -691,7 +673,7 @@
 					8B2B13D01DD117F200961683 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = SDHBMW8ZGY;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -701,12 +683,14 @@
 					};
 					8B2B13E71DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8B2B13D01DD117F200961683;
 					};
 					8B2B13F21DD117F300961683 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = SDHBMW8ZGY;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8B2B13D01DD117F200961683;
 					};
@@ -787,54 +771,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04E7432B69009C9C6D7D8EEE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-xHereUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0E4826E0F129C2F2637D4E1A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xHereUITests/Pods-xHereUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2211A4659036D868FFDC4059 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6278447DF76F463A9BA3C778 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +782,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Facebook-iOS-SDK/FacebookSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/Font-Awesome-Swift/Font_Awesome_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/PBJVision/PBJVision.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
@@ -861,6 +798,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Font_Awesome_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PBJVision.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
@@ -873,54 +811,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xHere/Pods-xHere-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		69E2DA6C58EF75EBCAA6CFC6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-xHereTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6FA90E3123CFC060369548DD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xHereTests/Pods-xHereTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7BDBF41C6999ADC6311F95F8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xHereUITests/Pods-xHereUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7EA7A51CE07D7A2E40F1A1FA /* [CP] Check Pods Manifest.lock */ = {
@@ -1183,7 +1073,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xHere/xHere-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1204,13 +1095,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xHere/xHere-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		8B2B14001DD117F300961683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6ECDA7087CD890CD5D85A60 /* Pods-xHereTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1223,14 +1114,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xHere.app/xHere";
 			};
 			name = Debug;
 		};
 		8B2B14011DD117F300961683 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 945B70F37494AA6C7AD8E31C /* Pods-xHereTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1242,14 +1133,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xHere.app/xHere";
 			};
 			name = Release;
 		};
 		8B2B14031DD117F300961683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B4D38724A46AFCF95B78D73 /* Pods-xHereUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = SDHBMW8ZGY;
@@ -1258,14 +1149,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = xHere;
 			};
 			name = Debug;
 		};
 		8B2B14041DD117F300961683 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0791287B549944494DE24323 /* Pods-xHereUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = SDHBMW8ZGY;
@@ -1274,7 +1165,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = today.detour.xHereUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = xHere;
 			};
 			name = Release;

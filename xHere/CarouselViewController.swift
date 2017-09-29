@@ -42,7 +42,7 @@ class CarouselViewController: UIViewController,iCarouselDataSource, iCarouselDel
         self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     
-    func touchOnBack() {
+    @objc func touchOnBack() {
         self.navigationController?.popViewController(animated: true)
     }
     

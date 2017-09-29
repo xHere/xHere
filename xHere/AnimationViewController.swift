@@ -136,7 +136,7 @@ class AnimationViewController: UIViewController {
         alertView.layer.shadowRadius = 10.0;
         let user  = PFUser.current() as! User
         numberOfTokensLabel.text = "\(user.tokens)"
-        self.dimissButton.addTarget(self, action: Selector("dismissAlert"), for: UIControlEvents.touchUpInside)
+        self.dimissButton.addTarget(self, action: #selector(AnimationViewController.dismissAlert), for: UIControlEvents.touchUpInside)
         
     }
     
@@ -152,7 +152,7 @@ class AnimationViewController: UIViewController {
         animator?.addBehavior(snapBehaviour)
     }
     
-    func dismissAlert() {
+    @objc func dismissAlert() {
         
         animator?.removeAllBehaviors()
         
@@ -187,7 +187,7 @@ class AnimationViewController: UIViewController {
         view.addGestureRecognizer(panGestureRecognizer)
     }
     
-    func handlePan(sender: UIPanGestureRecognizer) {
+    @objc func handlePan(sender: UIPanGestureRecognizer) {
         
         if (alertView != nil) {
             let panLocationInView = sender.location(in: view)

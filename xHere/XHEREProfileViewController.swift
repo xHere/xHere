@@ -90,7 +90,7 @@ class XHEREProfileViewController: UIViewController, UITableViewDelegate, UITable
         tableView.insertSubview(refreshControl, at: 0)
     }
     
-    func refreshControlAction(refreshControl: UIRefreshControl) {
+    @objc func refreshControlAction(refreshControl: UIRefreshControl) {
         
        
         if isClaimed{

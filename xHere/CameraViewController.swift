@@ -60,12 +60,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func setupCameraSession(){
         session = AVCaptureSession()
-        session!.sessionPreset = AVCaptureSessionPresetPhoto
-        captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        session!.sessionPreset = AVCaptureSession.Preset.photo
+        captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         var error: NSError?
         var input: AVCaptureDeviceInput!
         do {
-            input = try AVCaptureDeviceInput(device: captureDevice)
+            input = try AVCaptureDeviceInput(device: captureDevice!)
             if error == nil && session!.canAddInput(input) {
                 session!.addInput(input)
                 
@@ -73,12 +73,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 stillImageOutput = AVCaptureStillImageOutput()
                 stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
                 
-                if session!.canAddOutput(stillImageOutput) {
-                    session!.addOutput(stillImageOutput)
+                if session!.canAddOutput(stillImageOutput!) {
+                    session!.addOutput(stillImageOutput!)
                     // ...
                     // Configure the Live Preview here...
-                    videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-                    videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
+                    videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session!)
+                    videoPreviewLayer!.videoGravity = AVLayerVideoGravity.resizeAspect
                     videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
                     previewView.layer.addSublayer(videoPreviewLayer!)
                     session!.startRunning()
@@ -112,10 +112,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.imagePreviewView.isHidden = true
                 //                let settings = AVCapturePhotoSettings()
                 
-                if let videoConnection = stillImageOutput?.connection(withMediaType: AVMediaTypeVideo) {
+                if let videoConnection = stillImageOutput?.connection(with: AVMediaType.video) {
                     stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (sampleBuffer: CMSampleBuffer?, error: Error?) in
                         if sampleBuffer! != nil {
-                            let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                            let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer!)
                             let dataProvider = CGDataProvider(data: imageData as! CFData)
                             let cgImageRef = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)
                             let image = UIImage(cgImage: cgImageRef!, scale: 1.0, orientation: UIImageOrientation.right)
@@ -152,23 +152,23 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         dismiss(animated: true) {
             if !self.testing {
                 
-                let currentCameraInput: AVCaptureInput = self.session!.inputs[0] as! AVCaptureInput
+                let currentCameraInput: AVCaptureInput = self.session!.inputs[0] 
                 self.session?.removeInput(currentCameraInput)
             }
         }
     }
     
     @IBAction func switchCamera(_ sender: AnyObject) {
-        let currentCameraInput: AVCaptureInput = session!.inputs[0] as! AVCaptureInput
+        let currentCameraInput: AVCaptureInput = session!.inputs[0] 
         session?.removeInput(currentCameraInput)
         
         let newCamera: AVCaptureDevice?
-        if(captureDevice!.position == AVCaptureDevicePosition.back){
+        if(captureDevice!.position == AVCaptureDevice.Position.back){
             
-            newCamera = self.cameraWithPosition(position: AVCaptureDevicePosition.front)
+            newCamera = self.cameraWithPosition(position: AVCaptureDevice.Position.front)
         } else {
             
-            newCamera = self.cameraWithPosition(position: AVCaptureDevicePosition.back)
+            newCamera = self.cameraWithPosition(position: AVCaptureDevice.Position.back)
         }
         var error: NSError?
         var newVideoInput: AVCaptureDeviceInput!
@@ -191,11 +191,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice? {
+    func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
         let devices = AVCaptureDevice.devices()
-        for device in devices! {
+        for device in devices {
             if((device as AnyObject).position == position){
-                return device as! AVCaptureDevice
+                return device 
             }
         }
         return nil

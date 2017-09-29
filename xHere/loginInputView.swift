@@ -97,10 +97,10 @@ import UIKit
     //MARK: - change view
     private func setViewExpandMode(expand:Bool){
         
-        backViewHeightExpandConstraint.priority = expand ? 500:200
-        labelViewTopExpandConstraint.priority = expand ? 500:200
-        labelViewRightExpandConstraint.priority = expand ? 500:300
-        labelViewLeftExpandConstraint.priority = expand ? 999:300
+        backViewHeightExpandConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(expand ? 500:200))
+        labelViewTopExpandConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(expand ? 500:200))
+        labelViewRightExpandConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(expand ? 500:300))
+        labelViewLeftExpandConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(expand ? 999:300))
         
         UIView.animate(withDuration: 0.25) {
             self.layoutIfNeeded()

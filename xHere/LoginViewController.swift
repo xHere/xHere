@@ -117,8 +117,8 @@ class LoginViewController: UIViewController {
     func toggleView(animated: Bool){
         mode = mode == .login ? .signup:.login
         loginWidthConstraint.isActive = mode == .signup ? true:false
-        loginButtonVerticalCenterConstraint.priority = mode == .login ? 300:900
-        signupButtonVerticalCenterConstraint.priority = mode == .signup ? 300:900
+        loginButtonVerticalCenterConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(mode == .login ? 300:900))
+        signupButtonVerticalCenterConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(mode == .signup ? 300:900))
         
         self.view.endEditing(true)
         
