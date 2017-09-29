@@ -28,10 +28,10 @@ class XHERHomeFeedViewController: UIViewController  {
         let appLogo = UIImage(named: "xhere_logo")
         let appLogoImageView = UIImageView(image: appLogo)
         appLogoImageView.contentMode = .scaleAspectFit
-        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        appLogoImageView.frame = titleView.bounds
-        titleView.addSubview(appLogoImageView)
-        self.navigationItem.titleView = titleView
+//        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+//        appLogoImageView.frame = titleView.bounds
+//        titleView.addSubview(appLogoImageView)
+        self.navigationItem.titleView = appLogoImageView
         
         self.setupTableView()
         self.setupRefreshControl()
