@@ -24,15 +24,17 @@ class XHERHomeFeedViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //Set title of ViewController
         let appLogo = UIImage(named: "xhere_logo")
         let appLogoImageView = UIImageView(image: appLogo)
         appLogoImageView.contentMode = .scaleAspectFit
-//        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-//        appLogoImageView.frame = titleView.bounds
-//        titleView.addSubview(appLogoImageView)
-        self.navigationItem.titleView = appLogoImageView
+        let naviBarsize = self.navigationController!.navigationBar.frame.size
+        let titleView = UIView(frame: CGRect(x: 0, y: 0, width: naviBarsize.width, height: naviBarsize.height))
+        appLogoImageView.frame = titleView.bounds
+        titleView.addSubview(appLogoImageView)
         
+        self.navigationItem.titleView = titleView
         self.setupTableView()
         self.setupRefreshControl()
         
@@ -40,18 +42,18 @@ class XHERHomeFeedViewController: UIViewController  {
         
         let notificationName = kNotiCompletedClaiming
         NotificationCenter.default.addObserver(self, selector: #selector(didCompleteClaiming(sender:)), name: notificationName, object: nil)
+        
+//        self.automaticallyAdjustsScrollViewInsets = true
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     // Refresh the data when someone returns to this view after claiming a bounty.
     @objc func didCompleteClaiming(sender:Any) {
         self.callAPI(success: nil)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
+
     override func viewDidLayoutSubviews() {
-        self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
+//        self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0)
     }
     
     override func didReceiveMemoryWarning() {
