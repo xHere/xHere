@@ -290,7 +290,6 @@
 				939DD2221DDA82890065736C /* Detail View Controller */,
 				8B4BCC811DD8FB2800FACD79 /* Home TabBar ViewController */,
 				8BA0E7241DDE709D00CD73E2 /* BountyViewCell */,
-				8BA0E7321DDE92DA00CD73E2 /* Claimed CollectionViewCell */,
 				8BA7D21C1DD926D00002C848 /* Home Feed ViewController */,
 				8BA7D2171DD926900002C848 /* Discovery ViewController */,
 				937670561DE4CCBA00576199 /* NearbyBounties */,
@@ -419,6 +418,7 @@
 		8BA7D21C1DD926D00002C848 /* Home Feed ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8BA0E7321DDE92DA00CD73E2 /* Claimed CollectionViewCell */,
 				8B34EB061DF509AA00150F6B /* Header View */,
 				8BA7D2181DD926CC0002C848 /* XHERHomeFeedViewController.swift */,
 				8BA7D2191DD926CC0002C848 /* XHERHomeFeedViewController.xib */,

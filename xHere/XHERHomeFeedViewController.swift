@@ -36,7 +36,7 @@ class XHERHomeFeedViewController: UIViewController  {
         self.navigationItem.titleView = titleView
         
         self.setupTableView()
-        self.setupRefreshControl()
+//        self.setupRefreshControl()
         
         self.callAPI(success: nil)
         
@@ -62,6 +62,11 @@ class XHERHomeFeedViewController: UIViewController  {
     }
     
     func callAPI(success: (()->())?) {
+//        SVProgressHUD.setDefaultStyle(.custom)
+//        SVProgressHUD.setDefaultMaskType(.clear)
+        SVProgressHUD.setBackgroundColor(.white)
+//        SVProgressHUD.setForegroundColor(.red)
+//        SVProgressHUD.setBackgroundLayerColor(.clear)
         SVProgressHUD.show()
         viewModel.getClaimedAndUnclaimedBountyNearBy {[unowned self] (claimed, unclaimed) in
             success?()
@@ -71,20 +76,20 @@ class XHERHomeFeedViewController: UIViewController  {
     }
 }
 
-// MARK: - RefreshControl
-extension XHERHomeFeedViewController {
-    fileprivate func setupRefreshControl() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
-        tableView.insertSubview(refreshControl, at: 0)
-    }
-    
-    @objc func refreshControlAction(refreshControl: UIRefreshControl) {
-        self.callAPI {
-            refreshControl.endRefreshing()
-        }
-    }
-}
+//// MARK: - RefreshControl
+//extension XHERHomeFeedViewController {
+//    fileprivate func setupRefreshControl() {
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+//        tableView.insertSubview(refreshControl, at: 0)
+//    }
+//
+//    @objc func refreshControlAction(refreshControl: UIRefreshControl) {
+//        self.callAPI {
+//            refreshControl.endRefreshing()
+//        }
+//    }
+//}
 
 // MARK: - Delegte method for user choosing a bounty
 extension XHERHomeFeedViewController: XHERNearByClaimedViewCellDelegate{
