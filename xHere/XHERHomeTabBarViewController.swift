@@ -67,7 +67,7 @@ class XHERHomeTabBarViewController: UIViewController {
         homeFeedViewController.viewModel = XHERHomeFeedVCModel(withServer: XHERServer.sharedInstance)
         homeFeedNavi = UINavigationController(rootViewController: homeFeedViewController)
         homeFeedNavi.navigationBar.barTintColor = kXHERYellow
-
+                
         discoverViewController = XHERDiscoveryViewController()
         discoveryNavi = UINavigationController(rootViewController: discoverViewController)
         discoveryNavi.navigationBar.barTintColor = kXHERYellow

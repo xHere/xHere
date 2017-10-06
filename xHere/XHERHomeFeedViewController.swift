@@ -33,8 +33,8 @@ class XHERHomeFeedViewController: UIViewController  {
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: naviBarsize.width, height: naviBarsize.height))
         appLogoImageView.frame = titleView.bounds
         titleView.addSubview(appLogoImageView)
-        
         self.navigationItem.titleView = titleView
+        
         self.setupTableView()
         self.setupRefreshControl()
         

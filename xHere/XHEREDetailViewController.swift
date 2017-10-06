@@ -169,11 +169,7 @@ class XHEREDetailViewController: UIViewController, UIImagePickerControllerDelega
         if let placeImageURL = location?.placeImageURL {
             self.mainImageView.setImageWith(placeImageURL)
         }
-        
-//        let titleView = NavigationTitleView()
-        let titleView = NavigationTitleView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-        titleView.textLabel.text = location?.placeName
-        self.navigationItem.titleView = titleView
+
     }
     
     func setupPostingMode() {
