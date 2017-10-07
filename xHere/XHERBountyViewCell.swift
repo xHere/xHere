@@ -134,7 +134,8 @@ class XHERBountyViewCell: UITableViewCell {
         let nib = UINib(nibName: "XHERBountyViewCell", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
         cellContentView.frame = bounds
-   
+        customContentView.layer.cornerRadius = 5
+        
         contentView.addSubview(cellContentView)
         
         self.selectionStyle = .none
